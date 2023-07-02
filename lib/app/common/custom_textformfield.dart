@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:siresma/app/common/colors.dart';
 
 class CustomTextFields extends StatelessWidget {
+  
   const CustomTextFields({
     Key? key,
     required this.hint,
@@ -55,3 +56,13 @@ class CustomTextFields extends StatelessWidget {
     );
   }
 }
+TextStyle whiteTextStyle = GoogleFonts.inter(
+  fontSize: 16,
+  fontWeight: FontWeight.w700,
+  color: whiteColors,
+);
+TextStyle textTextStyle = GoogleFonts.dmSans(
+  fontSize: 16,
+  fontWeight: FontWeight.w700,
+  color: Colors.black,
+);

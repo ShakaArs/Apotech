@@ -1,4 +1,10 @@
 import 'package:get/get.dart';
+import 'package:siresma/app/modules/profil/bindings/profil_binding.dart';
+import 'package:siresma/app/modules/profil/views/profil_view.dart';
+import 'package:siresma/app/modules/setor/bindings/setor_binding.dart';
+import 'package:siresma/app/modules/setor/views/setor_view.dart';
+import 'package:siresma/app/modules/tabungan/bindings/tabungan_binding.dart';
+import 'package:siresma/app/modules/tabungan/views/tabungan_view.dart';
 
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
@@ -14,7 +20,7 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.LOGIN;
+  static const INITIAL = Routes.SETOR;
 
   static final routes = [
     GetPage(
@@ -36,6 +42,21 @@ class AppPages {
       name: _Paths.LOGIN,
       page: () => LoginView(),
       binding: LoginBinding(),
+    ),
+    GetPage(
+      name: _Paths.PROFIL,
+      page: () => const ProfilView(),
+      binding: ProfilBinding(),
+    ),
+    GetPage(
+      name: _Paths.SETOR,
+      page: () => const SetorView(),
+      binding: SetorBinding(),
+    ),
+    GetPage(
+      name: _Paths.TABUNGAN,
+      page: () => const TabunganView(),
+      binding: TabunganBinding(),
     ),
   ];
 }
