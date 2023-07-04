@@ -1,6 +1,8 @@
 import 'package:get/get.dart';
 import 'package:siresma/app/modules/profil/bindings/profil_binding.dart';
 import 'package:siresma/app/modules/profil/views/profil_view.dart';
+import 'package:siresma/app/modules/scan/bindings/scan_binding.dart';
+import 'package:siresma/app/modules/scan/views/scan_view.dart';
 import 'package:siresma/app/modules/setor/bindings/setor_binding.dart';
 import 'package:siresma/app/modules/setor/views/setor_view.dart';
 import 'package:siresma/app/modules/tabungan/bindings/tabungan_binding.dart';
@@ -20,7 +22,7 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.SETOR;
+  static const INITIAL = Routes.SCAN;
 
   static final routes = [
     GetPage(
@@ -57,6 +59,11 @@ class AppPages {
       name: _Paths.TABUNGAN,
       page: () => const TabunganView(),
       binding: TabunganBinding(),
+    ),
+    GetPage(
+      name: _Paths.SCAN,
+      page: () =>  ScanView(),
+      binding: ScanBinding(),
     ),
   ];
 }

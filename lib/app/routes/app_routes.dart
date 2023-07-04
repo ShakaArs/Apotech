@@ -10,6 +10,7 @@ abstract class Routes {
   static const SETOR = _Paths.SETOR;
   static const TABUNGAN = _Paths.TABUNGAN;
   static const PROFIL = _Paths.PROFIL;
+  static const SCAN = _Paths.SCAN;
 }
 
 abstract class _Paths {
@@ -21,4 +22,5 @@ abstract class _Paths {
   static const PROFIL = '/profil';
   static const SETOR = '/setor';
   static const TABUNGAN = '/tabungan';
+  static const SCAN = '/scan';
 }
