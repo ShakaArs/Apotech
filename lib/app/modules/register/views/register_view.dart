@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:siresma/app/common/colors.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
+import 'package:siresma/app/modules/number/views/number_view.dart';
 import '../../../common/button.dart';
 import '../../../common/custom_textformfield.dart';
 import '../controllers/register_controller.dart';
@@ -95,7 +95,6 @@ class RegisterView extends GetView<RegisterController> {
               height: MediaQueryHeight * 0.02,
             ),
             Row(
-              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
                   'Belum punya Akun?',
@@ -122,7 +121,13 @@ class RegisterView extends GetView<RegisterController> {
             ),
             ButtonAuth(
               text: 'REGISTER',
-              onPress: () {},
+              onPress: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => NumberView(),
+                  ),
+                );
+              },
             ),
           ],
         ),

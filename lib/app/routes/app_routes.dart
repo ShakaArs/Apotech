@@ -11,6 +11,8 @@ abstract class Routes {
   static const TABUNGAN = _Paths.TABUNGAN;
   static const PROFIL = _Paths.PROFIL;
   static const SCAN = _Paths.SCAN;
+  static const NUMBER = _Paths.NUMBER;
+  static const OTP = _Paths.OTP;
 }
 
 abstract class _Paths {
@@ -23,4 +25,6 @@ abstract class _Paths {
   static const SETOR = '/setor';
   static const TABUNGAN = '/tabungan';
   static const SCAN = '/scan';
+  static const NUMBER = '/number';
+  static const OTP = '/otp';
 }

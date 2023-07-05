@@ -7,6 +7,8 @@ import 'package:siresma/app/modules/setor/bindings/setor_binding.dart';
 import 'package:siresma/app/modules/setor/views/setor_view.dart';
 import 'package:siresma/app/modules/tabungan/bindings/tabungan_binding.dart';
 import 'package:siresma/app/modules/tabungan/views/tabungan_view.dart';
+import 'package:siresma/app/modules/number/bindings/number_binding.dart';
+import 'package:siresma/app/modules/number/views/number_view.dart';
 
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
@@ -16,13 +18,17 @@ import '../modules/register/bindings/register_binding.dart';
 import '../modules/register/views/register_view.dart';
 import '../modules/splash/bindings/splash_binding.dart';
 import '../modules/splash/views/splash_view.dart';
+import '../modules/number/bindings/number_binding.dart';
+import '../modules/number/views/number_view.dart';
+import '../modules/otp/bindings/otp_binding.dart';
+import '../modules/otp/views/otp_view.dart';
 
 part 'app_routes.dart';
 
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.SCAN;
+  static const INITIAL = Routes.NUMBER;
 
   static final routes = [
     GetPage(
@@ -62,8 +68,18 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.SCAN,
-      page: () =>  ScanView(),
+      page: () => ScanView(),
       binding: ScanBinding(),
+    ),
+    GetPage(
+      name: _Paths.NUMBER,
+      page: () => NumberView(),
+      binding: NumberBinding(),
+    ),
+    GetPage(
+      name: _Paths.OTP,
+      page: () => OtpView(),
+      binding: OtpBinding(),
     ),
   ];
 }
