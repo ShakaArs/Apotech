@@ -39,3 +39,39 @@ class ButtonAuth extends StatelessWidget {
     );
   }
 }
+
+
+class UploadpProfil extends StatelessWidget {
+  final String text;
+  final void Function()? onPress;
+  const UploadpProfil({
+    Key? key,
+    required this.text,
+    this.onPress,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final MediaQueryHeight = MediaQuery.of(context).size.height;
+    final MediaQueryWidth = MediaQuery.of(context).size.width;
+    return ElevatedButton(
+      style: ElevatedButton.styleFrom(
+        backgroundColor: bg_Textformfield,
+        fixedSize: Size(MediaQueryWidth * 0.45, 20),
+        alignment: Alignment.center,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(30),
+        ),
+      ),
+      onPressed: onPress,
+      child: Text(
+        text,
+        style: GoogleFonts.inter(
+          fontSize: 12,
+          fontWeight: FontWeight.bold,
+          color: hints,
+        ),
+      ),
+    );
+  }
+}

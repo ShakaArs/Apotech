@@ -1,45 +1,247 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'package:get/get.dart';
-import 'package:google_nav_bar/google_nav_bar.dart';
-
+import 'package:google_fonts/google_fonts.dart';
+import 'package:siresma/app/common/colors.dart';
 import '../controllers/home_controller.dart';
 
 class HomeView extends GetView<HomeController> {
   const HomeView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    final MediaQueryWidth = MediaQuery.of(context).size.width;
+    final MediaQueryHeight = MediaQuery.of(context).size.height;
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('HomeView'),
-        centerTitle: true,
+      appBar: PreferredSize(
+        child: Container(
+          decoration: BoxDecoration(
+            color: primary,
+            borderRadius: BorderRadius.only(
+              bottomLeft: Radius.circular(30),
+              bottomRight: Radius.circular(30),
+            ),
+          ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Container(
+                padding: EdgeInsets.only(left: 30, top: 40, right: 30),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Transform.scale(
+                      scale: 1.5,
+                      child: CircleAvatar(
+                        backgroundColor: Colors.grey.shade400,
+                        child: Icon(FontAwesomeIcons.solidUser,
+                            color: Colors.grey.shade300),
+                      ),
+                    ),
+                    SizedBox(
+                      width: 40,
+                    ),
+                    Text(
+                      'SIRESMA',
+                      style: GoogleFonts.inter(
+                        color: Colors.white,
+                        fontSize: 32,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: MediaQueryHeight * 0.017,
+              ),
+              Container(
+                padding: EdgeInsets.symmetric(horizontal: 30),
+                height: MediaQueryHeight * 0.07,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(30),
+                    bottomRight: Radius.circular(30),
+                  ),
+                ),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Icon(
+                      FontAwesomeIcons.locationDot,
+                      color: primary,
+                      size: 36,
+                    ),
+                    TextButton(
+                      onPressed: () {},
+                      child: Text(
+                        'Location',
+                        style: GoogleFonts.inter(
+                          color: Colors.black,
+                          fontSize: 24,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      width: MediaQueryWidth * 0.19,
+                    ),
+                    Container(
+                      child: Row(
+                        children: [
+                          Image.asset('assets/image/icon_evocher.png'),
+                          SizedBox(
+                            width: MediaQueryWidth * 0.01,
+                          ),
+                          Text(
+                            'E-V',
+                            style: GoogleFonts.inter(
+                              fontSize: 24,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+        preferredSize: Size.fromHeight(MediaQueryHeight * 0.2),
       ),
-      body: const Center(
-        child: Text(
-          'HomeView is working',
-          style: TextStyle(fontSize: 20),
+      body: Container(
+        height: MediaQueryHeight,
+        child: Column(
+          children: [
+            Container(
+              width: MediaQueryWidth,
+              height: MediaQueryHeight * 0.25,
+              child: Image.asset(
+                'assets/image/image 10.png',
+                fit: BoxFit.cover,
+              ),
+            ),
+            SizedBox(
+              height: MediaQueryHeight * 0.02,
+            ),
+            Container(
+              padding: EdgeInsets.only(left: 10),
+              height: MediaQueryHeight * 0.2,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Image.asset(
+                        'assets/image/pp_6-01 1.png',
+                        scale: 1.3,
+                      ),
+                      SizedBox(
+                        height: MediaQueryHeight * 0.01,
+                      ),
+                      Text(
+                        'PPKO BEMFIK\nUDINUS',
+                        textAlign: TextAlign.center,
+                        style: GoogleFonts.inter(
+                          fontSize: 14,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    width: MediaQueryWidth * 0.04,
+                  ),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Container(
+                        height: MediaQueryHeight * 0.13,
+                        padding: EdgeInsets.all(5),
+                        alignment: Alignment.center,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          color: bg_text,
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black
+                                  .withOpacity(0.5), // Warna shadow dan opacity
+                              spreadRadius:
+                                  3, // Jarak seberapa lebar shadow akan menyebar
+                              blurRadius: 5,
+                              offset: Offset
+                                  .zero, // Jarak seberapa blur shadow akan terlihat
+                            ),
+                          ],
+                        ),
+                        child: Text(
+                          'Implementasi Ekonomi Sirkular melalui\nPengembangan Rumah Sampah Digital\n4.0 Resik Mandiri di Kelurahan Sambiroto\nberbasis  sustainable zero waste\nManajemen',
+                          style: GoogleFonts.inter(
+                            fontSize: 12.7,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                      ElevatedButton(
+                        onPressed: () {},
+                        child: Text(
+                          'Cari Tahu',
+                          style: GoogleFonts.inter(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 16),
+                        ),
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: primary,
+                          fixedSize: Size(
+                            MediaQueryWidth * 0.3,
+                            45,
+                          ),
+                          elevation: 4,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(11),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+            Container(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Image.asset(
+                    'assets/image/MASKOT_SIRESMA.png',
+                    scale: 1.75,
+                  ),
+                  SizedBox(
+                    width: MediaQueryWidth * 0.13,
+                  ),
+                  Container(
+                    height: MediaQueryHeight * 0.13,
+                    width: MediaQueryWidth * 0.43,
+                    color: Colors.amber,
+                    child: Image.asset(
+                      'assets/image/image 19.png',
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
         ),
       ),
 
       // Referensi Navbar
-      bottomNavigationBar: GNav(gap: 8, tabs: const [
-        GButton(
-          icon: Icons.home,
-          text: 'Home',
-        ),
-        GButton(
-          icon: Icons.search,
-          text: 'Search',
-        ),
-        GButton(
-          icon: Icons.favorite,
-          text: 'Favorite',
-        ),
-        GButton(
-          icon: Icons.person,
-          text: 'Profile',
-        ),
-      ]),
     );
   }
 }

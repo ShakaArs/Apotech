@@ -7,9 +7,17 @@ class SplashController extends GetxController {
 
   @override
   void onReady() {
-    super.onReady();
-    Future.delayed(Duration(milliseconds: 500), () {
-      Get.offNamed("/login");
+    Future.delayed(Duration(milliseconds: 1800), () {
+      Get.toNamed("/login");
     });
+    super.onReady();
+  }
+
+  @override
+  void onInit() {
+    Future.delayed(Duration(milliseconds: 1800), () {
+      Get.toNamed("/login");
+    });
+    super.onInit();
   }
 }

@@ -80,7 +80,7 @@ class TabunganView extends GetView<TabController> {
                         'Saldo Anda',
                         style: GoogleFonts.inter(
                             fontWeight: FontWeight.bold,
-                            color: whiteColors,
+                            color: Colors.white,
                             fontSize: 20),
                         textAlign: TextAlign.left,
                       ),
@@ -90,7 +90,7 @@ class TabunganView extends GetView<TabController> {
                             'Rp',
                             style: GoogleFonts.inter(
                                 fontWeight: FontWeight.bold,
-                                color: whiteColors,
+                                color: Colors.white,
                                 fontSize: 20),
                             textAlign: TextAlign.left,
                           ),
@@ -98,7 +98,7 @@ class TabunganView extends GetView<TabController> {
                             ' 30.000',
                             style: GoogleFonts.inter(
                                 fontWeight: FontWeight.bold,
-                                color: whiteColors,
+                                color: Colors.white,
                                 fontSize: 20),
                             textAlign: TextAlign.left,
                           ),

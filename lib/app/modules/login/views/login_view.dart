@@ -15,98 +15,98 @@ class LoginView extends GetView<LoginController> {
     final MediaQueryWidth = MediaQuery.of(context).size.width;
     final MediaQueryHeight = MediaQuery.of(context).size.height;
     return Scaffold(
-      body: Container(
-        padding: EdgeInsets.symmetric(horizontal: 45),
-        width: MediaQueryWidth,
-        color: primary,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Image.asset('assets/image/G_3.png'),
-            // SizedBox(
-            //   height: MediaQueryHeight * 0.005,
-            // ),
-            Text(
-              'SIRESMA',
-              style: GoogleFonts.inter(
-                fontSize: 48,
-                fontWeight: FontWeight.bold,
-                color: Colors.white,
+      body: SingleChildScrollView(
+        child: Container(
+          padding: EdgeInsets.symmetric(horizontal: 50),
+          width: MediaQueryWidth,
+          height: MediaQueryHeight,
+          color: primary,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Image.asset(
+                'assets/image/G_3.png',
+                scale: 1.3,
               ),
-            ),
-            SizedBox(
-              height: MediaQueryHeight * 0.005,
-            ),
-            Text(
-              'Sistem Resik Mandiri',
-              style: GoogleFonts.inter(
-                fontSize: 24,
-                fontWeight: FontWeight.w700,
-                color: Colors.white,
-              ),
-            ),
-            SizedBox(
-              height: MediaQueryHeight * 0.04,
-            ),
-            CustomTextFields(
-              hint: 'Username',
-              obscureText: false,
-              enable: true,
-            ),
-            SizedBox(
-              height: MediaQueryHeight * 0.02,
-            ),
-            CustomTextFields(
-              hint: 'Password',
-              obscureText: true,
-              enable: true,
-            ),
-            SizedBox(
-              height: MediaQueryHeight * 0.04,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  'Belum punya Akun?',
-                  style: GoogleFonts.inter(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w600,
-                    color: Colors.white,
-                  ),
+              // SizedBox(
+              //   height: MediaQueryHeight * 0.005,
+              // ),
+              Text(
+                'SIRESMA',
+                style: GoogleFonts.inter(
+                  fontSize: 48,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
                 ),
-                TextButton(
-                  onPressed: () {
-                    Get.offNamed('/register');
-                  },
-                  child: Text(
-                    'Register',
+              ),
+              SizedBox(
+                height: MediaQueryHeight * 0.005,
+              ),
+              Text(
+                'Sistem Resik Mandiri',
+                style: GoogleFonts.inter(
+                  fontSize: 24,
+                  fontWeight: FontWeight.w700,
+                  color: Colors.white,
+                ),
+              ),
+              SizedBox(
+                height: MediaQueryHeight * 0.04,
+              ),
+              CustomTextFields(
+                hint: 'Username',
+                obscureText: false,
+                enable: true,
+              ),
+              SizedBox(
+                height: MediaQueryHeight * 0.02,
+              ),
+              CustomTextFields(
+                hint: 'Password',
+                obscureText: true,
+                enable: true,
+              ),
+              SizedBox(
+                height: MediaQueryHeight * 0.04,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'Belum punya Akun?',
                     style: GoogleFonts.inter(
                       fontSize: 16,
-                      fontWeight: FontWeight.bold,
+                      fontWeight: FontWeight.w600,
                       color: Colors.white,
                     ),
                   ),
-                ),
-              ],
-            ),
-            // SizedBox(
-            //   height: MediaQueryHeight * 0.02,
-            // ),
-            ButtonAuth(
-              text: 'LOGIN',
-              onPress: () {},
-            ),
-            Positioned(
-              left: MediaQueryHeight,
-              bottom: MediaQueryHeight,
-              child: Image.asset(
-                'assets/image/MASKOT_SIRESMA.png',
-                scale: 1.2,
+                  TextButton(
+                    onPressed: () {
+                      Get.offNamed('/register');
+                    },
+                    child: Text(
+                      'Register',
+                      style: GoogleFonts.inter(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                ],
               ),
-            ),
-          ],
+              // SizedBox(
+              //   height: MediaQueryHeight * 0.02,
+              // ),
+              ButtonAuth(
+                text: 'LOGIN',
+                onPress: () {
+                  Get.offNamed('/navbar');
+                },
+              ),
+            ],
+          ),
         ),
       ),
     );

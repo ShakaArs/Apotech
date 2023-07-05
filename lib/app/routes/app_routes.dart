@@ -13,6 +13,7 @@ abstract class Routes {
   static const SCAN = _Paths.SCAN;
   static const NUMBER = _Paths.NUMBER;
   static const OTP = _Paths.OTP;
+  static const NAVBAR = _Paths.NAVBAR;
 }
 
 abstract class _Paths {
@@ -27,4 +28,5 @@ abstract class _Paths {
   static const SCAN = '/scan';
   static const NUMBER = '/number';
   static const OTP = '/otp';
+  static const NAVBAR = '/navbar';
 }

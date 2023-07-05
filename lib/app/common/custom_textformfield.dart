@@ -59,7 +59,7 @@ class CustomTextFields extends StatelessWidget {
 TextStyle whiteTextStyle = GoogleFonts.inter(
   fontSize: 16,
   fontWeight: FontWeight.w700,
-  color: whiteColors,
+  color: Colors.white,
 );
 TextStyle textTextStyle = GoogleFonts.dmSans(
   fontSize: 16,
