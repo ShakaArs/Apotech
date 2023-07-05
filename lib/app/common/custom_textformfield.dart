@@ -56,13 +56,69 @@ class CustomTextFields extends StatelessWidget {
     );
   }
 }
-TextStyle whiteTextStyle = GoogleFonts.inter(
-  fontSize: 16,
-  fontWeight: FontWeight.w700,
-  color: Colors.white,
-);
-TextStyle textTextStyle = GoogleFonts.dmSans(
-  fontSize: 16,
-  fontWeight: FontWeight.w700,
-  color: Colors.black,
-);
+
+class CustomeTextFieldSetorSampah extends StatelessWidget {
+  const CustomeTextFieldSetorSampah({
+    Key? key,
+    required this.hint,
+    required this.obscureText,
+    required this.enable,
+    this.controller,
+    this.validator,
+    this.onChanged,
+    this.initialValue,
+  }) : super(key: key);
+
+  final String hint;
+  final bool enable;
+  final bool obscureText;
+  final TextEditingController? controller;
+  final String? initialValue;
+  final validator;
+  final onChanged;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(20),
+        color: Colors.white,
+      ),
+      child: TextFormField(
+        enabled: enable,
+        initialValue: initialValue,
+        textAlign: TextAlign.start,
+        obscureText: obscureText,
+        obscuringCharacter: '*',
+        validator: validator,
+        onChanged: onChanged,
+        textAlignVertical: TextAlignVertical.center,
+        decoration: InputDecoration(
+          hintText: hint,
+          hintStyle: GoogleFonts.inter(
+              fontSize: 16,
+              fontWeight: FontWeight.bold,
+              color: hints_text_setor),
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(20),
+            borderSide: BorderSide(
+              color: Colors.transparent,
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+Widget reusableText(
+    String text, Color color, double fontSize, FontWeight fontWeight) {
+  return Text(
+    text,
+    style: GoogleFonts.inter(
+      color: color,
+      fontWeight: fontWeight,
+      fontSize: fontSize,
+    ),
+  );
+}

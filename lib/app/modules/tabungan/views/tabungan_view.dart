@@ -7,53 +7,60 @@ import 'package:google_fonts/google_fonts.dart';
 import '../../../common/button.dart';
 import '../controllers/tabungan_controller.dart';
 
-
-
 class TabunganView extends GetView<TabController> {
   const TabunganView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final MediaQueryWidth = MediaQuery.of(context).size.width;
+    final MediaQueryHeight = MediaQuery.of(context).size.height;
+
     return Scaffold(
-        body: Container(
-      padding: EdgeInsets.only(top: 55, left: 30, right: 30),
-      width: MediaQueryWidth,
-      color: Colors.white,
-      child: Column(
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Image.asset(
-                'assets/image/icon_tabungan.png',
-                scale: 1.5,
-              ),
-              Text(
-                ' Tabungan Sampah',
-                style: textTextStyle.copyWith(
-                  fontSize: 30,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ],
-          ),
-          SizedBox(
-            child: Container(
-              width: MediaQueryWidth * 0.37,
-              decoration: BoxDecoration(
-                color: primary,
-                border: Border.all(
-                  color: primary,
-                  width: 3,
-                ),
+        body: SingleChildScrollView(
+      child: Container(
+        width: MediaQueryWidth,
+        height: MediaQueryHeight,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Container(
+              padding: EdgeInsets.only(top: 55, left: 10),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Image.asset(
+                    'assets/image/icon_tabungan.png',
+                    scale: 1.5,
+                  ),
+                  SizedBox(
+                    width: MediaQueryWidth * 0.05,
+                  ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Tabungan Sampah',
+                        style: GoogleFonts.inter(
+                          fontSize: 30,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      SizedBox(
+                        height: MediaQueryHeight * 0.01,
+                      ),
+                      Container(
+                        color: primary,
+                        width: MediaQueryWidth * 0.2,
+                        height: 8,
+                      ),
+                    ],
+                  ),
+                ],
               ),
             ),
-          ),
-          Padding(padding: const EdgeInsets.all(15.0)),
-          SizedBox(
-            child: Container(
-              width: MediaQueryWidth,
+            Container(
+              padding: EdgeInsets.symmetric(horizontal: 20),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(15),
                 color: primary,
@@ -118,8 +125,8 @@ class TabunganView extends GetView<TabController> {
                 ],
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     ));
   }
