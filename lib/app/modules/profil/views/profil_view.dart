@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'package:get/get.dart';
-import 'package:get/get_navigation/src/routes/default_transitions.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:siresma/app/common/colors.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -16,196 +16,194 @@ class ProfilView extends GetView<ProfilController> {
   @override
   Widget build(BuildContext context) {
     final MediaQueryWidth = MediaQuery.of(context).size.width;
+    final MediaQueryHeight = MediaQuery.of(context).size.height;
+
     return Scaffold(
-      body: Container(
-          padding: EdgeInsets.only(top: 25, left: 40, right: 40),
-          width: MediaQueryWidth,
-          color: Colors.white,
+      appBar: PreferredSize(
+        child: Container(
+          decoration: BoxDecoration(
+            color: primary,
+            borderRadius: BorderRadius.only(
+              bottomLeft: Radius.circular(30),
+              bottomRight: Radius.circular(30),
+            ),
+          ),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              Row(
-                children: [
-                  SizedBox(
-                    width: 120,
-                    height: 120,
-                    child: ClipRRect(
-                        borderRadius: BorderRadius.circular(100),
-                        child: Image.asset('assets/image/profil.jpg')),
+              Container(
+                height: MediaQueryHeight * 0.222,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(30),
+                    bottomRight: Radius.circular(30),
                   ),
-                  Column(
-                    children: [
-                      const SizedBox(
-                        height: 10,
+                ),
+                padding: EdgeInsets.only(left: 40, right: 40),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Transform.scale(
+                      scale: 2,
+                      child: CircleAvatar(
+                        backgroundColor: Colors.grey.shade400,
+                        child: Icon(FontAwesomeIcons.solidUser,
+                            color: Colors.grey.shade300),
                       ),
-                      Text('Username',
-                          style: Theme.of(context).textTheme.headline4,
-                          textAlign: TextAlign.left),
-                      Text('089525875468',
-                          style: Theme.of(context).textTheme.bodyText2,
-                          textAlign: TextAlign.left),
-                      Text('username@gmail.com',
-                          style: Theme.of(context).textTheme.bodyText2,
-                          textAlign: TextAlign.left),
-                    ],
-                  ),
-                ],
-              ),
-              SizedBox(
-                width: 200,
-                child: ElevatedButton(
-                  onPressed: () {},
-                  style: ElevatedButton.styleFrom(
-                      backgroundColor: primary,
-                      side: BorderSide.none,
-                      shape: const StadiumBorder()),
-                  child: const Text('Edit Profile'),
-                ),
-              ),
-              SizedBox(
-                child: Container(
-                  width: MediaQueryWidth,
-                  decoration: BoxDecoration(
-                    color: primary,
-                    border: Border.all(
-                      color: primary,
-                      width: 2,
                     ),
-                  ),
-                ),
-              ),
-              ListTile(
-                title: Text(
-                  'Akun',
-                  style: GoogleFonts.inter(
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black,
-                      fontSize: 20),
-                ),
-              ),
-              SizedBox(
-                child: Container(
-                  width: MediaQueryWidth,
-                  decoration: BoxDecoration(
-                    color: primary,
-                    border: Border.all(
-                      color: primary,
-                      width: 2,
+                    SizedBox(
+                      width: 40,
                     ),
-                  ),
-                ),
-              ),
-              ListTile(
-                leading: Container(
-                  width: 30,
-                  height: 30,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(100),
-                    color: Colors.black.withOpacity(0.1),
-                  ),
-                  child: Image.asset('assets/image/icon_tabungan2.png'),
-                ),
-                title: Text(
-                  'Tabungan Sampah',
-                  style: GoogleFonts.inter(
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black,
-                      fontSize: 15),
-                ),
-              ),
-              ListTile(
-                leading: Container(
-                  width: 30,
-                  height: 30,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(100),
-                    color: Colors.black.withOpacity(0.1),
-                  ),
-                  child: Image.asset('assets/image/icon_evocher.png'),
-                ),
-                title: Text(
-                  'E-Voucher',
-                  style: GoogleFonts.inter(
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black,
-                      fontSize: 15),
-                ),
-              ),
-              ListTile(
-                leading: Container(
-                  width: 30,
-                  height: 30,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(100),
-                    color: Colors.black.withOpacity(0.1),
-                  ),
-                  child: Image.asset('assets/image/icon_qr.png'),
-                ),
-                title: Text(
-                  'QR code akun',
-                  style: GoogleFonts.inter(
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black,
-                      fontSize: 15),
-                ),
-              ),
-              ListTile(
-                leading: Container(
-                  width: 30,
-                  height: 30,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(100),
-                    color: Colors.black.withOpacity(0.1),
-                  ),
-                  child: Image.asset('assets/image/icon_keamanan.png'),
-                ),
-                title: Text(
-                  'Keamanan Akun',
-                  style: GoogleFonts.inter(
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black,
-                      fontSize: 15),
-                ),
-              ),
-              ListTile(
-                title: Text(
-                  'Informasi Lainnya',
-                  style: GoogleFonts.inter(
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black,
-                      fontSize: 20),
-                ),
-              ),
-              SizedBox(
-                child: Container(
-                  width: MediaQueryWidth,
-                  decoration: BoxDecoration(
-                    color: primary,
-                    border: Border.all(
-                      color: primary,
-                      width: 2,
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        reusableText('Flora Farensia', Colors.black, 26,
+                            FontWeight.bold),
+                        SizedBox(
+                          height: 0.02,
+                        ),
+                        reusableText(
+                            '08762376381', Colors.black, 18, FontWeight.bold),
+                        SizedBox(
+                          height: 0.02,
+                        ),
+                        reusableText('florafaren@gmail.com', Colors.black, 18,
+                            FontWeight.bold),
+                      ],
                     ),
-                  ),
-                ),
-              ),
-              ListTile(
-                leading: Container(
-                  width: 30,
-                  height: 30,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(100),
-                  ),
-                  child: Image.asset('assets/image/icon_privasi.png'),
-                ),
-                title: Text(
-                  'Ketentuan Privasi',
-                  style: GoogleFonts.inter(
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black,
-                      fontSize: 15),
+                  ],
                 ),
               ),
             ],
-          )),
+          ),
+        ),
+        preferredSize: Size.fromHeight(MediaQueryHeight * 0.2),
+      ),
+      body: SingleChildScrollView(
+        child: Container(
+          width: MediaQueryWidth,
+          height: MediaQueryHeight,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Container(
+                padding: EdgeInsets.only(
+                  top: 35,
+                  left: 10,
+                ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Akun',
+                      style: GoogleFonts.inter(
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    SizedBox(
+                      height: MediaQueryHeight * 0.01,
+                    ),
+                    Container(
+                      color: primary,
+                      width: MediaQueryWidth * 0.23,
+                      height: 5,
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: MediaQueryHeight * 0.02,
+              ),
+              ListTile(
+                leading: Image.asset(
+                  'assets/image/icon_tabungan2.png',
+                  scale: 1.1,
+                ),
+                title: reusableText(
+                    'Tabungan Sampah', Colors.black, 18, FontWeight.bold),
+              ),
+              SizedBox(
+                height: MediaQueryHeight * 0.02,
+              ),
+              ListTile(
+                leading: Image.asset(
+                  'assets/image/icon_evocher.png',
+                  scale: 1.1,
+                ),
+                title: reusableText(
+                    'Tabungan Sampah', Colors.black, 18, FontWeight.bold),
+              ),
+              SizedBox(
+                height: MediaQueryHeight * 0.02,
+              ),
+              ListTile(
+                leading: Image.asset(
+                  'assets/image/icon_qr.png',
+                  scale: 1.1,
+                ),
+                title: reusableText(
+                    'Tabungan Sampah', Colors.black, 18, FontWeight.bold),
+              ),
+              SizedBox(
+                height: MediaQueryHeight * 0.02,
+              ),
+              ListTile(
+                leading: Image.asset(
+                  'assets/image/icon_keamanan.png',
+                  scale: 1.1,
+                ),
+                title: reusableText(
+                    'Keamanan Akun', Colors.black, 18, FontWeight.bold),
+              ),
+              Container(
+                padding: EdgeInsets.only(
+                  top: 20,
+                  left: 10,
+                ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Informasi Lainnya',
+                      style: GoogleFonts.inter(
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    SizedBox(
+                      height: MediaQueryHeight * 0.01,
+                    ),
+                    Container(
+                      color: primary,
+                      width: MediaQueryWidth * 0.23,
+                      height: 5,
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: MediaQueryHeight * 0.02,
+              ),
+              ListTile(
+                leading: Image.asset(
+                  'assets/image/icon_privasi.png',
+                  scale: 1.1,
+                ),
+                title: reusableText(
+                    'Ketentuan Privasi', Colors.black, 18, FontWeight.bold),
+              ),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }

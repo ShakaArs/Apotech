@@ -15,192 +15,167 @@ class TabunganView extends GetView<TabController> {
     final MediaQueryWidth = MediaQuery.of(context).size.width;
     final MediaQueryHeight = MediaQuery.of(context).size.height;
 
+    final List<String> items = [
+      'Item 1',
+      'Item 2',
+      'Item 3',
+      'Item 4',
+      'Item 5',
+    ];
+
     return Scaffold(
-        body: SingleChildScrollView(
-      child: Container(
-        width: MediaQueryWidth,
-        height: MediaQueryHeight,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Container(
-              padding: EdgeInsets.only(top: 55, left: 10),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Image.asset(
-                    'assets/image/icon_tabungan.png',
-                    scale: 1.5,
-                  ),
-                  SizedBox(
-                    width: MediaQueryWidth * 0.05,
-                  ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Tabungan Sampah',
-                        style: GoogleFonts.inter(
-                          fontSize: 30,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      SizedBox(
-                        height: MediaQueryHeight * 0.01,
-                      ),
-                      Container(
-                        color: primary,
-                        width: MediaQueryWidth * 0.2,
-                        height: 8,
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ),
-            Container(
-              padding: EdgeInsets.symmetric(horizontal: 20),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(15),
-                color: primary,
-                border: Border.all(
-                  color: primary,
-                  width: 27,
-                ),
-                boxShadow: [
-                  BoxShadow(
-                      color: Colors.black12,
-                      spreadRadius: 6,
-                      blurRadius: 5,
-                      offset: Offset.fromDirection(1, 6))
-                ],
-              ),
-              child: Row(
-                children: [
-                  Column(
-                    children: [
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      Text(
-                        'Saldo Anda',
-                        style: GoogleFonts.inter(
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white,
-                            fontSize: 20),
-                        textAlign: TextAlign.left,
-                      ),
-                      Row(
-                        children: [
-                          Text(
-                            'Rp',
-                            style: GoogleFonts.inter(
-                                fontWeight: FontWeight.bold,
-                                color: Colors.white,
-                                fontSize: 20),
-                            textAlign: TextAlign.left,
-                          ),
-                          Text(
-                            ' 30.000',
-                            style: GoogleFonts.inter(
-                                fontWeight: FontWeight.bold,
-                                color: Colors.white,
-                                fontSize: 20),
-                            textAlign: TextAlign.left,
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                  Container(
-                    alignment: Alignment.centerRight,
-                    width: 57,
-                    height: 57,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(100),
+      body: SingleChildScrollView(
+        child: Container(
+          padding: EdgeInsets.only(top: 45, left: 20, right: 20),
+          width: MediaQueryWidth,
+          height: MediaQueryHeight,
+          child: Column(
+            children: [
+              Container(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Image.asset(
+                      'assets/image/icon_tabungan.png',
+                      scale: 1.5,
                     ),
-                    child: Image.asset('assets/image/icon_saldo.png'),
-                  ),
-                ],
+                    SizedBox(
+                      width: MediaQueryWidth * 0.03,
+                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Tabungan Sampah',
+                          style: GoogleFonts.inter(
+                            fontSize: 30,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        SizedBox(
+                          height: MediaQueryHeight * 0.01,
+                        ),
+                        Container(
+                          color: primary,
+                          width: MediaQueryWidth * 0.23,
+                          height: 5,
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
               ),
-            ),
-          ],
+              SizedBox(
+                height: MediaQueryHeight * 0.05,
+              ),
+              Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(15),
+                  color: primary,
+                  border: Border.all(
+                    color: primary,
+                    width: 27,
+                  ),
+                  boxShadow: [
+                    BoxShadow(
+                        color: Colors.black12,
+                        spreadRadius: 6,
+                        blurRadius: 5,
+                        offset: Offset.fromDirection(1, 6))
+                  ],
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Saldo Anda :',
+                          style: GoogleFonts.inter(
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white,
+                              fontSize: 20),
+                          textAlign: TextAlign.left,
+                        ),
+                        SizedBox(
+                          height: MediaQueryHeight * 0.01,
+                        ),
+                        Row(
+                          children: [
+                            Text(
+                              'Rp ',
+                              style: GoogleFonts.inter(
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white,
+                                  fontSize: 20),
+                              textAlign: TextAlign.left,
+                            ),
+                            Text(
+                              '30.000',
+                              style: GoogleFonts.inter(
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white,
+                                  fontSize: 20),
+                              textAlign: TextAlign.left,
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                    Container(
+                      alignment: Alignment.centerRight,
+                      width: 57,
+                      height: 57,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(100),
+                      ),
+                      child: Image.asset('assets/image/icon_saldo.png'),
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: MediaQueryHeight * 0.03,
+              ),
+              Container(
+                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+                width: MediaQueryWidth,
+                height: MediaQueryHeight * 0.22,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(10),
+                  boxShadow: [
+                    BoxShadow(
+                        color: Colors.black12,
+                        spreadRadius: 6,
+                        blurRadius: 5,
+                        offset: Offset.fromDirection(1, 6)),
+                  ],
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    reusableText(
+                        "Flora Farensia", Colors.black, 18, FontWeight.bold),
+                    SizedBox(
+                      height: MediaQueryHeight * 0.01,
+                    ),
+                    reusableText(
+                        '27 Juni 2023', hints_text_setor, 18, FontWeight.bold),
+                    SizedBox(
+                      height: MediaQueryHeight * 0.01,
+                    ),
+                    reusableText(
+                        'Sampah Logam', Colors.black, 18, FontWeight.bold),
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
       ),
-    ));
-  }
-}
-
-//ListView
-class ListViewTabunganPage extends StatefulWidget {
-  const ListViewTabunganPage({Key? key}) : super(key: key);
-
-  @override
-  _ListViewTabunganPageState createState() => _ListViewTabunganPageState();
-}
-
-class _ListViewTabunganPageState extends State<ListViewTabunganPage> {
-  var titleList = [
-    "Tabungan Sampah",
-    "Pengajuan Penjemputan",
-    "Pengajuan Penjemputan",
-    "Pengajuan Penjemputan",
-    "Pengajuan Penjemputan",
-    "Pengajuan Penjemputan",
-    "Pengajuan Penjemputan",
-  ];
-  var decList = [
-    "Tabungan Sampah",
-    "Pengajuan Penjemputan",
-    "Pengajuan Penjemputan",
-    "Pengajuan Penjemputan",
-    "Pengajuan Penjemputan",
-    "Pengajuan Penjemputan",
-    "Pengajuan Penjemputan",
-  ];
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          title: Text('Daftar Tabungan Sampah',
-              style: GoogleFonts.inter(
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black,
-                  fontSize: 15),
-              textAlign: TextAlign.center),
-          centerTitle: true,
-        ),
-        body: ListView.builder(
-          itemCount: titleList.length,
-          itemBuilder: (context, index) {
-            return GestureDetector(
-              onTap: () {},
-              child: Card(
-                //listview
-                child: ListTile(
-                  leading: Image.asset('assets/image/icon_tabungan.png'),
-                  title: Text(
-                    titleList[index],
-                    style: GoogleFonts.inter(
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black,
-                        fontSize: 15),
-                    textAlign: TextAlign.left,
-                  ),
-                  subtitle: Text(
-                    decList[index],
-                    style: GoogleFonts.inter(
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black,
-                        fontSize: 15),
-                    textAlign: TextAlign.left,
-                  ),
-                  trailing: Icon(Icons.arrow_forward_ios),
-                ),
-              ),
-            );
-          },
-        ));
+    );
   }
 }
