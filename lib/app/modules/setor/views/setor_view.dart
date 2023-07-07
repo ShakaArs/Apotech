@@ -41,7 +41,7 @@ class SetorView extends GetView<SetorController> {
                         Text(
                           'Setor Sampah',
                           style: GoogleFonts.inter(
-                            fontSize: 30,
+                            fontSize: 24,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
@@ -49,10 +49,13 @@ class SetorView extends GetView<SetorController> {
                           height: MediaQueryHeight * 0.01,
                         ),
                         Container(
-                      color: primary,
-                      width: MediaQueryWidth * 0.23,
-                      height: 5,
-                    ),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(40),
+                            color: primary,
+                          ),
+                          width: MediaQueryWidth * 0.2,
+                          height: 5,
+                        ),
                       ],
                     ),
                   ],
@@ -62,14 +65,14 @@ class SetorView extends GetView<SetorController> {
                 height: MediaQueryHeight * 0.05,
               ),
               Container(
-                padding: EdgeInsets.symmetric(horizontal: 20),
+                padding: EdgeInsets.symmetric(horizontal: 30),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    reusableText('Nama', Colors.black, 20, FontWeight.bold),
+                    reusableText('Nama', Colors.black, 16, FontWeight.bold),
                     SizedBox(
-                      height: MediaQueryHeight * 0.01,
+                      height: MediaQueryHeight * 0.013,
                     ),
                     CustomeTextFieldSetorSampah(
                         hint: 'Masukkan Nama Penyetor',
@@ -83,13 +86,13 @@ class SetorView extends GetView<SetorController> {
               ),
               Container(
                 width: MediaQueryWidth,
-                padding: EdgeInsets.symmetric(horizontal: 20),
+                padding: EdgeInsets.symmetric(horizontal: 30),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     reusableText(
-                        'Kategori Sampah', Colors.black, 20, FontWeight.bold),
+                        'Kategori Sampah', Colors.black, 16, FontWeight.bold),
                     SizedBox(
                       height: MediaQueryHeight * 0.01,
                     ),
@@ -122,17 +125,17 @@ class SetorView extends GetView<SetorController> {
               ),
               Container(
                 width: MediaQueryWidth,
-                padding: EdgeInsets.symmetric(horizontal: 20),
+                padding: EdgeInsets.symmetric(horizontal: 30),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     reusableText(
-                        'Jenis Sampah : ', Colors.black, 20, FontWeight.bold),
+                        'Jenis Sampah : ', Colors.black, 16, FontWeight.bold),
                     SizedBox(
                       width: MediaQueryWidth * 0.01,
                     ),
                     reusableText(
-                        'Anorganik', Colors.black, 20, FontWeight.bold),
+                        'Anorganik', Colors.black, 16, FontWeight.bold),
                   ],
                 ),
               ),
@@ -140,15 +143,15 @@ class SetorView extends GetView<SetorController> {
                 height: MediaQueryHeight * 0.02,
               ),
               Container(
-                padding: EdgeInsets.symmetric(horizontal: 20),
+                padding: EdgeInsets.symmetric(horizontal: 30),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    reusableText('Tanggal Setor Sampah', Colors.black, 20,
+                    reusableText('Tanggal Setor Sampah', Colors.black, 16,
                         FontWeight.bold),
                     SizedBox(
-                      height: MediaQueryHeight * 0.01,
+                      height: MediaQueryHeight * 0.013,
                     ),
                     Container(
                       decoration: BoxDecoration(
@@ -156,12 +159,12 @@ class SetorView extends GetView<SetorController> {
                         color: Colors.white,
                       ),
                       child: TextFormField(
-                        enabled: false,
+                        enabled: true,
                         decoration: InputDecoration(
                           suffixIcon: Icon(FontAwesomeIcons.calendarPlus),
                           hintText: "DD/MM/YY",
                           hintStyle: GoogleFonts.inter(
-                            fontSize: 16,
+                            fontSize: 14,
                             fontWeight: FontWeight.bold,
                             color: hints_text_setor,
                           ),
@@ -189,12 +192,12 @@ class SetorView extends GetView<SetorController> {
                 height: MediaQueryHeight * 0.01,
               ),
               Container(
-                padding: EdgeInsets.symmetric(horizontal: 20),
+                padding: EdgeInsets.symmetric(horizontal: 30),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    reusableText('Alamat', Colors.black, 20, FontWeight.bold),
+                    reusableText('Alamat', Colors.black, 16, FontWeight.bold),
                     SizedBox(
                       height: MediaQueryHeight * 0.01,
                     ),
@@ -206,7 +209,7 @@ class SetorView extends GetView<SetorController> {
                 ),
               ),
               SizedBox(
-                height: MediaQueryHeight * 0.03,
+                height: MediaQueryHeight * 0.02,
               ),
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
@@ -215,7 +218,7 @@ class SetorView extends GetView<SetorController> {
                   ),
                   backgroundColor: primary,
                   fixedSize:
-                      Size(MediaQueryWidth * 0.37, MediaQueryHeight * 0.03),
+                      Size(MediaQueryWidth * 0.35, MediaQueryHeight * 0.025),
                 ),
                 onPressed: () {},
                 child: Text(

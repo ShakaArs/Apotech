@@ -3,7 +3,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:siresma/app/common/colors.dart';
 
 class CustomTextFields extends StatelessWidget {
-  
   const CustomTextFields({
     Key? key,
     required this.hint,
@@ -42,13 +41,17 @@ class CustomTextFields extends StatelessWidget {
         decoration: InputDecoration(
           hintText: hint,
           hintStyle: GoogleFonts.inter(
-              fontSize: 16,
-              fontWeight: FontWeight.w700,
-              color: hints),
+              fontSize: 14, fontWeight: FontWeight.w700, color: hints),
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(20),
             borderSide: BorderSide(
-              color: Colors.transparent,
+              color: primary,
+            ),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(20),
+            borderSide: BorderSide(
+              color: primary,
             ),
           ),
         ),
@@ -96,7 +99,7 @@ class CustomeTextFieldSetorSampah extends StatelessWidget {
         decoration: InputDecoration(
           hintText: hint,
           hintStyle: GoogleFonts.inter(
-              fontSize: 16,
+              fontSize: 14,
               fontWeight: FontWeight.bold,
               color: hints_text_setor),
           border: OutlineInputBorder(

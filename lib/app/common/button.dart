@@ -21,7 +21,7 @@ class ButtonAuth extends StatelessWidget {
       style: ElevatedButton.styleFrom(
         backgroundColor: Colors.white,
         elevation: 7,
-        fixedSize: Size(MediaQueryWidth * 0.45, 50),
+        fixedSize: Size(MediaQueryWidth * 0.4, 45),
         alignment: Alignment.center,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(30),
@@ -31,7 +31,7 @@ class ButtonAuth extends StatelessWidget {
       child: Text(
         text,
         style: GoogleFonts.inter(
-          fontSize: 28,
+          fontSize: 16,
           fontWeight: FontWeight.w600,
           color: button_auth,
         ),
@@ -67,7 +67,7 @@ class UploadpProfil extends StatelessWidget {
       child: Text(
         text,
         style: GoogleFonts.inter(
-          fontSize: 12,
+          fontSize: 11,
           fontWeight: FontWeight.bold,
           color: hints,
         ),

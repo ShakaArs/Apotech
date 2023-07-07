@@ -17,7 +17,7 @@ class LoginView extends GetView<LoginController> {
     return Scaffold(
       body: SingleChildScrollView(
         child: Container(
-          padding: EdgeInsets.symmetric(horizontal: 50),
+          padding: EdgeInsets.symmetric(horizontal: 60),
           width: MediaQueryWidth,
           height: MediaQueryHeight,
           color: primary,
@@ -27,7 +27,7 @@ class LoginView extends GetView<LoginController> {
             children: [
               Image.asset(
                 'assets/image/G_3.png',
-                scale: 1.3,
+                scale: 1.5,
               ),
               // SizedBox(
               //   height: MediaQueryHeight * 0.005,
@@ -35,7 +35,7 @@ class LoginView extends GetView<LoginController> {
               Text(
                 'SIRESMA',
                 style: GoogleFonts.inter(
-                  fontSize: 48,
+                  fontSize: 28,
                   fontWeight: FontWeight.bold,
                   color: Colors.white,
                 ),
@@ -46,13 +46,13 @@ class LoginView extends GetView<LoginController> {
               Text(
                 'Sistem Resik Mandiri',
                 style: GoogleFonts.inter(
-                  fontSize: 24,
+                  fontSize: 16,
                   fontWeight: FontWeight.w700,
                   color: Colors.white,
                 ),
               ),
               SizedBox(
-                height: MediaQueryHeight * 0.04,
+                height: MediaQueryHeight * 0.03,
               ),
               CustomTextFields(
                 hint: 'Username',
@@ -60,7 +60,7 @@ class LoginView extends GetView<LoginController> {
                 enable: true,
               ),
               SizedBox(
-                height: MediaQueryHeight * 0.02,
+                height: MediaQueryHeight * 0.015,
               ),
               CustomTextFields(
                 hint: 'Password',
@@ -68,7 +68,7 @@ class LoginView extends GetView<LoginController> {
                 enable: true,
               ),
               SizedBox(
-                height: MediaQueryHeight * 0.04,
+                height: MediaQueryHeight * 0.03,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -76,7 +76,7 @@ class LoginView extends GetView<LoginController> {
                   Text(
                     'Belum punya Akun?',
                     style: GoogleFonts.inter(
-                      fontSize: 16,
+                      fontSize: 14,
                       fontWeight: FontWeight.w600,
                       color: Colors.white,
                     ),
@@ -88,7 +88,7 @@ class LoginView extends GetView<LoginController> {
                     child: Text(
                       'Register',
                       style: GoogleFonts.inter(
-                        fontSize: 16,
+                        fontSize: 14,
                         fontWeight: FontWeight.bold,
                         color: Colors.white,
                       ),

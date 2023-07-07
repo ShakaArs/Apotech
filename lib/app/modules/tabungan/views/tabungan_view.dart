@@ -40,7 +40,7 @@ class TabunganView extends GetView<TabController> {
                       scale: 1.5,
                     ),
                     SizedBox(
-                      width: MediaQueryWidth * 0.03,
+                      width: MediaQueryWidth * 0.05,
                     ),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -48,7 +48,7 @@ class TabunganView extends GetView<TabController> {
                         Text(
                           'Tabungan Sampah',
                           style: GoogleFonts.inter(
-                            fontSize: 30,
+                            fontSize: 24,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
@@ -56,8 +56,11 @@ class TabunganView extends GetView<TabController> {
                           height: MediaQueryHeight * 0.01,
                         ),
                         Container(
-                          color: primary,
-                          width: MediaQueryWidth * 0.23,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(40),
+                            color: primary,
+                          ),
+                          width: MediaQueryWidth * 0.2,
                           height: 5,
                         ),
                       ],

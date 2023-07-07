@@ -18,11 +18,12 @@ class RegisterView extends GetView<RegisterController> {
     return Scaffold(
       body: SingleChildScrollView(
         child: Container(
-          padding: EdgeInsets.only(top: 30, left: 50, right: 50),
+          padding: EdgeInsets.symmetric(horizontal: 60),
           width: MediaQueryWidth,
           height: MediaQueryHeight,
           color: primary,
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Image.asset(
@@ -32,13 +33,13 @@ class RegisterView extends GetView<RegisterController> {
               Text(
                 'SIRESMA',
                 style: GoogleFonts.inter(
-                  fontSize: 32,
+                  fontSize: 24,
                   fontWeight: FontWeight.bold,
                   color: Colors.white,
                 ),
               ),
               SizedBox(
-                height: MediaQueryHeight * 0.02,
+                height: MediaQueryHeight * 0.015,
               ),
               CustomTextFields(
                 hint: 'Nama Lengkap',
@@ -86,7 +87,7 @@ class RegisterView extends GetView<RegisterController> {
                 enable: true,
               ),
               SizedBox(
-                height: MediaQueryHeight * 0.007,
+                height: MediaQueryHeight * 0.01,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
@@ -97,7 +98,7 @@ class RegisterView extends GetView<RegisterController> {
                     onPress: () {},
                   ),
                   SizedBox(
-                    width: MediaQueryWidth * 0.1,
+                    width: MediaQueryWidth * 0.05,
                   ),
                   Transform.scale(
                     scale: 1.5,
@@ -117,14 +118,8 @@ class RegisterView extends GetView<RegisterController> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(
-                    'Belum punya Akun?',
-                    style: GoogleFonts.inter(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w600,
-                      color: Colors.white,
-                    ),
-                  ),
+                  reusableText(
+                      'Belum punya Akun?', Colors.white, 14, FontWeight.bold),
                   TextButton(
                     onPressed: () {
                       Get.offNamed('/login');

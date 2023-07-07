@@ -41,13 +41,13 @@ class ProfilView extends GetView<ProfilController> {
                     bottomRight: Radius.circular(30),
                   ),
                 ),
-                padding: EdgeInsets.only(left: 40, right: 40),
+                padding: EdgeInsets.only(left: 45, right: 45),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Transform.scale(
-                      scale: 2,
+                      scale: 1.7,
                       child: CircleAvatar(
                         backgroundColor: Colors.grey.shade400,
                         child: Icon(FontAwesomeIcons.solidUser,
@@ -55,24 +55,24 @@ class ProfilView extends GetView<ProfilController> {
                       ),
                     ),
                     SizedBox(
-                      width: 40,
+                      width: MediaQueryWidth * 0.08,
                     ),
                     Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        reusableText('Flora Farensia', Colors.black, 26,
+                        reusableText('Flora Farensia', Colors.black, 20,
                             FontWeight.bold),
                         SizedBox(
-                          height: 0.02,
+                          height: MediaQueryHeight * 0.01,
                         ),
                         reusableText(
-                            '08762376381', Colors.black, 18, FontWeight.bold),
+                            '08762376381', Colors.black, 14, FontWeight.normal),
                         SizedBox(
-                          height: 0.02,
+                          height: MediaQueryHeight * 0.002,
                         ),
-                        reusableText('florafaren@gmail.com', Colors.black, 18,
-                            FontWeight.bold),
+                        reusableText('florafaren@gmail.com', Colors.black, 14,
+                            FontWeight.normal),
                       ],
                     ),
                   ],
@@ -103,7 +103,7 @@ class ProfilView extends GetView<ProfilController> {
                     Text(
                       'Akun',
                       style: GoogleFonts.inter(
-                        fontSize: 24,
+                        fontSize: 18,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
@@ -111,8 +111,11 @@ class ProfilView extends GetView<ProfilController> {
                       height: MediaQueryHeight * 0.01,
                     ),
                     Container(
-                      color: primary,
-                      width: MediaQueryWidth * 0.23,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(40),
+                        color: primary,
+                      ),
+                      width: MediaQueryWidth * 0.2,
                       height: 5,
                     ),
                   ],
@@ -124,10 +127,10 @@ class ProfilView extends GetView<ProfilController> {
               ListTile(
                 leading: Image.asset(
                   'assets/image/icon_tabungan2.png',
-                  scale: 1.1,
+                  scale: 1.2,
                 ),
                 title: reusableText(
-                    'Tabungan Sampah', Colors.black, 18, FontWeight.bold),
+                    'Tabungan Sampah', Colors.black, 16, FontWeight.bold),
               ),
               SizedBox(
                 height: MediaQueryHeight * 0.02,
@@ -135,10 +138,10 @@ class ProfilView extends GetView<ProfilController> {
               ListTile(
                 leading: Image.asset(
                   'assets/image/icon_evocher.png',
-                  scale: 1.1,
+                  scale: 1.2,
                 ),
                 title: reusableText(
-                    'Tabungan Sampah', Colors.black, 18, FontWeight.bold),
+                    'Tabungan Sampah', Colors.black, 16, FontWeight.bold),
               ),
               SizedBox(
                 height: MediaQueryHeight * 0.02,
@@ -146,10 +149,10 @@ class ProfilView extends GetView<ProfilController> {
               ListTile(
                 leading: Image.asset(
                   'assets/image/icon_qr.png',
-                  scale: 1.1,
+                  scale: 1.2,
                 ),
                 title: reusableText(
-                    'Tabungan Sampah', Colors.black, 18, FontWeight.bold),
+                    'Tabungan Sampah', Colors.black, 16, FontWeight.bold),
               ),
               SizedBox(
                 height: MediaQueryHeight * 0.02,
@@ -157,10 +160,10 @@ class ProfilView extends GetView<ProfilController> {
               ListTile(
                 leading: Image.asset(
                   'assets/image/icon_keamanan.png',
-                  scale: 1.1,
+                  scale: 1.2,
                 ),
                 title: reusableText(
-                    'Keamanan Akun', Colors.black, 18, FontWeight.bold),
+                    'Keamanan Akun', Colors.black, 16, FontWeight.bold),
               ),
               Container(
                 padding: EdgeInsets.only(
@@ -174,7 +177,7 @@ class ProfilView extends GetView<ProfilController> {
                     Text(
                       'Informasi Lainnya',
                       style: GoogleFonts.inter(
-                        fontSize: 24,
+                        fontSize: 18,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
@@ -183,7 +186,7 @@ class ProfilView extends GetView<ProfilController> {
                     ),
                     Container(
                       color: primary,
-                      width: MediaQueryWidth * 0.23,
+                      width: MediaQueryWidth * 0.2,
                       height: 5,
                     ),
                   ],
@@ -195,10 +198,10 @@ class ProfilView extends GetView<ProfilController> {
               ListTile(
                 leading: Image.asset(
                   'assets/image/icon_privasi.png',
-                  scale: 1.1,
+                  scale: 1.2,
                 ),
                 title: reusableText(
-                    'Ketentuan Privasi', Colors.black, 18, FontWeight.bold),
+                    'Ketentuan Privasi', Colors.black, 16, FontWeight.bold),
               ),
             ],
           ),

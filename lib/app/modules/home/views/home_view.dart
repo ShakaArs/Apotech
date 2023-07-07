@@ -4,6 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:siresma/app/common/colors.dart';
+import 'package:siresma/app/common/custom_textformfield.dart';
 import '../controllers/home_controller.dart';
 
 class HomeView extends GetView<HomeController> {
@@ -32,7 +33,7 @@ class HomeView extends GetView<HomeController> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Transform.scale(
-                      scale: 1.5,
+                      scale: 1.3,
                       child: CircleAvatar(
                         backgroundColor: Colors.grey.shade400,
                         child: Icon(FontAwesomeIcons.solidUser,
@@ -40,13 +41,13 @@ class HomeView extends GetView<HomeController> {
                       ),
                     ),
                     SizedBox(
-                      width: 40,
+                      width: MediaQueryWidth * 0.04,
                     ),
                     Text(
                       'SIRESMA',
                       style: GoogleFonts.inter(
                         color: Colors.white,
-                        fontSize: 32,
+                        fontSize: 28,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
@@ -57,7 +58,7 @@ class HomeView extends GetView<HomeController> {
                 height: MediaQueryHeight * 0.017,
               ),
               Container(
-                padding: EdgeInsets.symmetric(horizontal: 30),
+                padding: EdgeInsets.symmetric(horizontal: 32),
                 height: MediaQueryHeight * 0.07,
                 decoration: BoxDecoration(
                   color: Colors.white,
@@ -67,38 +68,35 @@ class HomeView extends GetView<HomeController> {
                   ),
                 ),
                 child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Icon(
-                      FontAwesomeIcons.locationDot,
-                      color: primary,
-                      size: 36,
-                    ),
-                    TextButton(
-                      onPressed: () {},
-                      child: Text(
-                        'Location',
-                        style: GoogleFonts.inter(
-                          color: Colors.black,
-                          fontSize: 24,
-                          fontWeight: FontWeight.bold,
-                        ),
+                    ElevatedButton.icon(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.transparent,
                       ),
-                    ),
-                    SizedBox(
-                      width: MediaQueryWidth * 0.19,
+                      onPressed: () {},
+                      icon: Icon(
+                        FontAwesomeIcons.locationDot,
+                        color: primary,
+                      ),
+                      label: reusableText(
+                          'Location', Colors.black, 20, FontWeight.bold),
                     ),
                     Container(
                       child: Row(
                         children: [
-                          Image.asset('assets/image/icon_evocher.png'),
+                          Image.asset(
+                            'assets/image/icon_evocher.png',
+                            scale: 2,
+                          ),
                           SizedBox(
                             width: MediaQueryWidth * 0.01,
                           ),
                           Text(
                             'E-V',
                             style: GoogleFonts.inter(
-                              fontSize: 24,
+                              fontSize: 20,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
@@ -114,7 +112,6 @@ class HomeView extends GetView<HomeController> {
         preferredSize: Size.fromHeight(MediaQueryHeight * 0.2),
       ),
       body: Container(
-        height: MediaQueryHeight,
         child: Column(
           children: [
             Container(
@@ -183,7 +180,7 @@ class HomeView extends GetView<HomeController> {
                         child: Text(
                           'Implementasi Ekonomi Sirkular melalui\nPengembangan Rumah Sampah Digital\n4.0 Resik Mandiri di Kelurahan Sambiroto\nberbasis  sustainable zero waste\nManajemen',
                           style: GoogleFonts.inter(
-                            fontSize: 12.7,
+                            fontSize: 11,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
@@ -201,7 +198,7 @@ class HomeView extends GetView<HomeController> {
                           backgroundColor: primary,
                           fixedSize: Size(
                             MediaQueryWidth * 0.3,
-                            45,
+                            36,
                           ),
                           elevation: 4,
                           shape: RoundedRectangleBorder(
