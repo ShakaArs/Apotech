@@ -19,12 +19,12 @@ class SetorView extends GetView<SetorController> {
     return Scaffold(
       body: SingleChildScrollView(
         child: Container(
+          padding: EdgeInsets.only(top: 45, left: 30, right: 30),
           width: MediaQueryWidth,
           height: MediaQueryHeight,
           child: Column(
             children: [
               Container(
-                padding: EdgeInsets.only(top: 45, left: 10),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
@@ -65,7 +65,6 @@ class SetorView extends GetView<SetorController> {
                 height: MediaQueryHeight * 0.05,
               ),
               Container(
-                padding: EdgeInsets.symmetric(horizontal: 30),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -86,7 +85,6 @@ class SetorView extends GetView<SetorController> {
               ),
               Container(
                 width: MediaQueryWidth,
-                padding: EdgeInsets.symmetric(horizontal: 30),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -125,7 +123,6 @@ class SetorView extends GetView<SetorController> {
               ),
               Container(
                 width: MediaQueryWidth,
-                padding: EdgeInsets.symmetric(horizontal: 30),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
@@ -143,7 +140,6 @@ class SetorView extends GetView<SetorController> {
                 height: MediaQueryHeight * 0.02,
               ),
               Container(
-                padding: EdgeInsets.symmetric(horizontal: 30),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -192,7 +188,6 @@ class SetorView extends GetView<SetorController> {
                 height: MediaQueryHeight * 0.01,
               ),
               Container(
-                padding: EdgeInsets.symmetric(horizontal: 30),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,

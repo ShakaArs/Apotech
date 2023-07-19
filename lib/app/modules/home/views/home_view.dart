@@ -55,11 +55,11 @@ class HomeView extends GetView<HomeController> {
                 ),
               ),
               SizedBox(
-                height: MediaQueryHeight * 0.017,
+                height: MediaQueryHeight * 0.01,
               ),
               Container(
                 padding: EdgeInsets.symmetric(horizontal: 32),
-                height: MediaQueryHeight * 0.07,
+                height: MediaQueryHeight * 0.06,
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.only(
@@ -73,7 +73,7 @@ class HomeView extends GetView<HomeController> {
                   children: [
                     ElevatedButton.icon(
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.transparent,
+                        backgroundColor: Colors.white,
                       ),
                       onPressed: () {},
                       icon: Icon(
@@ -109,7 +109,7 @@ class HomeView extends GetView<HomeController> {
             ],
           ),
         ),
-        preferredSize: Size.fromHeight(MediaQueryHeight * 0.2),
+        preferredSize: Size.fromHeight(MediaQueryHeight * 0.18),
       ),
       body: Container(
         child: Column(

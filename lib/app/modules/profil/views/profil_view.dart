@@ -33,7 +33,7 @@ class ProfilView extends GetView<ProfilController> {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Container(
-                height: MediaQueryHeight * 0.222,
+                height: MediaQueryHeight * 0.215,
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.only(
@@ -81,7 +81,7 @@ class ProfilView extends GetView<ProfilController> {
             ],
           ),
         ),
-        preferredSize: Size.fromHeight(MediaQueryHeight * 0.2),
+        preferredSize: Size.fromHeight(MediaQueryHeight * 0.19),
       ),
       body: SingleChildScrollView(
         child: Container(
@@ -127,7 +127,7 @@ class ProfilView extends GetView<ProfilController> {
               ListTile(
                 leading: Image.asset(
                   'assets/image/icon_tabungan2.png',
-                  scale: 1.2,
+                  scale: 1.3,
                 ),
                 title: reusableText(
                     'Tabungan Sampah', Colors.black, 16, FontWeight.bold),
@@ -138,10 +138,10 @@ class ProfilView extends GetView<ProfilController> {
               ListTile(
                 leading: Image.asset(
                   'assets/image/icon_evocher.png',
-                  scale: 1.2,
+                  scale: 1.3,
                 ),
                 title: reusableText(
-                    'Tabungan Sampah', Colors.black, 16, FontWeight.bold),
+                    'E-Voucher', Colors.black, 16, FontWeight.bold),
               ),
               SizedBox(
                 height: MediaQueryHeight * 0.02,
@@ -149,10 +149,9 @@ class ProfilView extends GetView<ProfilController> {
               ListTile(
                 leading: Image.asset(
                   'assets/image/icon_qr.png',
-                  scale: 1.2,
+                  scale: 1.3,
                 ),
-                title: reusableText(
-                    'Tabungan Sampah', Colors.black, 16, FontWeight.bold),
+                title: reusableText('QR code Akun', Colors.black, 16, FontWeight.bold),
               ),
               SizedBox(
                 height: MediaQueryHeight * 0.02,
@@ -160,7 +159,7 @@ class ProfilView extends GetView<ProfilController> {
               ListTile(
                 leading: Image.asset(
                   'assets/image/icon_keamanan.png',
-                  scale: 1.2,
+                  scale: 1.3,
                 ),
                 title: reusableText(
                     'Keamanan Akun', Colors.black, 16, FontWeight.bold),
@@ -185,7 +184,10 @@ class ProfilView extends GetView<ProfilController> {
                       height: MediaQueryHeight * 0.01,
                     ),
                     Container(
-                      color: primary,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(40),
+                        color: primary,
+                      ),
                       width: MediaQueryWidth * 0.2,
                       height: 5,
                     ),
@@ -198,7 +200,7 @@ class ProfilView extends GetView<ProfilController> {
               ListTile(
                 leading: Image.asset(
                   'assets/image/icon_privasi.png',
-                  scale: 1.2,
+                  scale: 1.3,
                 ),
                 title: reusableText(
                     'Ketentuan Privasi', Colors.black, 16, FontWeight.bold),

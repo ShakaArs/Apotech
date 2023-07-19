@@ -1,9 +1,10 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class SetorController extends GetxController {
-  //TODO: Implement HomeController
+  TextEditingController NamaPenyetorCtrl = TextEditingController();
+  TextEditingController AlamatPenyetorCtrl = TextEditingController();
 
-  final count = 0.obs;
   @override
   void onInit() {
     super.onInit();
@@ -18,6 +19,4 @@ class SetorController extends GetxController {
   void onClose() {
     super.onClose();
   }
-
-  void increment() => count.value++;
 }

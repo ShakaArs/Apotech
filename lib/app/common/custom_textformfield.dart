@@ -54,6 +54,12 @@ class CustomTextFields extends StatelessWidget {
               color: primary,
             ),
           ),
+          // enabledBorder: OutlineInputBorder(
+          //   borderRadius: BorderRadius.circular(20),
+          //   borderSide: BorderSide(
+          //     color: bg_Textformfield,
+          //   ),
+          // ),
         ),
       ),
     );
