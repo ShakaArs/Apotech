@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 class SetorController extends GetxController {
   TextEditingController NamaPenyetorCtrl = TextEditingController();
   TextEditingController AlamatPenyetorCtrl = TextEditingController();
-
+  
   @override
   void onInit() {
     super.onInit();

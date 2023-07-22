@@ -21,7 +21,7 @@ class RegisterView extends GetView<RegisterController> {
           return Container(
             padding: EdgeInsets.symmetric(horizontal: 60),
             width: MediaQueryWidth,
-            height: MediaQueryHeight,
+            height: MediaQueryHeight * 1.03,
             color: primary,
             child: Form(
               key: controller.registerFromKey,

@@ -37,7 +37,7 @@ class TabunganView extends GetView<TabController> {
                   children: [
                     Image.asset(
                       'assets/image/icon_tabungan.png',
-                      scale: 1.5,
+                      scale: 1.6,
                     ),
                     SizedBox(
                       width: MediaQueryWidth * 0.05,
@@ -48,7 +48,7 @@ class TabunganView extends GetView<TabController> {
                         Text(
                           'Tabungan Sampah',
                           style: GoogleFonts.inter(
-                            fontSize: 24,
+                            fontSize: 22,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
@@ -99,7 +99,7 @@ class TabunganView extends GetView<TabController> {
                           style: GoogleFonts.inter(
                               fontWeight: FontWeight.bold,
                               color: Colors.white,
-                              fontSize: 20),
+                              fontSize: 18),
                           textAlign: TextAlign.left,
                         ),
                         SizedBox(
@@ -112,7 +112,7 @@ class TabunganView extends GetView<TabController> {
                               style: GoogleFonts.inter(
                                   fontWeight: FontWeight.bold,
                                   color: Colors.white,
-                                  fontSize: 20),
+                                  fontSize: 18),
                               textAlign: TextAlign.left,
                             ),
                             Text(
@@ -120,7 +120,7 @@ class TabunganView extends GetView<TabController> {
                               style: GoogleFonts.inter(
                                   fontWeight: FontWeight.bold,
                                   color: Colors.white,
-                                  fontSize: 20),
+                                  fontSize: 18),
                               textAlign: TextAlign.left,
                             ),
                           ],
@@ -129,8 +129,8 @@ class TabunganView extends GetView<TabController> {
                     ),
                     Container(
                       alignment: Alignment.centerRight,
-                      width: 57,
-                      height: 57,
+                      width: 53,
+                      height: 53,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(100),
                       ),
@@ -161,17 +161,17 @@ class TabunganView extends GetView<TabController> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     reusableText(
-                        "Flora Farensia", Colors.black, 18, FontWeight.bold),
+                        "Flora Farensia", Colors.black, 17, FontWeight.bold),
                     SizedBox(
                       height: MediaQueryHeight * 0.01,
                     ),
                     reusableText(
-                        '27 Juni 2023', hints_text_setor, 18, FontWeight.bold),
+                        '27 Juni 2023', hints_text_setor, 17, FontWeight.bold),
                     SizedBox(
                       height: MediaQueryHeight * 0.01,
                     ),
                     reusableText(
-                        'Sampah Logam', Colors.black, 18, FontWeight.bold),
+                        'Sampah Logam', Colors.black, 17, FontWeight.bold),
                   ],
                 ),
               ),

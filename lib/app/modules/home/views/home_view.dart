@@ -33,7 +33,7 @@ class HomeView extends GetView<HomeController> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Transform.scale(
-                      scale: 1.3,
+                      scale: 1.55,
                       child: CircleAvatar(
                         backgroundColor: Colors.grey.shade400,
                         child: Icon(FontAwesomeIcons.solidUser,
@@ -41,13 +41,13 @@ class HomeView extends GetView<HomeController> {
                       ),
                     ),
                     SizedBox(
-                      width: MediaQueryWidth * 0.04,
+                      width: MediaQueryWidth * 0.06,
                     ),
                     Text(
                       'SIRESMA',
                       style: GoogleFonts.inter(
                         color: Colors.white,
-                        fontSize: 28,
+                        fontSize: 26,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
@@ -71,17 +71,25 @@ class HomeView extends GetView<HomeController> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    ElevatedButton.icon(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.white,
+                    GestureDetector(
+                      onTap: () {
+                        Get.offAllNamed('/location');
+                      },
+                      child: Container(
+                        child: Row(
+                          children: [
+                            Icon(
+                              FontAwesomeIcons.locationDot,
+                              color: primary,
+                            ),
+                            SizedBox(
+                              width: MediaQueryWidth * 0.01,
+                            ),
+                            reusableText(
+                                'Location', Colors.black, 20, FontWeight.bold),
+                          ],
+                        ),
                       ),
-                      onPressed: () {},
-                      icon: Icon(
-                        FontAwesomeIcons.locationDot,
-                        color: primary,
-                      ),
-                      label: reusableText(
-                          'Location', Colors.black, 20, FontWeight.bold),
                     ),
                     Container(
                       child: Row(

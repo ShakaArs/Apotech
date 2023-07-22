@@ -2,6 +2,8 @@ import 'package:get/get.dart';
 
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
+import '../modules/location/bindings/location_binding.dart';
+import '../modules/location/views/location_view.dart';
 import '../modules/login/bindings/login_binding.dart';
 import '../modules/login/views/login_view.dart';
 import '../modules/navbar/bindings/navbar_binding.dart';
@@ -30,7 +32,7 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.SPLASH;
+  static const INITIAL = Routes.HOME;
 
   static final routes = [
     GetPage(
@@ -87,6 +89,11 @@ class AppPages {
       name: _Paths.NAVBAR,
       page: () => const NavbarView(),
       binding: NavbarBinding(),
+    ),
+    GetPage(
+      name: _Paths.LOCATION,
+      page: () => const LocationView(),
+      binding: LocationBinding(),
     ),
   ];
 }

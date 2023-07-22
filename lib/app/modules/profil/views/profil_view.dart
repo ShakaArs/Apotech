@@ -33,7 +33,7 @@ class ProfilView extends GetView<ProfilController> {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Container(
-                height: MediaQueryHeight * 0.215,
+                height: MediaQueryHeight * 0.195,
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.only(
@@ -41,13 +41,13 @@ class ProfilView extends GetView<ProfilController> {
                     bottomRight: Radius.circular(30),
                   ),
                 ),
-                padding: EdgeInsets.only(left: 45, right: 45),
+                padding: EdgeInsets.only(left: 30, right: 30),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Transform.scale(
-                      scale: 1.7,
+                      scale: 1.55,
                       child: CircleAvatar(
                         backgroundColor: Colors.grey.shade400,
                         child: Icon(FontAwesomeIcons.solidUser,
@@ -55,23 +55,23 @@ class ProfilView extends GetView<ProfilController> {
                       ),
                     ),
                     SizedBox(
-                      width: MediaQueryWidth * 0.08,
+                      width: MediaQueryWidth * 0.06,
                     ),
                     Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        reusableText('Flora Farensia', Colors.black, 20,
+                        reusableText('Flora Farensia', Colors.black, 17,
                             FontWeight.bold),
                         SizedBox(
-                          height: MediaQueryHeight * 0.01,
+                          height: MediaQueryHeight * 0.004,
                         ),
                         reusableText(
-                            '08762376381', Colors.black, 14, FontWeight.normal),
+                            '08762376381', Colors.black, 13, FontWeight.normal),
                         SizedBox(
                           height: MediaQueryHeight * 0.002,
                         ),
-                        reusableText('florafaren@gmail.com', Colors.black, 14,
+                        reusableText('florafaren@gmail.com', Colors.black, 13,
                             FontWeight.normal),
                       ],
                     ),
@@ -81,7 +81,7 @@ class ProfilView extends GetView<ProfilController> {
             ],
           ),
         ),
-        preferredSize: Size.fromHeight(MediaQueryHeight * 0.19),
+        preferredSize: Size.fromHeight(MediaQueryHeight * 0.17),
       ),
       body: SingleChildScrollView(
         child: Container(
@@ -100,12 +100,11 @@ class ProfilView extends GetView<ProfilController> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      'Akun',
-                      style: GoogleFonts.inter(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                      ),
+                    reusableText(
+                      "Akun",
+                      Colors.black,
+                      17,
+                      FontWeight.bold,
                     ),
                     SizedBox(
                       height: MediaQueryHeight * 0.01,
@@ -127,7 +126,7 @@ class ProfilView extends GetView<ProfilController> {
               ListTile(
                 leading: Image.asset(
                   'assets/image/icon_tabungan2.png',
-                  scale: 1.3,
+                  scale: 1.4,
                 ),
                 title: reusableText(
                     'Tabungan Sampah', Colors.black, 16, FontWeight.bold),
@@ -138,7 +137,7 @@ class ProfilView extends GetView<ProfilController> {
               ListTile(
                 leading: Image.asset(
                   'assets/image/icon_evocher.png',
-                  scale: 1.3,
+                  scale: 1.4,
                 ),
                 title: reusableText(
                     'E-Voucher', Colors.black, 16, FontWeight.bold),
@@ -149,9 +148,10 @@ class ProfilView extends GetView<ProfilController> {
               ListTile(
                 leading: Image.asset(
                   'assets/image/icon_qr.png',
-                  scale: 1.3,
+                  scale: 1.4,
                 ),
-                title: reusableText('QR code Akun', Colors.black, 16, FontWeight.bold),
+                title: reusableText(
+                    'QR code Akun', Colors.black, 16, FontWeight.bold),
               ),
               SizedBox(
                 height: MediaQueryHeight * 0.02,
@@ -159,7 +159,7 @@ class ProfilView extends GetView<ProfilController> {
               ListTile(
                 leading: Image.asset(
                   'assets/image/icon_keamanan.png',
-                  scale: 1.3,
+                  scale: 1.4,
                 ),
                 title: reusableText(
                     'Keamanan Akun', Colors.black, 16, FontWeight.bold),
@@ -176,7 +176,7 @@ class ProfilView extends GetView<ProfilController> {
                     Text(
                       'Informasi Lainnya',
                       style: GoogleFonts.inter(
-                        fontSize: 18,
+                        fontSize: 17,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
@@ -200,7 +200,7 @@ class ProfilView extends GetView<ProfilController> {
               ListTile(
                 leading: Image.asset(
                   'assets/image/icon_privasi.png',
-                  scale: 1.3,
+                  scale: 1.4,
                 ),
                 title: reusableText(
                     'Ketentuan Privasi', Colors.black, 16, FontWeight.bold),

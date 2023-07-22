@@ -30,6 +30,7 @@ class CustomTextFields extends StatelessWidget {
         color: bg_Textformfield,
       ),
       child: TextFormField(
+        style: GoogleFonts.inter(),
         enabled: enable,
         initialValue: initialValue,
         textAlign: TextAlign.start,
@@ -45,21 +46,21 @@ class CustomTextFields extends StatelessWidget {
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(20),
             borderSide: BorderSide(
-              color: primary,
+              color: bg_Textformfield,
             ),
           ),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(20),
             borderSide: BorderSide(
-              color: primary,
+              color: bg_Textformfield,
             ),
           ),
-          // enabledBorder: OutlineInputBorder(
-          //   borderRadius: BorderRadius.circular(20),
-          //   borderSide: BorderSide(
-          //     color: bg_Textformfield,
-          //   ),
-          // ),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(20),
+            borderSide: BorderSide(
+              color: bg_Textformfield,
+            ),
+          ),
         ),
       ),
     );
@@ -90,10 +91,19 @@ class CustomeTextFieldSetorSampah extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black12,
+            spreadRadius: 5,
+            blurRadius: 4,
+            offset: Offset.fromDirection(1.6),
+          ),
+        ],
         borderRadius: BorderRadius.circular(20),
         color: Colors.white,
       ),
       child: TextFormField(
+        style: GoogleFonts.inter(),
         enabled: enable,
         initialValue: initialValue,
         textAlign: TextAlign.start,
@@ -108,10 +118,17 @@ class CustomeTextFieldSetorSampah extends StatelessWidget {
               fontSize: 14,
               fontWeight: FontWeight.bold,
               color: hints_text_setor),
-          border: OutlineInputBorder(
+          border: InputBorder.none,
+          enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(20),
             borderSide: BorderSide(
-              color: Colors.transparent,
+              color: Colors.white,
+            ),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(20),
+            borderSide: BorderSide(
+              color: Colors.white,
             ),
           ),
         ),

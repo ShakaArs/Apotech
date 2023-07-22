@@ -14,6 +14,7 @@ abstract class Routes {
   static const NUMBER = _Paths.NUMBER;
   static const OTP = _Paths.OTP;
   static const NAVBAR = _Paths.NAVBAR;
+  static const LOCATION = _Paths.LOCATION;
 }
 
 abstract class _Paths {
@@ -29,4 +30,5 @@ abstract class _Paths {
   static const NUMBER = '/number';
   static const OTP = '/otp';
   static const NAVBAR = '/navbar';
+  static const LOCATION = '/location';
 }
