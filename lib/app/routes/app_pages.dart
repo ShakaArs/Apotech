@@ -1,19 +1,33 @@
 import 'package:get/get.dart';
+import 'package:siresma/app/modules/qrcode/bindings/qrcode_binding.dart';
+import 'package:siresma/app/modules/qrcode/views/qrcode_view.dart';
+import 'package:siresma/app/modules/tabunganbefore/bindings/tabunganbefore_binding.dart';
+import 'package:siresma/app/modules/tabunganbefore/views/tabunganbefore_view.dart';
+import 'package:siresma/app/modules/transaksiadmin/bindings/transaksiadmin_binding.dart';
+import 'package:siresma/app/modules/transaksiadmin/views/transaksiadmin_view.dart';
 
+import '../modules/evoucher/bindings/evoucher_binding.dart';
+import '../modules/evoucher/views/evoucher_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
+import '../modules/keamanan/bindings/keamanan_binding.dart';
+import '../modules/keamanan/views/keamanan_view.dart';
 import '../modules/location/bindings/location_binding.dart';
 import '../modules/location/views/location_view.dart';
 import '../modules/login/bindings/login_binding.dart';
 import '../modules/login/views/login_view.dart';
 import '../modules/navbar/bindings/navbar_binding.dart';
 import '../modules/navbar/views/navbar_view.dart';
+import '../modules/navbarprofik/bindings/navbarprofil_binding.dart';
+import '../modules/navbarprofik/views/navbarprofil_view.dart';
+import '../modules/navbartabungan/bindings/navbartabungan_binding.dart';
+import '../modules/navbartabungan/views/navbarprofil_view.dart';
 import '../modules/number/bindings/number_binding.dart';
-import '../modules/number/bindings/number_binding.dart';
-import '../modules/number/views/number_view.dart';
 import '../modules/number/views/number_view.dart';
 import '../modules/otp/bindings/otp_binding.dart';
 import '../modules/otp/views/otp_view.dart';
+import '../modules/privasi/bindings/privasi_binding.dart';
+import '../modules/privasi/views/privasi_view.dart';
 import '../modules/profil/bindings/profil_binding.dart';
 import '../modules/profil/views/profil_view.dart';
 import '../modules/register/bindings/register_binding.dart';
@@ -26,13 +40,15 @@ import '../modules/splash/bindings/splash_binding.dart';
 import '../modules/splash/views/splash_view.dart';
 import '../modules/tabungan/bindings/tabungan_binding.dart';
 import '../modules/tabungan/views/tabungan_view.dart';
+import '../modules/transaksi/bindings/transaksi_binding.dart';
+import '../modules/transaksi/views/transaksi_view.dart';
 
 part 'app_routes.dart';
 
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.HOME;
+  static const INITIAL = Routes.TRANSAKSI;
 
   static final routes = [
     GetPage(
@@ -94,6 +110,50 @@ class AppPages {
       name: _Paths.LOCATION,
       page: () => const LocationView(),
       binding: LocationBinding(),
+    ),
+    GetPage(
+      name: _Paths.EVOUCHER,
+      page: () => const EvoucherView(),
+      binding: EvoucherBinding(),
+    ),
+    GetPage(
+      name: _Paths.NAVBARPROFIL,
+      page: () => const NavbarProfilView(),
+      binding: NavbarProfilBinding(),
+    ),
+    GetPage(
+      name: _Paths.QRCODE,
+      page: () => const QrcodeView(),
+      binding: QrcodeBinding(),
+    ),
+    GetPage(
+      name: _Paths.KEAMANAN,
+      page: () => const KeamananView(),
+      binding: KeamananBinding(),
+    ),
+    GetPage(
+        name: _Paths.NAVBARTABUNGAN,
+        page: () => const NavbarTabunganView(),
+        binding: NavbarTabunganBinding()),
+    GetPage(
+      name: _Paths.PRIVASI,
+      page: () => const PrivasiView(),
+      binding: PrivasiBinding(),
+    ),
+    GetPage(
+      name: _Paths.TRANSAKSI,
+      page: () => const TransaksiView(),
+      binding: TransaksiBinding(),
+    ),
+    GetPage(
+      name: _Paths.TABUNGANBEFORE,
+      page: () => const TabunganbeforeView(),
+      binding: TabunganbeforeBinding(),
+    ),
+    GetPage(
+      name: _Paths.TRANSAKSIADMIN,
+      page: () => const TransaksiadminView(),
+      binding: TransaksiadminBinding(),
     ),
   ];
 }

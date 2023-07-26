@@ -124,6 +124,9 @@ class ProfilView extends GetView<ProfilController> {
                 height: MediaQueryHeight * 0.02,
               ),
               ListTile(
+                onTap: () {
+                  Get.toNamed('/navbartabungan');
+                },
                 leading: Image.asset(
                   'assets/image/icon_tabungan2.png',
                   scale: 1.4,
@@ -135,6 +138,9 @@ class ProfilView extends GetView<ProfilController> {
                 height: MediaQueryHeight * 0.02,
               ),
               ListTile(
+                onTap: () {
+                  Get.toNamed('/evoucher');
+                },
                 leading: Image.asset(
                   'assets/image/icon_evocher.png',
                   scale: 1.4,
@@ -146,6 +152,9 @@ class ProfilView extends GetView<ProfilController> {
                 height: MediaQueryHeight * 0.02,
               ),
               ListTile(
+                onTap: () {
+                  Get.toNamed('/qrcode');
+                },
                 leading: Image.asset(
                   'assets/image/icon_qr.png',
                   scale: 1.4,
@@ -157,6 +166,9 @@ class ProfilView extends GetView<ProfilController> {
                 height: MediaQueryHeight * 0.02,
               ),
               ListTile(
+                onTap: () {
+                  Get.toNamed('/keamanan');
+                },
                 leading: Image.asset(
                   'assets/image/icon_keamanan.png',
                   scale: 1.4,
@@ -198,12 +210,26 @@ class ProfilView extends GetView<ProfilController> {
                 height: MediaQueryHeight * 0.02,
               ),
               ListTile(
+                onTap: () {
+                  Get.toNamed('/privasi');
+                },
                 leading: Image.asset(
                   'assets/image/icon_privasi.png',
                   scale: 1.4,
                 ),
                 title: reusableText(
                     'Ketentuan Privasi', Colors.black, 16, FontWeight.bold),
+              ),
+              ListTile(
+                onTap: () {
+                  Get.toNamed('/login');
+                },
+                leading: Image.asset(
+                  'assets/image/iconlogout.png',
+                  scale: 1.4,
+                ),
+                title: reusableText('Logout', Color.fromARGB(255, 244, 2, 2),
+                    17, FontWeight.bold),
               ),
             ],
           ),

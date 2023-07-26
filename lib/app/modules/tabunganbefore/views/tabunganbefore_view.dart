@@ -5,10 +5,10 @@ import 'package:siresma/app/common/custom_textformfield.dart';
 import 'package:siresma/app/common/colors.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../common/button.dart';
-import '../controllers/tabungan_controller.dart';
+import '../controllers/tabunganefore_controller.dart';
 
-class TabunganView extends GetView<TabController> {
-  const TabunganView({Key? key}) : super(key: key);
+class TabunganbeforeView extends GetView<TabController> {
+  const TabunganbeforeView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -179,17 +179,26 @@ class TabunganView extends GetView<TabController> {
                           SizedBox(
                             width: MediaQueryWidth * 0.2,
                           ),
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              reusableText('Berat : 1kg', Colors.black, 17,
-                                  FontWeight.bold),
-                              SizedBox(height: MediaQueryHeight * 0.01),
-                              reusableText('Pendapatan :Rp 10.000',
-                                  Colors.black, 12, FontWeight.bold),
-                            ],
-                          )
+                          ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(30),
+                              ),
+                              backgroundColor: primary,
+                              fixedSize: Size(MediaQueryWidth * 0.35,
+                                  MediaQueryHeight * 0.020),
+                            ),
+                            onPressed: () {
+                              Get.toNamed('/scan');
+                            },
+                            child: Text(
+                              "Scan Barcode",
+                              style: TextStyle(
+                                fontSize: 15,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
                         ])
                   ],
                 ),
@@ -229,50 +238,35 @@ class TabunganView extends GetView<TabController> {
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          reusableText(
-                              'Selesai', Colors.green, 15, FontWeight.bold),
+                          reusableText('Dalam Proses', Colors.lightGreen, 15,
+                              FontWeight.bold),
                           SizedBox(
-                            width: MediaQueryWidth * 0.3,
+                            width: MediaQueryWidth * 0.2,
                           ),
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              reusableText('Berat : 1kg', Colors.black, 17,
-                                  FontWeight.bold),
-                              SizedBox(height: MediaQueryHeight * 0.01),
-                              reusableText('Pendapatan :Rp 10.000',
-                                  Colors.black, 12, FontWeight.bold),
-                            ],
-                          )
+                          ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(30),
+                              ),
+                              backgroundColor: primary,
+                              fixedSize: Size(MediaQueryWidth * 0.35,
+                                  MediaQueryHeight * 0.020),
+                            ),
+                            onPressed: () {
+                              Get.toNamed('/scan');
+                            },
+                            child: Text(
+                              "Scan Barcode",
+                              style: TextStyle(
+                                fontSize: 15,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
                         ])
                   ],
                 ),
               ),
-              SizedBox(
-                height: MediaQueryHeight * 0.1,
-              ),
-              ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(30),
-                  ),
-                  backgroundColor: primary,
-                  fixedSize:
-                      Size(MediaQueryWidth * 0.5, MediaQueryHeight * 0.025),
-                ),
-                onPressed: () {
-                  Get.toNamed('/transaksi');
-                },
-                child: Text(
-                  "DETAIL TRANSAKSI",
-                  style: TextStyle(
-                    fontSize: 18,
-                    color: Colors.white,
-                  ),
-                ),
-              ),
-              
             ],
           ),
         ),

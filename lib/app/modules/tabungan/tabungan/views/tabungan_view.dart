@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 import 'package:siresma/app/common/custom_textformfield.dart';
 import 'package:siresma/app/common/colors.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../../../common/button.dart';
 import '../controllers/tabungan_controller.dart';
 
 class TabunganView extends GetView<TabController> {
@@ -168,16 +167,16 @@ class TabunganView extends GetView<TabController> {
                     reusableText(
                         '27 Juni 2023', hints_text_setor, 17, FontWeight.bold),
                     SizedBox(
-                      height: MediaQueryHeight * 0.04,
+                      height: MediaQueryHeight * 0.05,
                     ),
                     Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          reusableText('Dalam Proses', Colors.lightGreen, 15,
+                          reusableText('Dalam Proses', Colors.lightGreen, 10,
                               FontWeight.bold),
                           SizedBox(
-                            width: MediaQueryWidth * 0.2,
+                            width: MediaQueryWidth * 0.3,
                           ),
                           Column(
                             mainAxisAlignment: MainAxisAlignment.start,
@@ -223,14 +222,14 @@ class TabunganView extends GetView<TabController> {
                     reusableText(
                         '27 Juni 2023', hints_text_setor, 17, FontWeight.bold),
                     SizedBox(
-                      height: MediaQueryHeight * 0.04,
+                      height: MediaQueryHeight * 0.05,
                     ),
                     Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           reusableText(
-                              'Selesai', Colors.green, 15, FontWeight.bold),
+                              'Selesai', Colors.green, 10, FontWeight.bold),
                           SizedBox(
                             width: MediaQueryWidth * 0.3,
                           ),
@@ -259,7 +258,7 @@ class TabunganView extends GetView<TabController> {
                   ),
                   backgroundColor: primary,
                   fixedSize:
-                      Size(MediaQueryWidth * 0.5, MediaQueryHeight * 0.025),
+                      Size(MediaQueryWidth * 0.4, MediaQueryHeight * 0.025),
                 ),
                 onPressed: () {
                   Get.toNamed('/transaksi');
@@ -272,7 +271,6 @@ class TabunganView extends GetView<TabController> {
                   ),
                 ),
               ),
-              
             ],
           ),
         ),

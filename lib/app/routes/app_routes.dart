@@ -15,6 +15,15 @@ abstract class Routes {
   static const OTP = _Paths.OTP;
   static const NAVBAR = _Paths.NAVBAR;
   static const LOCATION = _Paths.LOCATION;
+  static const EVOUCHER = _Paths.EVOUCHER;
+  static const NAVBARPROFIL = _Paths.NAVBARPROFIL;
+  static const QRCODE = _Paths.QRCODE;
+  static const KEAMANAN = _Paths.KEAMANAN;
+  static const NAVBARTABUNGAN = _Paths.NAVBARTABUNGAN;
+  static const PRIVASI = _Paths.PRIVASI;
+  static const TRANSAKSI = _Paths.TRANSAKSI;
+  static const TABUNGANBEFORE = _Paths.TABUNGANBEFORE;
+  static const TRANSAKSIADMIN = _Paths.TRANSAKSIADMIN;
 }
 
 abstract class _Paths {
@@ -31,4 +40,13 @@ abstract class _Paths {
   static const OTP = '/otp';
   static const NAVBAR = '/navbar';
   static const LOCATION = '/location';
+  static const EVOUCHER = '/evoucher';
+  static const NAVBARPROFIL = '/navbarprofil';
+  static const QRCODE = '/qrcode';
+  static const KEAMANAN = '/keamanan';
+  static const NAVBARTABUNGAN = '/navbartabungan';
+  static const PRIVASI = '/privasi';
+  static const TRANSAKSI = '/transaksi';
+  static const TABUNGANBEFORE = '/tabunganbefore';
+  static const TRANSAKSIADMIN = '/transaksiadmin';
 }
