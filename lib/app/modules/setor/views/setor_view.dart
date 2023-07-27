@@ -90,11 +90,11 @@ class SetorView extends GetView<SetorController> {
                       items: [
                         "Logam",
                         "Plastik",
-                        "Marga/Campuran",
+                        "Botol",
                         "Kain",
                         "Daun Kering",
-                        "Sayuran dan Buah",
-                        "Kertas",
+                        "Sayuran",
+                        "Buah"
                       ]
                           .map<DropdownMenuItem<String?>>(
                               (e) => DropdownMenuItem(

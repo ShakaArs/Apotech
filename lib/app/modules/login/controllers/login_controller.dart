@@ -68,8 +68,8 @@ class LoginController extends GetxController {
           var token = json["token"];
           var user = json["data"];
           print(user);
-          // final SharedPreferences? prefs = await _prefs;
-          // await prefs?.setString("token", token);
+          final SharedPreferences? prefs = await _prefs;
+          await prefs?.setString("token", token);
           print(token);
           customAllertDialog("Succes", "Masuk Berhasil", 'succes');
           Timer(Duration(seconds: 2), () {

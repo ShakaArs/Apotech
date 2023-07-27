@@ -1,19 +1,24 @@
 import 'dart:convert';
-
 import 'package:get/get.dart';
 import 'package:http/http.dart' as https;
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:siresma/app/config/api.dart';
 
-import '../../../models/class_dropdown.dart';
+import '../../../models/dropdown_location.dart';
 
 class LocationController extends GetxController {
-  List<DropdownItem> dropdownItems = [];
-  DropdownItem? selectedItem;
+  var rt = <RTModel>[].obs;
+  var selectedRT = "".obs;
 
-  Future<void> _fetchData() async {
+  void onNameSelected(String value) {
+    selectedRT.value = value;
+    update();
+  }
+
+  Future<void> fetchData() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    var token = prefs.getString('token');
+    var token = prefs.getString("token");
+    print(token);
     try {
       var headers = {
         'Accept': 'application/json',
@@ -24,17 +29,15 @@ class LocationController extends GetxController {
           await https.get(url, headers: headers); // Ganti dengan URL API Anda
       if (response.statusCode == 200) {
         final jsonData = json.decode(response.body);
-        final data = jsonData['data'] as List<dynamic>;
-        final items = data
-            .map((item) => DropdownItem(
-                  item['id'],
-                  item['name'],
-                ))
-            .toList();
-        dropdownItems = items;
+        print(jsonData);
+        List<RTModel> tempList = [];
+        for (var item in jsonData['data']) {
+          tempList.add(RTModel.fromJson(item));
+        }
+        rt.value = tempList;
+        update();
       } else {
-        throw Exception(
-            'Failed to load dropdown items: ${response.statusCode}');
+        print("Gagal");
       }
     } catch (e) {
       print(e);
@@ -44,7 +47,7 @@ class LocationController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    _fetchData();
+    fetchData();
     update();
   }
 
