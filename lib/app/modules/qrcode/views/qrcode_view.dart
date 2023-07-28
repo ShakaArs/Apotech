@@ -6,7 +6,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 import '../../../common/colors.dart';
 import '../../../common/custom_textformfield.dart';
-import '../../../models/class_dropdown.dart';
+
 import '../controllers/qrcode_controller.dart';
 
 class QrcodeView extends GetView<QrcodeController> {
