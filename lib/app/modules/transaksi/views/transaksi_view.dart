@@ -64,7 +64,7 @@ class TransaksiView extends GetView<TabController> {
               ),
               Container(
                 width: MediaQueryWidth,
-                height: MediaQueryHeight * 0.15,
+                height: MediaQueryHeight * 0.09,
                 decoration: BoxDecoration(
                   color: primary,
                   boxShadow: [
@@ -82,7 +82,7 @@ class TransaksiView extends GetView<TabController> {
                       style: GoogleFonts.inter(
                           fontWeight: FontWeight.bold,
                           color: Colors.white,
-                          fontSize: 20),
+                          fontSize: 25),
                       textAlign: TextAlign.left,
                     ),
                   ],
@@ -182,11 +182,22 @@ class TransaksiView extends GetView<TabController> {
                   ),
                 ),
               ),
-              GestureDetector(
-                onTap: () {
+              SizedBox(
+                height: MediaQueryHeight * 0.015,
+              ),
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(100),
+                  ),
+                  backgroundColor: primary,
+                  fixedSize:
+                      Size(MediaQueryWidth * 0.05, MediaQueryHeight * 0.05),
+                ),
+                onPressed: () {
                   Get.offAllNamed('/navbartabungan');
                 },
-                child: Icon(Icons.arrow_back),
+                child: Icon(Icons.arrow_back_sharp),
               ),
             ],
           ),

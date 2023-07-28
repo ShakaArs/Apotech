@@ -35,11 +35,19 @@ class EvoucherView extends GetView<EvoucherController> {
               SizedBox(
                 height: MediaQueryHeight * 0.05,
               ),
-              GestureDetector(
-                onTap: () {
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(100),
+                  ),
+                  backgroundColor: primary,
+                  fixedSize:
+                      Size(MediaQueryWidth * 0.05, MediaQueryHeight * 0.05),
+                ),
+                onPressed: () {
                   Get.offAllNamed('/navbarprofil');
                 },
-                child: Icon(Icons.arrow_back),
+                child: Icon(Icons.arrow_back_sharp),
               ),
             ],
           ),

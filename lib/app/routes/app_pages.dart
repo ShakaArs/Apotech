@@ -1,11 +1,14 @@
 import 'package:get/get.dart';
+import 'package:siresma/app/modules/datanasabah/views/datanasabah_view.dart';
+import 'package:siresma/app/modules/nasabahdetail/bindings/nasabahdetail_binding.dart';
+import 'package:siresma/app/modules/nasabahdetail/views/nasabahdetail_view.dart';
 import 'package:siresma/app/modules/qrcode/bindings/qrcode_binding.dart';
 import 'package:siresma/app/modules/qrcode/views/qrcode_view.dart';
 import 'package:siresma/app/modules/tabunganbefore/bindings/tabunganbefore_binding.dart';
 import 'package:siresma/app/modules/tabunganbefore/views/tabunganbefore_view.dart';
 import 'package:siresma/app/modules/transaksiadmin/bindings/transaksiadmin_binding.dart';
 import 'package:siresma/app/modules/transaksiadmin/views/transaksiadmin_view.dart';
-
+import '../modules/datanasabah/bindings/datanasabah_binding.dart';
 import '../modules/evoucher/bindings/evoucher_binding.dart';
 import '../modules/evoucher/views/evoucher_view.dart';
 import '../modules/home/bindings/home_binding.dart';
@@ -18,6 +21,8 @@ import '../modules/login/bindings/login_binding.dart';
 import '../modules/login/views/login_view.dart';
 import '../modules/navbar/bindings/navbar_binding.dart';
 import '../modules/navbar/views/navbar_view.dart';
+import '../modules/navbaradmin/bindings/navbaradmin_binding.dart';
+import '../modules/navbaradmin/views/navbaradmin_view.dart';
 import '../modules/navbarprofik/bindings/navbarprofil_binding.dart';
 import '../modules/navbarprofik/views/navbarprofil_view.dart';
 import '../modules/navbartabungan/bindings/navbartabungan_binding.dart';
@@ -42,6 +47,10 @@ import '../modules/tabungan/bindings/tabungan_binding.dart';
 import '../modules/tabungan/views/tabungan_view.dart';
 import '../modules/transaksi/bindings/transaksi_binding.dart';
 import '../modules/transaksi/views/transaksi_view.dart';
+import '../modules/transaksikeluar/bindings/transaksikeluar_binding.dart';
+import '../modules/transaksikeluar/views/transaksikeluar_view.dart';
+import '../modules/transaksimasuk/bindings/transaksimasuk_binding.dart';
+import '../modules/transaksimasuk/views/transaksimasuk_view.dart';
 
 part 'app_routes.dart';
 
@@ -154,6 +163,36 @@ class AppPages {
       name: _Paths.TRANSAKSIADMIN,
       page: () => const TransaksiadminView(),
       binding: TransaksiadminBinding(),
+    ),
+    GetPage(
+      name: _Paths.NASABAHDETAIL,
+      page: () => const NasabahDetailView(),
+      binding: NasabahDetailBinding(),
+    ),
+    GetPage(
+      name: _Paths.DATANASABAH,
+      page: () => const DataNasabahView(),
+      binding: DataNasabahBinding(),
+    ),
+    GetPage(
+      name: _Paths.NAVBARADMIN,
+      page: () => const NavbarAdminView(),
+      binding: NavbarAdminBinding(),
+    ),
+    GetPage(
+      name: _Paths.TRANSAKSIMASUK,
+      page: () => const TransaksiMasukView(),
+      binding: TransaksiMasukBinding(),
+    ),
+    GetPage(
+      name: _Paths.TRANSAKSIKELUAR,
+      page: () => const TransaksiKeluarView(),
+      binding: TransaksiKeluarBinding(),
+    ),
+    GetPage(
+      name: _Paths.QRADMIN,
+      page: () => const QrcodeView(),
+      binding: QrcodeBinding(),
     ),
   ];
 }

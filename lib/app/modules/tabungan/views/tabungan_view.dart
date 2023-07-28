@@ -168,7 +168,7 @@ class TabunganView extends GetView<TabController> {
                     reusableText(
                         '27 Juni 2023', hints_text_setor, 17, FontWeight.bold),
                     SizedBox(
-                      height: MediaQueryHeight * 0.04,
+                      height: MediaQueryHeight * 0.02,
                     ),
                     Row(
                         mainAxisAlignment: MainAxisAlignment.start,
@@ -177,7 +177,7 @@ class TabunganView extends GetView<TabController> {
                           reusableText('Dalam Proses', Colors.lightGreen, 15,
                               FontWeight.bold),
                           SizedBox(
-                            width: MediaQueryWidth * 0.2,
+                            width: MediaQueryWidth * 0.1,
                           ),
                           Column(
                             mainAxisAlignment: MainAxisAlignment.start,
@@ -223,7 +223,7 @@ class TabunganView extends GetView<TabController> {
                     reusableText(
                         '27 Juni 2023', hints_text_setor, 17, FontWeight.bold),
                     SizedBox(
-                      height: MediaQueryHeight * 0.04,
+                      height: MediaQueryHeight * 0.02,
                     ),
                     Row(
                         mainAxisAlignment: MainAxisAlignment.start,
@@ -232,7 +232,7 @@ class TabunganView extends GetView<TabController> {
                           reusableText(
                               'Selesai', Colors.green, 15, FontWeight.bold),
                           SizedBox(
-                            width: MediaQueryWidth * 0.3,
+                            width: MediaQueryWidth * 0.24,
                           ),
                           Column(
                             mainAxisAlignment: MainAxisAlignment.start,
@@ -250,7 +250,7 @@ class TabunganView extends GetView<TabController> {
                 ),
               ),
               SizedBox(
-                height: MediaQueryHeight * 0.1,
+                height: MediaQueryHeight * 0.04,
               ),
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
@@ -267,12 +267,11 @@ class TabunganView extends GetView<TabController> {
                 child: Text(
                   "DETAIL TRANSAKSI",
                   style: TextStyle(
-                    fontSize: 18,
+                    fontSize: 15,
                     color: Colors.white,
                   ),
                 ),
               ),
-              
             ],
           ),
         ),

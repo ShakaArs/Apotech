@@ -24,6 +24,12 @@ abstract class Routes {
   static const TRANSAKSI = _Paths.TRANSAKSI;
   static const TABUNGANBEFORE = _Paths.TABUNGANBEFORE;
   static const TRANSAKSIADMIN = _Paths.TRANSAKSIADMIN;
+  static const NASABAHDETAIL = _Paths.NASABAHDETAIL;
+  static const DATANASABAH = _Paths.DATANASABAH;
+  static const NAVBARADMIN = _Paths.NAVBARADMIN;
+  static const TRANSAKSIMASUK = _Paths.TRANSAKSIMASUK;
+  static const TRANSAKSIKELUAR = _Paths.TRANSAKSIKELUAR;
+  static const QRADMIN = _Paths.QRADMIN;
 }
 
 abstract class _Paths {
@@ -49,4 +55,10 @@ abstract class _Paths {
   static const TRANSAKSI = '/transaksi';
   static const TABUNGANBEFORE = '/tabunganbefore';
   static const TRANSAKSIADMIN = '/transaksiadmin';
+  static const NASABAHDETAIL = '/nasabahdetail';
+  static const DATANASABAH = '/datanasabah';
+  static const NAVBARADMIN = '/navbaradmin';
+  static const TRANSAKSIMASUK = '/transaksimasuk';
+  static const TRANSAKSIKELUAR = '/transaksikeluar';
+  static const QRADMIN = '/qradmin';
 }

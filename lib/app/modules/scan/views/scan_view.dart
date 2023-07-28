@@ -55,15 +55,36 @@ class ScanView extends GetView<ScanController> {
                   direction: Axis.vertical,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
+                    Text(
+                      'Scan untuk mengambil berat sampah   ',
+                      style: GoogleFonts.inter(
+                        fontSize: 17,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                    SizedBox(
+                      height: MediaQueryWidth * 0.05,
+                    ),
                     ElevatedButton(
-                        onPressed: scanBarcodeNormal,
-                        child: const Text('Start barcode scan')),
-                    ElevatedButton(
-                        onPressed: scanQR, child: const Text('Start QR scan')),
-                    ElevatedButton(
-                        onPressed: startBarcodeScanStream,
-                        child: const Text('Start barcode scan stream')),
-                    Text('Berat sampah nya adalah  14.56 kg\n'),
+                      style: ElevatedButton.styleFrom(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(30),
+                        ),
+                        backgroundColor: primary,
+                        fixedSize:
+                            Size(MediaQueryWidth * 0.35, MediaQueryWidth * 0.1),
+                      ),
+                      onPressed: scanQR,
+                      child: Text(
+                        "Mulai Scan ",
+                        style: TextStyle(
+                          fontSize: 17,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+
                     //Hasil scan yang barcodeee
                     // Text('Scan Result : $scanBarcodeResult\n'),
                   ],

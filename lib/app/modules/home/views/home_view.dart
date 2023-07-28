@@ -91,26 +91,31 @@ class HomeView extends GetView<HomeController> {
                         ),
                       ),
                     ),
-                    Container(
-                      child: Row(
-                        children: [
-                          Image.asset(
-                            'assets/image/icon_evocher.png',
-                            scale: 2,
-                          ),
-                          SizedBox(
-                            width: MediaQueryWidth * 0.01,
-                          ),
-                          Text(
-                            'E-V',
-                            style: GoogleFonts.inter(
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
+                    GestureDetector(
+                      onTap: () {
+                        Get.offAllNamed('/evoucher');
+                      },
+                      child: Container(
+                        child: Row(
+                          children: [
+                            Image.asset(
+                              'assets/image/icon_evocher.png',
+                              scale: 2,
                             ),
-                          ),
-                        ],
+                            SizedBox(
+                              width: MediaQueryWidth * 0.01,
+                            ),
+                            Text(
+                              'E-V',
+                              style: GoogleFonts.inter(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
-                    ),
+                    )
                   ],
                 ),
               ),

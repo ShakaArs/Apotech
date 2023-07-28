@@ -168,7 +168,7 @@ class TabunganbeforeView extends GetView<TabController> {
                     reusableText(
                         '27 Juni 2023', hints_text_setor, 17, FontWeight.bold),
                     SizedBox(
-                      height: MediaQueryHeight * 0.04,
+                      height: MediaQueryHeight * 0.02,
                     ),
                     Row(
                         mainAxisAlignment: MainAxisAlignment.start,
@@ -177,7 +177,7 @@ class TabunganbeforeView extends GetView<TabController> {
                           reusableText('Dalam Proses', Colors.lightGreen, 15,
                               FontWeight.bold),
                           SizedBox(
-                            width: MediaQueryWidth * 0.2,
+                            width: MediaQueryWidth * 0.14,
                           ),
                           ElevatedButton(
                             style: ElevatedButton.styleFrom(
@@ -192,9 +192,9 @@ class TabunganbeforeView extends GetView<TabController> {
                               Get.toNamed('/scan');
                             },
                             child: Text(
-                              "Scan Barcode",
+                              "Scan QR",
                               style: TextStyle(
-                                fontSize: 15,
+                                fontSize: 19,
                                 color: Colors.white,
                               ),
                             ),
@@ -232,7 +232,7 @@ class TabunganbeforeView extends GetView<TabController> {
                     reusableText(
                         '27 Juni 2023', hints_text_setor, 17, FontWeight.bold),
                     SizedBox(
-                      height: MediaQueryHeight * 0.04,
+                      height: MediaQueryHeight * 0.02,
                     ),
                     Row(
                         mainAxisAlignment: MainAxisAlignment.start,
@@ -241,7 +241,7 @@ class TabunganbeforeView extends GetView<TabController> {
                           reusableText('Dalam Proses', Colors.lightGreen, 15,
                               FontWeight.bold),
                           SizedBox(
-                            width: MediaQueryWidth * 0.2,
+                            width: MediaQueryWidth * 0.14,
                           ),
                           ElevatedButton(
                             style: ElevatedButton.styleFrom(
@@ -256,9 +256,9 @@ class TabunganbeforeView extends GetView<TabController> {
                               Get.toNamed('/scan');
                             },
                             child: Text(
-                              "Scan Barcode",
+                              "Scan QR",
                               style: TextStyle(
-                                fontSize: 15,
+                                fontSize: 19,
                                 color: Colors.white,
                               ),
                             ),

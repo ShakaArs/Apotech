@@ -219,7 +219,9 @@ class TransaksiadminView extends GetView<TabController> {
                   fixedSize:
                       Size(MediaQueryWidth * 0.05, MediaQueryHeight * 0.05),
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  Get.back();
+                },
                 child: Icon(Icons.arrow_back_sharp),
               ),
             ],

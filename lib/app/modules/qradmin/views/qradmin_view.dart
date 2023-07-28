@@ -7,8 +7,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:siresma/app/modules/keamanan/controllers/keamanan_controller.dart';
 import '../../../common/button.dart';
 
-class KeamananView extends GetView<KeamananController> {
-  const KeamananView({Key? key}) : super(key: key);
+class QrAdminView extends GetView<KeamananController> {
+  const QrAdminView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -28,9 +28,10 @@ class KeamananView extends GetView<KeamananController> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Image.asset(
-                      'assets/image/icon_keamanan.png',
-                      scale: 1.1,
+                    Icon(
+                      FontAwesomeIcons.weightScale,
+                      size: 46,
+                      color: primary,
                     ),
                     SizedBox(
                       width: MediaQueryWidth * 0.05,
@@ -39,9 +40,9 @@ class KeamananView extends GetView<KeamananController> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'Keamanan Akun',
+                          'Input Berat',
                           style: GoogleFonts.inter(
-                            fontSize: 22,
+                            fontSize: 26,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
@@ -69,13 +70,13 @@ class KeamananView extends GetView<KeamananController> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    reusableText('Buat Password Baru Anda', Colors.black, 20,
+                    reusableText('Berat Sampah (/kg)', Colors.black, 20,
                         FontWeight.bold),
                     SizedBox(
                       height: MediaQueryHeight * 0.01,
                     ),
                     CustomeTextFieldSetorSampah(
-                        hint: 'Masukkan Password Baru',
+                        hint: 'Masukkan Berat Sampah',
                         obscureText: true,
                         enable: true),
                   ],
@@ -83,36 +84,6 @@ class KeamananView extends GetView<KeamananController> {
               ),
               SizedBox(
                 height: MediaQueryHeight * 0.02,
-              ),
-              Container(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    reusableText('Konfirmasi Password', Colors.black, 20,
-                        FontWeight.bold),
-                    SizedBox(
-                      height: MediaQueryHeight * 0.01,
-                    ),
-                    CustomeTextFieldSetorSampah(
-                        hint: 'Masukkan Kembali Password Baru',
-                        obscureText: true,
-                        enable: true),
-                    SizedBox(
-                      height: MediaQueryHeight * 0.03,
-                    ),
-                    Text(
-                      '*Password harus terdiri dari 8 karakter, 1 huruf besar dan 1 huruf kecil',
-                      style: GoogleFonts.inter(
-                          fontSize: 14,
-                          fontWeight: FontWeight.bold,
-                          color: Color.fromARGB(255, 154, 153, 153)),
-                    )
-                  ],
-                ),
-              ),
-              SizedBox(
-                height: MediaQueryHeight * 0.03,
               ),
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
@@ -121,33 +92,19 @@ class KeamananView extends GetView<KeamananController> {
                   ),
                   backgroundColor: primary,
                   fixedSize:
-                      Size(MediaQueryWidth * 0.40, MediaQueryHeight * 0.025),
+                      Size(MediaQueryWidth * 0.35, MediaQueryHeight * 0.025),
                 ),
                 onPressed: () {},
                 child: Text(
-                  "Ganti Pasword",
+                  "Simpan",
                   style: TextStyle(
-                    fontSize: 16,
+                    fontSize: 20,
                     color: Colors.white,
                   ),
                 ),
               ),
               SizedBox(
                 height: MediaQueryHeight * 0.02,
-              ),
-              ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(100),
-                  ),
-                  backgroundColor: primary,
-                  fixedSize:
-                      Size(MediaQueryWidth * 0.05, MediaQueryHeight * 0.05),
-                ),
-                onPressed: () {
-                  Get.offAllNamed('/navbarprofil');
-                },
-                child: Icon(Icons.arrow_back_sharp),
               ),
             ],
           ),

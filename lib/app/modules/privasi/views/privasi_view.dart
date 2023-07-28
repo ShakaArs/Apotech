@@ -73,7 +73,7 @@ class PrivasiView extends GetView<KeamananController> {
                       height: MediaQueryHeight * 0.01,
                     ),
                     Text(
-                      'SIRESMA adalah aplikasi yang digunakan untuk mengelola data sampah yang telah dipilah. Aplikasi ini dibuat untuk memudahkan masyarakat dalam mengelola sampah mandiri. Aplikasi ini juga dapat digunakan untuk mengelola sampah secara mandiri dan dapat dijadikan sebagai sumber penghasilan tambahan melalui transaksi setor sampah dan tabungan. Pengguna dari aplikasi ini ditujukan kepada warga keluarahan sambiroto yaitu :',
+                      'SIRESMA adalah aplikasi yang digunakan untuk mengelola data sampah yang telah dipilah. Aplikasi ini juga dapat digunakan untuk mengelola sampah secara mandiri dan dapat dijadikan sebagai sumber penghasilan tambahan melalui transaksi setor sampah dan tabungan. Pengguna dari aplikasi ini ditujukan kepada warga keluarahan sambiroto yaitu :',
                       style: GoogleFonts.inter(
                         fontSize: 14,
                         fontWeight: FontWeight.w400,
@@ -81,7 +81,7 @@ class PrivasiView extends GetView<KeamananController> {
                       textAlign: TextAlign.justify,
                     ),
                     SizedBox(
-                      height: MediaQueryHeight * 0.01,
+                      height: MediaQueryHeight * 0.009,
                     ),
                     Text('- Warga RW 02 RT 08',
                         style: GoogleFonts.inter(
@@ -96,7 +96,7 @@ class PrivasiView extends GetView<KeamananController> {
                         ),
                         textAlign: TextAlign.justify),
                     SizedBox(
-                      height: MediaQueryHeight * 0.02,
+                      height: MediaQueryHeight * 0.003,
                     ),
                     Text(
                         'Pihak masyarakat Yang menggunakan aplikasi ini diharapkan untuk mematuhi ketentuan yang berlaku. Ketentuan yang berlaku adalah sebagai berikut :',
@@ -106,7 +106,7 @@ class PrivasiView extends GetView<KeamananController> {
                         ),
                         textAlign: TextAlign.justify),
                     SizedBox(
-                      height: MediaQueryHeight * 0.02,
+                      height: MediaQueryHeight * 0.007,
                     ),
                     Text(
                         '1. Mendaftarkan diri dengan data yang benar dan valid',
@@ -155,40 +155,24 @@ class PrivasiView extends GetView<KeamananController> {
                         ),
                         textAlign: TextAlign.justify),
                     SizedBox(
-                      height: MediaQueryHeight * 0.01,
+                      height: MediaQueryHeight * 0.009,
                     ),
                   ],
                 ),
               ),
-              SizedBox(
-                height: MediaQueryHeight * 0.02,
-              ),
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(30),
+                    borderRadius: BorderRadius.circular(100),
                   ),
                   backgroundColor: primary,
                   fixedSize:
-                      Size(MediaQueryWidth * 0.35, MediaQueryHeight * 0.025),
+                      Size(MediaQueryWidth * 0.05, MediaQueryHeight * 0.05),
                 ),
-                onPressed: () {},
-                child: Text(
-                  "LEBIH LANJUT",
-                  style: TextStyle(
-                    fontSize: 15,
-                    color: Colors.white,
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: MediaQueryHeight * 0.02,
-              ),
-              GestureDetector(
-                onTap: () {
+                onPressed: () {
                   Get.offAllNamed('/navbarprofil');
                 },
-                child: Icon(Icons.arrow_back),
+                child: Icon(Icons.arrow_back_sharp),
               ),
             ],
           ),
