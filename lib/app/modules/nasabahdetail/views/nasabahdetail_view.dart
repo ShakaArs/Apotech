@@ -77,7 +77,7 @@ class NasabahDetailView extends GetView<TabController> {
               Container(
                 padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
                 width: MediaQueryWidth,
-                height: MediaQueryHeight * 0.5,
+                height: MediaQueryHeight * 0.53,
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(10),
