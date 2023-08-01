@@ -10,4 +10,5 @@ class API {
   static const iot = 'https://api.siresma.com/api/trash/iot-connect';
   static const list_sampah = 'https://api.siresma.com/api/trash/list';
   static const profile = '';
+  static const weight_iots = 'https://api.siresma.com/api/iot/store';
 }

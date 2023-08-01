@@ -1,4 +1,6 @@
 import 'package:get/get.dart';
+import 'package:siresma/app/modules/qradmin/bindings/qradmin_binding.dart';
+import 'package:siresma/app/modules/qradmin/views/qradmin_view.dart';
 
 import '../modules/datanasabah/bindings/datanasabah_binding.dart';
 import '../modules/datanasabah/views/datanasabah_view.dart';
@@ -60,7 +62,7 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.SPLASH;
+  static const INITIAL = Routes.NAVBARADMIN;
 
   static final routes = [
     GetPage(
@@ -194,8 +196,8 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.QRADMIN,
-      page: () => const QrcodeView(),
-      binding: QrcodeBinding(),
+      page: () => const QrAdminView(),
+      binding: QrAdminBinding(),
     ),
     GetPage(
       name: _Paths.EDIT_PROFIL,
