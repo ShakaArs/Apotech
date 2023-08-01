@@ -42,7 +42,10 @@ class RegisterController extends GetxController {
 
   String? validateNomorKK(String value) {
     if (value == null || value.isEmpty || value == ' ') {
-      return 'Nomor Kartu Keluarga tidak boleh kosong';
+      return 'Nomor KK tidak boleh kosong';
+    }
+    if (!GetUtils.isLengthGreaterThan(value, 15)) {
+      return "Minimal 16 angka";
     }
     {
       return null;
@@ -101,44 +104,40 @@ class RegisterController extends GetxController {
     }
   }
 
-  Future<void> camerapicker() async {
-    var camera = await _picker.pickImage(source: ImageSource.camera);
-    if (camera != null) {
-      ImageFile = File(camera.path);
-      update();
-    }
-  }
-
   Future<void> Register() async {
     try {
       var headers = {'Accept': 'application/json'};
-      var url = Uri.parse(API.register);
-      Map body = {
+      var request = https.MultipartRequest('POST', Uri.parse(API.register));
+      request.fields.addAll({
         "username": UsernameCtrl.text.trim(),
         "full_name": NamaLengkapCtrl.text,
         "password": PasswordCtrl.text,
         "phone": NomorTlpnCtrl.text,
         "address": AlamatCtrl.text,
         "no_kk": NomorkkCtrl.text,
-      };
-      https.Response response =
-          await https.post(url, body: body, headers: headers);
-      var error = jsonDecode(response.body)['message'];
+      });
+      request.files.add(await https.MultipartFile.fromPath(
+          'profile_picture', ImageFile!.path));
+      request.headers.addAll(headers);
+      https.StreamedResponse response = await request.send();
+      String responseBody = await response.stream.bytesToString();
+      var responseData = json.decode(responseBody);
       if (response.statusCode == 200) {
-        // var token = json['token'];
-        // final SharedPreferences? prefs = await _prefs;
-        // await prefs?.setString('token', token);
-        // print(token);
-        print(response.body);
-        customAllertDialog("Succes", "Pendaftaran Akun Berhasil", 'succes');
+        print(responseData);
+        print(ImageFile);
+        var id = responseData["data"];
+        final SharedPreferences? prefs = await _prefs;
+        await prefs?.setInt("data", id);
+        print(id);
+        customAllertDialog(
+            "Succes", "Pendaftaran Sukses, Silahkan verifikasi OTP", 'succes');
         Timer(Duration(seconds: 2), () {
-          Get.offAllNamed('/login');
+          Get.offAllNamed('/otp');
         });
       } else {
         customAllertDialog('Gagal', 'Pendaftaran Akun Gagal', 'error');
       }
     } catch (e) {
-      Get.back();
       customAllertDialog("Pendaftaran Gagal", e.toString(), 'error');
     }
   }

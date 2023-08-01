@@ -8,12 +8,7 @@ import '../../../models/dropdown_location.dart';
 
 class LocationController extends GetxController {
   var rt = <RTModel>[].obs;
-  var selectedRT = "".obs;
-
-  void onNameSelected(String value) {
-    selectedRT.value = value;
-    update();
-  }
+  RTModel? selectedRT;
 
   Future<void> fetchData() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -41,6 +36,44 @@ class LocationController extends GetxController {
       }
     } catch (e) {
       print(e);
+    }
+  }
+
+  void setSelectedRT(RTModel? newValue) {
+    selectedRT = newValue;
+    update(); // Manually call update to notify the UI of the change.
+  }
+
+  Future<void> postData() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    var token = prefs.getString("token");
+    try {
+      if (selectedRT == null) {
+        print("Please select an RTModel object first.");
+        return;
+      }
+      var headers = {
+        'Accept': 'application/json',
+        'Authorization': 'Bearer $token',
+      };
+
+      var body = {
+        'trash_bank_id': selectedRT!.id.toString(),
+        // Add other data fields here if needed
+      };
+
+      var url =
+          Uri.parse(API.choose_bank_sampah); // Replace with your POST API URL
+      var response = await https.post(url, headers: headers, body: body);
+
+      if (response.statusCode == 200) {
+        print('Data posted successfully.');
+        Get.offAllNamed('/navbar');
+      } else {
+        print('Failed to post data. Status code: ${response.statusCode}');
+      }
+    } catch (e) {
+      print('Error while posting data: $e');
     }
   }
 

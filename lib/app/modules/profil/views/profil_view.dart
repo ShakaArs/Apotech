@@ -20,65 +20,70 @@ class ProfilView extends GetView<ProfilController> {
 
     return Scaffold(
       appBar: PreferredSize(
-        child: Container(
-          decoration: BoxDecoration(
-            color: primary,
-            borderRadius: BorderRadius.only(
-              bottomLeft: Radius.circular(30),
-              bottomRight: Radius.circular(30),
+        child: GestureDetector(
+          onTap: () {
+            Get.offAllNamed('/edit-profil');
+          },
+          child: Container(
+            decoration: BoxDecoration(
+              color: primary,
+              borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(30),
+                bottomRight: Radius.circular(30),
+              ),
             ),
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Container(
-                height: MediaQueryHeight * 0.195,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(30),
-                    bottomRight: Radius.circular(30),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Container(
+                  height: MediaQueryHeight * 0.195,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.only(
+                      bottomLeft: Radius.circular(30),
+                      bottomRight: Radius.circular(30),
+                    ),
+                  ),
+                  padding: EdgeInsets.only(left: 30, right: 30),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Transform.scale(
+                        scale: 1.55,
+                        child: CircleAvatar(
+                          backgroundColor: Colors.grey.shade400,
+                          child: Icon(FontAwesomeIcons.solidUser,
+                              color: Colors.grey.shade300),
+                        ),
+                      ),
+                      SizedBox(
+                        width: MediaQueryWidth * 0.07,
+                      ),
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          reusableText('Flora Farensia', Colors.black, 17,
+                              FontWeight.bold),
+                          SizedBox(
+                            height: MediaQueryHeight * 0.004,
+                          ),
+                          reusableText('08762376381', Colors.black, 13,
+                              FontWeight.normal),
+                          SizedBox(
+                            height: MediaQueryHeight * 0.002,
+                          ),
+                          reusableText('florafaren@gmail.com', Colors.black, 13,
+                              FontWeight.normal),
+                        ],
+                      ),
+                    ],
                   ),
                 ),
-                padding: EdgeInsets.only(left: 30, right: 30),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Transform.scale(
-                      scale: 1.55,
-                      child: CircleAvatar(
-                        backgroundColor: Colors.grey.shade400,
-                        child: Icon(FontAwesomeIcons.solidUser,
-                            color: Colors.grey.shade300),
-                      ),
-                    ),
-                    SizedBox(
-                      width: MediaQueryWidth * 0.06,
-                    ),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        reusableText('Flora Farensia', Colors.black, 17,
-                            FontWeight.bold),
-                        SizedBox(
-                          height: MediaQueryHeight * 0.004,
-                        ),
-                        reusableText(
-                            '08762376381', Colors.black, 13, FontWeight.normal),
-                        SizedBox(
-                          height: MediaQueryHeight * 0.002,
-                        ),
-                        reusableText('florafaren@gmail.com', Colors.black, 13,
-                            FontWeight.normal),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
         preferredSize: Size.fromHeight(MediaQueryHeight * 0.17),

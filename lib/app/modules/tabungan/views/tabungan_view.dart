@@ -171,14 +171,11 @@ class TabunganView extends GetView<TabController> {
                       height: MediaQueryHeight * 0.02,
                     ),
                     Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           reusableText('Dalam Proses', Colors.lightGreen, 15,
                               FontWeight.bold),
-                          SizedBox(
-                            width: MediaQueryWidth * 0.1,
-                          ),
                           Column(
                             mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -190,7 +187,7 @@ class TabunganView extends GetView<TabController> {
                                   Colors.black, 12, FontWeight.bold),
                             ],
                           )
-                        ])
+                        ]),
                   ],
                 ),
               ),
@@ -226,14 +223,11 @@ class TabunganView extends GetView<TabController> {
                       height: MediaQueryHeight * 0.02,
                     ),
                     Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           reusableText(
                               'Selesai', Colors.green, 15, FontWeight.bold),
-                          SizedBox(
-                            width: MediaQueryWidth * 0.24,
-                          ),
                           Column(
                             mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.start,

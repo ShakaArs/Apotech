@@ -2,7 +2,7 @@ class Login {
   final bool success;
   final String message;
   final String token;
-  final User data;
+  final UserData data;
 
   Login({
     required this.success,
@@ -16,7 +16,7 @@ class Login {
       success: json['success'],
       message: json['message'],
       token: json['token'],
-      data: User.fromJson(json['data']),
+      data: UserData.fromJson(json['data']),
     );
   }
 
@@ -30,14 +30,14 @@ class Login {
   }
 }
 
-class User {
+class UserData {
   final int id;
   final String fullName;
   final String phone;
   final String address;
   final String noKK;
 
-  User({
+  UserData({
     required this.id,
     required this.fullName,
     required this.phone,
@@ -45,8 +45,8 @@ class User {
     required this.noKK,
   });
 
-  factory User.fromJson(Map<String, dynamic> json) {
-    return User(
+  factory UserData.fromJson(Map<String, dynamic> json) {
+    return UserData(
       id: json['id'],
       fullName: json['full_name'],
       phone: json['phone'],
@@ -57,11 +57,11 @@ class User {
 
   Map<String, dynamic> toJson() {
     return {
-      "id": id,
-      "full_name": fullName,
-      "phone": phone,
-      "address": address,
-      "no_kk": noKK,
+      'id': id,
+      'full_name': fullName,
+      'phone': phone,
+      'address': address,
+      'no_kk': noKK,
     };
   }
 }

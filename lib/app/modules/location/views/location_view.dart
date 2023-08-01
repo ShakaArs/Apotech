@@ -3,6 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:siresma/app/common/button.dart';
 
 import '../../../common/colors.dart';
 import '../../../common/custom_textformfield.dart';
@@ -67,55 +68,79 @@ class LocationView extends GetView<LocationController> {
           return Container(
             height: MediaQueryHeight,
             width: MediaQueryWidth,
-            padding: EdgeInsets.only(left: 30, right: 30, top: 20),
+            padding: EdgeInsets.only(left: 30, right: 30, top: 20, bottom: 20),
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                reusableText(
-                  "Pilih Bank Sampah",
-                  Colors.black,
-                  17,
-                  FontWeight.bold,
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    reusableText(
+                      "Pilih Bank Sampah",
+                      Colors.black,
+                      17,
+                      FontWeight.bold,
+                    ),
+                    SizedBox(
+                      height: MediaQueryHeight * 0.01,
+                    ),
+                    Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(40),
+                        color: primary,
+                      ),
+                      width: MediaQueryWidth * 0.2,
+                      height: 5,
+                    ),
+                    SizedBox(
+                      height: MediaQueryHeight * 0.03,
+                    ),
+                    reusableText("RW 2", Colors.black, 14, FontWeight.bold),
+                    SizedBox(
+                      height: MediaQueryHeight * 0.01,
+                    ),
+                    DropdownButtonFormField<RTModel>(
+                      value: null,
+                      hint: Text('Select RT'),
+                      onChanged: (RTModel? newValue) {
+                        controller.setSelectedRT(newValue);
+                      },
+                      items: controller.rt.map((rt) {
+                        return DropdownMenuItem<RTModel>(
+                          value: rt,
+                          child: Text(rt.name),
+                        );
+                      }).toList(),
+                    ),
+                    IconButton(
+                      onPressed: () {
+                        Get.offAllNamed('/navbar');
+                      },
+                      icon: Icon(FontAwesomeIcons.arrowLeft),
+                    ),
+                  ],
                 ),
-                SizedBox(
-                  height: MediaQueryHeight * 0.01,
-                ),
-                Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(40),
-                    color: primary,
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(30),
+                    ),
+                    backgroundColor: primary,
+                    fixedSize:
+                        Size(MediaQueryWidth * 0.35, MediaQueryHeight * 0.025),
                   ),
-                  width: MediaQueryWidth * 0.2,
-                  height: 5,
-                ),
-                SizedBox(
-                  height: MediaQueryHeight * 0.03,
-                ),
-                reusableText("RW 2", Colors.black, 14, FontWeight.bold),
-                SizedBox(
-                  height: MediaQueryHeight * 0.01,
-                ),
-                DropdownButtonFormField<RTModel>(
-                  value: null,
-                  hint: Text('Select RT'),
-                  onChanged: (RTModel? value) {
-                    if (value != null) {
-                      print('Selected Name: ${value.name}');
-                    }
+                  onPressed: () {
+                    controller.postData();
                   },
-                  items: controller.rt.map((rt) {
-                    return DropdownMenuItem<RTModel>(
-                      value: rt,
-                      child: Text(rt.name),
-                    );
-                  }).toList(),
-                ),
-                GestureDetector(
-                  onTap: () {
-                    Get.offAllNamed('/navbar');
-                  },
-                  child: Icon(Icons.arrow_back),
+                  child: Text(
+                    "Save",
+                    style: GoogleFonts.inter(
+                      fontSize: 23,
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                 ),
               ],
             ),

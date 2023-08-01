@@ -6,7 +6,6 @@ import 'package:google_fonts/google_fonts.dart';
 
 import '../../../common/colors.dart';
 import '../../../common/custom_textformfield.dart';
-
 import '../controllers/evoucher_controller.dart';
 
 class EvoucherView extends GetView<EvoucherController> {

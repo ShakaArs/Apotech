@@ -40,7 +40,6 @@ class ButtonAuth extends StatelessWidget {
   }
 }
 
-
 class UploadpProfil extends StatelessWidget {
   final String text;
   final void Function()? onPress;

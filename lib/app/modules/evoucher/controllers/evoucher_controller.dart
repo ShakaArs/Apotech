@@ -6,10 +6,11 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:siresma/app/config/api.dart';
 
 class EvoucherController extends GetxController {
-  final count = 0.obs;
+
   @override
   void onInit() {
     super.onInit();
+    update();
   }
 
   @override

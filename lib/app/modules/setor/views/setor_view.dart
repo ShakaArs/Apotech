@@ -65,6 +65,25 @@ class SetorView extends GetView<SetorController> {
                 height: MediaQueryHeight * 0.05,
               ),
               Container(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    reusableText('Nama', Colors.black, 15, FontWeight.bold),
+                    SizedBox(
+                      height: MediaQueryHeight * 0.01,
+                    ),
+                    CustomeTextFieldSetorSampah(
+                        hint: 'Masukkan Nama Penyetor',
+                        obscureText: false,
+                        enable: true),
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: MediaQueryHeight * 0.01,
+              ),
+              Container(
                 width: MediaQueryWidth,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
@@ -150,47 +169,49 @@ class SetorView extends GetView<SetorController> {
                           ),
                         ],
                       ),
-                      child: TextFormField(
-                        style: GoogleFonts.inter(),
-                        enabled: true,
-                        decoration: InputDecoration(
-                          suffixIcon: Icon(
-                            FontAwesomeIcons.calendarPlus,
-                            color: primary,
-                          ),
-                          hintText: "DD/MM/YY",
-                          hintStyle: GoogleFonts.inter(
-                            fontSize: 14,
-                            fontWeight: FontWeight.bold,
-                            color: hints_text_setor,
-                          ),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(20),
-                            borderSide: BorderSide(
-                              color: Colors.white,
-                            ),
-                          ),
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(20),
-                            borderSide: BorderSide(
-                              color: Colors.white,
-                            ),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(20),
-                            borderSide: BorderSide(
-                              color: Colors.white,
-                            ),
-                          ),
-                        ),
+                      child: GestureDetector(
                         onTap: () async {
                           DateTime? pickedDate = await showDatePicker(
                             context: context,
                             initialDate: DateTime.now(),
-                            firstDate: DateTime(2000),
-                            lastDate: DateTime(2100),
+                            firstDate: DateTime(1945),
+                            lastDate: DateTime(2050),
                           );
                         },
+                        child: TextFormField(
+                          style: GoogleFonts.inter(),
+                          enabled: false,
+                          decoration: InputDecoration(
+                            suffixIcon: Icon(
+                              FontAwesomeIcons.calendarPlus,
+                              color: primary,
+                            ),
+                            hintText: "DD/MM/YY",
+                            hintStyle: GoogleFonts.inter(
+                              fontSize: 14,
+                              fontWeight: FontWeight.bold,
+                              color: hints_text_setor,
+                            ),
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(20),
+                              borderSide: BorderSide(
+                                color: Colors.white,
+                              ),
+                            ),
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(20),
+                              borderSide: BorderSide(
+                                color: Colors.white,
+                              ),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(20),
+                              borderSide: BorderSide(
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
+                        ),
                       ),
                     ),
                   ],
@@ -230,9 +251,10 @@ class SetorView extends GetView<SetorController> {
                 onPressed: () {},
                 child: Text(
                   "Setor",
-                  style: TextStyle(
+                  style: GoogleFonts.inter(
                     fontSize: 23,
                     color: Colors.white,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
               ),

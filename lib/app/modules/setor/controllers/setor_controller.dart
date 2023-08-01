@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 
 class SetorController extends GetxController {
   TextEditingController TanggalPenyetorCtrl = TextEditingController();
+  TextEditingController NamaPenyetorCtrl = TextEditingController();
   TextEditingController AlamatPenyetorCtrl = TextEditingController();
   TextEditingController _dateController = TextEditingController();
 

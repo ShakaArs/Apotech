@@ -30,6 +30,7 @@ abstract class Routes {
   static const TRANSAKSIMASUK = _Paths.TRANSAKSIMASUK;
   static const TRANSAKSIKELUAR = _Paths.TRANSAKSIKELUAR;
   static const QRADMIN = _Paths.QRADMIN;
+  static const EDIT_PROFIL = _Paths.EDIT_PROFIL;
 }
 
 abstract class _Paths {
@@ -61,4 +62,5 @@ abstract class _Paths {
   static const TRANSAKSIMASUK = '/transaksimasuk';
   static const TRANSAKSIKELUAR = '/transaksikeluar';
   static const QRADMIN = '/qradmin';
+  static const EDIT_PROFIL = '/edit-profil';
 }

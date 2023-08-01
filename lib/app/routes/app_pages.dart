@@ -1,14 +1,9 @@
 import 'package:get/get.dart';
-import 'package:siresma/app/modules/datanasabah/views/datanasabah_view.dart';
-import 'package:siresma/app/modules/nasabahdetail/bindings/nasabahdetail_binding.dart';
-import 'package:siresma/app/modules/nasabahdetail/views/nasabahdetail_view.dart';
-import 'package:siresma/app/modules/qrcode/bindings/qrcode_binding.dart';
-import 'package:siresma/app/modules/qrcode/views/qrcode_view.dart';
-import 'package:siresma/app/modules/tabunganbefore/bindings/tabunganbefore_binding.dart';
-import 'package:siresma/app/modules/tabunganbefore/views/tabunganbefore_view.dart';
-import 'package:siresma/app/modules/transaksiadmin/bindings/transaksiadmin_binding.dart';
-import 'package:siresma/app/modules/transaksiadmin/views/transaksiadmin_view.dart';
+
 import '../modules/datanasabah/bindings/datanasabah_binding.dart';
+import '../modules/datanasabah/views/datanasabah_view.dart';
+import '../modules/edit_profil/bindings/edit_profil_binding.dart';
+import '../modules/edit_profil/views/edit_profil_view.dart';
 import '../modules/evoucher/bindings/evoucher_binding.dart';
 import '../modules/evoucher/views/evoucher_view.dart';
 import '../modules/home/bindings/home_binding.dart';
@@ -19,6 +14,8 @@ import '../modules/location/bindings/location_binding.dart';
 import '../modules/location/views/location_view.dart';
 import '../modules/login/bindings/login_binding.dart';
 import '../modules/login/views/login_view.dart';
+import '../modules/nasabahdetail/bindings/nasabahdetail_binding.dart';
+import '../modules/nasabahdetail/views/nasabahdetail_view.dart';
 import '../modules/navbar/bindings/navbar_binding.dart';
 import '../modules/navbar/views/navbar_view.dart';
 import '../modules/navbaradmin/bindings/navbaradmin_binding.dart';
@@ -35,6 +32,8 @@ import '../modules/privasi/bindings/privasi_binding.dart';
 import '../modules/privasi/views/privasi_view.dart';
 import '../modules/profil/bindings/profil_binding.dart';
 import '../modules/profil/views/profil_view.dart';
+import '../modules/qrcode/bindings/qrcode_binding.dart';
+import '../modules/qrcode/views/qrcode_view.dart';
 import '../modules/register/bindings/register_binding.dart';
 import '../modules/register/views/register_view.dart';
 import '../modules/scan/bindings/scan_binding.dart';
@@ -45,8 +44,12 @@ import '../modules/splash/bindings/splash_binding.dart';
 import '../modules/splash/views/splash_view.dart';
 import '../modules/tabungan/bindings/tabungan_binding.dart';
 import '../modules/tabungan/views/tabungan_view.dart';
+import '../modules/tabunganbefore/bindings/tabunganbefore_binding.dart';
+import '../modules/tabunganbefore/views/tabunganbefore_view.dart';
 import '../modules/transaksi/bindings/transaksi_binding.dart';
 import '../modules/transaksi/views/transaksi_view.dart';
+import '../modules/transaksiadmin/bindings/transaksiadmin_binding.dart';
+import '../modules/transaksiadmin/views/transaksiadmin_view.dart';
 import '../modules/transaksikeluar/bindings/transaksikeluar_binding.dart';
 import '../modules/transaksikeluar/views/transaksikeluar_view.dart';
 import '../modules/transaksimasuk/bindings/transaksimasuk_binding.dart';
@@ -57,7 +60,7 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.NAVBARADMIN;
+  static const INITIAL = Routes.SPLASH;
 
   static final routes = [
     GetPage(
@@ -193,6 +196,11 @@ class AppPages {
       name: _Paths.QRADMIN,
       page: () => const QrcodeView(),
       binding: QrcodeBinding(),
+    ),
+    GetPage(
+      name: _Paths.EDIT_PROFIL,
+      page: () => const EditProfilView(),
+      binding: EditProfilBinding(),
     ),
   ];
 }

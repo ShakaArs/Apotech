@@ -141,20 +141,28 @@ class RegisterView extends GetView<RegisterController> {
                     children: [
                       UploadpProfil(
                         text: 'UPLOAD FOTO PROFIL',
-                        onPress: () {},
+                        onPress: () {
+                          controller.imagepicker();
+                        },
                       ),
                       SizedBox(
                         width: MediaQueryWidth * 0.05,
                       ),
                       Transform.scale(
                         scale: 1.5,
-                        child: CircleAvatar(
-                          backgroundColor: Colors.grey.shade400,
-                          child: Icon(
-                            FontAwesomeIcons.solidUser,
-                            color: Colors.grey.shade300,
-                          ),
-                        ),
+                        child: controller.ImageFile != null
+                            ? CircleAvatar(
+                                backgroundColor: Colors.grey.shade400,
+                                backgroundImage:
+                                    FileImage(controller.ImageFile!),
+                              )
+                            : CircleAvatar(
+                                backgroundColor: Colors.grey.shade400,
+                                child: Icon(
+                                  FontAwesomeIcons.solidUser,
+                                  color: Colors.grey.shade300,
+                                ),
+                              ),
                       ),
                     ],
                   ),

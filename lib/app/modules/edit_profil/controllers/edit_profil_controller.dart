@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 
-class TabunganController extends GetxController {
-  //TODO: Implement HomeController
+class EditProfilController extends GetxController {
+  //TODO: Implement EditProfilController
 
   final count = 0.obs;
   @override
