@@ -157,7 +157,12 @@ class TransaksiView extends GetView<TabController> {
                     CustomeTextFieldSetorSampah(
                         hint: 'Masukkan jumlah yang ingin ditarik',
                         obscureText: false,
-                        enable: true),
+                        enable: true,
+                        controller: controller.AmountCtrl,
+                         onChanged: (value) {
+                           return controller.AmountCtrl.text = value;
+                        },
+                      ),
                   ],
                 ),
               ),

@@ -11,4 +11,5 @@ class API {
   static const list_sampah = 'https://api.siresma.com/api/trash/list';
   static const profile = '';
   static const weight_iots = 'https://api.siresma.com/api/iot/store';
+  static const transaksi = 'https://api.seresma.com/api/transaction/withdraw';
 }
