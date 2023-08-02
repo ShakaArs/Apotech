@@ -62,7 +62,7 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.NAVBARADMIN;
+  static const INITIAL = Routes.DATANASABAH;
 
   static final routes = [
     GetPage(
