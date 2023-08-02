@@ -4,10 +4,10 @@ import 'package:get/get.dart';
 import 'package:siresma/app/common/custom_textformfield.dart';
 import 'package:siresma/app/common/colors.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../../../common/button.dart';
+//import '../../../common/button.dart';
 import '../controllers/transaksi_controller.dart';
 
-class TransaksiView extends GetView<TabController> {
+class TransaksiView extends GetView<TransaksiController> {
   const TransaksiView({Key? key}) : super(key: key);
 
   @override
@@ -159,8 +159,11 @@ class TransaksiView extends GetView<TabController> {
                         obscureText: false,
                         enable: true,
                         controller: controller.AmountCtrl,
-                         onChanged: (value) {
-                           return controller.AmountCtrl.text = value;
+                          validator: (value) {
+                          return controller.validateAmount(value!);
+                        },
+                        onChanged: (value) {
+                         return controller.AmountCtrl.text = value;
                         },
                       ),
                   ],

@@ -1,6 +1,9 @@
 import 'dart:async';
 import 'dart:convert';
+//import 'dart:io';
+
 import 'package:flutter/material.dart';
+//import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:siresma/app/common/custom_snackbar.dart';
@@ -12,6 +15,15 @@ class TransaksiController extends GetxController {
   final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
   TextEditingController AmountCtrl = TextEditingController();
+
+  String? validateAmount(String value) {
+    if (value == null || value.isEmpty || value == ' ') {
+      return 'Silahkan masukan yang ingin ditarik';
+    }
+    {
+      return null;
+    }
+  }
 
   Future<void> Transaksi() async {
     try {
@@ -31,7 +43,7 @@ class TransaksiController extends GetxController {
         await prefs?.setInt("data", id);
         print(id);
         customAllertDialog(
-            "Succes", "penarikan saldo berhasil", 'succes');
+            "Succes", "Permintaan tarik saldo berhasil", 'succes');
       } else {
         customAllertDialog('Gagal', 'Permintaan tarik saldo anda terakhir masih kurang dari sebulan', 'error');
       }
