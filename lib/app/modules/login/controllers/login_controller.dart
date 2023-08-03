@@ -9,6 +9,7 @@ import 'package:http/http.dart' as https;
 import 'package:siresma/app/common/custom_snackbar.dart';
 
 import '../../../config/api.dart';
+import '../../../models/user.dart';
 
 class LoginController extends GetxController {
   final GlobalKey<FormState> loginFromKey = GlobalKey<FormState>();
@@ -79,12 +80,15 @@ class LoginController extends GetxController {
           // emailController.clear();
           // passwordController.clear();
           // await prefs?.setString("user_longname", user['user_longname']);
-          // UserList.userId = user['user_id'];
-          // UserList.userphone = user['user_phone'];
-          // UserList.userlongname = user['user_longname'];
-          // UserList.email = user['email'];
-          // UserList.userphoto = user['user_photo'];
-          // Get.offAllNamed('/dashboard');
+          UserList.id = user['user_id'];
+          UserList.full_name = user['user_phone'];
+          UserList.role = user['user_longname'];
+          UserList.phone = user['email'];
+          UserList.address = user['user_photo'];
+          UserList.no_kk = user['no_kk'];
+          UserList.profilePicture = user['profile_picture'];
+          UserList.location = user['location'];
+          Get.offAllNamed('/dashboard');
         } else {
           customAllertDialog('Gagal', 'Masuk Gagal', 'error');
         }

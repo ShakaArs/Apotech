@@ -1,5 +1,7 @@
 class API {
   static const login = 'https://api.siresma.com/api/auth/login';
+  static const otp = 'https://api.siresma.com/api/auth/verify';
+  static const create_otp = 'https://api.siresma.com/api/auth/otp/create';
   static const register = 'https://api.siresma.com/api/auth/registration';
   static const logout = 'https://api.siresma.com/api/auth/logout';
   static const bank_sampah = 'https://api.siresma.com/api/bank-sampah/list';

@@ -126,8 +126,8 @@ class RegisterController extends GetxController {
         print(responseData);
         print(ImageFile);
         var id = responseData["data"];
-        final SharedPreferences? prefs = await _prefs;
-        await prefs?.setInt("data", id);
+        final SharedPreferences prefs = await _prefs;
+        await prefs.setInt("id", id);
         print(id);
         customAllertDialog(
             "Succes", "Pendaftaran Sukses, Silahkan verifikasi OTP", 'succes');

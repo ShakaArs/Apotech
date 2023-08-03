@@ -1,67 +1,67 @@
-class Login {
-  final bool success;
-  final String message;
-  final String token;
-  final UserData data;
+class ApiResponse {
+  bool success;
+  String message;
+  String token;
+  UserData data;
 
-  Login({
-    required this.success,
-    required this.message,
-    required this.token,
-    required this.data,
-  });
+  ApiResponse(
+      {required this.success,
+      required this.message,
+      required this.token,
+      required this.data});
 
-  factory Login.fromJson(Map<String, dynamic> json) {
-    return Login(
+  factory ApiResponse.fromJson(Map<String, dynamic> json) {
+    return ApiResponse(
       success: json['success'],
       message: json['message'],
       token: json['token'],
       data: UserData.fromJson(json['data']),
     );
   }
-
-  Map<String, dynamic> toJson() {
-    return {
-      "success": success,
-      "message": message,
-      "token": token,
-      "data": data.toJson(),
-    };
-  }
 }
 
 class UserData {
-  final int id;
-  final String fullName;
-  final String phone;
-  final String address;
-  final String noKK;
+  int id;
+  String fullName;
+  String role;
+  String phone;
+  String address;
+  String location;
+  String noKk;
+  String profilePicture;
 
   UserData({
     required this.id,
     required this.fullName,
+    required this.role,
     required this.phone,
     required this.address,
-    required this.noKK,
+    required this.location,
+    required this.noKk,
+    required this.profilePicture,
   });
 
   factory UserData.fromJson(Map<String, dynamic> json) {
     return UserData(
       id: json['id'],
       fullName: json['full_name'],
+      role: json['role'],
       phone: json['phone'],
       address: json['address'],
-      noKK: json['no_kk'],
+      location: json['location'],
+      noKk: json['no_kk'],
+      profilePicture: json['profile_picture'],
     );
   }
+}
 
-  Map<String, dynamic> toJson() {
-    return {
-      'id': id,
-      'full_name': fullName,
-      'phone': phone,
-      'address': address,
-      'no_kk': noKK,
-    };
-  }
+class UserList {
+  static int? id;
+  static String? full_name;
+  static String? role;
+  static String? phone;
+  static String? address;
+  static String? location;
+  static String? no_kk;
+  static String? profilePicture;
 }
