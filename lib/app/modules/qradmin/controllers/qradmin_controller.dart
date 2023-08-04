@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -22,6 +23,46 @@ class QrAdminController extends GetxController {
     }
   }
 
+  void showSuccessAlert(BuildContext context, String message) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Sukses'),
+          content: Text(message),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Text('OK'),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  void showErrorAlert(BuildContext context, String message) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Gagal'),
+          content: Text(message),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Text('OK'),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   Future<void> Iots() async {
     try {
       var headers = {'Accept': 'application/json'};
@@ -37,17 +78,21 @@ class QrAdminController extends GetxController {
         // final SharedPreferences? prefs = await _prefs;
         // await prefs?.setString('token', token);
         // print(token);
-        print(response.body);
-        customAllertDialog("Succes", "Input Berat Sampah Berhasil", 'succes');
-        Timer(Duration(seconds: 2), () {
+        final jsonData = json.decode(response.body);
+        print(jsonData);
+        showSuccessAlert(
+            Get.overlayContext!, "Kode Berat anda :  ${jsonData['message']}");
+        Timer(Duration(seconds: 15), () {
           Get.offAllNamed('/qradmin');
         });
+        //Tambahkan print response.body untuk melihat response dari server
       } else {
-        customAllertDialog('Gagal', 'Input Berat Sampah  Gagal', 'error');
+        showErrorAlert(Get.overlayContext!, "Input Berat Sampah Gagal");
       }
     } catch (e) {
       Get.back();
-      customAllertDialog("Input Berat Sampah Gagal", e.toString(), 'error');
+      showErrorAlert(
+          Get.overlayContext!, "Input Berat Sampah Gagal: ${e.toString()}");
     }
   }
 
