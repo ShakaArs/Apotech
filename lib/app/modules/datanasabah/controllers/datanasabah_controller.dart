@@ -17,7 +17,7 @@ class DataNasabahController extends GetxController {
       var headers = {
         'Accept': 'application/json',
       };
-      var url = Uri.parse(API.data_nasabah);
+      var url = Uri.parse(API.detail_nasabah);
       http.Response response = await http.get(url, headers: headers);
       if (response.statusCode == 200) {
         var data = jsonDecode(response.body);
