@@ -118,7 +118,6 @@ class CustomeTextFieldSetorSampah extends StatelessWidget {
               fontSize: 14,
               fontWeight: FontWeight.bold,
               color: hints_text_setor),
-          border: InputBorder.none,
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(20),
             borderSide: BorderSide(
@@ -126,6 +125,12 @@ class CustomeTextFieldSetorSampah extends StatelessWidget {
             ),
           ),
           focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(20),
+            borderSide: BorderSide(
+              color: Colors.white,
+            ),
+          ),
+          border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(20),
             borderSide: BorderSide(
               color: Colors.white,

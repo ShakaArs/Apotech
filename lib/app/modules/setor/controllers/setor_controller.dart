@@ -2,16 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class SetorController extends GetxController {
-  TextEditingController TanggalPenyetorCtrl = TextEditingController();
-  TextEditingController NamaPenyetorCtrl = TextEditingController();
-  TextEditingController AlamatPenyetorCtrl = TextEditingController();
   TextEditingController _dateController = TextEditingController();
 
   Future<void> _selectDate(BuildContext context) async {
     final DateTime? picked = await showDatePicker(
       context: context,
       initialDate: DateTime.now(),
-      firstDate: DateTime(1945),
+      firstDate: DateTime(2000),
       lastDate: DateTime(2030),
     );
 

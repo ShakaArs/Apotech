@@ -69,31 +69,25 @@ class LoginController extends GetxController {
           var token = json["token"];
           var user = json["data"];
           print(user);
-          final SharedPreferences? prefs = await _prefs;
-          await prefs?.setString("token", token);
+          final SharedPreferences prefs = await _prefs;
+          await prefs.setString("token", token);
           print(token);
           customAllertDialog("Succes", "Masuk Berhasil", 'succes');
           Timer(Duration(seconds: 2), () {
             Get.offAllNamed('/navbar');
           });
-          // UserList.password = passwordController.text;
-          // emailController.clear();
-          // passwordController.clear();
-          // await prefs?.setString("user_longname", user['user_longname']);
-          UserList.id = user['user_id'];
-          UserList.full_name = user['user_phone'];
-          UserList.role = user['user_longname'];
-          UserList.phone = user['email'];
-          UserList.address = user['user_photo'];
+          UserList.full_name = user['full_name'];
+          // UserList.location = user['location'];
+          UserList.role = user['role'];
+          UserList.phone = user['phone'];
+          UserList.address = user['address'];
           UserList.no_kk = user['no_kk'];
           UserList.profilePicture = user['profile_picture'];
-          UserList.location = user['location'];
-          Get.offAllNamed('/dashboard');
         } else {
-          customAllertDialog('Gagal', 'Masuk Gagal', 'error');
+          customAllertDialog('Gagal', '${error}', 'error');
         }
       } else {
-        customAllertDialog('Gagal', 'Masuk Gagal', 'error');
+        customAllertDialog('Gagal', '${error}', 'error');
       }
     } catch (error) {
       customAllertDialog('Gagal', error.toString(), 'error');

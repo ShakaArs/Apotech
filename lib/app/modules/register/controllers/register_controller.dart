@@ -123,6 +123,7 @@ class RegisterController extends GetxController {
       String responseBody = await response.stream.bytesToString();
       var responseData = json.decode(responseBody);
       if (response.statusCode == 200) {
+        print(response);
         print(responseData);
         print(ImageFile);
         var id = responseData["data"];

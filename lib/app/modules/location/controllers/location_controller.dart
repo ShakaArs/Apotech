@@ -5,6 +5,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:siresma/app/config/api.dart';
 
 import '../../../models/dropdown_location.dart';
+import '../../../models/user.dart';
 
 class LocationController extends GetxController {
   var rt = <RTModel>[].obs;
@@ -56,18 +57,16 @@ class LocationController extends GetxController {
         'Accept': 'application/json',
         'Authorization': 'Bearer $token',
       };
-
       var body = {
         'trash_bank_id': selectedRT!.id.toString(),
         // Add other data fields here if needed
       };
-
       var url =
           Uri.parse(API.choose_bank_sampah); // Replace with your POST API URL
       var response = await https.post(url, headers: headers, body: body);
-
       if (response.statusCode == 200) {
-        print('Data posted successfully.');
+        final json = jsonDecode(response.body);
+        print(json);
         Get.offAllNamed('/navbar');
       } else {
         print('Failed to post data. Status code: ${response.statusCode}');

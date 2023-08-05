@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:otp_text_field/otp_text_field.dart';
+import 'package:otp_text_field/style.dart';
 import 'package:siresma/app/common/colors.dart';
-import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 
 import '../../../common/button.dart';
 import '../controllers/otp_controller.dart';
@@ -19,7 +20,11 @@ class OtpView extends GetView<OtpController> {
       body: SingleChildScrollView(
         child: GetBuilder<OtpController>(builder: (controller) {
           return Container(
-            padding: EdgeInsets.only(top: 50, left: 50, right: 50),
+            padding: EdgeInsets.only(
+              top: 50,
+              left: 50,
+              right: 50,
+            ),
             width: MediaQueryWidth,
             height: MediaQueryHeight,
             color: Colors.white,
@@ -61,15 +66,14 @@ class OtpView extends GetView<OtpController> {
                 SizedBox(
                   height: MediaQueryHeight * 0.07,
                 ),
-                OtpTextField(
-                  numberOfFields: 6,
-                  borderColor: primary,
+                OTPTextField(
+                  width: MediaQueryWidth,
+                  length: 6,
                   obscureText: true,
+                  outlineBorderRadius: 10,
+                  fieldStyle: FieldStyle.box,
                   keyboardType: TextInputType.number,
-                  //set to true to show as box or false to show as dash
-                  showFieldAsBox: true,
-                  //runs when a code is typed in
-                  onCodeChanged: (value) {
+                  onChanged: (value) {
                     controller.otpCtrl.text = value;
                   },
                 ),

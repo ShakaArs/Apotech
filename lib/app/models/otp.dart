@@ -1,26 +1,23 @@
+class ResponseModel {
+  final bool success;
+  final String message;
+  final dynamic data;
 
-import 'dart:convert';
+  ResponseModel({required this.success, required this.message, this.data});
 
-class UserData {
-  int userId;
-  int otpCode;
-
-  UserData({required this.userId, required this.otpCode});
-
-  // Factory method untuk membuat objek UserData dari JSON
-  factory UserData.fromJson(String jsonString) {
-    Map<String, dynamic> data = json.decode(jsonString);
-    return UserData(
-      userId: data['user_id'],
-      otpCode: data['otp_code'],
+  factory ResponseModel.fromJson(Map<String, dynamic> json) {
+    return ResponseModel(
+      success: json['success'] ?? false,
+      message: json['message'] ?? '',
+      data: json['data'],
     );
   }
 
-  // Method untuk mengubah objek UserData menjadi JSON
   Map<String, dynamic> toJson() {
-    return {
-      'user_id': userId,
-      'otp_code': otpCode,
-    };
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['success'] = this.success;
+    data['message'] = this.message;
+    data['data'] = this.data;
+    return data;
   }
 }

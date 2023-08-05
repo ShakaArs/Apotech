@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -9,24 +11,33 @@ class OtpController extends GetxController {
 
   Future<void> postOTP() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    // var token = prefs.getString("token");
-    // print(token);
-    var user_id = prefs.getInt("id");
-    print(user_id);
+    var userId = prefs.getInt("id");
+    String otp_code = otpCtrl.text;
     try {
       var headers = {
-        // 'Content-Type': 'application/json',
         'Accept': 'application/json',
-        // 'Authorization': 'Bearer $token'
       };
-      var body = {'user_id': user_id.toString(), 'otp_code': otpCtrl.text};
+      var body = jsonEncode({
+        'user_id': userId,
+        'otp_code': otp_code,
+      });
+      print(otp_code);
+      print(userId);
       var url = Uri.parse(API.otp); // Replace with your POST API URL
-      var response = await https.post(url, headers: headers, body: body);
+      var response = await https.post(
+        url,
+        headers: headers,
+        body: body,
+      );
+      var error = jsonDecode(response.body)['message'];
+      print(response);
       if (response.statusCode == 200) {
-        print('Verifikasi successfully.');
-        Get.offAllNamed('/navbar');
+        final jsonData = json.decode(response.body);
+        print(userId);
+        print(response);
+        Get.offAllNamed('/login');
       } else {
-        print('Failed to Verifikasi. Status code: ${response.statusCode}');
+        print(error);
       }
     } catch (e) {
       print('Error while posting data: $e');
