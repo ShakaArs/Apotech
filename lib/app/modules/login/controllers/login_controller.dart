@@ -66,23 +66,43 @@ class LoginController extends GetxController {
       if (response.statusCode == 200) {
         final json = jsonDecode(response.body);
         if (json["message"] == "Success") {
-          var token = json["token"];
-          var user = json["data"];
-          print(user);
-          final SharedPreferences prefs = await _prefs;
-          await prefs.setString("token", token);
-          print(token);
-          customAllertDialog("Succes", "Masuk Berhasil", 'succes');
-          Timer(Duration(seconds: 2), () {
-            Get.offAllNamed('/navbar');
-          });
-          UserList.full_name = user['full_name'];
-          UserList.location = user['location'];
-          UserList.role = user['role'];
-          UserList.phone = user['phone'];
-          UserList.address = user['address'];
-          UserList.no_kk = user['no_kk'];
-          UserList.profilePicture = user['profile_picture'];
+          if (json["data"]["role"] == "nasabah") {
+            var token = json["token"];
+            var user = json["data"];
+            print(user);
+            final SharedPreferences prefs = await _prefs;
+            await prefs.setString("token", token);
+            print(token);
+            customAllertDialog("Succes", "Masuk Berhasil", 'succes');
+            Timer(Duration(seconds: 2), () {
+              Get.offAllNamed('/navbar');
+            });
+            UserList.full_name = user['full_name'];
+            UserList.location = user['location'];
+            UserList.role = user['role'];
+            UserList.phone = user['phone'];
+            UserList.address = user['address'];
+            UserList.no_kk = user['no_kk'];
+            UserList.profilePicture = user['profile_picture'];
+          } else if (json["data"]["role"] == "pengelola") {
+            var token = json["token"];
+            var user = json["data"];
+            print(user);
+            final SharedPreferences prefs = await _prefs;
+            await prefs.setString("token", token);
+            print(token);
+            customAllertDialog("Succes", "Masuk Berhasil", 'succes');
+            Timer(Duration(seconds: 2), () {
+              Get.offAllNamed('/navbaradmin');
+            });
+            UserList.full_name = user['full_name'];
+            UserList.location = user['location'];
+            UserList.role = user['role'];
+            UserList.phone = user['phone'];
+            UserList.address = user['address'];
+            UserList.no_kk = user['no_kk'];
+            UserList.profilePicture = user['profile_picture'];
+          }
         } else {
           customAllertDialog('Gagal', '${error}', 'error');
         }
