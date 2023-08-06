@@ -175,7 +175,7 @@ class SetorView extends GetView<SetorController> {
                           ),
                           child: GestureDetector(
                             onTap: () {
-                              // controller.
+                              controller.selectDate(context);
                             },
                             child: TextFormField(
                               style: GoogleFonts.inter(),

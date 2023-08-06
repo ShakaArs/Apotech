@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as https;
 
+
 import '../../../config/api.dart';
 import '../../../models/location.dart';
 
@@ -40,7 +41,7 @@ class HomeController extends GetxController {
     fetchData();
     update();
   }
-  
+
   @override
   void onReady() {
     super.onReady();

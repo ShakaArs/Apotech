@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 class SetorController extends GetxController {
   TextEditingController _dateController = TextEditingController();
 
-  Future<void> _selectDate(BuildContext context) async {
+  Future<void> selectDate(BuildContext context) async {
     final DateTime? picked = await showDatePicker(
       context: context,
       initialDate: DateTime.now(),
