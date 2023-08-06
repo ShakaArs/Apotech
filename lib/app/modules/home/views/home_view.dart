@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:siresma/app/common/colors.dart';
 import 'package:siresma/app/common/custom_textformfield.dart';
+import '../../../models/user.dart';
 import '../controllers/home_controller.dart';
 
 class HomeView extends GetView<HomeController> {
@@ -13,245 +14,249 @@ class HomeView extends GetView<HomeController> {
   Widget build(BuildContext context) {
     final MediaQueryWidth = MediaQuery.of(context).size.width;
     final MediaQueryHeight = MediaQuery.of(context).size.height;
-    return Scaffold(
-      appBar: PreferredSize(
-        child: Container(
-          decoration: BoxDecoration(
-            color: primary,
-            borderRadius: BorderRadius.only(
-              bottomLeft: Radius.circular(30),
-              bottomRight: Radius.circular(30),
+    return GetBuilder<HomeController>(builder: (controller) {
+      return Scaffold(
+        appBar: PreferredSize(
+          child: Container(
+            decoration: BoxDecoration(
+              color: primary,
+              borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(30),
+                bottomRight: Radius.circular(30),
+              ),
+            ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Container(
+                  padding: EdgeInsets.only(left: 30, top: 40, right: 30),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Transform.scale(
+                        scale: 1.55,
+                        child: CircleAvatar(
+                          backgroundColor: Colors.grey.shade400,
+                          child: Icon(FontAwesomeIcons.solidUser,
+                              color: Colors.grey.shade300),
+                        ),
+                      ),
+                      SizedBox(
+                        width: MediaQueryWidth * 0.06,
+                      ),
+                      Text(
+                        'SIRESMA',
+                        style: GoogleFonts.inter(
+                          color: Colors.white,
+                          fontSize: 26,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                SizedBox(
+                  height: MediaQueryHeight * 0.01,
+                ),
+                Container(
+                  padding: EdgeInsets.symmetric(horizontal: 32),
+                  height: MediaQueryHeight * 0.06,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.only(
+                      bottomLeft: Radius.circular(30),
+                      bottomRight: Radius.circular(30),
+                    ),
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      "${UserList.location}" == null
+                          ? GestureDetector(
+                              onTap: () {
+                                Get.offAllNamed('/location');
+                              },
+                              child: Container(
+                                child: Row(
+                                  children: [
+                                    Icon(
+                                      FontAwesomeIcons.locationDot,
+                                      color: primary,
+                                    ),
+                                    SizedBox(
+                                      width: MediaQueryWidth * 0.01,
+                                    ),
+                                    reusableText('Location', Colors.black, 20,
+                                        FontWeight.bold),
+                                  ],
+                                ),
+                              ),
+                            )
+                          : reusableText("${UserList.location}", Colors.black,
+                              18, FontWeight.bold),
+                      GestureDetector(
+                        onTap: () {
+                          Get.offAllNamed('/evoucher');
+                        },
+                        child: Container(
+                          child: Row(
+                            children: [
+                              Image.asset(
+                                'assets/image/icon_evocher.png',
+                                scale: 2,
+                              ),
+                              SizedBox(
+                                width: MediaQueryWidth * 0.01,
+                              ),
+                              Text(
+                                'E-V',
+                                style: GoogleFonts.inter(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+              ],
             ),
           ),
+          preferredSize: Size.fromHeight(MediaQueryHeight * 0.18),
+        ),
+        body: Container(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               Container(
-                padding: EdgeInsets.only(left: 30, top: 40, right: 30),
+                width: MediaQueryWidth,
+                height: MediaQueryHeight * 0.25,
+                child: Image.asset(
+                  'assets/image/image 10.png',
+                  fit: BoxFit.cover,
+                ),
+              ),
+              SizedBox(
+                height: MediaQueryHeight * 0.02,
+              ),
+              Container(
+                padding: EdgeInsets.only(left: 10),
+                height: MediaQueryHeight * 0.2,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Transform.scale(
-                      scale: 1.55,
-                      child: CircleAvatar(
-                        backgroundColor: Colors.grey.shade400,
-                        child: Icon(FontAwesomeIcons.solidUser,
-                            color: Colors.grey.shade300),
-                      ),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Image.asset(
+                          'assets/image/pp_6-01 1.png',
+                          scale: 1.3,
+                        ),
+                        SizedBox(
+                          height: MediaQueryHeight * 0.01,
+                        ),
+                        Text(
+                          'PPKO BEMFIK\nUDINUS',
+                          textAlign: TextAlign.center,
+                          style: GoogleFonts.inter(
+                            fontSize: 14,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
                     ),
                     SizedBox(
-                      width: MediaQueryWidth * 0.06,
+                      width: MediaQueryWidth * 0.04,
                     ),
-                    Text(
-                      'SIRESMA',
-                      style: GoogleFonts.inter(
-                        color: Colors.white,
-                        fontSize: 26,
-                        fontWeight: FontWeight.bold,
-                      ),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Container(
+                          height: MediaQueryHeight * 0.13,
+                          padding: EdgeInsets.all(5),
+                          alignment: Alignment.center,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(20),
+                            color: bg_text,
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.black.withOpacity(
+                                    0.5), // Warna shadow dan opacity
+                                spreadRadius:
+                                    3, // Jarak seberapa lebar shadow akan menyebar
+                                blurRadius: 5,
+                                offset: Offset
+                                    .zero, // Jarak seberapa blur shadow akan terlihat
+                              ),
+                            ],
+                          ),
+                          child: Text(
+                            'Implementasi Ekonomi Sirkular melalui\nPengembangan Rumah Sampah Digital\n4.0 Resik Mandiri di Kelurahan Sambiroto\nberbasis  sustainable zero waste\nManajemen',
+                            style: GoogleFonts.inter(
+                              fontSize: 11,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                        ElevatedButton(
+                          onPressed: () {},
+                          child: Text(
+                            'Cari Tahu',
+                            style: GoogleFonts.inter(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 16),
+                          ),
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: primary,
+                            fixedSize: Size(
+                              MediaQueryWidth * 0.3,
+                              36,
+                            ),
+                            elevation: 4,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(11),
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                   ],
                 ),
               ),
-              SizedBox(
-                height: MediaQueryHeight * 0.01,
-              ),
               Container(
-                padding: EdgeInsets.symmetric(horizontal: 32),
-                height: MediaQueryHeight * 0.06,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(30),
-                    bottomRight: Radius.circular(30),
-                  ),
-                ),
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    GestureDetector(
-                      onTap: () {
-                        Get.offAllNamed('/location');
-                      },
-                      child: Container(
-                        child: Row(
-                          children: [
-                            Icon(
-                              FontAwesomeIcons.locationDot,
-                              color: primary,
-                            ),
-                            SizedBox(
-                              width: MediaQueryWidth * 0.01,
-                            ),
-                            reusableText(
-                                'Location', Colors.black, 20, FontWeight.bold),
-                          ],
-                        ),
+                    Image.asset(
+                      'assets/image/MASKOT_SIRESMA.png',
+                      scale: 1.75,
+                    ),
+                    SizedBox(
+                      width: MediaQueryWidth * 0.13,
+                    ),
+                    Container(
+                      height: MediaQueryHeight * 0.13,
+                      width: MediaQueryWidth * 0.43,
+                      color: Colors.amber,
+                      child: Image.asset(
+                        'assets/image/image 19.png',
+                        fit: BoxFit.cover,
                       ),
                     ),
-                    GestureDetector(
-                      onTap: () {
-                        Get.offAllNamed('/evoucher');
-                      },
-                      child: Container(
-                        child: Row(
-                          children: [
-                            Image.asset(
-                              'assets/image/icon_evocher.png',
-                              scale: 2,
-                            ),
-                            SizedBox(
-                              width: MediaQueryWidth * 0.01,
-                            ),
-                            Text(
-                              'E-V',
-                              style: GoogleFonts.inter(
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    )
                   ],
                 ),
               ),
             ],
           ),
         ),
-        preferredSize: Size.fromHeight(MediaQueryHeight * 0.18),
-      ),
-      body: Container(
-        child: Column(
-          children: [
-            Container(
-              width: MediaQueryWidth,
-              height: MediaQueryHeight * 0.25,
-              child: Image.asset(
-                'assets/image/image 10.png',
-                fit: BoxFit.cover,
-              ),
-            ),
-            SizedBox(
-              height: MediaQueryHeight * 0.02,
-            ),
-            Container(
-              padding: EdgeInsets.only(left: 10),
-              height: MediaQueryHeight * 0.2,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Image.asset(
-                        'assets/image/pp_6-01 1.png',
-                        scale: 1.3,
-                      ),
-                      SizedBox(
-                        height: MediaQueryHeight * 0.01,
-                      ),
-                      Text(
-                        'PPKO BEMFIK\nUDINUS',
-                        textAlign: TextAlign.center,
-                        style: GoogleFonts.inter(
-                          fontSize: 14,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    width: MediaQueryWidth * 0.04,
-                  ),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Container(
-                        height: MediaQueryHeight * 0.13,
-                        padding: EdgeInsets.all(5),
-                        alignment: Alignment.center,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                          color: bg_text,
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.black
-                                  .withOpacity(0.5), // Warna shadow dan opacity
-                              spreadRadius:
-                                  3, // Jarak seberapa lebar shadow akan menyebar
-                              blurRadius: 5,
-                              offset: Offset
-                                  .zero, // Jarak seberapa blur shadow akan terlihat
-                            ),
-                          ],
-                        ),
-                        child: Text(
-                          'Implementasi Ekonomi Sirkular melalui\nPengembangan Rumah Sampah Digital\n4.0 Resik Mandiri di Kelurahan Sambiroto\nberbasis  sustainable zero waste\nManajemen',
-                          style: GoogleFonts.inter(
-                            fontSize: 11,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ),
-                      ElevatedButton(
-                        onPressed: () {},
-                        child: Text(
-                          'Cari Tahu',
-                          style: GoogleFonts.inter(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 16),
-                        ),
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: primary,
-                          fixedSize: Size(
-                            MediaQueryWidth * 0.3,
-                            36,
-                          ),
-                          elevation: 4,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(11),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ),
-            Container(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Image.asset(
-                    'assets/image/MASKOT_SIRESMA.png',
-                    scale: 1.75,
-                  ),
-                  SizedBox(
-                    width: MediaQueryWidth * 0.13,
-                  ),
-                  Container(
-                    height: MediaQueryHeight * 0.13,
-                    width: MediaQueryWidth * 0.43,
-                    color: Colors.amber,
-                    child: Image.asset(
-                      'assets/image/image 19.png',
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
-      ),
-
-      // Referensi Navbar
-    );
+      );
+      controller.update();
+    });
   }
 }

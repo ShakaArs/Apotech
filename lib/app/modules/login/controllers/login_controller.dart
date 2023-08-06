@@ -77,7 +77,7 @@ class LoginController extends GetxController {
             Get.offAllNamed('/navbar');
           });
           UserList.full_name = user['full_name'];
-          // UserList.location = user['location'];
+          UserList.location = user['location'];
           UserList.role = user['role'];
           UserList.phone = user['phone'];
           UserList.address = user['address'];
