@@ -6,6 +6,8 @@ import 'package:siresma/app/common/colors.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../common/button.dart';
 import '../controllers/transaksiadmin_controller.dart';
+import '../../../models/transaksiadmin.dart';
+import '../../../models/transaksimasuk.dart';
 
 class TransaksiadminView extends GetView<TabController> {
   const TransaksiadminView({Key? key}) : super(key: key);
@@ -14,6 +16,15 @@ class TransaksiadminView extends GetView<TabController> {
   Widget build(BuildContext context) {
     final MediaQueryWidth = MediaQuery.of(context).size.width;
     final MediaQueryHeight = MediaQuery.of(context).size.height;
+
+    final List<String> items = [
+      'Item 1',
+      'Item 2',
+      'Item 3',
+      'Item 4',
+      'Item 5',
+    ];
+
     return Scaffold(
       body: SingleChildScrollView(
         child: Container(
@@ -78,7 +89,7 @@ class TransaksiadminView extends GetView<TabController> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Text(
-                      'Flora Farensia',
+                      '${TransaksiMasukList.name}',
                       style: GoogleFonts.inter(
                           fontWeight: FontWeight.bold,
                           color: Colors.white,
@@ -122,22 +133,22 @@ class TransaksiadminView extends GetView<TabController> {
                   ],
                   rows: [
                     DataRow(cells: [
-                      DataCell(Text('#STR001')),
-                      DataCell(Text('27 Juni 2023')),
-                      DataCell(Text('5 kg')),
-                      DataCell(Text('Rp.14000')),
+                      DataCell(Text('${TransaksiAdminList.code}')),
+                      DataCell(Text('${TransaksiAdminList.created_at}')),
+                      DataCell(Text('${TransaksiAdminList.weight}')),
+                      DataCell(Text('${TransaksiAdminList.amount}')),
                     ]),
                     DataRow(cells: [
-                      DataCell(Text('#STR002')),
-                      DataCell(Text('28 Agustus 2023')),
-                      DataCell(Text('1.4 kg')),
-                      DataCell(Text('Rp.8000')),
+                      DataCell(Text('${TransaksiAdminList.code}')),
+                      DataCell(Text('${TransaksiAdminList.created_at}')),
+                      DataCell(Text('${TransaksiAdminList.weight}')),
+                      DataCell(Text('${TransaksiAdminList.amount}')),
                     ]),
                     DataRow(cells: [
-                      DataCell(Text('#STR003')),
-                      DataCell(Text('28 September 2023')),
-                      DataCell(Text('2.4 kg')),
-                      DataCell(Text('Rp.9000')),
+                      DataCell(Text('${TransaksiAdminList.code}')),
+                      DataCell(Text('${TransaksiAdminList.created_at}')),
+                      DataCell(Text('${TransaksiAdminList.weight}')),
+                      DataCell(Text('${TransaksiAdminList.amount}')),
                     ])
                   ],
                 ),
@@ -177,9 +188,9 @@ class TransaksiadminView extends GetView<TabController> {
                   ],
                   rows: [
                     DataRow(cells: [
-                      DataCell(Text('Rp.30000')),
-                      DataCell(Text('Rp.18000')),
-                      DataCell(Text('Rp.12000')),
+                      DataCell(Text('${TransaksiAdminList.total_income}')),
+                      DataCell(Text('${TransaksiAdminList.user_income}')),
+                      DataCell(Text('${TransaksiAdminList.admin_income}')),
                     ]),
                   ],
                 ),

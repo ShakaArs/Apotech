@@ -19,4 +19,10 @@ class API {
       'https://api.siresma.com/api/admin/nasabah/details';
   static const transaksi_admin =
       'https://api.siresma.com/api/admin/nasabah/details/transactions';
+  static const transaskimasuk =
+      'https://api.siresma.com/api/admin/transactions/incoming';
+  static const transaksikeluar =
+      'https://api.siresma.com/api/admin/transactions/outcoming';
+  static const approvetransaksi =
+      'https://api.siresma.com/api/admin/nasabah/details/transactions/approve';
 }

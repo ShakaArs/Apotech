@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:siresma/app/common/custom_textformfield.dart';
 import 'package:siresma/app/common/colors.dart';
 import 'package:google_fonts/google_fonts.dart';
+import '../../../models/transaksimasuk.dart';
 
 class TransaksiMasukView extends GetView<TabController> {
   const TransaksiMasukView({Key? key}) : super(key: key);
@@ -108,7 +109,7 @@ class TransaksiMasukView extends GetView<TabController> {
                               textAlign: TextAlign.center,
                             ),
                             reusableText(
-                                'STR001',
+                                '${TransaksiMasukList.code}',
                                 Color.fromARGB(255, 39, 178, 83),
                                 15,
                                 FontWeight.bold),
@@ -124,7 +125,7 @@ class TransaksiMasukView extends GetView<TabController> {
                               textAlign: TextAlign.center,
                             ),
                             Text(
-                              'Flora Farensia',
+                              '${TransaksiMasukList.name}',
                               style: GoogleFonts.inter(
                                 fontSize: 16,
                                 fontWeight: FontWeight.bold,
@@ -149,7 +150,7 @@ class TransaksiMasukView extends GetView<TabController> {
                               textAlign: TextAlign.center,
                             ),
                             reusableText(
-                                'Rp 20.000',
+                                '${TransaksiMasukList.amount}',
                                 Color.fromARGB(255, 39, 178, 83),
                                 15,
                                 FontWeight.bold),
@@ -165,7 +166,7 @@ class TransaksiMasukView extends GetView<TabController> {
                               textAlign: TextAlign.center,
                             ),
                             Text(
-                              '27 Juni 2023',
+                              '${TransaksiMasukList.store_date}',
                               style: GoogleFonts.inter(
                                 fontSize: 16,
                                 fontWeight: FontWeight.bold,
@@ -210,7 +211,7 @@ class TransaksiMasukView extends GetView<TabController> {
                               textAlign: TextAlign.center,
                             ),
                             reusableText(
-                                'STR002',
+                                '${TransaksiMasukList.code}',
                                 Color.fromARGB(255, 39, 178, 83),
                                 15,
                                 FontWeight.bold),
@@ -226,7 +227,7 @@ class TransaksiMasukView extends GetView<TabController> {
                               textAlign: TextAlign.center,
                             ),
                             Text(
-                              'Shania Gracia',
+                              '${TransaksiMasukList.name}',
                               style: GoogleFonts.inter(
                                 fontSize: 16,
                                 fontWeight: FontWeight.bold,
@@ -251,7 +252,7 @@ class TransaksiMasukView extends GetView<TabController> {
                               textAlign: TextAlign.center,
                             ),
                             reusableText(
-                                'Rp 40.000',
+                                '${TransaksiMasukList.amount}',
                                 Color.fromARGB(255, 39, 178, 83),
                                 15,
                                 FontWeight.bold),
@@ -267,7 +268,7 @@ class TransaksiMasukView extends GetView<TabController> {
                               textAlign: TextAlign.center,
                             ),
                             Text(
-                              '29 Juni 2023',
+                              '${TransaksiMasukList.store_date}',
                               style: GoogleFonts.inter(
                                 fontSize: 16,
                                 fontWeight: FontWeight.bold,

@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:siresma/app/common/custom_textformfield.dart';
 import 'package:siresma/app/common/colors.dart';
 import 'package:google_fonts/google_fonts.dart';
+import '../../../models/transaksikeluar.dart';
 
 class TransaksiKeluarView extends GetView<TabController> {
   const TransaksiKeluarView({Key? key}) : super(key: key);
@@ -108,7 +109,7 @@ class TransaksiKeluarView extends GetView<TabController> {
                               textAlign: TextAlign.center,
                             ),
                             reusableText(
-                                'STR001',
+                                '${TransaksiKeluarList.code}',
                                 Color.fromARGB(255, 39, 178, 83),
                                 15,
                                 FontWeight.bold),
@@ -124,7 +125,7 @@ class TransaksiKeluarView extends GetView<TabController> {
                               textAlign: TextAlign.center,
                             ),
                             Text(
-                              'Flora Farensia',
+                              '${TransaksiKeluarList.name}',
                               style: GoogleFonts.inter(
                                 fontSize: 16,
                                 fontWeight: FontWeight.bold,
@@ -150,7 +151,7 @@ class TransaksiKeluarView extends GetView<TabController> {
                               textAlign: TextAlign.center,
                             ),
                             reusableText(
-                                'Rp 20.000',
+                                '${TransaksiKeluarList.amount}',
                                 Color.fromARGB(255, 39, 178, 83),
                                 15,
                                 FontWeight.bold),
