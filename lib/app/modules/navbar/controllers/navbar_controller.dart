@@ -33,15 +33,6 @@ class NavbarController extends GetxController {
       ),
       PersistentBottomNavBarItem(
         icon: Icon(
-          FontAwesomeIcons.trash,
-          size: 24,
-        ),
-        activeColorPrimary: Colors.white,
-        activeColorSecondary: primary,
-        inactiveColorPrimary: Colors.white,
-      ),
-      PersistentBottomNavBarItem(
-        icon: Icon(
           FontAwesomeIcons.trashCanArrowUp,
           size: 24,
         ),
@@ -51,7 +42,16 @@ class NavbarController extends GetxController {
       ),
       PersistentBottomNavBarItem(
         icon: Icon(
-          FontAwesomeIcons.person,
+          FontAwesomeIcons.trashCan,
+          size: 24,
+        ),
+        activeColorPrimary: Colors.white,
+        activeColorSecondary: primary,
+        inactiveColorPrimary: Colors.white,
+      ),
+      PersistentBottomNavBarItem(
+        icon: Icon(
+          FontAwesomeIcons.solidUser,
           size: 24,
         ),
         activeColorPrimary: Colors.white,

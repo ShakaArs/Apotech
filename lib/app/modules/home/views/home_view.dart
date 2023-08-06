@@ -34,14 +34,23 @@ class HomeView extends GetView<HomeController> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Transform.scale(
-                        scale: 1.55,
-                        child: CircleAvatar(
-                          backgroundColor: Colors.grey.shade400,
-                          child: Icon(FontAwesomeIcons.solidUser,
-                              color: Colors.grey.shade300),
-                        ),
-                      ),
+                      "${UserList.profilePicture}" == ''
+                          ? Transform.scale(
+                              scale: 1.55,
+                              child: CircleAvatar(
+                                backgroundColor: Colors.grey.shade400,
+                                child: Icon(FontAwesomeIcons.solidUser,
+                                    color: Colors.grey.shade300),
+                              ),
+                            )
+                          : Transform.scale(
+                              scale: 1.55,
+                              child: CircleAvatar(
+                                backgroundColor: Colors.grey.shade400,
+                                backgroundImage:
+                                    NetworkImage("${UserList.profilePicture}"),
+                              ),
+                            ),
                       SizedBox(
                         width: MediaQueryWidth * 0.06,
                       ),
@@ -73,7 +82,7 @@ class HomeView extends GetView<HomeController> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      "${UserList.location}" == null
+                      "${UserList.location}" == ''
                           ? GestureDetector(
                               onTap: () {
                                 Get.offAllNamed('/location');
@@ -94,8 +103,19 @@ class HomeView extends GetView<HomeController> {
                                 ),
                               ),
                             )
-                          : reusableText("${UserList.location}", Colors.black,
-                              18, FontWeight.bold),
+                          : Row(
+                              children: [
+                                Icon(
+                                  FontAwesomeIcons.locationDot,
+                                  color: primary,
+                                ),
+                                SizedBox(
+                                  width: MediaQueryWidth * 0.01,
+                                ),
+                                reusableText("${UserList.location}",
+                                    Colors.black, 18, FontWeight.bold),
+                              ],
+                            ),
                       GestureDetector(
                         onTap: () {
                           Get.offAllNamed('/evoucher');

@@ -8,6 +8,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../common/button.dart';
 import '../../../common/custom_textformfield.dart';
+import '../../../models/user.dart';
 import '../controllers/profil_controller.dart';
 import 'package:flutter/material.dart';
 
@@ -50,14 +51,23 @@ class ProfilView extends GetView<ProfilController> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Transform.scale(
-                        scale: 1.55,
-                        child: CircleAvatar(
-                          backgroundColor: Colors.grey.shade400,
-                          child: Icon(FontAwesomeIcons.solidUser,
-                              color: Colors.grey.shade300),
-                        ),
-                      ),
+                      "${UserList.profilePicture}" == ''
+                          ? Transform.scale(
+                              scale: 1.55,
+                              child: CircleAvatar(
+                                backgroundColor: Colors.grey.shade400,
+                                child: Icon(FontAwesomeIcons.solidUser,
+                                    color: Colors.grey.shade300),
+                              ),
+                            )
+                          : Transform.scale(
+                              scale: 1.55,
+                              child: CircleAvatar(
+                                backgroundColor: Colors.grey.shade400,
+                                backgroundImage:
+                                    NetworkImage("${UserList.profilePicture}"),
+                              ),
+                            ),
                       SizedBox(
                         width: MediaQueryWidth * 0.07,
                       ),
@@ -65,18 +75,43 @@ class ProfilView extends GetView<ProfilController> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          reusableText('Flora Farensia', Colors.black, 17,
-                              FontWeight.bold),
+                          reusableText('${UserList.full_name}', Colors.black,
+                              17, FontWeight.bold),
                           SizedBox(
                             height: MediaQueryHeight * 0.004,
                           ),
-                          reusableText('08762376381', Colors.black, 13,
-                              FontWeight.normal),
+                          Row(
+                            children: [
+                              Icon(
+                                FontAwesomeIcons.mobile,
+                                size: 13,
+                                color: primary,
+                              ),
+                              SizedBox(
+                                width: MediaQueryWidth * 0.02,
+                              ),
+                              reusableText('${UserList.phone}', Colors.black,
+                                  13, FontWeight.normal),
+                            ],
+                          ),
                           SizedBox(
                             height: MediaQueryHeight * 0.002,
                           ),
-                          reusableText('florafaren@gmail.com', Colors.black, 13,
-                              FontWeight.normal),
+                          Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Icon(
+                                FontAwesomeIcons.solidAddressCard,
+                                size: 13,
+                                color: primary,
+                              ),
+                              SizedBox(
+                                width: MediaQueryWidth * 0.02,
+                              ),
+                              reusableText('${UserList.no_kk}', Colors.black,
+                                  13, FontWeight.normal),
+                            ],
+                          ),
                         ],
                       ),
                     ],
@@ -132,9 +167,10 @@ class ProfilView extends GetView<ProfilController> {
                 onTap: () {
                   Get.toNamed('/navbartabungan');
                 },
-                leading: Image.asset(
-                  'assets/image/icon_tabungan2.png',
-                  scale: 1.4,
+                leading: Icon(
+                  FontAwesomeIcons.trashCan,
+                  color: primary,
+                  size: 32,
                 ),
                 title: reusableText(
                     'Tabungan Sampah', Colors.black, 16, FontWeight.bold),
@@ -146,10 +182,7 @@ class ProfilView extends GetView<ProfilController> {
                 onTap: () {
                   Get.toNamed('/evoucher');
                 },
-                leading: Image.asset(
-                  'assets/image/icon_evocher.png',
-                  scale: 1.4,
-                ),
+                leading: Icon(FontAwesomeIcons.percent),
                 title: reusableText(
                     'E-Voucher', Colors.black, 16, FontWeight.bold),
               ),
@@ -160,9 +193,10 @@ class ProfilView extends GetView<ProfilController> {
                 onTap: () {
                   Get.toNamed('/qrcode');
                 },
-                leading: Image.asset(
-                  'assets/image/icon_qr.png',
-                  scale: 1.4,
+                leading: Icon(
+                  FontAwesomeIcons.qrcode,
+                  color: primary,
+                  size: 32,
                 ),
                 title: reusableText(
                     'QR code Akun', Colors.black, 16, FontWeight.bold),
@@ -174,9 +208,10 @@ class ProfilView extends GetView<ProfilController> {
                 onTap: () {
                   Get.toNamed('/keamanan');
                 },
-                leading: Image.asset(
-                  'assets/image/icon_keamanan.png',
-                  scale: 1.4,
+                leading: Icon(
+                  FontAwesomeIcons.shieldHalved,
+                  color: primary,
+                  size: 32,
                 ),
                 title: reusableText(
                     'Keamanan Akun', Colors.black, 16, FontWeight.bold),
@@ -218,9 +253,10 @@ class ProfilView extends GetView<ProfilController> {
                 onTap: () {
                   Get.toNamed('/privasi');
                 },
-                leading: Image.asset(
-                  'assets/image/icon_privasi.png',
-                  scale: 1.4,
+                leading: Icon(
+                  FontAwesomeIcons.lock,
+                  color: primary,
+                  size: 32,
                 ),
                 title: reusableText(
                     'Ketentuan Privasi', Colors.black, 16, FontWeight.bold),
@@ -229,12 +265,13 @@ class ProfilView extends GetView<ProfilController> {
                 onTap: () {
                   Get.toNamed('/login');
                 },
-                leading: Image.asset(
-                  'assets/image/iconlogout.png',
-                  scale: 1.4,
+                leading: Icon(
+                  FontAwesomeIcons.rightFromBracket,
+                  color: primary,
+                  size: 32,
                 ),
-                title: reusableText('Logout', Color.fromARGB(255, 244, 2, 2),
-                    17, FontWeight.bold),
+                title:
+                    reusableText('Logout', Colors.black, 17, FontWeight.bold),
               ),
             ],
           ),

@@ -11,32 +11,31 @@ class OtpController extends GetxController {
 
   Future<void> postOTP() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    var userId = prefs.getInt("id");
+    final int? userId = prefs.getInt("id");
     String otp_code = otpCtrl.text;
     try {
       var headers = {
         'Accept': 'application/json',
+        'Content-Type': 'application/json',
       };
-      var body = jsonEncode({
+      var body = {
         'user_id': userId,
         'otp_code': otp_code,
-      });
-      print(otp_code);
-      print(userId);
+      };
       var url = Uri.parse(API.otp); // Replace with your POST API URL
       var response = await https.post(
         url,
         headers: headers,
-        body: body,
+        body: jsonEncode(body),
       );
       var error = jsonDecode(response.body)['message'];
-      print(response);
       if (response.statusCode == 200) {
         final jsonData = json.decode(response.body);
-        print(userId);
-        print(response);
+        print(jsonData);
         Get.offAllNamed('/login');
       } else {
+        print(userId);
+        print(otp_code);
         print(error);
       }
     } catch (e) {
