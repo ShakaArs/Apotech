@@ -1,13 +1,18 @@
+import 'dart:async';
 import 'dart:convert';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as https;
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:siresma/app/common/colors.dart';
+import 'package:siresma/app/common/custom_snackbar.dart';
 import 'package:siresma/app/config/api.dart';
 
 import '../../../models/dropdown_location.dart';
 import '../../../models/user.dart';
 
 class LocationController extends GetxController {
+  final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
+
   var rt = <RTModel>[].obs;
   RTModel? selectedRT;
 
@@ -50,7 +55,11 @@ class LocationController extends GetxController {
     var token = prefs.getString("token");
     try {
       if (selectedRT == null) {
-        print("Please select an RTModel object first.");
+        Get.snackbar(
+          "Error",
+          "Pilih Lokasi terlebih dahulu",
+          snackPosition: SnackPosition.TOP,
+        );
         return;
       }
       var headers = {
@@ -64,15 +73,25 @@ class LocationController extends GetxController {
       var url =
           Uri.parse(API.choose_bank_sampah); // Replace with your POST API URL
       var response = await https.post(url, headers: headers, body: body);
+      var succes = jsonDecode(response.body)['message'];
+
+      var error = jsonDecode(response.body)['message'];
       if (response.statusCode == 200) {
         final json = jsonDecode(response.body);
+        var trash_bank_id = json["data"];
+        final SharedPreferences prefs = await _prefs;
+        await prefs.setInt("trash_bank_id", trash_bank_id);
+        print(trash_bank_id);
         print(json);
-        Get.offAllNamed('/navbar');
+        customAllertDialog("Sukses", "${succes}", "succes");
+        Timer(Duration(seconds: 2), () {
+          Get.offAllNamed('/navbar');
+        });
       } else {
-        print('Failed to post data. Status code: ${response.statusCode}');
+        customAllertDialog("Gagal", "${error}", 'error');
       }
     } catch (e) {
-      print('Error while posting data: $e');
+      customAllertDialog("Post Data Gagal", e.toString(), 'error');
     }
   }
 

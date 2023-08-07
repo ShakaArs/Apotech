@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:siresma/app/common/custom_textformfield.dart';
 import 'package:siresma/app/common/colors.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:siresma/app/models/kategori_sampah.dart';
 import '../../../common/button.dart';
 import '../../../models/user.dart';
 import '../controllers/setor_controller.dart';
@@ -13,7 +14,8 @@ class SetorView extends GetView<SetorController> {
 
   @override
   Widget build(BuildContext context) {
-    String? selectedValue;
+    TextEditingController _dateController = TextEditingController();
+
     final MediaQueryWidth = MediaQuery.of(context).size.width;
     final MediaQueryHeight = MediaQuery.of(context).size.height;
 
@@ -98,33 +100,28 @@ class SetorView extends GetView<SetorController> {
                         SizedBox(
                           height: MediaQueryHeight * 0.01,
                         ),
-                        DropdownButton<String?>(
-                          borderRadius: BorderRadius.circular(10),
-                          hint: Text("Logam"),
+                        DropdownButtonFormField<Kategori>(
+                          value: null,
+                          hint: Text('Select Kategori'),
+                          onChanged: (Kategori? kategori) {
+                            controller.onCategorySelected(kategori);
+                          },
                           style: GoogleFonts.inter(
+                            color: Colors.black,
                             fontSize: 15,
                           ),
-                          elevation: 8,
                           dropdownColor: primary,
-                          value: selectedValue,
-                          onChanged: (value) {
-                            selectedValue = value;
-                          },
-                          items: [
-                            "Logam",
-                            "Plastik",
-                            "Botol",
-                            "Kain",
-                            "Daun Kering",
-                            "Sayuran",
-                            "Buah"
-                          ]
-                              .map<DropdownMenuItem<String?>>(
-                                  (e) => DropdownMenuItem(
-                                        child: Text(e.toString()),
-                                        value: e,
-                                      ))
-                              .toList(),
+                          decoration: InputDecoration(
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                          ),
+                          items: controller.kategori.map((kategori) {
+                            return DropdownMenuItem<Kategori>(
+                              value: kategori,
+                              child: Text(kategori.categoryName),
+                            );
+                          }).toList(),
                         ),
                       ],
                     ),
@@ -174,12 +171,23 @@ class SetorView extends GetView<SetorController> {
                             ],
                           ),
                           child: GestureDetector(
-                            onTap: () {
-                              controller.selectDate(context);
+                            onTap: () async {
+                              DateTime? newDate = await showDatePicker(
+                                context: context,
+                                initialDate: controller.selectedDate.value,
+                                firstDate: DateTime(2020),
+                                lastDate: DateTime(2100),
+                              );
+                              if (newDate != null) {
+                                controller.updateSelectedDate(newDate);
+                                _dateController.text =
+                                    "${newDate.day}-${newDate.month}-${newDate.year}";
+                              }
                             },
                             child: TextFormField(
                               style: GoogleFonts.inter(),
                               enabled: false,
+                              controller: _dateController,
                               decoration: InputDecoration(
                                 suffixIcon: Icon(
                                   FontAwesomeIcons.calendarPlus,
@@ -249,7 +257,9 @@ class SetorView extends GetView<SetorController> {
                       fixedSize: Size(
                           MediaQueryWidth * 0.35, MediaQueryHeight * 0.025),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      controller.postDataToApi();
+                    },
                     child: Text(
                       "Setor",
                       style: GoogleFonts.inter(
