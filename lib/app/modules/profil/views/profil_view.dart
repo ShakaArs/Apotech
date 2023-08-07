@@ -182,7 +182,10 @@ class ProfilView extends GetView<ProfilController> {
                 onTap: () {
                   Get.toNamed('/evoucher');
                 },
-                leading: Icon(FontAwesomeIcons.percent),
+                leading: Icon(
+                  FontAwesomeIcons.percent,
+                  color: primary,
+                ),
                 title: reusableText(
                     'E-Voucher', Colors.black, 16, FontWeight.bold),
               ),

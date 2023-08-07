@@ -118,19 +118,19 @@ class NasabahDetailView extends GetView<NasabahDetailController> {
                         SizedBox(
                           height: MediaQueryHeight * 0.06,
                         ),
-                        Text(
-                          'Nomor Kartu Keluarga',
-                          style: GoogleFonts.inter(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                          ),
-                          textAlign: TextAlign.center,
-                        ),
-                        reusableText(nasabah.noKK, hints_text_setor, 16,
-                            FontWeight.bold),
-                        SizedBox(
-                          height: MediaQueryHeight * 0.02,
-                        ),
+                        // Text(
+                        //   'Nomor Kartu Keluarga',
+                        //   style: GoogleFonts.inter(
+                        //     fontSize: 18,
+                        //     fontWeight: FontWeight.bold,
+                        //   ),
+                        //   textAlign: TextAlign.center,
+                        // ),
+                        // reusableText(nasabah., hints_text_setor, 16,
+                        //     FontWeight.bold),
+                        // SizedBox(
+                        //   height: MediaQueryHeight * 0.02,
+                        // ),
                         Text(
                           'Nomor Handphone',
                           style: GoogleFonts.inter(
@@ -144,19 +144,19 @@ class NasabahDetailView extends GetView<NasabahDetailController> {
                         SizedBox(
                           height: MediaQueryHeight * 0.02,
                         ),
-                        Text(
-                          'Alamat',
-                          style: GoogleFonts.inter(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                          ),
-                          textAlign: TextAlign.center,
-                        ),
-                        reusableText(nasabah.address, hints_text_setor, 16,
-                            FontWeight.bold),
-                        SizedBox(
-                          height: MediaQueryHeight * 0.03,
-                        ),
+                        // Text(
+                        //   'Alamat',
+                        //   style: GoogleFonts.inter(
+                        //     fontSize: 18,
+                        //     fontWeight: FontWeight.bold,
+                        //   ),
+                        //   textAlign: TextAlign.center,
+                        // ),
+                        // reusableText(nasabah.address, hints_text_setor, 16,
+                        //     FontWeight.bold),
+                        // SizedBox(
+                        //   height: MediaQueryHeight * 0.03,
+                        // ),
                       ],
                     ),
                   ),

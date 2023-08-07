@@ -116,7 +116,7 @@ class TabunganbeforeView extends GetView<TabController> {
                               textAlign: TextAlign.left,
                             ),
                             Text(
-                              '30.000',
+                              '0',
                               style: GoogleFonts.inter(
                                   fontWeight: FontWeight.bold,
                                   color: Colors.white,
@@ -192,7 +192,7 @@ class TabunganbeforeView extends GetView<TabController> {
                               Get.toNamed('/scan');
                             },
                             child: Text(
-                              "Scan QR",
+                              "Input Kode",
                               style: TextStyle(
                                 fontSize: 19,
                                 color: Colors.white,
@@ -256,7 +256,7 @@ class TabunganbeforeView extends GetView<TabController> {
                               Get.toNamed('/scan');
                             },
                             child: Text(
-                              "Scan QR",
+                              "Input Kode",
                               style: TextStyle(
                                 fontSize: 19,
                                 color: Colors.white,

@@ -108,37 +108,107 @@ class TransaksiadminView extends GetView<TabController> {
                   ],
                 ),
               ),
-              Container(
+              SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
                 child: DataTable(
+                  columnSpacing: 10.0,
+                  dataRowHeight: 40.0,
                   columns: [
                     DataColumn(
-                        label: Text(
-                      'Kode',
-                      style: TextStyle(fontSize: 14),
-                    )),
-                    DataColumn(label: Text('Tanggal')),
-                    DataColumn(label: Text('Berat')),
-                    DataColumn(label: Text('Pendapatan')),
+                      label: SizedBox(
+                        width: 70,
+                        child: Text(
+                          'Kode',
+                          style: TextStyle(fontSize: 14),
+                        ),
+                      ),
+                    ),
+                    DataColumn(
+                      label: SizedBox(
+                        width: 100,
+                        child: Text(
+                          'Tanggal',
+                          style: TextStyle(fontSize: 14),
+                        ),
+                      ),
+                    ),
+                    DataColumn(
+                      label: SizedBox(
+                        width: 60,
+                        child: Text(
+                          'Berat',
+                          style: TextStyle(fontSize: 14),
+                        ),
+                      ),
+                    ),
+                    DataColumn(
+                      label: SizedBox(
+                        width: 80,
+                        child: Text(
+                          'Pendapatan',
+                          style: TextStyle(fontSize: 14),
+                        ),
+                      ),
+                    ),
                   ],
                   rows: [
                     DataRow(cells: [
-                      DataCell(Text('#STR001')),
-                      DataCell(Text('27 Juni 2023')),
-                      DataCell(Text('5 kg')),
-                      DataCell(Text('Rp.14000')),
+                      DataCell(SizedBox(
+                        width: 70,
+                        child: Text('#STR001', style: TextStyle(fontSize: 14)),
+                      )),
+                      DataCell(SizedBox(
+                        width: 100,
+                        child: Text('27 Juni 2023',
+                            style: TextStyle(fontSize: 14)),
+                      )),
+                      DataCell(SizedBox(
+                        width: 60,
+                        child: Text('5 kg', style: TextStyle(fontSize: 14)),
+                      )),
+                      DataCell(SizedBox(
+                        width: 80,
+                        child: Text('Rp.14000', style: TextStyle(fontSize: 14)),
+                      )),
                     ]),
                     DataRow(cells: [
-                      DataCell(Text('#STR002')),
-                      DataCell(Text('28 Agustus 2023')),
-                      DataCell(Text('1.4 kg')),
-                      DataCell(Text('Rp.8000')),
+                      DataCell(SizedBox(
+                        width: 70,
+                        child: Text('#STR002', style: TextStyle(fontSize: 14)),
+                      )),
+                      DataCell(SizedBox(
+                        width: 100,
+                        child: Text('28 Agustus 2023',
+                            style: TextStyle(fontSize: 14)),
+                      )),
+                      DataCell(SizedBox(
+                        width: 60,
+                        child: Text('1.4 kg', style: TextStyle(fontSize: 14)),
+                      )),
+                      DataCell(SizedBox(
+                        width: 80,
+                        child: Text('Rp.8000', style: TextStyle(fontSize: 14)),
+                      )),
                     ]),
                     DataRow(cells: [
-                      DataCell(Text('#STR003')),
-                      DataCell(Text('28 September 2023')),
-                      DataCell(Text('2.4 kg')),
-                      DataCell(Text('Rp.9000')),
-                    ])
+                      DataCell(SizedBox(
+                        width: 70,
+                        child: Text('#STR003', style: TextStyle(fontSize: 14)),
+                      )),
+                      DataCell(SizedBox(
+                        width: 100,
+                        child: Text('28 September 2023',
+                            style: TextStyle(fontSize: 14)),
+                      )),
+                      DataCell(SizedBox(
+                        width: 60,
+                        child: Text('2.4 kg', style: TextStyle(fontSize: 14)),
+                      )),
+                      DataCell(SizedBox(
+                        width: 80,
+                        child: Text('Rp.9000', style: TextStyle(fontSize: 14)),
+                      )),
+                    ]),
                   ],
                 ),
               ),
@@ -171,9 +241,9 @@ class TransaksiadminView extends GetView<TabController> {
               Container(
                 child: DataTable(
                   columns: [
-                    DataColumn(label: Text('Total Pendapatan')),
-                    DataColumn(label: Text('Saldo Nasabah')),
-                    DataColumn(label: Text('Saldo Pengelola')),
+                    DataColumn(label: Text('Total \nPendapatan')),
+                    DataColumn(label: Text('Saldo \nNasabah')),
+                    DataColumn(label: Text('Saldo \nPengelola')),
                   ],
                   rows: [
                     DataRow(cells: [

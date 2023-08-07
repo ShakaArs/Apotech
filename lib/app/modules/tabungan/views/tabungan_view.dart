@@ -183,7 +183,7 @@ class TabunganView extends GetView<TabController> {
                               reusableText('Berat : 1kg', Colors.black, 17,
                                   FontWeight.bold),
                               SizedBox(height: MediaQueryHeight * 0.01),
-                              reusableText('Pendapatan :Rp 10.000',
+                              reusableText('Pendapatan :Rp 20.000',
                                   Colors.black, 12, FontWeight.bold),
                             ],
                           )

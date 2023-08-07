@@ -8,6 +8,7 @@ import 'package:siresma/app/common/button.dart';
 import '../../../common/colors.dart';
 import '../../../common/custom_textformfield.dart';
 import '../../../models/dropdown_location.dart';
+import '../../../models/user.dart';
 import '../controllers/location_controller.dart';
 
 class LocationView extends GetView<LocationController> {
@@ -36,14 +37,23 @@ class LocationView extends GetView<LocationController> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Transform.scale(
-                      scale: 1.55,
-                      child: CircleAvatar(
-                        backgroundColor: Colors.grey.shade400,
-                        child: Icon(FontAwesomeIcons.solidUser,
-                            color: Colors.grey.shade300),
-                      ),
-                    ),
+                    "${UserList.profilePicture}" == ''
+                        ? Transform.scale(
+                            scale: 1.55,
+                            child: CircleAvatar(
+                              backgroundColor: Colors.grey.shade400,
+                              child: Icon(FontAwesomeIcons.solidUser,
+                                  color: Colors.grey.shade300),
+                            ),
+                          )
+                        : Transform.scale(
+                            scale: 1.55,
+                            child: CircleAvatar(
+                              backgroundColor: Colors.grey.shade400,
+                              backgroundImage:
+                                  NetworkImage("${UserList.profilePicture}"),
+                            ),
+                          ),
                     SizedBox(
                       width: MediaQueryWidth * 0.06,
                     ),
