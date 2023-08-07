@@ -160,9 +160,6 @@ class ProfilView extends GetView<ProfilController> {
                   ],
                 ),
               ),
-              SizedBox(
-                height: MediaQueryHeight * 0.02,
-              ),
               ListTile(
                 onTap: () {
                   Get.toNamed('/navbartabungan');
@@ -175,22 +172,13 @@ class ProfilView extends GetView<ProfilController> {
                 title: reusableText(
                     'Tabungan Sampah', Colors.black, 16, FontWeight.bold),
               ),
-              SizedBox(
-                height: MediaQueryHeight * 0.02,
-              ),
               ListTile(
                 onTap: () {
                   Get.toNamed('/evoucher');
                 },
-                leading: Icon(
-                  FontAwesomeIcons.percent,
-                  color: primary,
-                ),
+                leading: Icon(FontAwesomeIcons.percent),
                 title: reusableText(
                     'E-Voucher', Colors.black, 16, FontWeight.bold),
-              ),
-              SizedBox(
-                height: MediaQueryHeight * 0.02,
               ),
               ListTile(
                 onTap: () {
@@ -203,9 +191,6 @@ class ProfilView extends GetView<ProfilController> {
                 ),
                 title: reusableText(
                     'QR code Akun', Colors.black, 16, FontWeight.bold),
-              ),
-              SizedBox(
-                height: MediaQueryHeight * 0.02,
               ),
               ListTile(
                 onTap: () {
@@ -248,9 +233,6 @@ class ProfilView extends GetView<ProfilController> {
                     ),
                   ],
                 ),
-              ),
-              SizedBox(
-                height: MediaQueryHeight * 0.02,
               ),
               ListTile(
                 onTap: () {

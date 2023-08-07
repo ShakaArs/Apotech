@@ -1,31 +1,37 @@
 import 'dart:convert';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
-import 'package:siresma/app/models/transaksiadmin.dart';
 import '../../../config/api.dart';
 
 class TransaksiadminController extends GetxController {
-  var transactions = <TransaksiAdmin>[].obs;
+  List<Map<String, dynamic>> users = [];
 
   @override
   void onInit() {
-    fetchTransactions();
     super.onInit();
+    TransaksiAdmin();
   }
 
-  void fetchTransactions() async {
+  Future<void> TransaksiAdmin() async {
     try {
+      var headers = {
+        'Accept': 'application/json',
+      };
       var url = Uri.parse(API.transaksi_admin);
-      http.Response response = await http.get(url);
+      http.Response response = await http.get(url, headers: headers);
       if (response.statusCode == 200) {
-        final List<dynamic> data = json.decode(response.body);
-        transactions.value =
-            data.map((json) => TransaksiAdmin.fromJson(json)).toList();
+        var data = jsonDecode(response.body);
+        if (data is List) {
+          users = List<Map<String, dynamic>>.from(data);
+          update();
+        } else {
+          print("Data returned from API is not a List");
+        }
       } else {
-        throw Exception('Failed to load transactions');
+        print(response.body);
       }
     } catch (e) {
-      throw Exception('Failed to load transactions');
+      print(e);
     }
   }
 }

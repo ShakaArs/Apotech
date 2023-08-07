@@ -63,6 +63,8 @@ class LoginController extends GetxController {
       https.Response response =
           await https.post(url, body: body, headers: headers);
       var error = jsonDecode(response.body)['message'];
+      var succes = jsonDecode(response.body)['message'];
+
       if (response.statusCode == 200) {
         final json = jsonDecode(response.body);
         if (json["message"] == "Success") {
@@ -73,7 +75,7 @@ class LoginController extends GetxController {
             final SharedPreferences prefs = await _prefs;
             await prefs.setString("token", token);
             print(token);
-            customAllertDialog("Succes", "Masuk Berhasil", 'succes');
+            customAllertDialog("Succes", "${succes}", 'succes');
             Timer(Duration(seconds: 2), () {
               Get.offAllNamed('/navbar');
             });
@@ -91,7 +93,7 @@ class LoginController extends GetxController {
             final SharedPreferences prefs = await _prefs;
             await prefs.setString("token", token);
             print(token);
-            customAllertDialog("Succes", "Masuk Berhasil", 'succes');
+            customAllertDialog("Succes", "${succes}", 'succes');
             Timer(Duration(seconds: 2), () {
               Get.offAllNamed('/navbaradmin');
             });

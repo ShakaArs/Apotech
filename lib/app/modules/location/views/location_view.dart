@@ -106,28 +106,28 @@ class LocationView extends GetView<LocationController> {
                     SizedBox(
                       height: MediaQueryHeight * 0.03,
                     ),
-                    reusableText("RW 2", Colors.black, 14, FontWeight.bold),
-                    SizedBox(
-                      height: MediaQueryHeight * 0.01,
-                    ),
                     DropdownButtonFormField<RTModel>(
                       value: null,
                       hint: Text('Select RT'),
                       onChanged: (RTModel? newValue) {
                         controller.setSelectedRT(newValue);
                       },
+                      style: GoogleFonts.inter(
+                        color: Colors.black,
+                        fontSize: 15,
+                      ),
+                      dropdownColor: primary,
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                      ),
                       items: controller.rt.map((rt) {
                         return DropdownMenuItem<RTModel>(
                           value: rt,
                           child: Text(rt.name),
                         );
                       }).toList(),
-                    ),
-                    IconButton(
-                      onPressed: () {
-                        Get.offAllNamed('/navbar');
-                      },
-                      icon: Icon(FontAwesomeIcons.arrowLeft),
                     ),
                   ],
                 ),

@@ -1,9 +1,11 @@
+import 'dart:async';
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as https;
+import 'package:siresma/app/common/custom_snackbar.dart';
 import 'package:siresma/app/config/api.dart';
 
 class OtpController extends GetxController {
@@ -28,18 +30,21 @@ class OtpController extends GetxController {
         headers: headers,
         body: jsonEncode(body),
       );
+      var succes = jsonDecode(response.body)['message'];
+
       var error = jsonDecode(response.body)['message'];
       if (response.statusCode == 200) {
         final jsonData = json.decode(response.body);
         print(jsonData);
-        Get.offAllNamed('/login');
+        customAllertDialog("Succes", "${succes}", "succes");
+        Timer(Duration(seconds: 2), () {
+          Get.offAllNamed('/login');
+        });
       } else {
-        print(userId);
-        print(otp_code);
-        print(error);
+        customAllertDialog("Verifikasi Gagal", '${error}', 'error');
       }
     } catch (e) {
-      print('Error while posting data: $e');
+      customAllertDialog("Verifikasi Gagal", e.toString(), 'error');
     }
   }
 

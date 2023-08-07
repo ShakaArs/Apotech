@@ -3,13 +3,12 @@ import 'dart:convert';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as https;
-
+import 'package:siresma/app/models/user.dart';
 
 import '../../../config/api.dart';
 import '../../../models/location.dart';
 
 class HomeController extends GetxController {
-  var location = <Location>[].obs;
   RxString name = ''.obs;
 
   Future<void> fetchData() async {
@@ -26,6 +25,10 @@ class HomeController extends GetxController {
         Map<String, dynamic> jsonResponse = json.decode(response.body);
         if (jsonResponse['success'] == true && jsonResponse['data'] != null) {
           name.value = jsonResponse['data']['name'];
+          UserList.location = name.value;
+          print(jsonResponse);
+          print(UserList.location);
+          update();
         }
       } else {
         print('Request failed with status: ${response.statusCode}.');

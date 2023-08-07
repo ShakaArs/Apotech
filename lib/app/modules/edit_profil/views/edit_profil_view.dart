@@ -43,19 +43,30 @@ class EditProfilView extends GetView<EditProfilController> {
               SizedBox(
                 height: MediaQueryHeight * 0.05,
               ),
-              Transform.scale(
-                scale: 2,
-                child: CircleAvatar(
-                  backgroundColor: Colors.grey.shade400,
-                  child: Icon(FontAwesomeIcons.solidUser,
-                      color: Colors.grey.shade300),
-                ),
-              ),
+              "${UserList.profilePicture}" == ''
+                  ? Transform.scale(
+                      scale: 2.3,
+                      child: CircleAvatar(
+                        backgroundColor: Colors.grey.shade400,
+                        child: Icon(FontAwesomeIcons.solidUser,
+                            color: Colors.grey.shade300),
+                      ),
+                    )
+                  : Transform.scale(
+                      scale: 2.3,
+                      child: CircleAvatar(
+                        backgroundColor: Colors.grey.shade400,
+                        backgroundImage:
+                            NetworkImage("${UserList.profilePicture}"),
+                      ),
+                    ),
               SizedBox(
                 height: MediaQueryHeight * 0.03,
               ),
               TextButton(
-                onPressed: () {},
+                onPressed: () {
+                  // Get.bottomSheet();
+                },
                 child: reusableText(
                     'Edit Foto Profil', Colors.black, 14, FontWeight.bold),
               ),

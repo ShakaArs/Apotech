@@ -87,7 +87,7 @@ class OtpView extends GetView<OtpController> {
                     ),
                     backgroundColor: primary,
                     fixedSize:
-                        Size(MediaQueryWidth * 0.37, MediaQueryHeight * 0.03),
+                        Size(MediaQueryWidth * 0.4, MediaQueryHeight * 0.03),
                   ),
                   onPressed: () {
                     controller.postOTP();

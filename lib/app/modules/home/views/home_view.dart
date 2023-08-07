@@ -197,6 +197,7 @@ class HomeView extends GetView<HomeController> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Container(
+                          width: MediaQueryWidth * 0.65,
                           height: MediaQueryHeight * 0.13,
                           padding: EdgeInsets.all(5),
                           alignment: Alignment.center,
@@ -276,7 +277,6 @@ class HomeView extends GetView<HomeController> {
           ),
         ),
       );
-      controller.update();
     });
   }
 }

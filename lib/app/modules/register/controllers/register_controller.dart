@@ -122,6 +122,9 @@ class RegisterController extends GetxController {
       https.StreamedResponse response = await request.send();
       String responseBody = await response.stream.bytesToString();
       var responseData = json.decode(responseBody);
+      var succes = json.decode(responseBody)['message'];
+
+      var error = jsonDecode(responseData.body)['message'];
       if (response.statusCode == 200) {
         print(response);
         print(responseData);
@@ -130,13 +133,12 @@ class RegisterController extends GetxController {
         final SharedPreferences prefs = await _prefs;
         await prefs.setInt("id", id);
         print(id);
-        customAllertDialog(
-            "Succes", "Pendaftaran Sukses, Silahkan verifikasi OTP", 'succes');
+        customAllertDialog("Succes", "${succes}", 'succes');
         Timer(Duration(seconds: 2), () {
           Get.offAllNamed('/otp');
         });
       } else {
-        customAllertDialog('Gagal', 'Pendaftaran Akun Gagal', 'error');
+        customAllertDialog('Gagal', '${error}', 'error');
       }
     } catch (e) {
       customAllertDialog("Pendaftaran Gagal", e.toString(), 'error');
