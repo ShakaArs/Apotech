@@ -27,217 +27,219 @@ class TransaksiadminView extends GetView<TabController> {
 
     return Scaffold(
       body: SingleChildScrollView(
-        child: Container(
-          padding: EdgeInsets.only(top: 45, left: 20, right: 20),
-          width: MediaQueryWidth,
-          height: MediaQueryHeight,
-          child: Column(
-            children: [
-              Container(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Image.asset(
-                      'assets/image/icon_tabungan.png',
-                      scale: 1.6,
-                    ),
-                    SizedBox(
-                      width: MediaQueryWidth * 0.05,
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Transaksi',
-                          style: GoogleFonts.inter(
-                            fontSize: 22,
+        child: GetBuilder<TransaksiadminController>(builder: (controller) {
+          return Container(
+            padding: EdgeInsets.only(top: 45, left: 20, right: 20),
+            width: MediaQueryWidth,
+            height: MediaQueryHeight,
+            child: Column(
+              children: [
+                Container(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Image.asset(
+                        'assets/image/icon_tabungan.png',
+                        scale: 1.6,
+                      ),
+                      SizedBox(
+                        width: MediaQueryWidth * 0.05,
+                      ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Transaksi',
+                            style: GoogleFonts.inter(
+                              fontSize: 22,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          SizedBox(
+                            height: MediaQueryHeight * 0.01,
+                          ),
+                          Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(40),
+                              color: primary,
+                            ),
+                            width: MediaQueryWidth * 0.2,
+                            height: 5,
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+                SizedBox(
+                  height: MediaQueryHeight * 0.05,
+                ),
+                Container(
+                  width: MediaQueryWidth,
+                  height: MediaQueryHeight * 0.15,
+                  decoration: BoxDecoration(
+                    color: primary,
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black12,
+                      )
+                    ],
+                  ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Text(
+                        '${TransaksiMasukList.name}',
+                        style: GoogleFonts.inter(
                             fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        SizedBox(
-                          height: MediaQueryHeight * 0.01,
-                        ),
-                        Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(40),
-                            color: primary,
-                          ),
-                          width: MediaQueryWidth * 0.2,
-                          height: 5,
-                        ),
-                      ],
+                            color: Colors.white,
+                            fontSize: 20),
+                        textAlign: TextAlign.left,
+                      ),
+                    ],
+                  ),
+                ),
+                Container(
+                  width: MediaQueryWidth,
+                  height: MediaQueryHeight * 0.05,
+                  decoration: BoxDecoration(
+                    color: primary,
+                    borderRadius: BorderRadius.only(
+                      bottomLeft: Radius.circular(70),
+                      bottomRight: Radius.circular(70),
                     ),
-                  ],
-                ),
-              ),
-              SizedBox(
-                height: MediaQueryHeight * 0.05,
-              ),
-              Container(
-                width: MediaQueryWidth,
-                height: MediaQueryHeight * 0.15,
-                decoration: BoxDecoration(
-                  color: primary,
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black12,
-                    )
-                  ],
-                ),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Text(
-                      '${TransaksiMasukList.name}',
-                      style: GoogleFonts.inter(
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
-                          fontSize: 20),
-                      textAlign: TextAlign.left,
+                    border: Border.all(
+                      color: primary,
+                      width: MediaQueryWidth * 0.5,
                     ),
-                  ],
-                ),
-              ),
-              Container(
-                width: MediaQueryWidth,
-                height: MediaQueryHeight * 0.05,
-                decoration: BoxDecoration(
-                  color: primary,
-                  borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(70),
-                    bottomRight: Radius.circular(70),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black12,
+                      )
+                    ],
                   ),
-                  border: Border.all(
+                ),
+                Container(
+                  child: DataTable(
+                    columns: [
+                      DataColumn(
+                          label: Text(
+                        'Kode',
+                        style: TextStyle(fontSize: 14),
+                      )),
+                      DataColumn(label: Text('Tanggal')),
+                      DataColumn(label: Text('Berat')),
+                      DataColumn(label: Text('Pendapatan')),
+                    ],
+                    rows: [
+                      DataRow(cells: [
+                        DataCell(Text('${TransaksiAdminList.code}')),
+                        DataCell(Text('${TransaksiAdminList.created_at}')),
+                        DataCell(Text('${TransaksiAdminList.weight}')),
+                        DataCell(Text('${TransaksiAdminList.amount}')),
+                      ]),
+                      DataRow(cells: [
+                        DataCell(Text('${TransaksiAdminList.code}')),
+                        DataCell(Text('${TransaksiAdminList.created_at}')),
+                        DataCell(Text('${TransaksiAdminList.weight}')),
+                        DataCell(Text('${TransaksiAdminList.amount}')),
+                      ]),
+                      DataRow(cells: [
+                        DataCell(Text('${TransaksiAdminList.code}')),
+                        DataCell(Text('${TransaksiAdminList.created_at}')),
+                        DataCell(Text('${TransaksiAdminList.weight}')),
+                        DataCell(Text('${TransaksiAdminList.amount}')),
+                      ])
+                    ],
+                  ),
+                ),
+                SizedBox(
+                  height: MediaQueryHeight * 0.01,
+                ),
+                Container(
+                  width: MediaQueryWidth,
+                  height: MediaQueryHeight * 0.005,
+                  decoration: BoxDecoration(
                     color: primary,
-                    width: MediaQueryWidth * 0.5,
+                    borderRadius: BorderRadius.only(
+                      bottomLeft: Radius.circular(30),
+                      bottomRight: Radius.circular(30),
+                    ),
+                    border: Border.all(
+                      color: primary,
+                      width: MediaQueryWidth * 0.5,
+                    ),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black12,
+                      )
+                    ],
                   ),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black12,
-                    )
-                  ],
                 ),
-              ),
-              Container(
-                child: DataTable(
-                  columns: [
-                    DataColumn(
-                        label: Text(
-                      'Kode',
-                      style: TextStyle(fontSize: 14),
-                    )),
-                    DataColumn(label: Text('Tanggal')),
-                    DataColumn(label: Text('Berat')),
-                    DataColumn(label: Text('Pendapatan')),
-                  ],
-                  rows: [
-                    DataRow(cells: [
-                      DataCell(Text('${TransaksiAdminList.code}')),
-                      DataCell(Text('${TransaksiAdminList.created_at}')),
-                      DataCell(Text('${TransaksiAdminList.weight}')),
-                      DataCell(Text('${TransaksiAdminList.amount}')),
-                    ]),
-                    DataRow(cells: [
-                      DataCell(Text('${TransaksiAdminList.code}')),
-                      DataCell(Text('${TransaksiAdminList.created_at}')),
-                      DataCell(Text('${TransaksiAdminList.weight}')),
-                      DataCell(Text('${TransaksiAdminList.amount}')),
-                    ]),
-                    DataRow(cells: [
-                      DataCell(Text('${TransaksiAdminList.code}')),
-                      DataCell(Text('${TransaksiAdminList.created_at}')),
-                      DataCell(Text('${TransaksiAdminList.weight}')),
-                      DataCell(Text('${TransaksiAdminList.amount}')),
-                    ])
-                  ],
+                SizedBox(
+                  height: MediaQueryHeight * 0.01,
                 ),
-              ),
-              SizedBox(
-                height: MediaQueryHeight * 0.01,
-              ),
-              Container(
-                width: MediaQueryWidth,
-                height: MediaQueryHeight * 0.005,
-                decoration: BoxDecoration(
-                  color: primary,
-                  borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(30),
-                    bottomRight: Radius.circular(30),
+                Container(
+                  child: DataTable(
+                    columns: [
+                      DataColumn(label: Text('Total Pendapatan')),
+                      DataColumn(label: Text('Saldo Nasabah')),
+                      DataColumn(label: Text('Saldo Pengelola')),
+                    ],
+                    rows: [
+                      DataRow(cells: [
+                        DataCell(Text('${TransaksiAdminList.total_income}')),
+                        DataCell(Text('${TransaksiAdminList.user_income}')),
+                        DataCell(Text('${TransaksiAdminList.admin_income}')),
+                      ]),
+                    ],
                   ),
-                  border: Border.all(
+                ),
+                SizedBox(
+                  height: MediaQueryHeight * 0.01,
+                ),
+                Container(
+                  width: MediaQueryWidth,
+                  height: MediaQueryHeight * 0.02,
+                  decoration: BoxDecoration(
                     color: primary,
-                    width: MediaQueryWidth * 0.5,
+                    borderRadius: BorderRadius.only(
+                      bottomLeft: Radius.circular(70),
+                      bottomRight: Radius.circular(70),
+                    ),
+                    border: Border.all(
+                      color: primary,
+                      width: MediaQueryWidth * 0.01,
+                    ),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black12,
+                      )
+                    ],
                   ),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black12,
-                    )
-                  ],
                 ),
-              ),
-              SizedBox(
-                height: MediaQueryHeight * 0.01,
-              ),
-              Container(
-                child: DataTable(
-                  columns: [
-                    DataColumn(label: Text('Total Pendapatan')),
-                    DataColumn(label: Text('Saldo Nasabah')),
-                    DataColumn(label: Text('Saldo Pengelola')),
-                  ],
-                  rows: [
-                    DataRow(cells: [
-                      DataCell(Text('${TransaksiAdminList.total_income}')),
-                      DataCell(Text('${TransaksiAdminList.user_income}')),
-                      DataCell(Text('${TransaksiAdminList.admin_income}')),
-                    ]),
-                  ],
+                SizedBox(
+                  height: MediaQueryHeight * 0.05,
                 ),
-              ),
-              SizedBox(
-                height: MediaQueryHeight * 0.01,
-              ),
-              Container(
-                width: MediaQueryWidth,
-                height: MediaQueryHeight * 0.02,
-                decoration: BoxDecoration(
-                  color: primary,
-                  borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(70),
-                    bottomRight: Radius.circular(70),
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(100),
+                    ),
+                    backgroundColor: primary,
+                    fixedSize:
+                        Size(MediaQueryWidth * 0.05, MediaQueryHeight * 0.05),
                   ),
-                  border: Border.all(
-                    color: primary,
-                    width: MediaQueryWidth * 0.01,
-                  ),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black12,
-                    )
-                  ],
+                  onPressed: () {
+                    Get.back();
+                  },
+                  child: Icon(Icons.arrow_back_sharp),
                 ),
-              ),
-              SizedBox(
-                height: MediaQueryHeight * 0.05,
-              ),
-              ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(100),
-                  ),
-                  backgroundColor: primary,
-                  fixedSize:
-                      Size(MediaQueryWidth * 0.05, MediaQueryHeight * 0.05),
-                ),
-                onPressed: () {
-                  Get.back();
-                },
-                child: Icon(Icons.arrow_back_sharp),
-              ),
-            ],
-          ),
-        ),
+              ],
+            ),
+          );
+        }),
       ),
     );
   }
