@@ -59,19 +59,20 @@ class SetorController extends GetxController {
     print(trash_bank_id);
     var token = prefs.getString("token");
     try {
+      if (selectedKategori == null) {
+        // Tambahkan validasi jika selectedDate masih null
+        Get.snackbar(
+          "Error",
+          "Pilih Kategori Sampah terlebih dahulu",
+          snackPosition: SnackPosition.TOP,
+        );
+        return;
+      }
       if (selectedDate.value == null) {
         // Tambahkan validasi jika selectedDate masih null
         Get.snackbar(
           "Error",
           "Pilih tanggal terlebih dahulu",
-          snackPosition: SnackPosition.TOP,
-        );
-        return;
-      } else if (selectedKategori == null) {
-        // Tambahkan validasi jika selectedDate masih null
-        Get.snackbar(
-          "Error",
-          "Pilih Kategori Sampah terlebih dahulu",
           snackPosition: SnackPosition.TOP,
         );
         return;
@@ -98,6 +99,9 @@ class SetorController extends GetxController {
         final json = jsonDecode(response.body);
         print(json);
         customAllertDialog('Sukses', '${succes}', 'succes');
+        Timer(Duration(seconds: 2), () {
+          Get.offAllNamed('/navbartabungan');
+        });
       } else {
         customAllertDialog("Setor Sampah Gagal", "${error}", 'error');
       }

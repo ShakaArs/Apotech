@@ -6,7 +6,6 @@ import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 import 'package:siresma/app/modules/home/views/home_view.dart';
 import 'package:siresma/app/modules/profil/views/profil_view.dart';
 import 'package:siresma/app/modules/setor/views/setor_view.dart';
-import 'package:siresma/app/modules/tabungan/views/tabungan_view.dart';
 import 'package:siresma/app/modules/tabunganbefore/views/tabunganbefore_view.dart';
 
 import '../../../common/colors.dart';
@@ -34,15 +33,6 @@ class NavbarTabunganController extends GetxController {
       ),
       PersistentBottomNavBarItem(
         icon: Icon(
-          FontAwesomeIcons.trash,
-          size: 24,
-        ),
-        activeColorPrimary: Colors.white,
-        activeColorSecondary: primary,
-        inactiveColorPrimary: Colors.white,
-      ),
-      PersistentBottomNavBarItem(
-        icon: Icon(
           FontAwesomeIcons.trashCanArrowUp,
           size: 24,
         ),
@@ -52,7 +42,16 @@ class NavbarTabunganController extends GetxController {
       ),
       PersistentBottomNavBarItem(
         icon: Icon(
-          FontAwesomeIcons.person,
+          FontAwesomeIcons.trashCan,
+          size: 24,
+        ),
+        activeColorPrimary: Colors.white,
+        activeColorSecondary: primary,
+        inactiveColorPrimary: Colors.white,
+      ),
+      PersistentBottomNavBarItem(
+        icon: Icon(
+          FontAwesomeIcons.solidUser,
           size: 24,
         ),
         activeColorPrimary: Colors.white,

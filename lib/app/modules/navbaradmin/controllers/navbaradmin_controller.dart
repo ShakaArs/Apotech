@@ -6,7 +6,6 @@ import 'package:siresma/app/modules/datanasabah/views/datanasabah_view.dart';
 import 'package:siresma/app/modules/profil/views/profil_view.dart';
 import 'package:siresma/app/modules/qradmin/views/qradmin_view.dart';
 import 'package:siresma/app/modules/setor/views/setor_view.dart';
-import 'package:siresma/app/modules/tabungan/views/tabungan_view.dart';
 import 'package:siresma/app/modules/transaksikeluar/views/transaksikeluar_view.dart';
 import 'package:siresma/app/modules/transaksimasuk/views/transaksimasuk_view.dart';
 

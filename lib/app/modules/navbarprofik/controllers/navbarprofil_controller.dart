@@ -6,7 +6,7 @@ import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 import 'package:siresma/app/modules/home/views/home_view.dart';
 import 'package:siresma/app/modules/profil/views/profil_view.dart';
 import 'package:siresma/app/modules/setor/views/setor_view.dart';
-import 'package:siresma/app/modules/tabungan/views/tabungan_view.dart';
+import 'package:siresma/app/modules/tabunganbefore/views/tabunganbefore_view.dart';
 
 import '../../../common/colors.dart';
 
@@ -17,7 +17,7 @@ class NavbarProfilController extends GetxController {
       PersistentTabController(initialIndex: 3);
 
   List<Widget> buildScreens() {
-    return [HomeView(), SetorView(), TabunganView(), ProfilView()];
+    return [HomeView(), SetorView(), TabunganbeforeView(), ProfilView()];
   }
 
   List<PersistentBottomNavBarItem> navBarsItems() {
@@ -33,7 +33,7 @@ class NavbarProfilController extends GetxController {
       ),
       PersistentBottomNavBarItem(
         icon: Icon(
-          FontAwesomeIcons.trash,
+          FontAwesomeIcons.trashArrowUp,
           size: 24,
         ),
         activeColorPrimary: Colors.white,
@@ -42,7 +42,7 @@ class NavbarProfilController extends GetxController {
       ),
       PersistentBottomNavBarItem(
         icon: Icon(
-          FontAwesomeIcons.trashCanArrowUp,
+          FontAwesomeIcons.trashCan,
           size: 24,
         ),
         activeColorPrimary: Colors.white,
@@ -51,7 +51,7 @@ class NavbarProfilController extends GetxController {
       ),
       PersistentBottomNavBarItem(
         icon: Icon(
-          FontAwesomeIcons.person,
+          FontAwesomeIcons.solidUser,
           size: 24,
         ),
         activeColorPrimary: Colors.white,

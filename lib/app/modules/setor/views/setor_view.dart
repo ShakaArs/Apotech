@@ -182,7 +182,7 @@ class SetorView extends GetView<SetorController> {
                                 controller.updateSelectedDate(newDate);
                                 _dateController.text =
                                     "${newDate.day}-${newDate.month}-${newDate.year}";
-                              }
+                              } 
                             },
                             child: TextFormField(
                               style: GoogleFonts.inter(),

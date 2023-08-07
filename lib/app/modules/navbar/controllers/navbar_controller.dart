@@ -6,7 +6,7 @@ import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 import 'package:siresma/app/modules/home/views/home_view.dart';
 import 'package:siresma/app/modules/profil/views/profil_view.dart';
 import 'package:siresma/app/modules/setor/views/setor_view.dart';
-import 'package:siresma/app/modules/tabungan/views/tabungan_view.dart';
+import 'package:siresma/app/modules/tabunganbefore/views/tabunganbefore_view.dart';
 
 import '../../../common/colors.dart';
 
@@ -17,7 +17,7 @@ class NavbarController extends GetxController {
       PersistentTabController(initialIndex: 0);
 
   List<Widget> buildScreens() {
-    return [HomeView(), SetorView(), TabunganView(), ProfilView()];
+    return [HomeView(), SetorView(), TabunganbeforeView(), ProfilView()];
   }
 
   List<PersistentBottomNavBarItem> navBarsItems() {

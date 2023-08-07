@@ -64,10 +64,9 @@ class LoginController extends GetxController {
           await https.post(url, body: body, headers: headers);
       var error = jsonDecode(response.body)['message'];
       var succes = jsonDecode(response.body)['message'];
-
       if (response.statusCode == 200) {
         final json = jsonDecode(response.body);
-        if (json["message"] == "Success") {
+        if (json["message"] == "Sukses melakukan login") {
           if (json["data"]["role"] == "nasabah") {
             var token = json["token"];
             var user = json["data"];

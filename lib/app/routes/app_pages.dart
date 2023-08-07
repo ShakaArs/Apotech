@@ -25,7 +25,7 @@ import '../modules/navbaradmin/views/navbaradmin_view.dart';
 import '../modules/navbarprofik/bindings/navbarprofil_binding.dart';
 import '../modules/navbarprofik/views/navbarprofil_view.dart';
 import '../modules/navbartabungan/bindings/navbartabungan_binding.dart';
-import '../modules/navbartabungan/views/navbarprofil_view.dart';
+import '../modules/navbartabungan/views/navbartabungan_view.dart';
 import '../modules/number/bindings/number_binding.dart';
 import '../modules/number/views/number_view.dart';
 import '../modules/otp/bindings/otp_binding.dart';
@@ -44,8 +44,7 @@ import '../modules/setor/bindings/setor_binding.dart';
 import '../modules/setor/views/setor_view.dart';
 import '../modules/splash/bindings/splash_binding.dart';
 import '../modules/splash/views/splash_view.dart';
-import '../modules/tabungan/bindings/tabungan_binding.dart';
-import '../modules/tabungan/views/tabungan_view.dart';
+
 import '../modules/tabunganbefore/bindings/tabunganbefore_binding.dart';
 import '../modules/tabunganbefore/views/tabunganbefore_view.dart';
 import '../modules/transaksi/bindings/transaksi_binding.dart';
@@ -94,11 +93,6 @@ class AppPages {
       name: _Paths.SETOR,
       page: () => const SetorView(),
       binding: SetorBinding(),
-    ),
-    GetPage(
-      name: _Paths.TABUNGAN,
-      page: () => const TabunganView(),
-      binding: TabunganBinding(),
     ),
     GetPage(
       name: _Paths.SCAN,
