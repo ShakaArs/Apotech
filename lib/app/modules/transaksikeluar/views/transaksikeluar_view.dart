@@ -7,7 +7,7 @@ import 'package:google_fonts/google_fonts.dart';
 import '../../../models/transaksikeluar.dart';
 import 'package:siresma/app/modules/transaksikeluar/controllers/transaksikeluar_controller.dart';
 
-class TransaksiKeluarView extends GetView<TabController> {
+class TransaksiKeluarView extends GetView<TransaksiKeluarController> {
   const TransaksiKeluarView({Key? key}) : super(key: key);
 
   @override
@@ -17,276 +17,168 @@ class TransaksiKeluarView extends GetView<TabController> {
 
     return Scaffold(
       body: SingleChildScrollView(
-        child: GetBuilder<TransaksiKeluarController>(
-          builder: (controller) {
-            return Container(
-              padding: EdgeInsets.only(top: 45, left: 20, right: 20),
-              width: MediaQueryWidth,
-              height: MediaQueryHeight,
-              child: Column(
-                children: [
+        child: GetBuilder<TransaksiKeluarController>(builder: (controller) {
+          return Container(
+            padding: EdgeInsets.only(top: 45, left: 20, right: 20),
+            width: MediaQueryWidth,
+            height: MediaQueryHeight,
+            child: Column(
+              children: [
+                Container(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Image.asset(
+                        'assets/image/icon_nasabah.png',
+                        scale: 0.9,
+                      ),
+                      SizedBox(
+                        width: MediaQueryWidth * 0.04,
+                      ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Data Transaksi',
+                            style: GoogleFonts.inter(
+                              fontSize: 22,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Text(
+                            'Keluar',
+                            style: GoogleFonts.inter(
+                              fontSize: 22,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          SizedBox(
+                            height: MediaQueryHeight * 0.01,
+                          ),
+                          Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(40),
+                              color: primary,
+                            ),
+                            width: MediaQueryWidth * 0.2,
+                            height: 5,
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+                SizedBox(
+                  height: MediaQueryHeight * 0.05,
+                ),
+                for (var trs in controller.transaksi)
                   Container(
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Image.asset(
-                          'assets/image/icon_nasabah.png',
-                          scale: 0.9,
-                        ),
-                        SizedBox(
-                          width: MediaQueryWidth * 0.04,
-                        ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              'Data Transaksi',
-                              style: GoogleFonts.inter(
-                                fontSize: 22,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            Text(
-                              'Keluar',
-                              style: GoogleFonts.inter(
-                                fontSize: 22,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            SizedBox(
-                              height: MediaQueryHeight * 0.01,
-                            ),
-                            Container(
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(40),
-                                color: primary,
-                              ),
-                              width: MediaQueryWidth * 0.2,
-                              height: 5,
-                            ),
-                          ],
-                        ),
+                    padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+                    width: MediaQueryWidth,
+                    height: MediaQueryHeight * 0.21,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(10),
+                      boxShadow: [
+                        BoxShadow(
+                            color: Colors.black12,
+                            spreadRadius: 6,
+                            blurRadius: 5,
+                            offset: Offset.fromDirection(1, 6)),
                       ],
                     ),
-                  ),
-                  SizedBox(
-                    height: MediaQueryHeight * 0.05,
-                  ),
-                  Container(
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-                      width: MediaQueryWidth,
-                      height: MediaQueryHeight * 0.21,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(10),
-                        boxShadow: [
-                          BoxShadow(
-                              color: Colors.black12,
-                              spreadRadius: 6,
-                              blurRadius: 5,
-                              offset: Offset.fromDirection(1, 6)),
-                        ],
-                      ),
-                      child: Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                Text(
-                                  'No Transaksi',
-                                  style: GoogleFonts.inter(
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.bold,
+                    child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Text(
+                                'No Transaksi',
+                                style: GoogleFonts.inter(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                                textAlign: TextAlign.center,
+                              ),
+                              reusableText(
+                                  trs['code'],
+                                  Color.fromARGB(255, 39, 178, 83),
+                                  15,
+                                  FontWeight.bold),
+                              SizedBox(
+                                height: MediaQueryHeight * 0.04,
+                              ),
+                              Text(
+                                'Nama Penyetor',
+                                style: GoogleFonts.inter(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                                textAlign: TextAlign.center,
+                              ),
+                              Text(
+                                trs['name'],
+                                style: GoogleFonts.inter(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                                textAlign: TextAlign.center,
+                              ),
+                            ],
+                          ),
+                          SizedBox(
+                            width: MediaQueryWidth * 0.05,
+                          ),
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'Mengajukan Penarikan',
+                                style: GoogleFonts.inter(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.bold,
+                                  color: Color.fromARGB(255, 249, 3, 3),
+                                ),
+                                textAlign: TextAlign.center,
+                              ),
+                              reusableText(
+                                  trs['amount'],
+                                  Color.fromARGB(255, 39, 178, 83),
+                                  15,
+                                  FontWeight.bold),
+                              SizedBox(
+                                height: MediaQueryHeight * 0.04,
+                              ),
+                              ElevatedButton(
+                                style: ElevatedButton.styleFrom(
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(100),
                                   ),
-                                  textAlign: TextAlign.center,
+                                  backgroundColor: primary,
+                                  fixedSize: Size(MediaQueryWidth * 0.39,
+                                      MediaQueryHeight * 0.05),
                                 ),
-                                reusableText(
-                                    '${TransaksiKeluarList.code}',
-                                    Color.fromARGB(255, 39, 178, 83),
-                                    15,
-                                    FontWeight.bold),
-                                SizedBox(
-                                  height: MediaQueryHeight * 0.04,
-                                ),
-                                Text(
-                                  'Nama Penyetor',
-                                  style: GoogleFonts.inter(
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                  textAlign: TextAlign.center,
-                                ),
-                                Text(
-                                  '${TransaksiKeluarList.name}',
-                                  style: GoogleFonts.inter(
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                  textAlign: TextAlign.center,
-                                ),
-                              ],
-                            ),
-                            SizedBox(
-                              width: MediaQueryWidth * 0.05,
-                            ),
-                            Column(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  'Mengajukan Penarikan',
-                                  style: GoogleFonts.inter(
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.bold,
-                                    color: Color.fromARGB(255, 249, 3, 3),
-                                  ),
-                                  textAlign: TextAlign.center,
-                                ),
-                                reusableText(
-                                    '${TransaksiKeluarList.amount}',
-                                    Color.fromARGB(255, 39, 178, 83),
-                                    15,
-                                    FontWeight.bold),
-                                SizedBox(
-                                  height: MediaQueryHeight * 0.04,
-                                ),
-                                ElevatedButton(
-                                  style: ElevatedButton.styleFrom(
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(100),
-                                    ),
-                                    backgroundColor: primary,
-                                    fixedSize: Size(MediaQueryWidth * 0.39,
-                                        MediaQueryHeight * 0.05),
-                                  ),
-                                  onPressed: () {},
-                                  child: Text(
-                                    'Setujui Penarikan',
-                                    style: GoogleFonts.inter(
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            )
-                          ])),
-                  SizedBox(
-                    height: MediaQueryHeight * 0.013,
-                  ),
-                  Container(
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-                      width: MediaQueryWidth,
-                      height: MediaQueryHeight * 0.21,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(10),
-                        boxShadow: [
-                          BoxShadow(
-                              color: Colors.black12,
-                              spreadRadius: 6,
-                              blurRadius: 5,
-                              offset: Offset.fromDirection(1, 6)),
-                        ],
-                      ),
-                      child: Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                Text(
-                                  'No Transaksi',
-                                  style: GoogleFonts.inter(
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                  textAlign: TextAlign.center,
-                                ),
-                                reusableText(
-                                    '${TransaksiKeluarList.code}',
-                                    Color.fromARGB(255, 39, 178, 83),
-                                    15,
-                                    FontWeight.bold),
-                                SizedBox(
-                                  height: MediaQueryHeight * 0.04,
-                                ),
-                                Text(
-                                  'Nama Penyetor',
-                                  style: GoogleFonts.inter(
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                  textAlign: TextAlign.center,
-                                ),
-                                Text(
-                                  '${TransaksiKeluarList.name}',
-                                  style: GoogleFonts.inter(
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                  textAlign: TextAlign.center,
-                                ),
-                              ],
-                            ),
-                            SizedBox(
-                              width: MediaQueryWidth * 0.05,
-                            ),
-                            Column(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  'Mengajukan Penarikan',
+                                onPressed: () {},
+                                child: Text(
+                                  'Setujui Penarikan',
                                   style: GoogleFonts.inter(
                                     fontSize: 12,
                                     fontWeight: FontWeight.bold,
-                                    color: Color.fromARGB(255, 249, 3, 3),
-                                  ),
-                                  textAlign: TextAlign.center,
-                                ),
-                                reusableText(
-                                    '${TransaksiKeluarList.amount}',
-                                    Color.fromARGB(255, 39, 178, 83),
-                                    15,
-                                    FontWeight.bold),
-                                SizedBox(
-                                  height: MediaQueryHeight * 0.04,
-                                ),
-                                ElevatedButton(
-                                  style: ElevatedButton.styleFrom(
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(100),
-                                    ),
-                                    backgroundColor:
-                                        Color.fromARGB(255, 188, 189, 189),
-                                    fixedSize: Size(MediaQueryWidth * 0.39,
-                                        MediaQueryHeight * 0.05),
-                                  ),
-                                  onPressed: () {},
-                                  child: Text(
-                                    'Setujui Penarikan',
-                                    style: GoogleFonts.inter(
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.bold,
-                                    ),
                                   ),
                                 ),
-                              ],
-                            )
-                          ])),
-                ],
-              ),
-            );
-          },
-        ),
+                              ),
+                            ],
+                          )
+                        ]),
+                  ),
+              ],
+            ),
+          );
+        }),
       ),
     );
   }
