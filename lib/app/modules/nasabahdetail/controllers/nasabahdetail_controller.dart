@@ -1,30 +1,48 @@
 import 'dart:convert';
 
 import 'package:get/get.dart';
-import 'package:siresma/app/models/datanasabah.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
+import 'package:siresma/app/models/detailnasabah.dart';
 
 import '../../../config/api.dart';
 
 class NasabahDetailController extends GetxController {
-  //TODO: Implement HomeController
+  final nasabah = Rx<DetailDataNasabah?>(null);
 
-  final nasabah = Rx<DataNasabah?>(null);
+  @override
+  void onInit() {
+    super.onInit();
+    getDetailNasabah();
+  }
 
-  Future<void> fetchNasabahDetail() async {
+  Future<void> getDetailNasabah() async {
     try {
-      var url = Uri.parse(API.data_nasabah);
-      http.Response response = await http.get(url);
-      if (response.statusCode == 200) {
-        final jsonBody = json.decode(response.body);
-        nasabah.value = DataNasabah.fromJson(jsonBody);
+      final prefs = await SharedPreferences.getInstance();
+      final token = prefs.getString("token");
+
+      if (token != null) {
+        final headers = {
+          'Accept': 'application/json',
+          'Authorization': 'Bearer $token',
+        };
+
+        final url = Uri.parse(API.detail_nasabah);
+        final response = await http.get(url, headers: headers);
+
+        if (response.statusCode == 200) {
+          final data = jsonDecode(response.body)['data'];
+          nasabah.value = DetailDataNasabah.fromJson(data);
+          print(data);
+        } else {
+          print('Failed to fetch data: ${response.statusCode}');
+          print(response.body);
+        }
       } else {
-        nasabah.value = null;
-        throw Exception('Failed to load data');
+        print('Token is null or not available.');
       }
     } catch (e) {
-      nasabah.value = null;
-      rethrow;
+      print('An error occurred: $e');
     }
   }
 }
