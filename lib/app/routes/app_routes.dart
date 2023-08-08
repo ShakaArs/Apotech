@@ -31,6 +31,7 @@ abstract class Routes {
   static const TRANSAKSIKELUAR = _Paths.TRANSAKSIKELUAR;
   static const QRADMIN = _Paths.QRADMIN;
   static const EDIT_PROFIL = _Paths.EDIT_PROFIL;
+  static const INPUTCODE = _Paths.INPUTCODE;
 }
 
 abstract class _Paths {
@@ -63,4 +64,5 @@ abstract class _Paths {
   static const TRANSAKSIKELUAR = '/transaksikeluar';
   static const QRADMIN = '/qradmin';
   static const EDIT_PROFIL = '/edit-profil';
+  static const INPUTCODE = '/inputcode';
 }

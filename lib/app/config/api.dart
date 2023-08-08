@@ -26,4 +26,5 @@ class API {
       'https://api.siresma.com/api/admin/transactions/outcoming';
   static const approvetransaksi =
       'https://api.siresma.com/api/admin/nasabah/details/transactions/approve';
+  static const code_iots = "https://api.siresma.com/api/iot/connect";
 }

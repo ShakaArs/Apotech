@@ -10,6 +10,8 @@ import '../modules/evoucher/bindings/evoucher_binding.dart';
 import '../modules/evoucher/views/evoucher_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
+import '../modules/inputcode/bindings/inputcode_binding.dart';
+import '../modules/inputcode/views/inputcode_view.dart';
 import '../modules/keamanan/bindings/keamanan_binding.dart';
 import '../modules/keamanan/views/keamanan_view.dart';
 import '../modules/location/bindings/location_binding.dart';
@@ -199,5 +201,10 @@ class AppPages {
       page: () => const EditProfilView(),
       binding: EditProfilBinding(),
     ),
+    GetPage(
+      name: _Paths.INPUTCODE,
+      page: () => const InputCodeView(),
+      binding: InputCodeBinding(),
+    )
   ];
 }
