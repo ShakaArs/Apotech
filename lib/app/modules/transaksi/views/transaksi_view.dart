@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
 import 'package:siresma/app/common/custom_textformfield.dart';
 import 'package:siresma/app/common/colors.dart';
 import 'package:google_fonts/google_fonts.dart';
-//import '../../../common/button.dart';
+import '../../../common/button.dart';
 import '../controllers/transaksi_controller.dart';
+import '../../../models/transaksikeluar.dart';
 
 class TransaksiView extends GetView<TransaksiController> {
   const TransaksiView({Key? key}) : super(key: key);
@@ -155,17 +155,17 @@ class TransaksiView extends GetView<TransaksiController> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     CustomeTextFieldSetorSampah(
-                        hint: 'Masukkan jumlah yang ingin ditarik',
-                        obscureText: false,
-                        enable: true,
-                        controller: controller.AmountCtrl,
-                          validator: (value) {
-                          return controller.validateAmount(value!);
-                        },
-                        onChanged: (value) {
-                         return controller.AmountCtrl.text = value;
-                        },
-                      ),
+                      hint: 'Masukan jumlah yang ingin ditarik',
+                      obscureText: false,
+                      enable: true,
+                      controller: controller.amountCtrl,
+                      validator: (value) {
+                        return controller.validateAmount(value!);
+                      },
+                      onChanged: (value) {
+                        return controller.amountCtrl.text = value;
+                      },
+                    ),
                   ],
                 ),
               ),
@@ -181,7 +181,9 @@ class TransaksiView extends GetView<TransaksiController> {
                   fixedSize:
                       Size(MediaQueryWidth * 0.45, MediaQueryHeight * 0.025),
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  controller.checkTransaksi();
+                },
                 child: Text(
                   "Tarik Saldo",
                   style: TextStyle(

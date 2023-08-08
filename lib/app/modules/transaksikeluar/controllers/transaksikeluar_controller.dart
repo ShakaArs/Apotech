@@ -7,13 +7,7 @@ import 'dart:convert';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class TransaksiKeluarController extends GetxController {
-  List<Map<String, dynamic>> transaksi = [];
-
-  @override
-  void onInit() {
-    super.onInit();
-    getTransaksiKeluar();
-  }
+  RxList transaksi = [].obs;
 
   Future<void> getTransaksiKeluar() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -39,26 +33,17 @@ class TransaksiKeluarController extends GetxController {
     }
   }
 
-  // Function to approve a transaction based on id
-  Future<void> approveTransaction(int id) async {
-    try {
-      var headers = {
-        'Accept': 'application/json',
-      };
-      var url = Uri.parse(API.approvetransaksi);
-      var body = {
-        'id': id.toString()
-      }; // You may need to adjust the request body
-      http.Response response =
-          await http.post(url, headers: headers, body: body);
-      if (response.statusCode == 200) {
-        var data = jsonDecode(response.body);
-        // Handle the response accordingly
-      } else {
-        print(response.body);
-      }
-    } catch (e) {
-      print(e);
-    }
+  @override
+  void onInit() {
+    getTransaksiKeluar();
+    update();
+    super.onInit();
+  }
+
+  @override
+  void onReady() {
+    getTransaksiKeluar();
+    update();
+    super.onReady();
   }
 }

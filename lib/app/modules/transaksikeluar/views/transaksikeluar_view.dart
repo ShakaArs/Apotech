@@ -17,7 +17,7 @@ class TransaksiKeluarView extends GetView<TransaksiKeluarController> {
 
     return Scaffold(
       body: SingleChildScrollView(
-        child: GetBuilder<TransaksiKeluarController>(builder: (controller) {
+        child: Obx(() {
           return Container(
             padding: EdgeInsets.only(top: 45, left: 20, right: 20),
             width: MediaQueryWidth,

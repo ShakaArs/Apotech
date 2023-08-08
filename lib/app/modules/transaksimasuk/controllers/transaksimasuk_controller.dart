@@ -7,21 +7,7 @@ import 'dart:convert';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class TransaksiMasukController extends GetxController {
-  List<Map<String, dynamic>> transaksi = [];
-
-  @override
-  void onInit() {
-    getTransaksiMasuk();
-    update();
-    super.onInit();
-  }
-
-  @override
-  void onReady() {
-    getTransaksiMasuk();
-    update();
-    super.onReady();
-  }
+  RxList transaksi = [].obs;
 
   Future<void> getTransaksiMasuk() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -45,5 +31,19 @@ class TransaksiMasukController extends GetxController {
     } catch (e) {
       print(e);
     }
+  }
+
+  @override
+  void onInit() {
+    getTransaksiMasuk();
+    update();
+    super.onInit();
+  }
+
+  @override
+  void onReady() {
+    getTransaksiMasuk();
+    update();
+    super.onReady();
   }
 }

@@ -19,8 +19,8 @@ class TransaksiadminView extends GetView<TransaksiadminController> {
 
     return Scaffold(
       body: SingleChildScrollView(
-        child: GetBuilder<TransaksiadminController>(
-          builder: (controller) {
+        child: Obx(
+          () {
             return Container(
               padding: EdgeInsets.only(top: 45, left: 20, right: 20),
               width: MediaQueryWidth,
@@ -88,7 +88,7 @@ class TransaksiadminView extends GetView<TransaksiadminController> {
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               Text(
-                                '${TransaksiMasukList.name}',
+                                trs['id'],
                                 style: GoogleFonts.inter(
                                     fontWeight: FontWeight.bold,
                                     color: Colors.white,
@@ -120,11 +120,7 @@ class TransaksiadminView extends GetView<TransaksiadminController> {
                           Container(
                             child: DataTable(
                               columns: [
-                                DataColumn(
-                                    label: Text(
-                                  'Kode',
-                                  style: TextStyle(fontSize: 14),
-                                )),
+                                DataColumn(label: Text('Kode')),
                                 DataColumn(label: Text('Tanggal')),
                                 DataColumn(label: Text('Berat')),
                                 DataColumn(label: Text('Pendapatan')),

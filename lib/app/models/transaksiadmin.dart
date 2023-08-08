@@ -23,9 +23,9 @@ class TransaksiAdminData {
   String created_at;
   String updated_at;
   String weight;
-  String total_income;
-  String user_income;
-  String admin_income;
+  int total_income;
+  int user_income;
+  int admin_income;
 
   TransaksiAdminData({
     required this.id,
@@ -64,7 +64,7 @@ class TransaksiAdminList {
   static String? created_at;
   static String? updated_at;
   static String? weight;
-  static String? total_income;
-  static String? user_income;
-  static String? admin_income;
+  static int? total_income;
+  static int? user_income;
+  static int? admin_income;
 }
