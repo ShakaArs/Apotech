@@ -18,7 +18,7 @@ class ApiResponse {
 class TransaksiMasukData {
   int id;
   String code;
-  String amount;
+  int amount;
   String name;
   String store_date;
 
@@ -44,7 +44,7 @@ class TransaksiMasukData {
 class TransaksiMasukList {
   static int? id;
   static String? code;
-  static String? amount;
+  static int? amount;
   static String? name;
   static String? store_date;
 }
