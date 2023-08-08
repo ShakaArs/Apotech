@@ -19,7 +19,7 @@ class TransaksiAdminData {
   int id;
   String code;
   String trash_bank_id;
-  String amount;
+  int amount;
   String created_at;
   String updated_at;
   String weight;
@@ -59,7 +59,7 @@ class TransaksiAdminData {
 class TransaksiAdminList {
   static int? id;
   static String? code;
-  static String? amount;
+  static int? amount;
   static String? trash_bank_id;
   static String? created_at;
   static String? updated_at;
