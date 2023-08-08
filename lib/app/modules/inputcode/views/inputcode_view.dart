@@ -9,8 +9,7 @@ import 'package:siresma/app/modules/qradmin/controllers/qradmin_controller.dart'
 import '../controllers/inputcode_controller.dart';
 
 class InputCodeView extends GetView<InputCodeController> {
-  const InputCodeView({Key? key}) : super(key: key);
-
+  InputCodeView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     final MediaQueryWidth = MediaQuery.of(context).size.width;
@@ -34,7 +33,7 @@ class InputCodeView extends GetView<InputCodeController> {
                       children: [
                         Icon(
                           FontAwesomeIcons.weightScale,
-                          size: 46,
+                          size: 40,
                           color: primary,
                         ),
                         SizedBox(
@@ -46,7 +45,7 @@ class InputCodeView extends GetView<InputCodeController> {
                             Text(
                               'Input Code Berat',
                               style: GoogleFonts.inter(
-                                fontSize: 26,
+                                fontSize: 22,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
@@ -72,10 +71,10 @@ class InputCodeView extends GetView<InputCodeController> {
                   Container(
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        reusableText('Code Berat (7 Karakter)', Colors.black,
-                            20, FontWeight.bold),
+                        reusableText(
+                            'Code Berat', Colors.black, 15, FontWeight.bold),
                         SizedBox(
                           height: MediaQueryHeight * 0.01,
                         ),
@@ -88,7 +87,7 @@ class InputCodeView extends GetView<InputCodeController> {
                     enable: true,
                     controller: controller.CodeCtrl,
                     validator: (value) {
-                      return controller.validateWeight(value!);
+                      return controller.validateCode(value!);
                     },
                     onChanged: (value) {
                       return controller.CodeCtrl.text = value;
@@ -111,14 +110,12 @@ class InputCodeView extends GetView<InputCodeController> {
                     },
                     child: Text(
                       "Kirim",
-                      style: TextStyle(
+                      style: GoogleFonts.inter(
                         fontSize: 20,
                         color: Colors.white,
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
-                  ),
-                  SizedBox(
-                    height: MediaQueryHeight * 0.02,
                   ),
                 ],
               ),
