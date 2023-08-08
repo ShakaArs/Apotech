@@ -9,6 +9,7 @@ import 'package:http/http.dart' as https;
 import 'package:siresma/app/common/custom_snackbar.dart';
 
 import '../../../config/api.dart';
+import '../../../models/datanasabah.dart';
 import '../../../models/user.dart';
 
 class LoginController extends GetxController {
@@ -103,6 +104,10 @@ class LoginController extends GetxController {
             UserList.address = user['address'];
             UserList.no_kk = user['no_kk'];
             UserList.profilePicture = user['profile_picture'];
+            //Data Nasabah list
+            ListDataNasabah.id = user['id'];
+            ListDataNasabah.full_name = user['full_name'];
+            ListDataNasabah.phone = user['phone'];
           }
         } else {
           customAllertDialog('Gagal', '${error}', 'error');

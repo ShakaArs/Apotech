@@ -69,7 +69,7 @@ class DataNasabahView extends GetView<DataNasabahController> {
                   for (var user in controller.users)
                     Container(
                       padding:
-                          EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+                          EdgeInsets.symmetric(horizontal: 15, vertical: 20),
                       width: MediaQueryWidth,
                       height: MediaQueryHeight * 0.12,
                       decoration: BoxDecoration(
@@ -85,7 +85,7 @@ class DataNasabahView extends GetView<DataNasabahController> {
                         ],
                       ),
                       child: Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Column(
@@ -109,59 +109,51 @@ class DataNasabahView extends GetView<DataNasabahController> {
                               ),
                             ],
                           ),
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            crossAxisAlignment: CrossAxisAlignment.end,
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.end,
-                                crossAxisAlignment: CrossAxisAlignment.end,
-                                children: [
-                                  ElevatedButton(
-                                    style: ElevatedButton.styleFrom(
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(100),
-                                      ),
-                                      backgroundColor: primary,
-                                      fixedSize: Size(
-                                        MediaQueryWidth * 0.05,
-                                        MediaQueryHeight * 0.05,
-                                      ),
-                                    ),
-                                    onPressed: () {
-                                      Get.toNamed('/transaksiadmin');
-                                    },
-                                    child: Image.asset(
-                                      'assets/image/icon_trannsaksi.png',
-                                      scale: 0.08,
-                                    ),
+                              ElevatedButton(
+                                style: ElevatedButton.styleFrom(
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(100),
                                   ),
-                                  SizedBox(
-                                    width: MediaQueryWidth * 0.009,
+                                  backgroundColor: primary,
+                                  fixedSize: Size(
+                                    MediaQueryWidth * 0.05,
+                                    MediaQueryHeight * 0.05,
                                   ),
-                                  ElevatedButton(
-                                    style: ElevatedButton.styleFrom(
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(100),
-                                      ),
-                                      backgroundColor: primary,
-                                      fixedSize: Size(
-                                        MediaQueryWidth * 0.05,
-                                        MediaQueryHeight * 0.05,
-                                      ),
-                                    ),
-                                    onPressed: () {
-                                      Get.toNamed('/nasabahdetail');
-                                    },
-                                    child: Image.asset(
-                                      'assets/image/icon_mata.png',
-                                      scale: 0.08,
-                                    ),
+                                ),
+                                onPressed: () {
+                                  Get.toNamed('/transaksiadmin');
+                                },
+                                child: Image.asset(
+                                  'assets/image/icon_trannsaksi.png',
+                                  scale: 0.08,
+                                ),
+                              ),
+                              SizedBox(
+                                width: MediaQueryWidth * 0.009,
+                              ),
+                              ElevatedButton(
+                                style: ElevatedButton.styleFrom(
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(100),
                                   ),
-                                ],
-                              )
+                                  backgroundColor: primary,
+                                  fixedSize: Size(
+                                    MediaQueryWidth * 0.05,
+                                    MediaQueryHeight * 0.05,
+                                  ),
+                                ),
+                                onPressed: () {
+                                  Get.toNamed('/nasabahdetail');
+                                },
+                                child: Image.asset(
+                                  'assets/image/icon_mata.png',
+                                  scale: 0.08,
+                                ),
+                              ),
                             ],
                           )
                         ],

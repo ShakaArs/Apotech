@@ -22,8 +22,9 @@ import '../modules/navbar/bindings/navbar_binding.dart';
 import '../modules/navbar/views/navbar_view.dart';
 import '../modules/navbaradmin/bindings/navbaradmin_binding.dart';
 import '../modules/navbaradmin/views/navbaradmin_view.dart';
-import '../modules/navbarprofik/bindings/navbarprofil_binding.dart';
-import '../modules/navbarprofik/views/navbarprofil_view.dart';
+
+import '../modules/navbarprofile/bindings/navbarprofile_binding.dart';
+import '../modules/navbarprofile/views/navbarprofile_view.dart';
 import '../modules/navbartabungan/bindings/navbartabungan_binding.dart';
 import '../modules/navbartabungan/views/navbartabungan_view.dart';
 import '../modules/number/bindings/number_binding.dart';

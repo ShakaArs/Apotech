@@ -3,18 +3,12 @@ import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:siresma/app/models/datanasabah.dart';
 
 import '../../../config/api.dart';
 
 class DataNasabahController extends GetxController {
   RxList users = [].obs;
-
-  @override
-  void onInit() {
-    getDataNasabah();
-    update();
-    super.onInit();
-  }
 
   Future<void> getDataNasabah() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -29,7 +23,6 @@ class DataNasabahController extends GetxController {
       http.Response response = await http.get(url, headers: headers);
       if (response.statusCode == 200) {
         var data = jsonDecode(response.body)['data'];
-
         users.assignAll(List<Map<String, dynamic>>.from(data));
         print(data);
       } else {
@@ -38,5 +31,19 @@ class DataNasabahController extends GetxController {
     } catch (e) {
       print(e);
     }
+  }
+
+  @override
+  void onInit() {
+    getDataNasabah();
+    update();
+    super.onInit();
+  }
+
+  @override
+  void onReady() {
+    super.onReady();
+    getDataNasabah();
+    update();
   }
 }

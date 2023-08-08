@@ -33,7 +33,7 @@ class NavbarProfilController extends GetxController {
       ),
       PersistentBottomNavBarItem(
         icon: Icon(
-          FontAwesomeIcons.trashArrowUp,
+          FontAwesomeIcons.trashCanArrowUp,
           size: 24,
         ),
         activeColorPrimary: Colors.white,

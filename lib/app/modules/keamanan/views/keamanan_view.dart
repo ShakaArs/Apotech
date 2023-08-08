@@ -145,7 +145,7 @@ class KeamananView extends GetView<KeamananController> {
                       Size(MediaQueryWidth * 0.05, MediaQueryHeight * 0.05),
                 ),
                 onPressed: () {
-                  Get.offAllNamed('/navbarprofil');
+                  Get.back();
                 },
                 child: Icon(Icons.arrow_back_sharp),
               ),
