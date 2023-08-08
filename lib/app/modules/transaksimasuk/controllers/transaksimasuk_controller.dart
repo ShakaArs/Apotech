@@ -11,8 +11,16 @@ class TransaksiMasukController extends GetxController {
 
   @override
   void onInit() {
-    super.onInit();
     getTransaksiMasuk();
+    update();
+    super.onInit();
+  }
+
+  @override
+  void onReady() {
+    getTransaksiMasuk();
+    update();
+    super.onReady();
   }
 
   Future<void> getTransaksiMasuk() async {
