@@ -203,7 +203,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.INPUTCODE,
-      page: () => const InputCodeView(),
+      page: () => InputCodeView(),
       binding: InputCodeBinding(),
     )
   ];

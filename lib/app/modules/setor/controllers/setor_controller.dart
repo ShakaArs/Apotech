@@ -10,7 +10,7 @@ import '../../../common/custom_snackbar.dart';
 import '../../../models/kategori_sampah.dart';
 
 class SetorController extends GetxController {
-  Rx<DateTime> selectedDate = Rx<DateTime>(DateTime.now());
+  Rx<DateTime?> selectedDate = Rx<DateTime?>(null);
   var kategori = <Kategori>[].obs;
   Kategori? selectedKategori;
 
@@ -85,7 +85,7 @@ class SetorController extends GetxController {
       var body = {
         'trash_category_id': selectedKategori!.id.toString(),
         'trash_bank_id': trash_bank_id.toString(),
-        'store_date': selectedDate.value.toIso8601String()
+        'store_date': selectedDate.value!.toIso8601String()
       };
       var url = Uri.parse(API.setor_sampah);
       var response = await https.post(
