@@ -208,7 +208,8 @@ class TabunganbeforeView extends GetView<TabController> {
                                                       MediaQueryHeight * 0.020),
                                                 ),
                                                 onPressed: () {
-                                                  final selectedId = data.id;
+                                                  final selectedId = data
+                                                      .id; // Ambil id dari objek TrashData
                                                   Get.toNamed('/inputcode',
                                                       arguments: selectedId);
                                                 },

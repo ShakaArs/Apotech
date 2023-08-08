@@ -13,7 +13,7 @@ class InputCodeController extends GetxController {
   final GlobalKey<FormState> qradminFromKey = GlobalKey<FormState>();
   final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
   TextEditingController CodeCtrl = TextEditingController();
-  var selectedId = 0.obs;
+  RxInt selectedId = RxInt(0);
 
   String? validateCode(String value) {
     if (value == null || value.isEmpty || value == ' ') {
@@ -27,7 +27,7 @@ class InputCodeController extends GetxController {
   Future<void> PostDataCode() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     var token = prefs.getString("token");
-    final id = selectedId.value; // Gunakan data id dalam request
+    final id = selectedId.value;
     final String code = CodeCtrl.text;
     try {
       var headers = {
@@ -75,6 +75,8 @@ class InputCodeController extends GetxController {
 
   @override
   void onInit() {
+    selectedId.value = Get.arguments as int;
+    print(selectedId.value);
     super.onInit();
   }
 

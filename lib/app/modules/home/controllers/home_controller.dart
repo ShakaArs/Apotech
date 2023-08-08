@@ -23,10 +23,11 @@ class HomeController extends GetxController {
       https.Response response = await https.get(url, headers: headers);
       if (response.statusCode == 200) {
         Map<String, dynamic> jsonResponse = json.decode(response.body);
-        if (jsonResponse['success'] == true && jsonResponse['data'] != null) {
+        if (jsonResponse['success'] == true) {
           name.value = jsonResponse['data']['name'];
           UserList.location = name.value;
           print(jsonResponse);
+          print(name.value);
           print(UserList.location);
           update();
         }

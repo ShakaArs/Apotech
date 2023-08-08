@@ -87,6 +87,7 @@ class LocationController extends GetxController {
         Timer(Duration(seconds: 2), () {
           Get.offAllNamed('/navbar');
         });
+        print(UserList.location);
       } else {
         customAllertDialog("Gagal", "${error}", 'error');
       }
