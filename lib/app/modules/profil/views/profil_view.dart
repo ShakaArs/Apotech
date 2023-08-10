@@ -252,7 +252,7 @@ class ProfilView extends GetView<ProfilController> {
               ),
               ListTile(
                 onTap: () {
-                  Get.toNamed('/login');
+                  controller.Logout();
                 },
                 leading: Icon(
                   FontAwesomeIcons.rightFromBracket,

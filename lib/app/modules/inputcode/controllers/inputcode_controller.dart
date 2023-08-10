@@ -7,9 +7,13 @@ import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as https;
 import 'package:siresma/app/common/custom_snackbar.dart';
+import 'package:siresma/app/modules/navbartabungan/views/navbartabungan_view.dart';
 import '../../../config/api.dart';
+import '../../tabunganbefore/controllers/tabunganefore_controller.dart';
 
 class InputCodeController extends GetxController {
+  final TabunganbeforeController TabunganCtrl = Get.find();
+
   final GlobalKey<FormState> qradminFromKey = GlobalKey<FormState>();
   final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
   TextEditingController CodeCtrl = TextEditingController();
@@ -51,7 +55,7 @@ class InputCodeController extends GetxController {
         print(jsonData);
         customAllertDialog('Sukses', '${succes}', 'succes');
         Timer(Duration(seconds: 2), () {
-          Get.offAllNamed('/navbartabungan');
+          Get.toNamed('/navbartabungan', arguments: TabunganCtrl.fetchData());
         });
         //Tambahkan print response.body untuk melihat response dari server
       } else {

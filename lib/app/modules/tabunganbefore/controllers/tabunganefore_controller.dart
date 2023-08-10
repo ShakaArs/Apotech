@@ -30,7 +30,7 @@ class TabunganbeforeController extends GetxController {
         isLoading.value = false;
       } else {
         isLoading.value = false;
-        print('Error fetching data: ${response.reasonPhrase}');
+        print('Error fetching data: ${response.body}');
       }
     } catch (e) {
       isLoading.value = false;
@@ -47,7 +47,6 @@ class TabunganbeforeController extends GetxController {
 
   @override
   void onReady() {
-    fetchData();
     update();
     super.onReady();
   }

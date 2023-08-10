@@ -19,7 +19,6 @@ class LocationController extends GetxController {
   Future<void> fetchData() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     var token = prefs.getString("token");
-    print(token);
     try {
       var headers = {
         'Accept': 'application/json',
@@ -87,7 +86,6 @@ class LocationController extends GetxController {
         Timer(Duration(seconds: 2), () {
           Get.offAllNamed('/navbar');
         });
-        print(UserList.location);
       } else {
         customAllertDialog("Gagal", "${error}", 'error');
       }

@@ -8,11 +8,14 @@ import 'package:siresma/app/config/api.dart';
 
 import '../../../common/custom_snackbar.dart';
 import '../../../models/kategori_sampah.dart';
+import '../../tabunganbefore/controllers/tabunganefore_controller.dart';
 
 class SetorController extends GetxController {
   Rx<DateTime?> selectedDate = Rx<DateTime?>(null);
   var kategori = <Kategori>[].obs;
   Kategori? selectedKategori;
+
+  final TabunganbeforeController TabunganCtrl = Get.find();
 
   void onCategorySelected(Kategori? kategori) {
     selectedKategori = kategori;
@@ -27,7 +30,6 @@ class SetorController extends GetxController {
   Future<void> fetchData() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     var token = prefs.getString("token");
-    print(token);
     try {
       var headers = {
         'Accept': 'application/json',
@@ -60,7 +62,6 @@ class SetorController extends GetxController {
     var token = prefs.getString("token");
     try {
       if (selectedKategori == null) {
-        // Tambahkan validasi jika selectedDate masih null
         Get.snackbar(
           "Error",
           "Pilih Kategori Sampah terlebih dahulu",
@@ -69,7 +70,6 @@ class SetorController extends GetxController {
         return;
       }
       if (selectedDate.value == null) {
-        // Tambahkan validasi jika selectedDate masih null
         Get.snackbar(
           "Error",
           "Pilih tanggal terlebih dahulu",
@@ -100,9 +100,8 @@ class SetorController extends GetxController {
         print(json);
         customAllertDialog('Sukses', '${succes}', 'succes');
         Timer(Duration(seconds: 2), () {
-          Get.toNamed('/navbartabungan');
+          Get.toNamed('/navbartabungan', arguments: TabunganCtrl.fetchData());
         });
-        body.clear();
       } else {
         customAllertDialog("Setor Sampah Gagal", "${error}", 'error');
       }
