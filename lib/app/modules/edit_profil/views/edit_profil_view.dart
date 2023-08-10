@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:siresma/app/common/colors.dart';
 import 'package:siresma/app/common/custom_textformfield.dart';
 import 'package:siresma/app/models/user.dart';
 
@@ -111,6 +113,34 @@ class EditProfilView extends GetView<EditProfilController> {
                       hint: 'Alamat',
                       obscureText: false,
                       enable: true),
+                  SizedBox(
+                    height: MediaQueryHeight * 0.03,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30),
+                          ),
+                          backgroundColor: primary,
+                          fixedSize: Size(
+                              MediaQueryWidth * 0.35, MediaQueryHeight * 0.025),
+                        ),
+                        onPressed: () {},
+                        child: Text(
+                          "SIMPAN",
+                          style: GoogleFonts.inter(
+                            fontSize: 22,
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ],
+                  )
                 ],
               ),
             ],

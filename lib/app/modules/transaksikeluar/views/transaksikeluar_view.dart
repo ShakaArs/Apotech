@@ -146,7 +146,7 @@ class TransaksiKeluarView extends GetView<TransaksiKeluarController> {
                                 textAlign: TextAlign.center,
                               ),
                               reusableText(
-                                  trs['amount'],
+                                  trs['amount'].toString(),
                                   Color.fromARGB(255, 39, 178, 83),
                                   15,
                                   FontWeight.bold),
