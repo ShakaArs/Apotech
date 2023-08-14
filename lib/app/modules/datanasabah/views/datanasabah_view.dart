@@ -69,10 +69,10 @@ class DataNasabahView extends GetView<DataNasabahController> {
                       var user = controller.users[index];
                       return Container(
                         padding: EdgeInsets.only(
-                          bottom: 20,
+                          bottom: 15,
                         ),
                         width: MediaQueryWidth,
-                        height: MediaQueryHeight * 0.20,
+                        height: MediaQueryHeight * 0.23,
                         child: Container(
                           padding: EdgeInsets.only(
                               right: 20, left: 20, top: 20, bottom: 10),
