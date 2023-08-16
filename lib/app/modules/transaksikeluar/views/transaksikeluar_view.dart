@@ -99,7 +99,8 @@ class TransaksiKeluarView extends GetView<TransaksiKeluarController> {
                               ],
                             ),
                             child: Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Column(
