@@ -7,6 +7,7 @@ import 'package:siresma/app/modules/datanasabah/controllers/datanasabah_controll
 
 import '../../../models/datanasabah.dart';
 import '../../../models/user.dart';
+import '../../nasabahdetail/views/nasabahdetail_view.dart';
 
 class DataNasabahView extends GetView<DataNasabahController> {
   const DataNasabahView({Key? key}) : super(key: key);
@@ -147,7 +148,9 @@ class DataNasabahView extends GetView<DataNasabahController> {
                                       ),
                                     ),
                                     onPressed: () {
-                                      Get.toNamed('/nasabahdetail');
+                                      final selectedId = user['id'];
+                                      Get.toNamed('/nasabahdetail',
+                                          arguments: selectedId);
                                     },
                                     child: Image.asset(
                                       'assets/image/icon_mata.png',
