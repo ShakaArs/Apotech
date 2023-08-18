@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
 import 'package:get/get.dart';
-import 'package:siresma/app/common/custom_textformfield.dart';
 import 'package:siresma/app/common/colors.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:siresma/app/modules/nasabahdetail/controllers/nasabahdetail_controller.dart';
 import '../../../common/button.dart';
 
-class NasabahDetailView extends GetView<NasabahDetailController> {
+class NasabahDetailView extends StatelessWidget {
   const NasabahDetailView({Key? key}) : super(key: key);
 
   @override
@@ -16,17 +13,18 @@ class NasabahDetailView extends GetView<NasabahDetailController> {
     final MediaQueryWidth = MediaQuery.of(context).size.width;
     final MediaQueryHeight = MediaQuery.of(context).size.height;
 
+    // Register the NasabahDetailController with GetX
+    final controller = Get.put(NasabahDetailController());
+
     return Scaffold(
       body: Obx(
         () {
           final nasabah = controller.nasabah.value;
           if (nasabah == null) {
-            // Tampilkan indikator loading jika data nasabah masih kosong.
             return Center(
               child: CircularProgressIndicator(),
             );
           }
-          // Tampilan jika data nasabah sudah terisi.
           return SingleChildScrollView(
             child: Container(
               padding: EdgeInsets.only(top: 45, left: 20, right: 20),
@@ -99,7 +97,7 @@ class NasabahDetailView extends GetView<NasabahDetailController> {
                         Text(
                           nasabah.fullName,
                           style: GoogleFonts.inter(
-                            fontSize: 30,
+                            fontSize: 28,
                             fontWeight: FontWeight.bold,
                           ),
                           textAlign: TextAlign.center,
@@ -111,52 +109,62 @@ class NasabahDetailView extends GetView<NasabahDetailController> {
                           scale: 2.7,
                           child: CircleAvatar(
                             backgroundColor: Colors.grey.shade400,
-                            child: Icon(FontAwesomeIcons.solidUser,
-                                color: Colors.grey.shade300),
+                            backgroundImage: NetworkImage(
+                              nasabah.profilePicture,
+                            ),
                           ),
                         ),
                         SizedBox(
-                          height: MediaQueryHeight * 0.06,
+                          height: MediaQueryHeight * 0.07,
                         ),
-                        // Text(
-                        //   'Nomor Kartu Keluarga',
-                        //   style: GoogleFonts.inter(
-                        //     fontSize: 18,
-                        //     fontWeight: FontWeight.bold,
-                        //   ),
-                        //   textAlign: TextAlign.center,
-                        // ),
-                        // reusableText(nasabah., hints_text_setor, 16,
-                        //     FontWeight.bold),
-                        // SizedBox(
-                        //   height: MediaQueryHeight * 0.02,
-                        // ),
                         Text(
-                          'Nomor Handphone',
+                          'Nomor Kartu Keluarga',
                           style: GoogleFonts.inter(
-                            fontSize: 18,
+                            fontSize: 17,
                             fontWeight: FontWeight.bold,
                           ),
                           textAlign: TextAlign.center,
                         ),
-                        reusableText(nasabah.phone, hints_text_setor, 16,
-                            FontWeight.bold),
-                        SizedBox(
-                          height: MediaQueryHeight * 0.02,
+                        Text(
+                          nasabah.noKK,
+                          style: TextStyle(
+                              fontSize: 15,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.grey),
+                          textAlign: TextAlign.center,
                         ),
-                        // Text(
-                        //   'Alamat',
-                        //   style: GoogleFonts.inter(
-                        //     fontSize: 18,
-                        //     fontWeight: FontWeight.bold,
-                        //   ),
-                        //   textAlign: TextAlign.center,
-                        // ),
-                        // reusableText(nasabah.address, hints_text_setor, 16,
-                        //     FontWeight.bold),
-                        // SizedBox(
-                        //   height: MediaQueryHeight * 0.03,
-                        // ),
+                        Text(
+                          'Nomor Handphone',
+                          style: GoogleFonts.inter(
+                            fontSize: 17,
+                            fontWeight: FontWeight.bold,
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
+                        Text(
+                          nasabah.phone,
+                          style: TextStyle(
+                              fontSize: 15,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.grey),
+                          textAlign: TextAlign.center,
+                        ),
+                        Text(
+                          'Alamat',
+                          style: GoogleFonts.inter(
+                            fontSize: 17,
+                            fontWeight: FontWeight.bold,
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
+                        Text(
+                          nasabah.address,
+                          style: TextStyle(
+                              fontSize: 15,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.grey),
+                          textAlign: TextAlign.center,
+                        ),
                       ],
                     ),
                   ),

@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import '../../../common/custom_snackbar.dart';
 import 'package:http/http.dart' as https;
 import '../../../config/api.dart';
 

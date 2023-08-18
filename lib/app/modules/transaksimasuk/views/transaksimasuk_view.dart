@@ -95,7 +95,7 @@ class TransaksiMasukView extends GetView<TransaksiMasukController> {
                               ],
                             ),
                             child: Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Column(
@@ -135,9 +135,6 @@ class TransaksiMasukView extends GetView<TransaksiMasukController> {
                                       textAlign: TextAlign.center,
                                     ),
                                   ],
-                                ),
-                                SizedBox(
-                                  width: MediaQueryWidth * 0.10,
                                 ),
                                 Column(
                                   mainAxisAlignment: MainAxisAlignment.start,

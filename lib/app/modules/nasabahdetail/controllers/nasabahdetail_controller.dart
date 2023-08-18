@@ -1,10 +1,8 @@
 import 'dart:convert';
-
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
 import 'package:siresma/app/models/detailnasabah.dart';
-
 import '../../../config/api.dart';
 
 class NasabahDetailController extends GetxController {
@@ -13,10 +11,11 @@ class NasabahDetailController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    getDetailNasabah();
+    final userId = Get.arguments;
+    getDetailNasabahFromUserId(userId);
   }
 
-  Future<void> getDetailNasabah() async {
+  Future<void> getDetailNasabahFromUserId( userId) async {
     try {
       final prefs = await SharedPreferences.getInstance();
       final token = prefs.getString("token");
@@ -27,7 +26,7 @@ class NasabahDetailController extends GetxController {
           'Authorization': 'Bearer $token',
         };
 
-        final url = Uri.parse(API.detail_nasabah);
+        final url = Uri.parse(API.detail_nasabah + '?user_id=$userId');
         final response = await http.get(url, headers: headers);
 
         if (response.statusCode == 200) {
