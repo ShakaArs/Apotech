@@ -75,9 +75,10 @@ class KeamananView extends GetView<KeamananController> {
                       height: MediaQueryHeight * 0.01,
                     ),
                     CustomeTextFieldSetorSampah(
-                        hint: 'Masukkan Password Baru',
-                        obscureText: true,
-                        enable: true),
+                      hint: 'Masukkan Password Baru',
+                      obscureText: true,
+                      enable: true,
+                    ),
                   ],
                 ),
               ),
@@ -131,23 +132,6 @@ class KeamananView extends GetView<KeamananController> {
                     color: Colors.white,
                   ),
                 ),
-              ),
-              SizedBox(
-                height: MediaQueryHeight * 0.02,
-              ),
-              ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(100),
-                  ),
-                  backgroundColor: primary,
-                  fixedSize:
-                      Size(MediaQueryWidth * 0.05, MediaQueryHeight * 0.05),
-                ),
-                onPressed: () {
-                  Get.back();
-                },
-                child: Icon(Icons.arrow_back_sharp),
               ),
             ],
           ),

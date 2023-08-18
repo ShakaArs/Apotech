@@ -9,6 +9,8 @@ import '../../../config/api.dart';
 import '../../../models/location.dart';
 
 class HomeController extends GetxController {
+  final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
+
   RxString name = ''.obs;
 
   Future<void> fetchData() async {
@@ -25,10 +27,13 @@ class HomeController extends GetxController {
         Map<String, dynamic> jsonResponse = json.decode(response.body);
         if (jsonResponse['success'] == true) {
           name.value = jsonResponse['data']['name'];
+          var trash_bank_id = jsonResponse['data']['id'];
+          final SharedPreferences prefs = await _prefs;
+          await prefs.setInt("trash_bank_id", trash_bank_id);
           UserList.location = name.value;
+          print(trash_bank_id);
           print(jsonResponse);
           print(name.value);
-          print(UserList.location);
           update();
         }
       } else {

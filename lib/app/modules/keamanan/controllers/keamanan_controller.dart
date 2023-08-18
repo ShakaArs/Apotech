@@ -1,10 +1,13 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class KeamananController extends GetxController {
-  //TODO: Implement ProfilController
+  final GlobalKey<FormState> GantiPasswordFormKey = GlobalKey<FormState>();
+  TextEditingController passwordBaruCtrl = TextEditingController();
+  TextEditingController konfirmPasswordCtrl = TextEditingController();
 
+  
 
-  final count = 0.obs;
   @override
   void onInit() {
     super.onInit();
@@ -19,6 +22,4 @@ class KeamananController extends GetxController {
   void onClose() {
     super.onClose();
   }
-
-  void increment() => count.value++;
 }

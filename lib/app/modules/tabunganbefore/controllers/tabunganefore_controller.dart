@@ -26,6 +26,19 @@ class TabunganbeforeController extends GetxController {
         final trashModel = TrashModel.fromJson(responseJson);
         print(responseJson);
         print(trashModel);
+
+        trashModel.data.sort((a, b) {
+          if (a.status == 'Masih dalam Proses' &&
+              b.status != 'Masih dalam Proses') {
+            return -1; // Move 'Masih dalam Proses' status items to the top
+          } else if (a.status != 'Masih dalam Proses' &&
+              b.status == 'Masih dalam Proses') {
+            return 1;
+          } else {
+            return 0;
+          }
+        });
+
         trashData.value = trashModel.data;
         isLoading.value = false;
       } else {

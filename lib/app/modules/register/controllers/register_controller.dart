@@ -26,9 +26,13 @@ class RegisterController extends GetxController {
     if (value == null || value.isEmpty || value == ' ') {
       return 'Nama tidak boleh kosong';
     }
-    {
-      return null;
+    if (value.length >= 25) {
+      return 'Teks tidak boleh lebih dari 25 karakter';
     }
+    if (!RegExp(r'^[a-zA-Z\s]+$').hasMatch(value)) {
+      return 'Teks hanya boleh mengandung huruf dan spasi';
+    }
+    return null;
   }
 
   String? validateUsername(String value) {
@@ -44,8 +48,8 @@ class RegisterController extends GetxController {
     if (value == null || value.isEmpty || value == ' ') {
       return 'Nomor KK tidak boleh kosong';
     }
-    if (!GetUtils.isLengthGreaterThan(value, 15)) {
-      return "Minimal 16 angka";
+    if (value.length == 16) {
+      return "Nomor KK tidak boleh lebih dari 16 angka";
     }
     {
       return null;
@@ -63,7 +67,10 @@ class RegisterController extends GetxController {
 
   String? validateNomorHp(String value) {
     if (value == null || value.isEmpty || value == ' ') {
-      return 'Nomor Handpone tidak boleh kosong';
+      return 'Nomor HP tidak boleh kosong';
+    }
+    if (value.length == 12) {
+      return "Nomor HP tidak boleh lebih dari 12 angka";
     }
     {
       return null;
@@ -116,8 +123,10 @@ class RegisterController extends GetxController {
         "address": AlamatCtrl.text,
         "no_kk": NomorkkCtrl.text,
       });
-      request.files.add(await https.MultipartFile.fromPath(
-          'profile_picture', ImageFile!.path));
+      if (ImageFile != null) {
+        request.files.add(await https.MultipartFile.fromPath(
+            'profile_picture', ImageFile!.path));
+      }
       request.headers.addAll(headers);
       https.StreamedResponse response = await request.send();
       String responseBody = await response.stream.bytesToString();

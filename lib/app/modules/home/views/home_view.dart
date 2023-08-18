@@ -112,7 +112,7 @@ class HomeView extends GetView<HomeController> {
                                 SizedBox(
                                   width: MediaQueryWidth * 0.01,
                                 ),
-                                reusableText("${UserList.location}",
+                                reusableText("${controller.name.value}",
                                     Colors.black, 18, FontWeight.bold),
                               ],
                             ),

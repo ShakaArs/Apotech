@@ -192,6 +192,7 @@ class RegisterView extends GetView<RegisterController> {
                   ButtonAuth(
                     text: 'REGISTER',
                     onPress: () {
+                      // Get.offAllNamed('/otp');
                       controller.checkRegister();
                     },
                   ),

@@ -78,7 +78,22 @@ class OtpView extends GetView<OtpController> {
                   },
                 ),
                 SizedBox(
-                  height: MediaQueryHeight * 0.07,
+                  height: MediaQueryHeight * 0.05,
+                ),
+                TextButton(
+                  onPressed: () {
+                    controller.resendOTP();
+                  },
+                  child: Text(
+                    'resend OTP',
+                    style: GoogleFonts.inter(
+                      color: Colors.lightBlue,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: MediaQueryHeight * 0.01,
                 ),
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(

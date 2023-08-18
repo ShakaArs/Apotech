@@ -192,23 +192,7 @@ class TransaksiView extends GetView<TransaksiController> {
                   ),
                 ),
               ),
-              SizedBox(
-                height: MediaQueryHeight * 0.015,
-              ),
-              ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(100),
-                  ),
-                  backgroundColor: primary,
-                  fixedSize:
-                      Size(MediaQueryWidth * 0.05, MediaQueryHeight * 0.05),
-                ),
-                onPressed: () {
-                  Get.offAllNamed('/navbartabungan');
-                },
-                child: Icon(Icons.arrow_back_sharp),
-              ),
+              
             ],
           ),
         ),

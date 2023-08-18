@@ -50,6 +50,22 @@ class LoginController extends GetxController {
     }
   }
 
+  Future<bool> _isLoggedIn() async {
+    final SharedPreferences prefs = await _prefs;
+    final String? token = prefs.getString("token");
+    final String? loginTimeStr = prefs.getString("loginTime");
+
+    if (token != null && loginTimeStr != null) {
+      final DateTime loginTime = DateTime.parse(loginTimeStr);
+      final DateTime expiryTime = loginTime.add(Duration(minutes: 30));
+
+      if (DateTime.now().isBefore(expiryTime)) {
+        return true;
+      }
+    }
+    return false;
+  }
+
   Future<void> login() async {
     var headers = {
       // 'Content-Type': 'application/json',
@@ -68,43 +84,29 @@ class LoginController extends GetxController {
       if (response.statusCode == 200) {
         final json = jsonDecode(response.body);
         if (json["message"] == "Sukses melakukan login") {
-          if (json["data"]["role"] == "nasabah") {
-            var token = json["token"];
-            var user = json["data"];
-            print(user);
-            final SharedPreferences prefs = await _prefs;
-            await prefs.setString("token", token);
-            print(token);
-            customAllertDialog("Succes", "${succes}", 'succes');
-            Timer(Duration(seconds: 2), () {
+          var token = json["token"]; // Ambil token dari respons API
+          var user = json["data"];
+          print(user);
+          final SharedPreferences prefs = await _prefs;
+          await prefs.setString("token", token);
+          await prefs.setString("loginTime", DateTime.now().toIso8601String());
+          customAllertDialog("Succes", "${succes}", 'succes');
+          Timer(Duration(seconds: 2), () {
+            if (json["data"]["role"] == "nasabah") {
               Get.offAllNamed('/navbar');
-            });
-            UserList.full_name = user['full_name'];
-            UserList.location = user['location'];
-            UserList.role = user['role'];
-            UserList.phone = user['phone'];
-            UserList.address = user['address'];
-            UserList.no_kk = user['no_kk'];
-            UserList.profilePicture = user['profile_picture'];
-          } else if (json["data"]["role"] == "pengelola") {
-            var token = json["token"];
-            var user = json["data"];
-            print(user);
-            final SharedPreferences prefs = await _prefs;
-            await prefs.setString("token", token);
-            print(token);
-            customAllertDialog("Succes", "${succes}", 'succes');
-            Timer(Duration(seconds: 2), () {
+            } else if (json["data"]["role"] == "pengelola") {
               Get.offAllNamed('/navbaradmin');
-            });
-            UserList.full_name = user['full_name'];
-            UserList.location = user['location'];
-            UserList.role = user['role'];
-            UserList.phone = user['phone'];
-            UserList.address = user['address'];
-            UserList.no_kk = user['no_kk'];
-            UserList.profilePicture = user['profile_picture'];
-            //Data Nasabah list
+            }
+          });
+          UserList.full_name = user['full_name'];
+          UserList.location = user['location'];
+          UserList.role = user['role'];
+          UserList.phone = user['phone'];
+          UserList.address = user['address'];
+          UserList.no_kk = user['no_kk'];
+          UserList.profilePicture = user['profile_picture'];
+          if (json["data"]["role"] == "pengelola") {
+            // Data Nasabah list
             ListDataNasabah.id = user['id'];
             ListDataNasabah.full_name = user['full_name'];
             ListDataNasabah.phone = user['phone'];
@@ -128,14 +130,24 @@ class LoginController extends GetxController {
       } catch (e) {
         Fluttertoast.showToast(msg: e.toString());
       }
-    } else {
-      return null;
     }
   }
 
   @override
   void onInit() {
     super.onInit();
+    _initLogin();
+  }
+
+  Future<void> _initLogin() async {
+    bool loggedIn = await _isLoggedIn();
+    if (loggedIn) {
+      if (UserList.role == "nasabah") {
+        Get.offAllNamed('/navbar');
+      } else if (UserList.role == "pengelola") {
+        Get.offAllNamed('/navbaradmin');
+      }
+    }
   }
 
   @override

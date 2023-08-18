@@ -8,6 +8,9 @@ class API {
   static const home = 'https://api.siresma.com/api/home';
   static const choose_bank_sampah =
       'https://api.siresma.com/api/bank-sampah/choose';
+  static const ganti_password =
+      'https://api.siresma.com/api/myprofile/update/password';
+  static const update_profil = 'https://api.siresma.com/api/myprofile/update';
   static const category_sampah = 'https://api.siresma.com/api/trash/category';
   static const setor_sampah = 'https://api.siresma.com/api/trash/store';
   static const iot = 'https://api.siresma.com/api/trash/iot-connect';

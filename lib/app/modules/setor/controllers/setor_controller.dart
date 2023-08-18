@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:http/http.dart' as https;
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:siresma/app/config/api.dart';
+import 'package:siresma/app/modules/home/controllers/home_controller.dart';
 
 import '../../../common/custom_snackbar.dart';
 import '../../../models/kategori_sampah.dart';
@@ -14,7 +15,6 @@ class SetorController extends GetxController {
   Rx<DateTime?> selectedDate = Rx<DateTime?>(null);
   var kategori = <Kategori>[].obs;
   Kategori? selectedKategori;
-
   final TabunganbeforeController TabunganCtrl = Get.find();
 
   void onCategorySelected(Kategori? kategori) {
@@ -57,7 +57,7 @@ class SetorController extends GetxController {
 
   Future<void> postDataToApi() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    final int? trash_bank_id = prefs.getInt("trash_bank_id");
+    var trash_bank_id = prefs.getInt("trash_bank_id");
     print(trash_bank_id);
     var token = prefs.getString("token");
     try {
