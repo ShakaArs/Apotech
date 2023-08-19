@@ -1,49 +1,47 @@
 import 'dart:convert';
 import 'package:get/get.dart';
-import 'package:http/http.dart' as http;
-import '../../../config/api.dart';
-import 'package:flutter/material.dart';
-import 'dart:convert';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:http/http.dart' as http;
+import 'package:siresma/app/models/transaksiadmin.dart';
+import '../../../config/api.dart';
 
 class TransaksiadminController extends GetxController {
-  RxList transaksi = [].obs;
-
-  Future<void> getTransaksiAdmin() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    var token = prefs.getString("token");
-    try {
-      var headers = {
-        'Accept': 'application/json',
-        'Authorization': 'Bearer $token',
-      };
-
-      var url = Uri.parse(API.transaksi_admin);
-      http.Response response = await http.get(url, headers: headers);
-      if (response.statusCode == 200) {
-        var data = jsonDecode(response.body)['data'];
-
-        transaksi.assignAll(List<Map<String, dynamic>>.from(data));
-        print(data);
-      } else {
-        print(response.body);
-      }
-    } catch (e) {
-      print(e);
-    }
-  }
+  final transaksi = Rx<TransaksiAdmin?>(null);
 
   @override
   void onInit() {
-    getTransaksiAdmin();
-    update();
     super.onInit();
+    final fullName = Get.arguments;
+    getTransaksiAdminFromfullName(fullName);
   }
 
-  @override
-  void onReady() {
-    getTransaksiAdmin();
-    update();
-    super.onReady();
+  Future<void> getTransaksiAdminFromfullName(fullName) async {
+    try {
+      final prefs = await SharedPreferences.getInstance();
+      final token = prefs.getString("token");
+
+      if (token != null) {
+        final headers = {
+          'Accept': 'application/json',
+          'Authorization': 'Bearer $token',
+        };
+
+        final url = Uri.parse(API.transaksi_admin + '?user_id=$fullName');
+        final response = await http.get(url, headers: headers);
+
+        if (response.statusCode == 200) {
+          final data = jsonDecode(response.body)['data'];
+          transaksi.value = TransaksiAdmin.fromJson(data);
+          print(data);
+        } else {
+          print('Failed to fetch data: ${response.statusCode}');
+          print(response.body);
+        }
+      } else {
+        print('Token is null or not available.');
+      }
+    } catch (e) {
+      print('An error occurred: $e');
+    }
   }
 }

@@ -1,37 +1,22 @@
-class ApiResponse {
-  bool success;
-  String message;
-  TransaksiAdminData data;
+class TransaksiAdmin {
+  final String full_name;
+  final int id;
+  final String code;
+  final String trash_bank_id;
+  final String amount;
+  final String created_at;
+  final String updated_at;
+  final String weight;
+  final String total_income;
+  final String user_income;
+  final String admin_income;
 
-  ApiResponse(
-      {required this.success, required this.message, required this.data});
-
-  factory ApiResponse.fromJson(Map<String, dynamic> json) {
-    return ApiResponse(
-      success: json['success'],
-      message: json['message'],
-      data: TransaksiAdminData.fromJson(json['data']),
-    );
-  }
-}
-
-class TransaksiAdminData {
-  int id;
-  String code;
-  String trash_bank_id;
-  int amount;
-  String created_at;
-  String updated_at;
-  String weight;
-  int total_income;
-  int user_income;
-  int admin_income;
-
-  TransaksiAdminData({
+  TransaksiAdmin({
+    required this.full_name,
     required this.id,
     required this.code,
-    required this.amount,
     required this.trash_bank_id,
+    required this.amount,
     required this.created_at,
     required this.updated_at,
     required this.weight,
@@ -40,31 +25,34 @@ class TransaksiAdminData {
     required this.admin_income,
   });
 
-  factory TransaksiAdminData.fromJson(Map<String, dynamic> json) {
-    return TransaksiAdminData(
-      id: json['id'],
-      code: json['code'],
-      amount: json['amount'],
-      trash_bank_id: json['trash_bank_id'],
-      created_at: json['created_at'],
-      weight: json['weight'],
-      updated_at: json['updated_at'],
-      total_income: json['total_income'],
-      user_income: json['user_income'],
-      admin_income: json['admin_income'],
+  factory TransaksiAdmin.fromJson(Map<String, dynamic> json) {
+    return TransaksiAdmin(
+      full_name: json['full_name'] as String? ?? '', // Default value if null
+      id: json['id'] as int? ?? 0, // Default value if null
+      code: json['code'] as String? ?? '', // Default value if null
+      trash_bank_id:
+          json['trash_bank_id'] as String? ?? '', // Default value if null
+      amount: json['amount'] as String? ?? '', // Default value if null
+      created_at: json['created_at'] as String? ?? '', // Default value if null
+      updated_at: json['updated_at'] as String? ?? '',
+      weight: json['weight'] as String? ?? '',
+      total_income: json['total__income'] as String? ?? '',
+      user_income: json['user__income'] as String? ?? '',
+      admin_income: json['admin__income'] as String? ?? '',
     );
   }
 }
 
-class TransaksiAdminList {
+class ListDetailDatanasabah {
+  static String? full_name;
   static int? id;
   static String? code;
-  static int? amount;
   static String? trash_bank_id;
+  static String? amount;
   static String? created_at;
-  static String? updated_at;
+  static String? updateat;
   static String? weight;
-  static int? total_income;
-  static int? user_income;
-  static int? admin_income;
+  static String? total_income;
+  static String? user_income;
+  static String? admin_income;
 }

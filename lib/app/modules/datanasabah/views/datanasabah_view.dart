@@ -125,7 +125,9 @@ class DataNasabahView extends GetView<DataNasabahController> {
                                       ),
                                     ),
                                     onPressed: () {
-                                      Get.toNamed('/transaksiadmin');
+                                      final selectedId = user['id'];
+                                      Get.toNamed('/transaksiadmin',
+                                          arguments: selectedId);
                                     },
                                     child: Image.asset(
                                       'assets/image/icon_trannsaksi.png',

@@ -4,27 +4,33 @@ import 'package:get/get.dart';
 import 'package:siresma/app/common/custom_textformfield.dart';
 import 'package:siresma/app/common/colors.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../../../common/button.dart';
 import '../controllers/transaksiadmin_controller.dart';
-import '../../../models/transaksiadmin.dart';
-import '../../../models/transaksimasuk.dart';
 
 class TransaksiadminView extends GetView<TransaksiadminController> {
   const TransaksiadminView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final MediaQueryWidth = MediaQuery.of(context).size.width;
-    final MediaQueryHeight = MediaQuery.of(context).size.height;
+    final double mediaQueryWidth = MediaQuery.of(context).size.width;
+    final double mediaQueryHeight = MediaQuery.of(context).size.height;
+
+    final controller = Get.put(TransaksiadminController());
 
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Obx(
-          () {
-            return Container(
+      body: Obx(() {
+        final transaksi = controller.transaksi.value;
+        if (transaksi == null) {
+          return Center(
+            child: CircularProgressIndicator(),
+          );
+        }
+
+        return SingleChildScrollView(
+          child: GestureDetector(
+            child: Container(
               padding: EdgeInsets.only(top: 45, left: 20, right: 20),
-              width: MediaQueryWidth,
-              height: MediaQueryHeight,
+              width: mediaQueryWidth,
+              height: mediaQueryHeight,
               child: Column(
                 children: [
                   Container(
@@ -36,7 +42,7 @@ class TransaksiadminView extends GetView<TransaksiadminController> {
                           scale: 1.6,
                         ),
                         SizedBox(
-                          width: MediaQueryWidth * 0.05,
+                          width: mediaQueryWidth * 0.05,
                         ),
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -49,14 +55,14 @@ class TransaksiadminView extends GetView<TransaksiadminController> {
                               ),
                             ),
                             SizedBox(
-                              height: MediaQueryHeight * 0.01,
+                              height: mediaQueryHeight * 0.01,
                             ),
                             Container(
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(40),
                                 color: primary,
                               ),
-                              width: MediaQueryWidth * 0.2,
+                              width: mediaQueryWidth * 0.2,
                               height: 5,
                             ),
                           ],
@@ -65,169 +71,523 @@ class TransaksiadminView extends GetView<TransaksiadminController> {
                     ),
                   ),
                   SizedBox(
-                    height: MediaQueryHeight * 0.05,
+                    height: mediaQueryHeight * 0.05,
                   ),
-                  for (var trs in controller.transaksi)
-                    Container(
-                      width: MediaQueryWidth,
-                      height: MediaQueryHeight * 0.15,
-                      decoration: BoxDecoration(
-                        color: primary,
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.black12,
-                          )
-                        ],
-                      ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Text(
-                                trs['id'],
-                                style: GoogleFonts.inter(
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.white,
-                                    fontSize: 20),
-                                textAlign: TextAlign.left,
+                  Container(
+                    width: mediaQueryWidth,
+                    padding:
+                        EdgeInsets.only(right: 20, left: 20, top: 5, bottom: 5),
+                    decoration: BoxDecoration(
+                      color: primary,
+                      borderRadius: BorderRadius.circular(10),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black12,
+                          spreadRadius: 6,
+                          blurRadius: 5,
+                          offset: Offset.fromDirection(1, 6),
+                        ),
+                      ],
+                    ),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Text(
+                          transaksi.full_name,
+                          style: GoogleFonts.inter(
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white,
+                              fontSize: 20),
+                          textAlign: TextAlign.left,
+                        ),
+                      ],
+                    ),
+                  ),
+                  SizedBox(
+                    height: mediaQueryHeight * 0.01,
+                  ),
+                  Container(
+                    padding: EdgeInsets.only(
+                        right: 20, left: 20, top: 20, bottom: 20),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(10),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black12,
+                          spreadRadius: 6,
+                          blurRadius: 5,
+                          offset: Offset.fromDirection(1, 6),
+                        ),
+                      ],
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Text(
+                              'Total Pendapatan',
+                              style: GoogleFonts.inter(
+                                fontSize: 14,
+                                fontWeight: FontWeight.bold,
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
+                            Text(
+                              'Total Saldo Nasabah',
+                              style: GoogleFonts.inter(
+                                fontSize: 14,
+                                fontWeight: FontWeight.bold,
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
+                            Text(
+                              'Total Saldo Pengelola',
+                              style: GoogleFonts.inter(
+                                fontSize: 14,
+                                fontWeight: FontWeight.bold,
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
+                          ],
+                        ),
+                        SizedBox(
+                          width: mediaQueryWidth * 0.10,
+                        ),
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              transaksi.total_income,
+                              style: GoogleFonts.inter(
+                                fontSize: 14,
+                                fontWeight: FontWeight.bold,
+                              ),
+                              textAlign: TextAlign.right,
+                            ),
+                            Text(
+                              transaksi.user_income,
+                              style: GoogleFonts.inter(
+                                fontSize: 14,
+                                fontWeight: FontWeight.bold,
+                              ),
+                              textAlign: TextAlign.right,
+                            ),
+                            Text(
+                              transaksi.admin_income,
+                              style: GoogleFonts.inter(
+                                fontSize: 14,
+                                fontWeight: FontWeight.bold,
+                              ),
+                              textAlign: TextAlign.right,
+                            ),
+                          ],
+                        )
+                      ],
+                    ),
+                  ),
+                  SizedBox(
+                    height: mediaQueryHeight * 0.01,
+                  ),
+                  SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      children: [
+                        Container(
+                          margin: EdgeInsets.all(5),
+                          width: 70,
+                          height: 40,
+                          padding: EdgeInsets.all(10),
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(10),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.black12,
+                                spreadRadius: 6,
+                                blurRadius: 5,
+                                offset: Offset.fromDirection(1, 6),
                               ),
                             ],
                           ),
-                          Container(
-                            width: MediaQueryWidth,
-                            height: MediaQueryHeight * 0.05,
-                            decoration: BoxDecoration(
-                              color: primary,
-                              borderRadius: BorderRadius.only(
-                                bottomLeft: Radius.circular(70),
-                                bottomRight: Radius.circular(70),
+                          child: Center(
+                            child: Text(
+                              'Januari',
+                              style: GoogleFonts.inter(
+                                fontSize: 12,
+                                fontWeight: FontWeight.bold,
                               ),
-                              border: Border.all(
-                                color: primary,
-                                width: MediaQueryWidth * 0.5,
-                              ),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.black12,
-                                )
-                              ],
                             ),
                           ),
-                          Container(
-                            child: DataTable(
-                              columns: [
-                                DataColumn(label: Text('Kode')),
-                                DataColumn(label: Text('Tanggal')),
-                                DataColumn(label: Text('Berat')),
-                                DataColumn(label: Text('Pendapatan')),
-                              ],
-                              rows: [
-                                DataRow(cells: [
-                                  DataCell(Text(trs['code'])),
-                                  DataCell(Text(trs['created_at'])),
-                                  DataCell(Text(trs['weight'])),
-                                  DataCell(Text(trs['amount'])),
-                                ]),
-                              ],
+                        ),
+                        Container(
+                          margin: EdgeInsets.all(5),
+                          width: 70,
+                          height: 40,
+                          padding: EdgeInsets.all(10),
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(10),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.black12,
+                                spreadRadius: 6,
+                                blurRadius: 5,
+                                offset: Offset.fromDirection(1, 6),
+                              ),
+                            ],
+                          ),
+                          child: Center(
+                            child: Text(
+                              'Februari',
+                              style: GoogleFonts.inter(
+                                fontSize: 12,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
                           ),
-                          SizedBox(
-                            height: MediaQueryHeight * 0.01,
+                        ),
+                        Container(
+                          margin: EdgeInsets.all(5),
+                          width: 70,
+                          height: 40,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(10),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.black12,
+                                spreadRadius: 6,
+                                blurRadius: 5,
+                                offset: Offset.fromDirection(1, 6),
+                              ),
+                            ],
                           ),
-                          Container(
-                            width: MediaQueryWidth,
-                            height: MediaQueryHeight * 0.005,
-                            decoration: BoxDecoration(
-                              color: primary,
-                              borderRadius: BorderRadius.only(
-                                bottomLeft: Radius.circular(30),
-                                bottomRight: Radius.circular(30),
+                          child: Center(
+                            child: Text(
+                              'Maret',
+                              style: GoogleFonts.inter(
+                                fontSize: 12,
+                                fontWeight: FontWeight.bold,
                               ),
-                              border: Border.all(
-                                color: primary,
-                                width: MediaQueryWidth * 0.5,
-                              ),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.black12,
-                                )
-                              ],
                             ),
                           ),
-                          SizedBox(
-                            height: MediaQueryHeight * 0.01,
+                        ),
+                        Container(
+                          margin: EdgeInsets.all(5),
+                          width: 70,
+                          height: 40,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(10),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.black12,
+                                spreadRadius: 6,
+                                blurRadius: 5,
+                                offset: Offset.fromDirection(1, 6),
+                              ),
+                            ],
                           ),
-                          Container(
-                            child: DataTable(
-                              columns: [
-                                DataColumn(label: Text('Total Pendapatan')),
-                                DataColumn(label: Text('Saldo Nasabah')),
-                                DataColumn(label: Text('Saldo Pengelola')),
-                              ],
-                              rows: [
-                                DataRow(cells: [
-                                  DataCell(Text(trs['total_income'])),
-                                  DataCell(Text(trs['user_income'])),
-                                  DataCell(Text(trs['admin_income'])),
-                                ]),
-                              ],
+                          child: Center(
+                            child: Text(
+                              'April',
+                              style: GoogleFonts.inter(
+                                fontSize: 12,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
                           ),
-                          SizedBox(
-                            height: MediaQueryHeight * 0.01,
+                        ),
+                        Container(
+                          margin: EdgeInsets.all(5),
+                          width: 70,
+                          height: 40,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(10),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.black12,
+                                spreadRadius: 6,
+                                blurRadius: 5,
+                                offset: Offset.fromDirection(1, 6),
+                              ),
+                            ],
                           ),
-                          Container(
-                            width: MediaQueryWidth,
-                            height: MediaQueryHeight * 0.02,
-                            decoration: BoxDecoration(
-                              color: primary,
-                              borderRadius: BorderRadius.only(
-                                bottomLeft: Radius.circular(70),
-                                bottomRight: Radius.circular(70),
+                          child: Center(
+                            child: Text(
+                              'Mei',
+                              style: GoogleFonts.inter(
+                                fontSize: 12,
+                                fontWeight: FontWeight.bold,
                               ),
-                              border: Border.all(
-                                color: primary,
-                                width: MediaQueryWidth * 0.01,
-                              ),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.black12,
-                                )
-                              ],
                             ),
                           ),
-                          SizedBox(
-                            height: MediaQueryHeight * 0.05,
-                          ),
-                          ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(100),
+                        ),
+                        Container(
+                          margin: EdgeInsets.all(5),
+                          width: 70,
+                          height: 40,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(10),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.black12,
+                                spreadRadius: 6,
+                                blurRadius: 5,
+                                offset: Offset.fromDirection(1, 6),
                               ),
-                              backgroundColor: primary,
-                              fixedSize: Size(MediaQueryWidth * 0.05,
-                                  MediaQueryHeight * 0.05),
-                            ),
-                            onPressed: () {
-                              Get.back();
-                            },
-                            child: Icon(Icons.arrow_back_sharp),
+                            ],
                           ),
-                        ],
-                      ),
+                          child: Center(
+                            child: Text(
+                              'Juni',
+                              style: GoogleFonts.inter(
+                                fontSize: 12,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                        ),
+                        Container(
+                          margin: EdgeInsets.all(5),
+                          width: 70,
+                          height: 40,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(10),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.black12,
+                                spreadRadius: 6,
+                                blurRadius: 5,
+                                offset: Offset.fromDirection(1, 6),
+                              ),
+                            ],
+                          ),
+                          child: Center(
+                            child: Text(
+                              'Juli',
+                              style: GoogleFonts.inter(
+                                fontSize: 12,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                        ),
+                        Container(
+                          margin: EdgeInsets.all(5),
+                          width: 70,
+                          height: 40,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(10),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.black12,
+                                spreadRadius: 6,
+                                blurRadius: 5,
+                                offset: Offset.fromDirection(1, 6),
+                              ),
+                            ],
+                          ),
+                          child: Center(
+                            child: Text(
+                              'Agustus',
+                              style: GoogleFonts.inter(
+                                fontSize: 12,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                        ),
+                        Container(
+                          margin: EdgeInsets.all(5),
+                          width: 70,
+                          height: 40,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(10),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.black12,
+                                spreadRadius: 6,
+                                blurRadius: 5,
+                                offset: Offset.fromDirection(1, 6),
+                              ),
+                            ],
+                          ),
+                          child: Center(
+                            child: Text(
+                              'September',
+                              style: GoogleFonts.inter(
+                                fontSize: 12,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                        ),
+                        Container(
+                          margin: EdgeInsets.all(5),
+                          width: 70,
+                          height: 40,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(10),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.black12,
+                                spreadRadius: 6,
+                                blurRadius: 5,
+                                offset: Offset.fromDirection(1, 6),
+                              ),
+                            ],
+                          ),
+                          child: Center(
+                            child: Text(
+                              'Oktober',
+                              style: GoogleFonts.inter(
+                                fontSize: 12,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                        ),
+                        Container(
+                          margin: EdgeInsets.all(12),
+                          width: 70,
+                          height: 40,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(10),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.black12,
+                                spreadRadius: 6,
+                                blurRadius: 5,
+                                offset: Offset.fromDirection(1, 6),
+                              ),
+                            ],
+                          ),
+                          child: Center(
+                            child: Text(
+                              'November',
+                              style: GoogleFonts.inter(
+                                fontSize: 12,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                        ),
+                        Container(
+                          margin: EdgeInsets.all(12),
+                          width: 70,
+                          height: 40,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(10),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.black12,
+                                spreadRadius: 6,
+                                blurRadius: 5,
+                                offset: Offset.fromDirection(1, 6),
+                              ),
+                            ],
+                          ),
+                          child: Center(
+                            child: Text(
+                              'Desember',
+                              style: GoogleFonts.inter(
+                                fontSize: 12,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
+                  ),
+                  SizedBox(
+                    height: mediaQueryHeight * 0.01,
+                  ),
+                  ListView.builder(
+                    shrinkWrap: true,
+                    physics: NeverScrollableScrollPhysics(),
+                    itemBuilder: (context, index) {
+                      return Container(
+                        padding: EdgeInsets.only(
+                            right: 20, left: 20, top: 5, bottom: 5),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(10),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black12,
+                              spreadRadius: 6,
+                              blurRadius: 5,
+                              offset: Offset.fromDirection(1, 6),
+                            ),
+                          ],
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Text(
+                                  transaksi.code,
+                                  style: GoogleFonts.inter(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                  textAlign: TextAlign.center,
+                                ),
+                                reusableText(transaksi.created_at, Colors.black,
+                                    14, FontWeight.bold),
+                              ],
+                            ),
+                            SizedBox(
+                              width: mediaQueryWidth * 0.30,
+                            ),
+                            Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                reusableText(
+                                    transaksi.weight,
+                                    Color.fromARGB(255, 39, 178, 83),
+                                    14,
+                                    FontWeight.bold),
+                                reusableText(
+                                    transaksi.amount,
+                                    Color.fromARGB(255, 39, 178, 83),
+                                    14,
+                                    FontWeight.bold),
+                              ],
+                            )
+                          ],
+                        ),
+                      );
+                    },
+                  ),
                 ],
               ),
-            );
-          },
-        ),
-      ),
+            ),
+          ),
+        );
+      }),
     );
   }
 }
-
-// ... controller and models remain the same
