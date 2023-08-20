@@ -18,7 +18,8 @@ class API {
   static const get_profile = 'https://api.siresma.com/api/myprofile/details';
   static const weight_iots = 'https://api.siresma.com/api/iot/store';
   static const data_nasabah = 'https://api.siresma.com/api/admin/nasabah';
-  static const transaksi = 'https://api.siresma.com//api/transaction/withdraw';
+  static const transaksi = 'https://api.siresma.com/api/transaction/withdraw';
+  static const list_transaksi = 'https://api.siresma.com/api/transaction/list';
   static const detail_nasabah =
       'https://api.siresma.com/api/admin/nasabah/details';
   static const transaksi_admin =

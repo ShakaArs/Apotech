@@ -5,10 +5,12 @@ import 'package:http/http.dart' as https;
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:siresma/app/config/api.dart';
 
-import '../../../models/tabungan_sampah.dart';
+import '../../../models/tabungan_sampah.dart'; // Pastikan path ini sesuai dengan lokasi model class
 
 class TabunganbeforeController extends GetxController {
-  var trashData = <TrashData>[].obs;
+  var trashData =
+      <TrashStoreLog>[].obs; // Menggunakan TrashStoreLog sebagai tipe list
+  RxString user_balance = ''.obs;
   var isLoading = true.obs;
 
   Future<void> fetchData() async {
@@ -23,11 +25,10 @@ class TabunganbeforeController extends GetxController {
       final response = await https.get(url, headers: headers);
       if (response.statusCode == 200) {
         final responseJson = json.decode(response.body);
-        final trashModel = TrashModel.fromJson(responseJson);
-        print(responseJson);
-        print(trashModel);
-
-        trashModel.data.sort((a, b) {
+        final trashModel = TrashStoreResponse.fromJson(
+            responseJson); // Menggunakan TrashStoreResponse
+        user_balance.value = json.encode(responseJson['data']['user_balance']);
+        trashModel.data.trashStoreLogs.sort((a, b) {
           if (a.status == 'Masih dalam Proses' &&
               b.status != 'Masih dalam Proses') {
             return -1; // Move 'Masih dalam Proses' status items to the top
@@ -38,8 +39,9 @@ class TabunganbeforeController extends GetxController {
             return 0;
           }
         });
-
-        trashData.value = trashModel.data;
+        print(responseJson);
+        trashData.value =
+            trashModel.data.trashStoreLogs; // Menggunakan data.trashStoreLogs
         isLoading.value = false;
       } else {
         isLoading.value = false;
@@ -54,18 +56,6 @@ class TabunganbeforeController extends GetxController {
   @override
   void onInit() {
     fetchData();
-    update();
     super.onInit();
-  }
-
-  @override
-  void onReady() {
-    update();
-    super.onReady();
-  }
-
-  @override
-  void onClose() {
-    super.onClose();
   }
 }

@@ -70,7 +70,7 @@ class TabunganbeforeView extends GetView<TabController> {
                 ),
               ),
               SizedBox(
-                height: MediaQueryHeight * 0.05,
+                height: MediaQueryHeight * 0.03,
               ),
               Obx(() {
                 final controller = Get.find<TabunganbeforeController>();
@@ -80,8 +80,7 @@ class TabunganbeforeView extends GetView<TabController> {
                   return Column(
                     children: [
                       Container(
-                        padding: EdgeInsets.only(
-                            right: 20, left: 20, top: 20, bottom: 10),
+                        padding: EdgeInsets.all(15),
                         decoration: BoxDecoration(
                           color: primary,
                           borderRadius: BorderRadius.all(
@@ -97,7 +96,7 @@ class TabunganbeforeView extends GetView<TabController> {
                         ),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          crossAxisAlignment: CrossAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -116,7 +115,7 @@ class TabunganbeforeView extends GetView<TabController> {
                                 Row(
                                   children: [
                                     Text(
-                                      'Rp ',
+                                      'Rp. ',
                                       style: GoogleFonts.inter(
                                           fontWeight: FontWeight.bold,
                                           color: Colors.white,
@@ -124,7 +123,7 @@ class TabunganbeforeView extends GetView<TabController> {
                                       textAlign: TextAlign.left,
                                     ),
                                     Text(
-                                      '0',
+                                      '${controller.user_balance.value}',
                                       style: GoogleFonts.inter(
                                           fontWeight: FontWeight.bold,
                                           color: Colors.white,
@@ -135,14 +134,9 @@ class TabunganbeforeView extends GetView<TabController> {
                                 ),
                               ],
                             ),
-                            Container(
-                              alignment: Alignment.centerRight,
-                              width: 53,
-                              height: 53,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(100),
-                              ),
-                              child: Image.asset('assets/image/icon_saldo.png'),
+                            Image.asset(
+                              'assets/image/icon_saldo.png',
+                              scale: 1.2,
                             ),
                           ],
                         ),

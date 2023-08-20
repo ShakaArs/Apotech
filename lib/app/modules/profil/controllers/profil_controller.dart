@@ -91,15 +91,4 @@ class ProfilController extends GetxController {
     super.onInit();
   }
 
-  @override
-  void onReady() {
-    fetchData();
-    update();
-    super.onReady();
-  }
-
-  @override
-  void onClose() {
-    super.onClose();
-  }
 }

@@ -19,7 +19,6 @@ class TransaksiView extends GetView<TransaksiController> {
         child: Container(
           padding: EdgeInsets.only(top: 45, left: 20, right: 20),
           width: MediaQueryWidth,
-          height: MediaQueryHeight,
           child: Column(
             children: [
               Container(
@@ -34,6 +33,7 @@ class TransaksiView extends GetView<TransaksiController> {
                       width: MediaQueryWidth * 0.05,
                     ),
                     Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
@@ -60,139 +60,147 @@ class TransaksiView extends GetView<TransaksiController> {
                 ),
               ),
               SizedBox(
-                height: MediaQueryHeight * 0.05,
+                height: MediaQueryHeight * 0.03,
               ),
-              Container(
-                width: MediaQueryWidth,
-                height: MediaQueryHeight * 0.09,
-                decoration: BoxDecoration(
-                  color: primary,
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black12,
-                    )
-                  ],
-                ),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Text(
-                      'Flora Farensia',
-                      style: GoogleFonts.inter(
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
-                          fontSize: 25),
-                      textAlign: TextAlign.left,
-                    ),
-                  ],
-                ),
-              ),
-              Container(
-                width: MediaQueryWidth,
-                height: MediaQueryHeight * 0.05,
-                decoration: BoxDecoration(
-                  color: primary,
-                  borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(70),
-                    bottomRight: Radius.circular(70),
-                  ),
-                  border: Border.all(
-                    color: primary,
-                    width: MediaQueryWidth * 0.5,
-                  ),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black12,
-                    )
-                  ],
-                ),
-              ),
-              Container(
-                child: DataTable(
-                  columns: [
-                    DataColumn(label: Text('Code')),
-                    DataColumn(label: Text('Kredit')),
-                    DataColumn(label: Text('Debit')),
-                  ],
-                  rows: [
-                    DataRow(cells: [
-                      DataCell(Text('#STR001')),
-                      DataCell(Text('Rp.14000')),
-                      DataCell(Text('Rp.14000')),
-                    ]),
-                    DataRow(cells: [
-                      DataCell(Text('#STR002')),
-                      DataCell(Text('Rp.8000')),
-                      DataCell(Text('Rp.8000')),
-                    ]),
-                    DataRow(cells: [
-                      DataCell(Text('#STR003')),
-                      DataCell(Text('Rp.7000')),
-                      DataCell(Text('Rp.7000')),
-                    ])
-                  ],
-                ),
-              ),
-              Container(
-                child: DataTable(
-                  columns: [
-                    DataColumn(label: Text('Total Saldo')),
-                  ],
-                  rows: [
-                    DataRow(cells: [
-                      DataCell(Text('Rp.30000')),
-                    ]),
-                  ],
-                ),
-              ),
-              SizedBox(
-                height: MediaQueryHeight * 0.01,
-              ),
-              Container(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    CustomeTextFieldSetorSampah(
-                      hint: 'Masukan jumlah yang ingin ditarik',
-                      obscureText: false,
-                      enable: true,
-                      controller: controller.amountCtrl,
-                      validator: (value) {
-                        return controller.validateAmount(value!);
-                      },
-                      onChanged: (value) {
-                        return controller.amountCtrl.text = value;
-                      },
-                    ),
-                  ],
-                ),
-              ),
-              SizedBox(
-                height: MediaQueryHeight * 0.02,
-              ),
-              ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(30),
-                  ),
-                  backgroundColor: primary,
-                  fixedSize:
-                      Size(MediaQueryWidth * 0.45, MediaQueryHeight * 0.025),
-                ),
-                onPressed: () {
-                  controller.checkTransaksi();
-                },
-                child: Text(
-                  "Tarik Saldo",
-                  style: TextStyle(
-                    fontSize: 23,
-                    color: Colors.white,
-                  ),
-                ),
-              ),
-              
+              Obx(() {
+                final controller = Get.find<TransaksiController>();
+                if (controller.isLoading.value) {
+                  return CircularProgressIndicator();
+                } else {
+                  return Column(
+                    children: [
+                      Container(
+                        padding: EdgeInsets.only(
+                            right: 20, left: 20, top: 20, bottom: 10),
+                        decoration: BoxDecoration(
+                          color: primary,
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(10),
+                          ),
+                          boxShadow: [
+                            BoxShadow(
+                                color: Colors.black12,
+                                spreadRadius: 6,
+                                blurRadius: 5,
+                                offset: Offset.fromDirection(1, 6))
+                          ],
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'Saldo Anda :',
+                                  style: GoogleFonts.inter(
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.white,
+                                      fontSize: 18),
+                                  textAlign: TextAlign.left,
+                                ),
+                                SizedBox(
+                                  height: MediaQueryHeight * 0.01,
+                                ),
+                                Row(
+                                  children: [
+                                    Text(
+                                      'Rp. ',
+                                      style: GoogleFonts.inter(
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.white,
+                                          fontSize: 18),
+                                      textAlign: TextAlign.left,
+                                    ),
+                                    Text(
+                                      '${controller.user_balance.value}',
+                                      style: GoogleFonts.inter(
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.white,
+                                          fontSize: 18),
+                                      textAlign: TextAlign.left,
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                            Image.asset(
+                              'assets/image/icon_saldo.png',
+                              scale: 1.5,
+                            ),
+                          ],
+                        ),
+                      ),
+                      ListView.builder(
+                          shrinkWrap: true,
+                          physics: NeverScrollableScrollPhysics(),
+                          itemCount: controller.transactionData.length,
+                          itemBuilder: (context, index) {
+                            final data = controller.transactionData[index];
+                            return Container(
+                              padding: EdgeInsets.only(
+                                bottom: 20,
+                              ),
+                              height: MediaQueryHeight * 0.12,
+                              child: Container(
+                                padding: EdgeInsets.all(15),
+                                decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.all(
+                                    Radius.circular(10),
+                                  ),
+                                  boxShadow: [
+                                    BoxShadow(
+                                        color: Colors.black12,
+                                        spreadRadius: 6,
+                                        blurRadius: 5,
+                                        offset: Offset.fromDirection(1, 6))
+                                  ],
+                                ),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceEvenly,
+                                      children: [
+                                        reusableText(
+                                          '#${data.code}',
+                                          Colors.black,
+                                          17,
+                                          FontWeight.bold,
+                                        ),
+                                        reusableText(
+                                          '${data.day.toString()}-${data.month.toString()}-${data.year.toString()}',
+                                          hints_text_setor,
+                                          15,
+                                          FontWeight.bold,
+                                        ),
+                                      ],
+                                    ),
+                                    "${data.type}" == "STORE"
+                                        ? reusableText(
+                                            "+ Rp. ${data.amount.toString()}",
+                                            primary,
+                                            14,
+                                            FontWeight.bold)
+                                        : reusableText(
+                                            "- Rp. ${data.amount.toString()}",
+                                            error,
+                                            14,
+                                            FontWeight.bold),
+                                  ],
+                                ),
+                              ),
+                            );
+                          }),
+                    ],
+                  );
+                }
+              })
             ],
           ),
         ),

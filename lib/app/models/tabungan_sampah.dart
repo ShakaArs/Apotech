@@ -1,24 +1,43 @@
-class IoT {
-  final int id;
-  final String code;
-  final double weight;
+class TrashStoreResponse {
+  final bool success;
+  final String message;
+  final TrashStoreData data;
 
-  IoT({
-    required this.id,
-    required this.code,
-    required this.weight,
+  TrashStoreResponse({
+    required this.success,
+    required this.message,
+    required this.data,
   });
 
-  factory IoT.fromJson(Map<String, dynamic> json) {
-    return IoT(
-      id: json['id'],
-      code: json['code'],
-      weight: json['weight'].toDouble(),
+  factory TrashStoreResponse.fromJson(Map<String, dynamic> json) {
+    return TrashStoreResponse(
+      success: json['success'],
+      message: json['message'],
+      data: TrashStoreData.fromJson(json['data']),
     );
   }
 }
 
-class TrashData {
+class TrashStoreData {
+  final int userBalance;
+  final List<TrashStoreLog> trashStoreLogs;
+
+  TrashStoreData({
+    required this.userBalance,
+    required this.trashStoreLogs,
+  });
+
+  factory TrashStoreData.fromJson(Map<String, dynamic> json) {
+    return TrashStoreData(
+      userBalance: json['user_balance'],
+      trashStoreLogs: (json['trash_store_logs'] as List)
+          .map((log) => TrashStoreLog.fromJson(log))
+          .toList(),
+    );
+  }
+}
+
+class TrashStoreLog {
   final int id;
   final int userId;
   final String status;
@@ -29,9 +48,9 @@ class TrashData {
   final String createdAt;
   final String updatedAt;
   final String trashCategory;
-  final IoT? iot;
+  final TrashIoT? iot;
 
-  TrashData({
+  TrashStoreLog({
     required this.id,
     required this.userId,
     required this.status,
@@ -45,8 +64,8 @@ class TrashData {
     required this.iot,
   });
 
-  factory TrashData.fromJson(Map<String, dynamic> json) {
-    return TrashData(
+  factory TrashStoreLog.fromJson(Map<String, dynamic> json) {
+    return TrashStoreLog(
       id: json['id'],
       userId: json['user_id'],
       status: json['status'],
@@ -57,31 +76,29 @@ class TrashData {
       createdAt: json['created_at'],
       updatedAt: json['updated_at'],
       trashCategory: json['trash_category'],
-      iot: json['iot'] != null ? IoT.fromJson(json['iot']) : null,
+      iot: json['iot'] != null ? TrashIoT.fromJson(json['iot']) : null,
     );
   }
 }
 
-class TrashModel {
-  final bool success;
-  final String message;
-  final List<TrashData> data;
+class TrashIoT {
+  final int id;
+  final String code;
+  final double weight;
 
-  TrashModel({
-    required this.success,
-    required this.message,
-    required this.data,
+  TrashIoT({
+    required this.id,
+    required this.code,
+    required this.weight,
   });
 
-  factory TrashModel.fromJson(Map<String, dynamic> json) {
-    var dataList = json['data'] as List;
-    List<TrashData> trashDataList =
-        dataList.map((item) => TrashData.fromJson(item)).toList();
-
-    return TrashModel(
-      success: json['success'],
-      message: json['message'],
-      data: trashDataList,
+  factory TrashIoT.fromJson(Map<String, dynamic> json) {
+    return TrashIoT(
+      id: json['id'],
+      code: json['code'],
+      weight: json['weight'] is int
+          ? (json['weight'] as int).toDouble()
+          : json['weight'],
     );
   }
 }

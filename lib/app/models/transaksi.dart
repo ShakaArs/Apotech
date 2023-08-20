@@ -1,88 +1,90 @@
-class ApiResponse {
-  bool success;
-  String message;
-  TransaksiData data;
+class TransactionResponse {
+  final bool success;
+  final String message;
+  final TransactionData data;
 
-  ApiResponse(
-      {required this.success, required this.message, required this.data});
+  TransactionResponse({
+    required this.success,
+    required this.message,
+    required this.data,
+  });
 
-  factory ApiResponse.fromJson(Map<String, dynamic> json) {
-    return ApiResponse(
+  factory TransactionResponse.fromJson(Map<String, dynamic> json) {
+    return TransactionResponse(
       success: json['success'],
       message: json['message'],
-      data: TransaksiData.fromJson(json['data']),
+      data: TransactionData.fromJson(json['data']),
     );
   }
 }
 
-class TransaksiData {
-  int userBalance;
-  List<TransactionItem> transactionList;
+class TransactionData {
+  final int userBalance;
+  final List<TransactionItem> transactionList;
 
-  TransaksiData({
+  TransactionData({
     required this.userBalance,
     required this.transactionList,
   });
 
-  factory TransaksiData.fromJson(Map<String, dynamic> json) {
-    return TransaksiData(
+  factory TransactionData.fromJson(Map<String, dynamic> json) {
+    return TransactionData(
       userBalance: json['user_balance'],
-      transactionList: List<TransactionItem>.from(
-          json['transaction_list'].map((x) => TransactionItem.fromJson(x))),
+      transactionList: (json['transaction_list'] as List)
+          .map((item) => TransactionItem.fromJson(item))
+          .toList(),
     );
   }
 }
 
 class TransactionItem {
-  int id;
-  String code;
-  String trash_bank_id;
-  int amount;
-  String created_at;
-  String updated_at;
-  String weight;
-  int total_income;
-  int user_income;
-  int admin_income;
+  final int id;
+  final String code;
+  final String type;
+  final int userId;
+  final int garbageSavingsDataId;
+  final int trashBankId;
+  final int amount;
+  final int isApproved;
+  final String createdAt;
+  final int day;
+  final int month;
+  final int year;
+  final String updatedAt;
 
   TransactionItem({
     required this.id,
     required this.code,
+    required this.type,
+    required this.userId,
+    required this.garbageSavingsDataId,
+    required this.trashBankId,
     required this.amount,
-    required this.trash_bank_id,
-    required this.created_at,
-    required this.updated_at,
-    required this.weight,
-    required this.total_income,
-    required this.user_income,
-    required this.admin_income,
+    required this.isApproved,
+    required this.createdAt,
+    required this.day,
+    required this.month,
+    required this.year,
+    required this.updatedAt,
   });
 
   factory TransactionItem.fromJson(Map<String, dynamic> json) {
+    final createdAtParts = json['created_at'].split('T')[0].split('-');
+
     return TransactionItem(
       id: json['id'],
       code: json['code'],
+      type: json['type'],
+      userId: json['user_id'],
+      garbageSavingsDataId: json['garbage_savings_data_id'],
+      trashBankId: json['trash_bank_id'],
       amount: json['amount'],
-      trash_bank_id: json['trash_bank_id'],
-      created_at: json['created_at'],
-      weight: json['weight'],
-      updated_at: json['updated_at'],
-      total_income: json['total_income'],
-      user_income: json['user_income'],
-      admin_income: json['admin_income'],
+      isApproved: json['is_approved'],
+      createdAt: json['created_at'],
+      day: int.parse(createdAtParts[2]),
+      month: int.parse(createdAtParts[1]),
+      year: int.parse(createdAtParts[0]),
+      updatedAt: json['updated_at'],
     );
   }
-}
-
-class TransactionItemList {
-  static int? id;
-  static String? code;
-  static int? amount;
-  static String? trash_bank_id;
-  static String? created_at;
-  static String? updated_at;
-  static String? weight;
-  static int? total_income;
-  static int? user_income;
-  static int? admin_income;
 }

@@ -16,9 +16,9 @@ import '../../../common/custom_snackbar.dart';
 class EditProfilController extends GetxController {
   final GlobalKey<FormState> editprofilFormKey = GlobalKey<FormState>();
 
-  final TextEditingController nameController = TextEditingController();
-  final TextEditingController phoneController = TextEditingController();
-  final TextEditingController addressController = TextEditingController();
+  final TextEditingController nameCtrl = TextEditingController();
+  final TextEditingController phoneCtrl = TextEditingController();
+  final TextEditingController addressCtrl = TextEditingController();
 
   String? validateNamaLengkap(String value) {
     if (value == ' ') {
@@ -27,8 +27,8 @@ class EditProfilController extends GetxController {
     if (value.length >= 25) {
       return 'Teks tidak boleh lebih dari 25 karakter';
     }
-    if (!RegExp(r'^[a-zA-Z\s]+$').hasMatch(value)) {
-      return 'Teks hanya boleh mengandung huruf dan spasi';
+    if (!RegExp(r'^[a-zA-Z\s.]+$').hasMatch(value)) {
+      return 'Teks hanya boleh mengandung huruf, spasi, dan titik';
     }
     return null;
   }
@@ -46,7 +46,7 @@ class EditProfilController extends GetxController {
     if (value == ' ') {
       return 'Nomor Handpone tidak boleh kosong';
     }
-    if (value.length == 12) {
+    if (value.length == 11) {
       return "Nomor HP tidak boleh lebih dari 12 angka";
     }
     {
@@ -77,9 +77,9 @@ class EditProfilController extends GetxController {
       var request =
           https.MultipartRequest('POST', Uri.parse(API.update_profil));
       request.fields.addAll({
-        "full_name": nameController.text,
-        "address": addressController.text,
-        "phone": phoneController.text,
+        "full_name": nameCtrl.text,
+        "address": addressCtrl.text,
+        "phone": phoneCtrl.text,
       });
       if (ImageFile != null) {
         request.files.add(await https.MultipartFile.fromPath(
@@ -98,9 +98,9 @@ class EditProfilController extends GetxController {
         Timer(Duration(seconds: 2), () {
           Get.back();
         });
-        // nameController.text = responseData['full_name'];
-        // phoneController.text = responseData['phone'];
-        // addressController.text = responseData['address'];
+        // nameCtrl.text = responseData['data'];
+        // phoneCtrl.text = responseData['data'];
+        // addressCtrl.text = responseData['data'];
       } else {
         customAllertDialog('Gagal', '${error}', 'error');
       }

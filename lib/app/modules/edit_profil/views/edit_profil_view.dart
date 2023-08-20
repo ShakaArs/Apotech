@@ -78,12 +78,12 @@ class EditProfilView extends GetView<EditProfilController> {
                         CustomeTextFieldSetorSampah(
                           initialValue: '${UserList.full_name}',
                           hint: 'Nama',
-                          controller: controller.nameController,
+                          controller: controller.nameCtrl,
                           validator: (value) {
                             return controller.validateNamaLengkap(value);
                           },
                           onChanged: (value) {
-                            return controller.nameController.text = value;
+                            return controller.nameCtrl.text = value;
                           },
                           obscureText: false,
                           enable: true,
@@ -99,12 +99,12 @@ class EditProfilView extends GetView<EditProfilController> {
                         CustomeTextFieldSetorSampah(
                           initialValue: '${UserList.phone}',
                           hint: 'No Handpone',
-                          controller: controller.phoneController,
+                          controller: controller.phoneCtrl,
                           validator: (value) {
                             return controller.validateNomorHp(value);
                           },
                           onChanged: (value) {
-                            return controller.phoneController.text = value;
+                            return controller.phoneCtrl.text = value;
                           },
                           obscureText: false,
                           enable: true,
@@ -120,12 +120,12 @@ class EditProfilView extends GetView<EditProfilController> {
                         CustomeTextFieldSetorSampah(
                             initialValue: '${UserList.address}',
                             hint: 'Alamat',
-                            controller: controller.addressController,
+                            controller: controller.addressCtrl,
                             validator: (value) {
                               return controller.validateAlamat(value);
                             },
                             onChanged: (value) {
-                              return controller.addressController.text = value;
+                              return controller.addressCtrl.text = value;
                             },
                             obscureText: false,
                             enable: true),
@@ -146,21 +146,18 @@ class EditProfilView extends GetView<EditProfilController> {
                                     MediaQueryHeight * 0.025),
                               ),
                               onPressed: () {
-                                if (controller.nameController.text == "") {
-                                  controller.nameController.text =
+                                if (controller.nameCtrl.text == "") {
+                                  controller.nameCtrl.text =
                                       UserList.full_name!;
-                                  ;
                                 }
-                                if (controller.phoneController.text == "") {
-                                  controller.phoneController.text =
-                                      UserList.phone!;
-                                  ;
+                                if (controller.phoneCtrl.text == "") {
+                                  controller.phoneCtrl.text = UserList.phone!;
                                 }
-                                if (controller.addressController.text == "") {
-                                  controller.addressController.text =
+                                if (controller.addressCtrl.text == "") {
+                                  controller.addressCtrl.text =
                                       UserList.address!;
-                                  ;
                                 }
+
                                 controller.checkUpdateprofile();
                               },
                               child: Text(
