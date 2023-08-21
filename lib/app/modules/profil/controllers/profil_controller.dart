@@ -13,6 +13,7 @@ import '../../../models/user.dart';
 class ProfilController extends GetxController {
   final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
   var isLoading = true.obs;
+  RxString profil_picture = ''.obs;
   RxString name = ''.obs;
   RxString phone = ''.obs;
   RxString no_kk = ''.obs;
@@ -30,12 +31,13 @@ class ProfilController extends GetxController {
       if (response.statusCode == 200) {
         var jsonResponse = json.decode(response.body);
         if (jsonResponse['success'] == true) {
+          profil_picture.value = jsonResponse['data']['profile_picture'];
           name.value = jsonResponse['data']['full_name'];
           phone.value = jsonResponse['data']['phone'];
           no_kk.value = jsonResponse['data']['no_kk'];
 
           // UserList.location = name.value;
-          print(jsonResponse);
+          print(profil_picture.value);
           print(name.value);
           print(phone.value);
           print(no_kk.value);
@@ -90,5 +92,4 @@ class ProfilController extends GetxController {
     update();
     super.onInit();
   }
-
 }

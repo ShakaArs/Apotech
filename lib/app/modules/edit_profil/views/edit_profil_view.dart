@@ -37,23 +37,27 @@ class EditProfilView extends GetView<EditProfilController> {
                     SizedBox(
                       height: MediaQueryHeight * 0.05,
                     ),
-                    "${UserList.profilePicture}" == ''
-                        ? Transform.scale(
-                            scale: 2.3,
-                            child: CircleAvatar(
+                    Transform.scale(
+                      scale: 2.5,
+                      child: controller.ImageFile != null
+                          ? CircleAvatar(
                               backgroundColor: Colors.grey.shade400,
-                              child: Icon(FontAwesomeIcons.solidUser,
-                                  color: Colors.grey.shade300),
-                            ),
-                          )
-                        : Transform.scale(
-                            scale: 2.3,
-                            child: CircleAvatar(
-                              backgroundColor: Colors.grey.shade400,
-                              backgroundImage:
-                                  NetworkImage("${UserList.profilePicture}"),
-                            ),
-                          ),
+                              backgroundImage: FileImage(controller.ImageFile!),
+                            )
+                          : ("${UserList.profilePicture}" != null)
+                              ? CircleAvatar(
+                                  backgroundColor: Colors.grey.shade400,
+                                  backgroundImage: NetworkImage(
+                                      "${UserList.profilePicture}"),
+                                )
+                              : CircleAvatar(
+                                  backgroundColor: Colors.grey.shade400,
+                                  child: Icon(
+                                    FontAwesomeIcons.solidUser,
+                                    color: Colors.grey.shade300,
+                                  ),
+                                ),
+                    ),
                     SizedBox(
                       height: MediaQueryHeight * 0.03,
                     ),

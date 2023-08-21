@@ -125,6 +125,7 @@ class DataNasabahView extends GetView<DataNasabahController> {
                                         ),
                                         onPressed: () {
                                           final selectedId = user['id'];
+                                          print(selectedId);
                                           Get.toNamed('/transaksiadmin',
                                               arguments: selectedId);
                                         },
@@ -150,6 +151,7 @@ class DataNasabahView extends GetView<DataNasabahController> {
                                         ),
                                         onPressed: () {
                                           final selectedId = user['id'];
+                                          print(selectedId);
                                           Get.toNamed('/nasabahdetail',
                                               arguments: selectedId);
                                         },
@@ -189,4 +191,3 @@ class DataNasabahView extends GetView<DataNasabahController> {
     );
   }
 }
-  

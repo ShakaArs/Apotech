@@ -56,7 +56,7 @@ class ProfilView extends GetView<ProfilController> {
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          "${UserList.profilePicture}" == ''
+                          "${controller.profil_picture.value}" == ''
                               ? Transform.scale(
                                   scale: 1.55,
                                   child: CircleAvatar(
