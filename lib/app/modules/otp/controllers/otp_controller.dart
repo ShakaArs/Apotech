@@ -79,9 +79,9 @@ class OtpController extends GetxController {
     }
   }
 
-  var countdown = 119.obs; // Waktu countdown awal (dalam detik)
-  var countdownMinutes = 1.obs;
-  var countdownSeconds = 59.obs;
+  var countdown = 120.obs; // Waktu countdown awal (dalam detik)
+  var countdownMinutes = 2.obs;
+  var countdownSeconds = 0.obs;
   var isCounting = false.obs; // Status countdown
   late Timer _timer;
   var isVisible = false.obs;
@@ -116,9 +116,9 @@ class OtpController extends GetxController {
 
   void resetTimer() {
     _timer.cancel();
-    countdownMinutes.value = 1;
-    countdownSeconds.value = 59;
-    countdown.value = 119;
+    countdownMinutes.value = 2;
+    countdownSeconds.value = 0;
+    countdown.value = 120;
   }
 
   void stopCountdown() {

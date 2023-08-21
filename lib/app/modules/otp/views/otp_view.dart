@@ -83,14 +83,23 @@ class OtpView extends GetView<OtpController> {
                 ),
                 TextButton(
                   onPressed: () {
-                    controller.toggleVisibility();
-                    // controller.resendOTP();
+                    // jika timer nyala
+                    if (controller.isCounting.value) {
+                      null;
+                    } else {
+                      controller.toggleVisibility();
+                      controller.resendOTP();
+                    }
                   },
-                  child: Text(
-                    'Kirim Ulang kode OTP',
-                    style: GoogleFonts.inter(
-                      color: Colors.lightBlue,
-                      fontWeight: FontWeight.bold,
+                  child: Obx(
+                    () => Text(
+                      'Kirim ulang kode OTP',
+                      style: GoogleFonts.inter(
+                        color: controller.isVisible.value
+                            ? Colors.grey
+                            : Colors.lightBlue,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                 ),
@@ -98,7 +107,7 @@ class OtpView extends GetView<OtpController> {
                   () => Visibility(
                     visible: controller.isVisible.value,
                     child: Text(
-                      "${controller.countdownMinutes.value}:${controller.countdownSeconds.value}",
+                      "${controller.countdownMinutes.value.toString().padLeft(2, '0')}:${controller.countdownSeconds.value.toString().padLeft(2, '0')}",
                       style: GoogleFonts.inter(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
