@@ -9,7 +9,6 @@ import 'package:siresma/app/common/custom_snackbar.dart';
 import 'package:siresma/app/config/api.dart';
 
 class OtpController extends GetxController {
-  final OtpController OtpCtrl = Get.find();
   TextEditingController otpCtrl = TextEditingController();
 
   Future<void> postOTP() async {
@@ -52,18 +51,19 @@ class OtpController extends GetxController {
   Future<void> resendOTP() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     var userId = prefs.getInt("id");
+    print(userId);
     try {
       var headers = {
         'Accept': 'application/json',
       };
       var body = {
-        'user_id': userId,
+        'user_id': jsonEncode(userId),
       };
       var url = Uri.parse(API.create_otp);
       var response = await https.post(
         url,
         headers: headers,
-        body: jsonEncode(body),
+        body: body,
       );
       var succes = jsonDecode(response.body)['message'];
       var error = jsonDecode(response.body)['message'];
@@ -79,36 +79,14 @@ class OtpController extends GetxController {
     }
   }
 
-  var countdown = 240.obs; // Waktu countdown awal (dalam detik)
-  var isCounting = false.obs; // Status countdown
-  late Timer _timer;
-
-  void startCountdown() {
-    isCounting.value = true;
-    _timer = Timer.periodic(Duration(seconds: 1), (timer) {
-      if (countdown.value > 0) {
-        countdown.value--;
-      } else {
-        stopCountdown();
-      }
-    });
-  }
-
-  void stopCountdown() {
-    isCounting.value = false;
-    _timer.cancel();
-  }
-
   @override
   void onClose() {
     super.onClose();
-    _timer.cancel();
   }
 
   @override
   void onInit() {
     super.onInit();
-    startCountdown();
   }
 
   @override
