@@ -66,10 +66,10 @@ class RegisterController extends GetxController {
   }
 
   String? validateNomorHp(String value) {
-    if (value == null || value.isEmpty || value == ' ') {
-      return 'Nomor HP tidak boleh kosong';
+    if (value == ' ') {
+      return 'Nomor Handpone tidak boleh kosong';
     }
-    if (value.length == 12) {
+    if (value.length >= 12) {
       return "Nomor HP tidak boleh lebih dari 12 angka";
     }
     {
