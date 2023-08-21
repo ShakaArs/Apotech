@@ -13,16 +13,25 @@ class RegisterView extends GetView<RegisterController> {
   const RegisterView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    final MediaQueryWidth = MediaQuery.of(context).size.width;
-    final MediaQueryHeight = MediaQuery.of(context).size.height;
+    final mediaQueryWidth = MediaQuery.of(context).size.width;
+    final mediaQueryHeight = MediaQuery.of(context).size.height;
     return Scaffold(
       body: SingleChildScrollView(
         child: GetBuilder<RegisterController>(builder: (controller) {
           return Container(
-            padding: EdgeInsets.symmetric(horizontal: 60),
-            width: MediaQueryWidth,
-            height: MediaQueryHeight * 1.075,
-            color: primary,
+            padding: const EdgeInsets.symmetric(horizontal: 60),
+            width: mediaQueryWidth,
+            height: mediaQueryHeight * 1.075,
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: [
+                  primaryColor1,
+                  primaryColor2,
+                ],
+              ),
+            ),
             child: Form(
               key: controller.registerFromKey,
               autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -43,7 +52,7 @@ class RegisterView extends GetView<RegisterController> {
                     ),
                   ),
                   SizedBox(
-                    height: MediaQueryHeight * 0.015,
+                    height: mediaQueryHeight * 0.015,
                   ),
                   CustomTextFields(
                     hint: 'Nama Lengkap',
@@ -58,7 +67,7 @@ class RegisterView extends GetView<RegisterController> {
                     },
                   ),
                   SizedBox(
-                    height: MediaQueryHeight * 0.005,
+                    height: mediaQueryHeight * 0.01,
                   ),
                   CustomTextFields(
                     hint: 'Username',
@@ -73,7 +82,7 @@ class RegisterView extends GetView<RegisterController> {
                     },
                   ),
                   SizedBox(
-                    height: MediaQueryHeight * 0.005,
+                    height: mediaQueryHeight * 0.01,
                   ),
                   CustomTextFields(
                     hint: 'Nomor Kartu Keluarga',
@@ -88,7 +97,7 @@ class RegisterView extends GetView<RegisterController> {
                     },
                   ),
                   SizedBox(
-                    height: MediaQueryHeight * 0.005,
+                    height: mediaQueryHeight * 0.01,
                   ),
                   CustomTextFields(
                     hint: 'Alamat',
@@ -103,7 +112,7 @@ class RegisterView extends GetView<RegisterController> {
                     },
                   ),
                   SizedBox(
-                    height: MediaQueryHeight * 0.005,
+                    height: mediaQueryHeight * 0.01,
                   ),
                   CustomTextFields(
                     hint: 'Nomor Handphone',
@@ -118,7 +127,7 @@ class RegisterView extends GetView<RegisterController> {
                     },
                   ),
                   SizedBox(
-                    height: MediaQueryHeight * 0.005,
+                    height: mediaQueryHeight * 0.01,
                   ),
                   CustomTextFields(
                     hint: 'Buat Password',
@@ -133,7 +142,7 @@ class RegisterView extends GetView<RegisterController> {
                     },
                   ),
                   SizedBox(
-                    height: MediaQueryHeight * 0.01,
+                    height: mediaQueryHeight * 0.01,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
@@ -146,7 +155,7 @@ class RegisterView extends GetView<RegisterController> {
                         },
                       ),
                       SizedBox(
-                        width: MediaQueryWidth * 0.05,
+                        width: mediaQueryHeight * 0.05,
                       ),
                       Transform.scale(
                         scale: 1.5,
@@ -158,21 +167,20 @@ class RegisterView extends GetView<RegisterController> {
                               )
                             : CircleAvatar(
                                 backgroundColor: Colors.grey.shade400,
-                                child: Icon(
-                                  FontAwesomeIcons.solidUser,
-                                  color: Colors.grey.shade300,
+                                child: Image.asset(
+                                  'assets/image/profile_placeholder.png',
                                 ),
                               ),
                       ),
                     ],
                   ),
                   SizedBox(
-                    height: MediaQueryHeight * 0.02,
+                    height: mediaQueryHeight * 0.02,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      reusableText('Belum punya Akun?', Colors.white, 14,
+                      reusableText('Sudah punya Akun?', Colors.white, 14,
                           FontWeight.bold),
                       TextButton(
                         onPressed: () {
@@ -192,7 +200,7 @@ class RegisterView extends GetView<RegisterController> {
                   ButtonAuth(
                     text: 'REGISTER',
                     onPress: () {
-                      // Get.offAllNamed('/otp');
+                      Get.offAllNamed('/otp');
                       controller.checkRegister();
                     },
                   ),

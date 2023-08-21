@@ -48,7 +48,7 @@ class RegisterController extends GetxController {
     if (value == null || value.isEmpty || value == ' ') {
       return 'Nomor KK tidak boleh kosong';
     }
-    if (value.length == 16) {
+    if (value.length > 16) {
       return "Nomor KK tidak boleh lebih dari 16 angka";
     }
     {

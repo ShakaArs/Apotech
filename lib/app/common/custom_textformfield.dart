@@ -26,8 +26,8 @@ class CustomTextFields extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20),
-        color: bg_Textformfield,
+        borderRadius: BorderRadius.circular(16),
+        color: textFieldColor,
       ),
       child: TextFormField(
         style: GoogleFonts.inter(),
@@ -40,23 +40,26 @@ class CustomTextFields extends StatelessWidget {
         onChanged: onChanged,
         textAlignVertical: TextAlignVertical.center,
         decoration: InputDecoration(
+          contentPadding: const EdgeInsets.all(16),
           hintText: hint,
           hintStyle: GoogleFonts.inter(
-              fontSize: 14, fontWeight: FontWeight.w700, color: hints),
+              fontSize: 14,
+              fontWeight: FontWeight.w700,
+              color: textFieldTextColor),
           border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(20),
+            borderRadius: BorderRadius.circular(16),
             borderSide: BorderSide(
               color: bg_Textformfield,
             ),
           ),
           focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(20),
+            borderRadius: BorderRadius.circular(16),
             borderSide: BorderSide(
               color: bg_Textformfield,
             ),
           ),
           enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(20),
+            borderRadius: BorderRadius.circular(16),
             borderSide: BorderSide(
               color: bg_Textformfield,
             ),
