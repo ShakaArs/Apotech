@@ -1,58 +1,91 @@
-class TransaksiAdmin {
-  final String full_name;
-  final int id;
-  final String code;
-  final String trash_bank_id;
-  final String amount;
-  final String created_at;
-  final String updated_at;
-  final String weight;
-  final String total_income;
-  final String user_income;
-  final String admin_income;
+class TransactionadminResponse {
+  final bool success;
+  final String message;
+  final TransactionadminData data;
 
-  TransaksiAdmin({
-    required this.full_name,
-    required this.id,
-    required this.code,
-    required this.trash_bank_id,
-    required this.amount,
-    required this.created_at,
-    required this.updated_at,
-    required this.weight,
-    required this.total_income,
-    required this.user_income,
-    required this.admin_income,
+  TransactionadminResponse({
+    required this.success,
+    required this.message,
+    required this.data,
   });
 
-  factory TransaksiAdmin.fromJson(Map<String, dynamic> json) {
-    return TransaksiAdmin(
-      full_name: json['full_name'] as String? ?? '', // Default value if null
-      id: json['id'] as int? ?? 0, // Default value if null
-      code: json['code'] as String? ?? '', // Default value if null
-      trash_bank_id:
-          json['trash_bank_id'] as String? ?? '', // Default value if null
-      amount: json['amount'] as String? ?? '', // Default value if null
-      created_at: json['created_at'] as String? ?? '', // Default value if null
-      updated_at: json['updated_at'] as String? ?? '',
-      weight: json['weight'] as String? ?? '',
-      total_income: json['total__income'] as String? ?? '',
-      user_income: json['user__income'] as String? ?? '',
-      admin_income: json['admin__income'] as String? ?? '',
+  factory TransactionadminResponse.fromJson(Map<String, dynamic> json) {
+    return TransactionadminResponse(
+      success: json['success'],
+      message: json['message'],
+      data: TransactionadminData.fromJson(json['data']),
     );
   }
 }
 
-class ListDetailDatanasabah {
-  static String? full_name;
-  static int? id;
-  static String? code;
-  static String? trash_bank_id;
-  static String? amount;
-  static String? created_at;
-  static String? updateat;
-  static String? weight;
-  static String? total_income;
-  static String? user_income;
-  static String? admin_income;
+class TransactionadminData {
+  final int totalIncome;
+  final int userIncome;
+  final int adminIncome;
+
+  final List<TransactionadminItem> transactionadminList;
+
+  TransactionadminData({
+    required this.totalIncome,
+    required this.userIncome,
+    required this.adminIncome,
+    required this.transactionadminList,
+  });
+
+  factory TransactionadminData.fromJson(Map<String, dynamic> json) {
+    return TransactionadminData(
+      totalIncome: json['total_income'],
+      userIncome: json['user_income'],
+      adminIncome: json['admin_income'],
+      transactionadminList: (json['transaction_list'] as List)
+          .map((item) => TransactionadminItem.fromJson(item))
+          .toList(),
+    );
+  }
+}
+
+class TransactionadminItem {
+  final int? id;
+  final String? code;
+  final int? userId;
+  final int? trashBankId;
+  final int? amount;
+  final String? createdAt;
+  final int? day;
+  final int? month;
+  final int? year;
+  final String? updatedAt;
+  final String? weight;
+
+  TransactionadminItem({
+    required this.id,
+    required this.code,
+    required this.userId,
+    required this.trashBankId,
+    required this.amount,
+    required this.weight,
+    required this.createdAt,
+    required this.day,
+    required this.month,
+    required this.year,
+    required this.updatedAt,
+  });
+
+  factory TransactionadminItem.fromJson(Map<String, dynamic> json) {
+    final createdAtParts = json['created_at'].split('T')[0].split('-');
+
+    return TransactionadminItem(
+      id: json['id'],
+      code: json['code'],
+      userId: json['user_id'],
+      trashBankId: json['trash_bank_id'],
+      amount: json['amount'],
+      weight: json['weight'],
+      createdAt: json['created_at'],
+      day: int.parse(createdAtParts[2]),
+      month: int.parse(createdAtParts[1]),
+      year: int.parse(createdAtParts[0]),
+      updatedAt: json['updated_at'],
+    );
+  }
 }
