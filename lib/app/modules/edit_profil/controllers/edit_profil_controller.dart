@@ -10,6 +10,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as https;
 import 'package:siresma/app/config/api.dart';
 import 'package:siresma/app/models/user.dart';
+import 'package:siresma/app/modules/profil/controllers/profil_controller.dart';
 
 import '../../../common/custom_snackbar.dart';
 
@@ -19,6 +20,7 @@ class EditProfilController extends GetxController {
   final TextEditingController nameCtrl = TextEditingController();
   final TextEditingController phoneCtrl = TextEditingController();
   final TextEditingController addressCtrl = TextEditingController();
+  final ProfilController ProfilCtrl = Get.find();
 
   String? validateNamaLengkap(String value) {
     if (value == ' ') {
@@ -96,11 +98,8 @@ class EditProfilController extends GetxController {
         print(responseData);
         customAllertDialog("Succes", "${success}", 'succes');
         Timer(Duration(seconds: 2), () {
-          Get.back();
+          Get.toNamed('/navbarprofil', arguments: ProfilCtrl.fetchData());
         });
-        // nameCtrl.text = responseData['data'];
-        // phoneCtrl.text = responseData['data'];
-        // addressCtrl.text = responseData['data'];
       } else {
         customAllertDialog('Gagal', '${error}', 'error');
       }

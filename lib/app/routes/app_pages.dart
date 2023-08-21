@@ -50,6 +50,8 @@ import '../modules/splash/views/splash_view.dart';
 
 import '../modules/tabunganbefore/bindings/tabunganbefore_binding.dart';
 import '../modules/tabunganbefore/views/tabunganbefore_view.dart';
+import '../modules/tarik_saldo/bindings/tarik_saldo_binding.dart';
+import '../modules/tarik_saldo/views/tarik_saldo_view.dart';
 import '../modules/transaksi/bindings/transaksi_binding.dart';
 import '../modules/transaksi/views/transaksi_view.dart';
 import '../modules/transaksiadmin/bindings/transaksiadmin_binding.dart';
@@ -190,6 +192,11 @@ class AppPages {
       name: _Paths.TRANSAKSIKELUAR,
       page: () => const TransaksiKeluarView(),
       binding: TransaksiKeluarBinding(),
+    ),
+    GetPage(
+      name: _Paths.TARIKSALDO,
+      page: () => const TarikSaldoView(),
+      binding: TarikSaldoBinding(),
     ),
     GetPage(
       name: _Paths.QRADMIN,

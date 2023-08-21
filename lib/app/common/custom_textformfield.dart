@@ -209,7 +209,12 @@ class CustomeAdminInputBerat extends StatelessWidget {
               fontSize: 14,
               fontWeight: FontWeight.bold,
               color: hints_text_setor),
-          border: InputBorder.none,
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(20),
+            borderSide: BorderSide(
+              color: Colors.white,
+            ),
+          ),
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(20),
             borderSide: BorderSide(

@@ -18,23 +18,19 @@ class TransaksiView extends GetView<TransaksiController> {
       body: SingleChildScrollView(
         child: Container(
           padding: EdgeInsets.only(top: 45, left: 20, right: 20),
-          width: MediaQueryWidth,
           child: Column(
             children: [
               Container(
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Image.asset(
                       'assets/image/icon_tabungan.png',
-                      scale: 1.6,
-                    ),
-                    SizedBox(
-                      width: MediaQueryWidth * 0.05,
+                      scale: 1.5,
                     ),
                     Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Text(
                           'Transaksi',
@@ -56,6 +52,15 @@ class TransaksiView extends GetView<TransaksiController> {
                         ),
                       ],
                     ),
+                    GestureDetector(
+                      onTap: () {
+                        Get.toNamed('/tariksaldo');
+                      },
+                      child: Image.asset(
+                        'assets/image/image 56.png',
+                        scale: 1.5,
+                      ),
+                    )
                   ],
                 ),
               ),
@@ -65,13 +70,14 @@ class TransaksiView extends GetView<TransaksiController> {
               Obx(() {
                 final controller = Get.find<TransaksiController>();
                 if (controller.isLoading.value) {
-                  return CircularProgressIndicator();
+                  return Center(
+                    child: CircularProgressIndicator(),
+                  );
                 } else {
                   return Column(
                     children: [
                       Container(
-                        padding: EdgeInsets.only(
-                            right: 20, left: 20, top: 20, bottom: 10),
+                        padding: EdgeInsets.all(15),
                         decoration: BoxDecoration(
                           color: primary,
                           borderRadius: BorderRadius.all(
@@ -90,18 +96,16 @@ class TransaksiView extends GetView<TransaksiController> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  'Saldo Anda :',
+                                  'Saldo Anda : ',
                                   style: GoogleFonts.inter(
                                       fontWeight: FontWeight.bold,
                                       color: Colors.white,
                                       fontSize: 18),
                                   textAlign: TextAlign.left,
-                                ),
-                                SizedBox(
-                                  height: MediaQueryHeight * 0.01,
                                 ),
                                 Row(
                                   children: [

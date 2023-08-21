@@ -42,7 +42,7 @@ class TransactionItem {
   final String code;
   final String type;
   final int userId;
-  final int garbageSavingsDataId;
+  // final int? garbageSavingsDataId;
   final int trashBankId;
   final int amount;
   final int isApproved;
@@ -57,7 +57,7 @@ class TransactionItem {
     required this.code,
     required this.type,
     required this.userId,
-    required this.garbageSavingsDataId,
+    // required this.garbageSavingsDataId,
     required this.trashBankId,
     required this.amount,
     required this.isApproved,
@@ -76,7 +76,7 @@ class TransactionItem {
       code: json['code'],
       type: json['type'],
       userId: json['user_id'],
-      garbageSavingsDataId: json['garbage_savings_data_id'],
+      // garbageSavingsDataId: json['garbage_savings_data_id'],
       trashBankId: json['trash_bank_id'],
       amount: json['amount'],
       isApproved: json['is_approved'],
