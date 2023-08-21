@@ -11,6 +11,7 @@ import '../controllers/otp_controller.dart';
 
 class OtpView extends GetView<OtpController> {
   const OtpView({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     final MediaQueryWidth = MediaQuery.of(context).size.width;
@@ -82,13 +83,26 @@ class OtpView extends GetView<OtpController> {
                 ),
                 TextButton(
                   onPressed: () {
-                    controller.resendOTP();
+                    controller.toggleVisibility();
+                    // controller.resendOTP();
                   },
                   child: Text(
-                    'resend OTP',
+                    'Kirim Ulang kode OTP',
                     style: GoogleFonts.inter(
                       color: Colors.lightBlue,
                       fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+                Obx(
+                  () => Visibility(
+                    visible: controller.isVisible.value,
+                    child: Text(
+                      "${controller.countdownMinutes.value}:${controller.countdownSeconds.value}",
+                      style: GoogleFonts.inter(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                 ),

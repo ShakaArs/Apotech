@@ -9,7 +9,7 @@ import 'package:siresma/app/common/custom_snackbar.dart';
 import 'package:siresma/app/config/api.dart';
 
 class OtpController extends GetxController {
-  final OtpController OtpCtrl = Get.find();
+  // final OtpController OtpCtrl = Get.find();
   TextEditingController otpCtrl = TextEditingController();
 
   Future<void> postOTP() async {
@@ -79,14 +79,34 @@ class OtpController extends GetxController {
     }
   }
 
-  var countdown = 240.obs; // Waktu countdown awal (dalam detik)
+  var countdown = 119.obs; // Waktu countdown awal (dalam detik)
+  var countdownMinutes = 1.obs;
+  var countdownSeconds = 59.obs;
   var isCounting = false.obs; // Status countdown
   late Timer _timer;
+  var isVisible = false.obs;
+
+  void toggleVisibility() {
+    isVisible.value = !isVisible.value;
+    if (isVisible.value) {
+      startCountdown();
+    } else {
+      resetTimer();
+    }
+  }
 
   void startCountdown() {
     isCounting.value = true;
-    _timer = Timer.periodic(Duration(seconds: 1), (timer) {
+    _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
       if (countdown.value > 0) {
+        int minutes = countdown.value ~/ 60; // Calculate minutes
+        int seconds = countdown.value % 60; // Calculate seconds
+
+        // Update the countdown minutes and seconds separately
+        countdownMinutes.value = minutes;
+        countdownSeconds.value = seconds;
+
+        // Decrease the total countdown time
         countdown.value--;
       } else {
         stopCountdown();
@@ -94,8 +114,16 @@ class OtpController extends GetxController {
     });
   }
 
+  void resetTimer() {
+    _timer.cancel();
+    countdownMinutes.value = 1;
+    countdownSeconds.value = 59;
+    countdown.value = 119;
+  }
+
   void stopCountdown() {
     isCounting.value = false;
+    toggleVisibility();
     _timer.cancel();
   }
 
