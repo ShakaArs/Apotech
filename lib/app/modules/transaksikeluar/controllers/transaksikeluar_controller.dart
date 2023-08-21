@@ -33,17 +33,34 @@ class TransaksiKeluarController extends GetxController {
     }
   }
 
-  @override
-  void onInit() {
-    getTransaksiKeluar();
-    update();
-    super.onInit();
+  Future<void> approvePenarikan(int transactionId) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    var token = prefs.getString("token");
+    try {
+      var headers = {
+        'Accept': 'application/json',
+        'Authorization': 'Bearer $token',
+      };
+
+      var url = Uri.parse(API.approvetransaksi +
+          '?transaction_id=$transactionId'); // Tambahkan ID transaksi ke URL
+      http.Response response = await http.post(url, headers: headers);
+
+      if (response.statusCode == 200) {
+        print("Penarikan disetujui");
+        // Refresh transaksi data
+        await getTransaksiKeluar();
+      } else {
+        print(response.body);
+      }
+    } catch (e) {
+      print(e);
+    }
   }
 
   @override
-  void onReady() {
+  void onInit() {
     getTransaksiKeluar();
-    update();
-    super.onReady();
+    super.onInit();
   }
 }

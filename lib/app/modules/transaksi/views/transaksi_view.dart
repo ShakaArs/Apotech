@@ -170,7 +170,7 @@ class TransaksiView extends GetView<TransaksiController> {
                                         reusableText(
                                           '#${data.code}',
                                           Colors.black,
-                                          17,
+                                          15,
                                           FontWeight.bold,
                                         ),
                                         reusableText(

@@ -1,13 +1,11 @@
 import 'package:get/get.dart';
-
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:shared_preferences/shared_preferences.dart';
-
 import '../../../config/api.dart';
 
 class DataNasabahController extends GetxController {
-  RxList users = [].obs;
+  RxList<Map<String, dynamic>> users = RxList<Map<String, dynamic>>();
 
   Future<void> getDataNasabah() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -35,7 +33,6 @@ class DataNasabahController extends GetxController {
   @override
   void onInit() {
     getDataNasabah();
-    update();
     super.onInit();
   }
 
@@ -43,6 +40,5 @@ class DataNasabahController extends GetxController {
   void onReady() {
     super.onReady();
     getDataNasabah();
-    update();
   }
 }

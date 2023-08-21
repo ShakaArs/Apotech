@@ -16,6 +16,7 @@ class ApiResponse {
 }
 
 class TransaksiKeluarData {
+  int transaction_id;
   int id;
   String code;
   int amount;
@@ -23,6 +24,7 @@ class TransaksiKeluarData {
   String is_approved;
 
   TransaksiKeluarData({
+    required this.transaction_id,
     required this.id,
     required this.code,
     required this.amount,
@@ -32,6 +34,7 @@ class TransaksiKeluarData {
 
   factory TransaksiKeluarData.fromJson(Map<String, dynamic> json) {
     return TransaksiKeluarData(
+      transaction_id: json['transaction_id'],
       id: json['id'],
       code: json['code'],
       amount: json['amount'],

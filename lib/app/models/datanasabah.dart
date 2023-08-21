@@ -45,4 +45,5 @@ class ListDataNasabah {
   static String? address;
   static String? location;
   static String? no_kk;
+  static String? profile_picture;
 }

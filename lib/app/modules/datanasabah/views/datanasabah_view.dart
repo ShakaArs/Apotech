@@ -1,13 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:siresma/app/common/custom_textformfield.dart';
 import 'package:siresma/app/common/colors.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:siresma/app/modules/datanasabah/controllers/datanasabah_controller.dart';
-
-import '../../../models/datanasabah.dart';
-import '../../../models/user.dart';
-import '../../nasabahdetail/views/nasabahdetail_view.dart';
 
 class DataNasabahView extends GetView<DataNasabahController> {
   const DataNasabahView({Key? key}) : super(key: key);
@@ -51,7 +45,7 @@ class DataNasabahView extends GetView<DataNasabahController> {
                           Container(
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(40),
-                              color: primary, // Change color as needed
+                              color: primary,
                             ),
                             width: MediaQueryWidth * 0.2,
                             height: 5,
@@ -73,10 +67,10 @@ class DataNasabahView extends GetView<DataNasabahController> {
                           bottom: 15,
                         ),
                         width: MediaQueryWidth,
-                        height: MediaQueryHeight * 0.23,
+                        height: MediaQueryHeight * 0.20,
                         child: Container(
                           padding: EdgeInsets.only(
-                              right: 20, left: 20, top: 20, bottom: 10),
+                              right: 40, left: 20, top: 20, bottom: 10),
                           decoration: BoxDecoration(
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(10),
@@ -89,78 +83,94 @@ class DataNasabahView extends GetView<DataNasabahController> {
                               ),
                             ],
                           ),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.center,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                              Text(
-                                user['full_name'],
-                                style: TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                                textAlign: TextAlign.center,
-                              ),
-                              Text(
-                                user['phone'],
-                                style: TextStyle(
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.end,
-                                crossAxisAlignment: CrossAxisAlignment.center,
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
-                                  ElevatedButton(
-                                    style: ElevatedButton.styleFrom(
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(100),
-                                      ),
-                                      backgroundColor: primary,
-                                      fixedSize: Size(
-                                        MediaQueryWidth * 0.05,
-                                        MediaQueryHeight * 0.05,
-                                      ),
+                                  Text(
+                                    user['full_name'],
+                                    style: TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.bold,
                                     ),
-                                    onPressed: () {
-                                      final selectedId = user['id'];
-                                      Get.toNamed('/transaksiadmin',
-                                          arguments: selectedId);
-                                    },
-                                    child: Image.asset(
-                                      'assets/image/icon_trannsaksi.png',
-                                      scale: 0.08,
+                                    textAlign: TextAlign.center,
+                                  ),
+                                  Text(
+                                    user['phone'],
+                                    style: TextStyle(
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.bold,
                                     ),
                                   ),
-                                  SizedBox(
-                                    width: MediaQueryWidth * 0.009,
-                                  ),
-                                  ElevatedButton(
-                                    style: ElevatedButton.styleFrom(
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(100),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      ElevatedButton(
+                                        style: ElevatedButton.styleFrom(
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(100),
+                                          ),
+                                          backgroundColor: primary,
+                                          fixedSize: Size(
+                                            MediaQueryWidth * 0.05,
+                                            MediaQueryHeight * 0.05,
+                                          ),
+                                        ),
+                                        onPressed: () {
+                                          final selectedId = user['id'];
+                                          Get.toNamed('/transaksiadmin',
+                                              arguments: selectedId);
+                                        },
+                                        child: Image.asset(
+                                          'assets/image/icon_trannsaksi.png',
+                                          scale: 0.08,
+                                        ),
                                       ),
-                                      backgroundColor: primary,
-                                      fixedSize: Size(
-                                        MediaQueryWidth * 0.05,
-                                        MediaQueryHeight * 0.05,
+                                      SizedBox(
+                                        width: MediaQueryWidth * 0.009,
                                       ),
-                                    ),
-                                    onPressed: () {
-                                      final selectedId = user['id'];
-                                      Get.toNamed('/nasabahdetail',
-                                          arguments: selectedId);
-                                    },
-                                    child: Image.asset(
-                                      'assets/image/icon_mata.png',
-                                      scale: 0.08,
-                                    ),
-                                  ),
+                                      ElevatedButton(
+                                        style: ElevatedButton.styleFrom(
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(100),
+                                          ),
+                                          backgroundColor: primary,
+                                          fixedSize: Size(
+                                            MediaQueryWidth * 0.05,
+                                            MediaQueryHeight * 0.05,
+                                          ),
+                                        ),
+                                        onPressed: () {
+                                          final selectedId = user['id'];
+                                          Get.toNamed('/nasabahdetail',
+                                              arguments: selectedId);
+                                        },
+                                        child: Image.asset(
+                                          'assets/image/icon_mata.png',
+                                          scale: 0.08,
+                                        ),
+                                      ),
+                                    ],
+                                  )
                                 ],
-                              )
+                              ),
+                              Transform.scale(
+                                scale: 1.9,
+                                child: CircleAvatar(
+                                  backgroundColor: Colors.grey.shade400,
+                                  backgroundImage: NetworkImage(
+                                    user['profile_picture'],
+                                  ),
+                                ),
+                              ),
                             ],
                           ),
                         ),
@@ -179,3 +189,4 @@ class DataNasabahView extends GetView<DataNasabahController> {
     );
   }
 }
+  
