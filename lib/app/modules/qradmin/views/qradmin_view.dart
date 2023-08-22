@@ -11,7 +11,6 @@ class QrAdminView extends GetView<QrAdminController> {
 
   @override
   Widget build(BuildContext context) {
-    
     final MediaQueryWidth = MediaQuery.of(context).size.width;
     final MediaQueryHeight = MediaQuery.of(context).size.height;
 
@@ -108,7 +107,7 @@ class QrAdminView extends GetView<QrAdminController> {
                     onPressed: () {
                       controller.checkIots();
                     },
-                    child: Text(
+                    child: const Text(
                       "Simpan",
                       style: TextStyle(
                         fontSize: 20,
