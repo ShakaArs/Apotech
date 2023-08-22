@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'package:get/get.dart';
@@ -155,9 +156,26 @@ class HomeView extends GetView<HomeController> {
               Container(
                 width: MediaQueryWidth,
                 height: MediaQueryHeight * 0.25,
-                child: Image.asset(
-                  'assets/image/image 10.png',
-                  fit: BoxFit.cover,
+                child: CarouselSlider(
+                  options: CarouselOptions(
+                    autoPlay: true, // Set this to true for auto-advancing
+                    aspectRatio: MediaQueryWidth / (MediaQueryHeight * 0.4),
+                    viewportFraction: 1.0,
+                  ),
+                  items: [
+                    Image.asset(
+                      'assets/image/image 10.png',
+                      fit: BoxFit.cover,
+                    ),
+                    Image.asset(
+                      'assets/image/img2.jpg',
+                      fit: BoxFit.cover,
+                    ),
+                    Image.asset('assets/image/IMG-20230707-WA0004.jpg',
+                        fit: BoxFit.cover),
+                    Image.asset('assets/image/IMG_4632.jpg', fit: BoxFit.cover),
+                    // Add more images as needed...
+                  ],
                 ),
               ),
               SizedBox(
@@ -206,13 +224,10 @@ class HomeView extends GetView<HomeController> {
                             color: bg_text,
                             boxShadow: [
                               BoxShadow(
-                                color: Colors.black.withOpacity(
-                                    0.5), // Warna shadow dan opacity
-                                spreadRadius:
-                                    3, // Jarak seberapa lebar shadow akan menyebar
+                                color: Colors.black.withOpacity(0.5),
+                                spreadRadius: 3,
                                 blurRadius: 5,
-                                offset: Offset
-                                    .zero, // Jarak seberapa blur shadow akan terlihat
+                                offset: Offset.zero,
                               ),
                             ],
                           ),
