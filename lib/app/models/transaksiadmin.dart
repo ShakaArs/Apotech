@@ -53,6 +53,7 @@ class TransactionAdminData {
 class TransactionAdminItem {
   final int id;
   final String code;
+  final String type;
   final int trashBankId;
   final int amount;
   final String createdAt;
@@ -65,6 +66,7 @@ class TransactionAdminItem {
   TransactionAdminItem({
     required this.id,
     required this.code,
+    required this.type,
     required this.trashBankId,
     required this.amount,
     required this.createdAt,
@@ -81,6 +83,7 @@ class TransactionAdminItem {
     return TransactionAdminItem(
       id: json['id'],
       code: json['code'],
+      type: json['type'],
       trashBankId: json['trash_bank_id'],
       amount: json['amount'],
       createdAt: json['created_at'],
