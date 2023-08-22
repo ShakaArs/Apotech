@@ -220,25 +220,17 @@ class TransaksiadminView extends GetView<TransaksiadminController> {
                                       ),
                                     ],
                                   ),
-                                  Column(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceEvenly,
-                                    children: [
-                                      reusableText('Berat ${data.weight} kg',
-                                          Colors.black, 14, FontWeight.bold),
-                                      "${data.code}" == "STR"
-                                          ? reusableText(
-                                              "+ Rp. ${data.amount.toString()}",
-                                              primary,
-                                              14,
-                                              FontWeight.bold)
-                                          : reusableText(
-                                              "- Rp. ${data.amount.toString()}",
-                                              error,
-                                              14,
-                                              FontWeight.bold),
-                                    ],
-                                  )
+                                  "${data.type}" == "STORE"
+                                      ? reusableText(
+                                          "+ Rp. ${data.amount.toString()}",
+                                          primary,
+                                          14,
+                                          FontWeight.bold)
+                                      : reusableText(
+                                          "- Rp. ${data.amount.toString()}",
+                                          error,
+                                          14,
+                                          FontWeight.bold)
                                 ],
                               ),
                             ),
