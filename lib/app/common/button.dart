@@ -51,15 +51,14 @@ class UploadpProfil extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final MediaQueryHeight = MediaQuery.of(context).size.height;
-    final MediaQueryWidth = MediaQuery.of(context).size.width;
+    final mediaQueryWidth = MediaQuery.of(context).size.width;
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
         backgroundColor: bg_Textformfield,
-        fixedSize: Size(MediaQueryWidth * 0.45, 20),
+        fixedSize: Size(mediaQueryWidth * 0.45, 20),
         alignment: Alignment.center,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(30),
+          borderRadius: BorderRadius.circular(16),
         ),
       ),
       onPressed: onPress,
@@ -67,7 +66,7 @@ class UploadpProfil extends StatelessWidget {
         text,
         style: GoogleFonts.inter(
           fontSize: 11,
-          fontWeight: FontWeight.bold,
+          fontWeight: FontWeight.w700,
           color: hints,
         ),
       ),

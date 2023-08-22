@@ -12,16 +12,25 @@ class LoginView extends GetView<LoginController> {
   const LoginView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    final MediaQueryWidth = MediaQuery.of(context).size.width;
-    final MediaQueryHeight = MediaQuery.of(context).size.height;
+    final mediaQueryWidth = MediaQuery.of(context).size.width;
+    final mediaQueryHeight = MediaQuery.of(context).size.height;
     return Scaffold(
       body: SingleChildScrollView(
         child: GetBuilder<LoginController>(builder: (controller) {
           return Container(
-            padding: EdgeInsets.symmetric(horizontal: 60),
-            width: MediaQueryWidth,
-            height: MediaQueryHeight,
-            color: primary,
+            padding: const EdgeInsets.symmetric(horizontal: 60),
+            width: mediaQueryWidth,
+            height: mediaQueryHeight,
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: [
+                  primaryColor1,
+                  primaryColor2,
+                ],
+              ),
+            ),
             child: Form(
               key: controller.loginFromKey,
               autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -31,7 +40,7 @@ class LoginView extends GetView<LoginController> {
                 children: [
                   Image.asset(
                     'assets/image/G_3.png',
-                    scale: 1.5,
+                    scale: 1.2,
                   ),
                   // SizedBox(
                   //   height: MediaQueryHeight * 0.005,
@@ -45,7 +54,7 @@ class LoginView extends GetView<LoginController> {
                     ),
                   ),
                   SizedBox(
-                    height: MediaQueryHeight * 0.005,
+                    height: mediaQueryHeight * 0.005,
                   ),
                   Text(
                     'Sistem Resik Mandiri',
@@ -56,7 +65,7 @@ class LoginView extends GetView<LoginController> {
                     ),
                   ),
                   SizedBox(
-                    height: MediaQueryHeight * 0.03,
+                    height: mediaQueryHeight * 0.03,
                   ),
                   CustomTextFields(
                     hint: 'Username',
@@ -71,7 +80,7 @@ class LoginView extends GetView<LoginController> {
                     },
                   ),
                   SizedBox(
-                    height: MediaQueryHeight * 0.015,
+                    height: mediaQueryHeight * 0.015,
                   ),
                   CustomTextFields(
                     hint: 'Password',
@@ -86,7 +95,7 @@ class LoginView extends GetView<LoginController> {
                     },
                   ),
                   SizedBox(
-                    height: MediaQueryHeight * 0.03,
+                    height: mediaQueryHeight * 0.03,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,

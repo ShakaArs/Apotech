@@ -79,6 +79,54 @@ class OtpController extends GetxController {
     }
   }
 
+  var countdown = 120.obs; // Waktu countdown awal (dalam detik)
+  var countdownMinutes = 2.obs;
+  var countdownSeconds = 0.obs;
+  var isCounting = false.obs; // Status countdown
+  late Timer _timer;
+  var isVisible = false.obs;
+
+  void toggleVisibility() {
+    isVisible.value = !isVisible.value;
+    if (isVisible.value) {
+      startCountdown();
+    } else {
+      resetTimer();
+    }
+  }
+
+  void startCountdown() {
+    isCounting.value = true;
+    _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
+      if (countdown.value > 0) {
+        int minutes = countdown.value ~/ 60; // Calculate minutes
+        int seconds = countdown.value % 60; // Calculate seconds
+
+        // Update the countdown minutes and seconds separately
+        countdownMinutes.value = minutes;
+        countdownSeconds.value = seconds;
+
+        // Decrease the total countdown time
+        countdown.value--;
+      } else {
+        stopCountdown();
+      }
+    });
+  }
+
+  void resetTimer() {
+    _timer.cancel();
+    countdownMinutes.value = 2;
+    countdownSeconds.value = 0;
+    countdown.value = 120;
+  }
+
+  void stopCountdown() {
+    isCounting.value = false;
+    toggleVisibility();
+    _timer.cancel();
+  }
+
   @override
   void onClose() {
     super.onClose();
