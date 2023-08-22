@@ -118,7 +118,7 @@ class HomeView extends GetView<HomeController> {
                             ),
                       GestureDetector(
                         onTap: () {
-                          Get.offAllNamed('/evoucher');
+                          Get.toNamed('/evoucher');
                         },
                         child: Container(
                           child: Row(

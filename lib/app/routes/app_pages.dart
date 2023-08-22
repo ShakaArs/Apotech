@@ -41,8 +41,8 @@ import '../modules/qrcode/bindings/qrcode_binding.dart';
 import '../modules/qrcode/views/qrcode_view.dart';
 import '../modules/register/bindings/register_binding.dart';
 import '../modules/register/views/register_view.dart';
-import '../modules/scan/bindings/scan_binding.dart';
-import '../modules/scan/views/scan_view.dart';
+import '../modules/qrakun/bindings/qrakun_binding.dart';
+import '../modules/qrakun/views/qrakun_view.dart';
 import '../modules/setor/bindings/setor_binding.dart';
 import '../modules/setor/views/setor_view.dart';
 import '../modules/splash/bindings/splash_binding.dart';
@@ -100,9 +100,9 @@ class AppPages {
       binding: SetorBinding(),
     ),
     GetPage(
-      name: _Paths.SCAN,
-      page: () => ScanView(),
-      binding: ScanBinding(),
+      name: _Paths.QRAKUN,
+      page: () => QrAkunView(),
+      binding: QrAkunBinding(),
     ),
     GetPage(
       name: _Paths.NUMBER,

@@ -191,7 +191,7 @@ class ProfilView extends GetView<ProfilController> {
                   ),
                   ListTile(
                     onTap: () {
-                      Get.toNamed('/qrcode');
+                      Get.toNamed('/qrakun');
                     },
                     leading: Icon(
                       FontAwesomeIcons.qrcode,

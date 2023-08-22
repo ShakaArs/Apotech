@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 
-class ScanController extends GetxController {
+class   QrAkunController extends GetxController {
   //TODO: Implement HomeController
 
   final count = 0.obs;

@@ -10,7 +10,7 @@ abstract class Routes {
   static const SETOR = _Paths.SETOR;
   static const TABUNGAN = _Paths.TABUNGAN;
   static const PROFIL = _Paths.PROFIL;
-  static const SCAN = _Paths.SCAN;
+  static const QRAKUN = _Paths.QRAKUN;
   static const NUMBER = _Paths.NUMBER;
   static const OTP = _Paths.OTP;
   static const NAVBAR = _Paths.NAVBAR;
@@ -44,7 +44,7 @@ abstract class _Paths {
   static const PROFIL = '/profil';
   static const SETOR = '/setor';
   static const TABUNGAN = '/tabungan';
-  static const SCAN = '/scan';
+  static const QRAKUN = '/qrakun';
   static const NUMBER = '/number';
   static const OTP = '/otp';
   static const NAVBAR = '/navbar';
