@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -22,6 +23,15 @@ class HomeView extends GetView<HomeController> {
       'assets/image/img2.jpg',
       'assets/image/image 10.png',
     ];
+
+    // Future<void> _launchInstagramURL() async {
+    //   const instagramURL = 'https://www.instagram.com/nama_akun_instagram/';
+    //   if (await canLaunch(instagramURL)) {
+    //     await launch(instagramURL);
+    //   } else {
+    //     throw 'Could not launch $instagramURL';
+    //   }
+    // }
 
     return GetBuilder<HomeController>(builder: (controller) {
       return Scaffold(
@@ -243,7 +253,14 @@ class HomeView extends GetView<HomeController> {
                           ),
                         ),
                         ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () async {
+                            var url = Uri.parse(
+                                'https://www.instagram.com/ppkormawa_bemfikudinus/');
+                            await launchUrl(
+                              url,
+                              mode: LaunchMode.platformDefault,
+                            );
+                          },
                           child: Text(
                             'Cari Tahu',
                             style: GoogleFonts.inter(
