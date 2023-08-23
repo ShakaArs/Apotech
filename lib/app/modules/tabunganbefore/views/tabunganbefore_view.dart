@@ -212,11 +212,11 @@ class TabunganbeforeView extends GetView<TabController> {
                                               onPressed: () {
                                                 final selectedId = data
                                                     .id; // Ambil id dari objek TrashData
-                                                Get.toNamed('/inputcode',
+                                                Get.toNamed('/qrcode',
                                                     arguments: selectedId);
                                               },
-                                              child: Text(
-                                                "Input Kode",
+                                              child: const Text(
+                                                "Scan QR",
                                                 style: TextStyle(
                                                   fontSize: 19,
                                                   color: Colors.white,

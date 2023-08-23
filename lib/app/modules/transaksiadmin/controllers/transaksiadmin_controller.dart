@@ -13,24 +13,16 @@ class TransaksiadminController extends GetxController {
   final GlobalKey<FormState> transaksiFromKey = GlobalKey<FormState>();
   final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
   TextEditingController amountCtrl = TextEditingController();
-  var transactionadminData = <TransactionadminItem>[].obs;
+  var transactionadminData = <TransactionAdminItem>[].obs;
   RxString total_income = ''.obs;
   RxString user_income = ''.obs;
   RxString admin_income = ''.obs;
   var isLoading = true.obs;
 
-  @override
-  void onInit() {
-    super.onInit();
-    final userId = Get.arguments;
-    getTransaksiAdminFromUserId(userId);
-  }
-
-  Future<void> getTransaksiAdminFromUserId(userId) async {
+  Future<void> fetchData(userId) async {
+    final prefs = await SharedPreferences.getInstance();
+    var token = prefs.getString("token");
     try {
-      final prefs = await SharedPreferences.getInstance();
-      final token = prefs.getString("token");
-
       if (token != null) {
         final headers = {
           'Accept': 'application/json',
@@ -45,14 +37,14 @@ class TransaksiadminController extends GetxController {
           print(responseJson);
 
           final transactionadminModel =
-              TransactionadminResponse.fromJson(responseJson);
+              TransactionAdminResponse.fromJson(responseJson);
+          total_income.value =
+              json.encode(responseJson['data']['total_income']);
+          user_income.value = json.encode(responseJson['data']['user_income']);
+          admin_income.value =
+              json.encode(responseJson['data']['admin_income']);
           final transactionListJson = responseJson['data'];
-          transactionadminData.value =
-              transactionadminModel.data.transactionadminList;
-
-          total_income.value = transactionListJson['total_income'].toString();
-          user_income.value = transactionListJson['user_income'].toString();
-          admin_income.value = transactionListJson['admin_income'].toString();
+          transactionadminData.value = transactionadminModel.data.items;
 
           print(total_income.value);
           print(user_income.value);
@@ -68,5 +60,13 @@ class TransaksiadminController extends GetxController {
     } catch (e) {
       print('An error occurred: $e');
     }
+  }
+
+  @override
+  void onInit() {
+    super.onInit();
+    var userId = Get.arguments;
+    print(userId);
+    fetchData(userId);
   }
 }

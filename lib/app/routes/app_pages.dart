@@ -42,8 +42,8 @@ import '../modules/qrcode/bindings/qrcode_binding.dart';
 import '../modules/qrcode/views/qrcode_view.dart';
 import '../modules/register/bindings/register_binding.dart';
 import '../modules/register/views/register_view.dart';
-import '../modules/scan/bindings/scan_binding.dart';
-import '../modules/scan/views/scan_view.dart';
+import '../modules/qrakun/bindings/qrakun_binding.dart';
+import '../modules/qrakun/views/qrakun_view.dart';
 import '../modules/setor/bindings/setor_binding.dart';
 import '../modules/setor/views/setor_view.dart';
 import '../modules/splash/bindings/splash_binding.dart';
@@ -51,6 +51,8 @@ import '../modules/splash/views/splash_view.dart';
 
 import '../modules/tabunganbefore/bindings/tabunganbefore_binding.dart';
 import '../modules/tabunganbefore/views/tabunganbefore_view.dart';
+import '../modules/tarik_saldo/bindings/tarik_saldo_binding.dart';
+import '../modules/tarik_saldo/views/tarik_saldo_view.dart';
 import '../modules/transaksi/bindings/transaksi_binding.dart';
 import '../modules/transaksiadmin/bindings/transaksiadmin_binding.dart';
 import '../modules/transaksiadmin/views/transaksiadmin_view.dart';
@@ -98,9 +100,9 @@ class AppPages {
       binding: SetorBinding(),
     ),
     GetPage(
-      name: _Paths.SCAN,
-      page: () => ScanView(),
-      binding: ScanBinding(),
+      name: _Paths.QRAKUN,
+      page: () => QrAkunView(),
+      binding: QrAkunBinding(),
     ),
     GetPage(
       name: _Paths.NUMBER,
@@ -190,6 +192,11 @@ class AppPages {
       name: _Paths.TRANSAKSIKELUAR,
       page: () => const TransaksiKeluarView(),
       binding: TransaksiKeluarBinding(),
+    ),
+    GetPage(
+      name: _Paths.TARIKSALDO,
+      page: () => const TarikSaldoView(),
+      binding: TarikSaldoBinding(),
     ),
     GetPage(
       name: _Paths.QRADMIN,

@@ -4,6 +4,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:qr_flutter/qr_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as https;
 import '../../../config/api.dart';
@@ -25,18 +27,63 @@ class QrAdminController extends GetxController {
   void showSuccessAlert(BuildContext context, String message) {
     showDialog(
       context: context,
+      barrierDismissible: false,
       builder: (BuildContext context) {
-        return AlertDialog(
-          title: Text('Sukses'),
-          content: Text(message),
-          actions: [
-            TextButton(
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-              child: Text('OK'),
+        return Dialog(
+          child: Padding(
+            padding: const EdgeInsets.only(
+              top: 16,
+              left: 8,
+              right: 8,
             ),
-          ],
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: Padding(
+                    padding: const EdgeInsets.only(
+                      left: 16,
+                      top: 16,
+                      bottom: 8,
+                    ),
+                    child: Text(
+                      'Scan QR Code',
+                      style: GoogleFonts.inter(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  height: 8,
+                ),
+                QrImageView(
+                  data: message,
+                  version: QrVersions.auto,
+                  size: 220,
+                ),
+                Align(
+                  alignment: Alignment.centerRight,
+                  child: Padding(
+                    padding: const EdgeInsets.only(right: 16, bottom: 8),
+                    child: TextButton(
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
+                      child: const Text(
+                        'Tutup',
+                        style: TextStyle(
+                          fontSize: 14,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
         );
       },
     );
@@ -79,11 +126,8 @@ class QrAdminController extends GetxController {
         // print(token);
         final jsonData = json.decode(response.body);
         print(jsonData);
-        showSuccessAlert(
-            Get.overlayContext!, "Kode Berat anda :  ${jsonData['message']}");
-        Timer(Duration(seconds: 15), () {
-          Get.offAllNamed('/qradmin');
-        });
+        showSuccessAlert(Get.overlayContext!, "${jsonData['message']}");
+
         //Tambahkan print response.body untuk melihat response dari server
       } else {
         showErrorAlert(Get.overlayContext!, "Input Berat Sampah Gagal");

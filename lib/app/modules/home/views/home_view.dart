@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -14,6 +16,23 @@ class HomeView extends GetView<HomeController> {
   Widget build(BuildContext context) {
     final MediaQueryWidth = MediaQuery.of(context).size.width;
     final MediaQueryHeight = MediaQuery.of(context).size.height;
+
+    final List<String> imgList = [
+      'assets/image/IMG_4632.jpg',
+      'assets/image/IMG-20230707-WA0004.jpg',
+      'assets/image/img2.jpg',
+      'assets/image/image 10.png',
+    ];
+
+    // Future<void> _launchInstagramURL() async {
+    //   const instagramURL = 'https://www.instagram.com/nama_akun_instagram/';
+    //   if (await canLaunch(instagramURL)) {
+    //     await launch(instagramURL);
+    //   } else {
+    //     throw 'Could not launch $instagramURL';
+    //   }
+    // }
+
     return GetBuilder<HomeController>(builder: (controller) {
       return Scaffold(
         appBar: PreferredSize(
@@ -118,7 +137,7 @@ class HomeView extends GetView<HomeController> {
                             ),
                       GestureDetector(
                         onTap: () {
-                          Get.offAllNamed('/evoucher');
+                          Get.toNamed('/evoucher');
                         },
                         child: Container(
                           child: Row(
@@ -149,16 +168,28 @@ class HomeView extends GetView<HomeController> {
           ),
           preferredSize: Size.fromHeight(MediaQueryHeight * 0.18),
         ),
-        body: Container(
+        body: SingleChildScrollView(
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Container(
-                width: MediaQueryWidth,
-                height: MediaQueryHeight * 0.25,
-                child: Image.asset(
-                  'assets/image/image 10.png',
-                  fit: BoxFit.cover,
+              CarouselSlider(
+                options: CarouselOptions(
+                  clipBehavior: Clip.hardEdge,
+                  autoPlay: true, // Set this to true for auto-advancing
+                  // aspectRatio: 9/5,
+                  viewportFraction: 1,
                 ),
+                items: imgList
+                    .map((item) => Container(
+                          child: Center(
+                            child: Image.asset(
+                              item,
+                              fit: BoxFit.fitWidth,
+                              width: MediaQueryWidth,
+                            ),
+                          ),
+                        ))
+                    .toList(),
               ),
               SizedBox(
                 height: MediaQueryHeight * 0.02,
@@ -206,13 +237,10 @@ class HomeView extends GetView<HomeController> {
                             color: bg_text,
                             boxShadow: [
                               BoxShadow(
-                                color: Colors.black.withOpacity(
-                                    0.5), // Warna shadow dan opacity
-                                spreadRadius:
-                                    3, // Jarak seberapa lebar shadow akan menyebar
+                                color: Colors.black.withOpacity(0.5),
+                                spreadRadius: 3,
                                 blurRadius: 5,
-                                offset: Offset
-                                    .zero, // Jarak seberapa blur shadow akan terlihat
+                                offset: Offset.zero,
                               ),
                             ],
                           ),
@@ -225,7 +253,14 @@ class HomeView extends GetView<HomeController> {
                           ),
                         ),
                         ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () async {
+                            var url = Uri.parse(
+                                'https://www.instagram.com/ppkormawa_bemfikudinus/');
+                            await launchUrl(
+                              url,
+                              mode: LaunchMode.platformDefault,
+                            );
+                          },
                           child: Text(
                             'Cari Tahu',
                             style: GoogleFonts.inter(

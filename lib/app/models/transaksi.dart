@@ -20,16 +20,22 @@ class TransactionResponse {
 
 class TransactionData {
   final int userBalance;
+  final String oldest_data_month;
+  final String newest_data_month;
   final List<TransactionItem> transactionList;
 
   TransactionData({
     required this.userBalance,
+    required this.oldest_data_month,
+    required this.newest_data_month,
     required this.transactionList,
   });
 
   factory TransactionData.fromJson(Map<String, dynamic> json) {
     return TransactionData(
       userBalance: json['user_balance'],
+      oldest_data_month: json['oldest_data_month'],
+      newest_data_month: json['newest_data_month'],
       transactionList: (json['transaction_list'] as List)
           .map((item) => TransactionItem.fromJson(item))
           .toList(),
@@ -42,7 +48,7 @@ class TransactionItem {
   final String code;
   final String type;
   final int userId;
-  final int garbageSavingsDataId;
+  // final int? garbageSavingsDataId;
   final int trashBankId;
   final int amount;
   final int isApproved;
@@ -57,7 +63,7 @@ class TransactionItem {
     required this.code,
     required this.type,
     required this.userId,
-    required this.garbageSavingsDataId,
+    // required this.garbageSavingsDataId,
     required this.trashBankId,
     required this.amount,
     required this.isApproved,
@@ -76,7 +82,7 @@ class TransactionItem {
       code: json['code'],
       type: json['type'],
       userId: json['user_id'],
-      garbageSavingsDataId: json['garbage_savings_data_id'],
+      // garbageSavingsDataId: json['garbage_savings_data_id'],
       trashBankId: json['trash_bank_id'],
       amount: json['amount'],
       isApproved: json['is_approved'],

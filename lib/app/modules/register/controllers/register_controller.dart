@@ -48,7 +48,7 @@ class RegisterController extends GetxController {
     if (value == null || value.isEmpty || value == ' ') {
       return 'Nomor KK tidak boleh kosong';
     }
-    if (value.length == 16) {
+    if (!GetUtils.isLengthGreaterThan(value, 15)) {
       return "Nomor KK tidak boleh lebih dari 16 angka";
     }
     {
@@ -66,10 +66,10 @@ class RegisterController extends GetxController {
   }
 
   String? validateNomorHp(String value) {
-    if (value == null || value.isEmpty || value == ' ') {
-      return 'Nomor HP tidak boleh kosong';
+    if (value == ' ') {
+      return 'Nomor Handpone tidak boleh kosong';
     }
-    if (value.length == 12) {
+    if (!GetUtils.isLengthGreaterThan(value, 11)) {
       return "Nomor HP tidak boleh lebih dari 12 angka";
     }
     {
