@@ -15,6 +15,14 @@ class HomeView extends GetView<HomeController> {
   Widget build(BuildContext context) {
     final MediaQueryWidth = MediaQuery.of(context).size.width;
     final MediaQueryHeight = MediaQuery.of(context).size.height;
+
+    final List<String> imgList = [
+      'assets/image/IMG_4632.jpg',
+      'assets/image/IMG-20230707-WA0004.jpg',
+      'assets/image/img2.jpg',
+      'assets/image/image 10.png',
+    ];
+
     return GetBuilder<HomeController>(builder: (controller) {
       return Scaffold(
         appBar: PreferredSize(
@@ -153,30 +161,24 @@ class HomeView extends GetView<HomeController> {
         body: Container(
           child: Column(
             children: [
-              Container(
-                width: MediaQueryWidth,
-                height: MediaQueryHeight * 0.25,
-                child: CarouselSlider(
-                  options: CarouselOptions(
+              CarouselSlider(
+                options: CarouselOptions(
+                  clipBehavior: Clip.hardEdge,
                     autoPlay: true, // Set this to true for auto-advancing
-                    aspectRatio: MediaQueryWidth / (MediaQueryHeight * 0.4),
-                    viewportFraction: 1.0,
-                  ),
-                  items: [
-                    Image.asset(
-                      'assets/image/image 10.png',
-                      fit: BoxFit.cover,
+                    // aspectRatio: 9/5,
+                    viewportFraction: 1,
                     ),
-                    Image.asset(
-                      'assets/image/img2.jpg',
-                      fit: BoxFit.cover,
-                    ),
-                    Image.asset('assets/image/IMG-20230707-WA0004.jpg',
-                        fit: BoxFit.cover),
-                    Image.asset('assets/image/IMG_4632.jpg', fit: BoxFit.cover),
-                    // Add more images as needed...
-                  ],
-                ),
+                items: imgList
+                    .map((item) => Container(
+                          child: Center(
+                            child: Image.asset(
+                              item,
+                              fit: BoxFit.fitWidth,
+                              width: MediaQueryWidth,
+                            ),
+                          ),
+                        ))
+                    .toList(),
               ),
               SizedBox(
                 height: MediaQueryHeight * 0.02,

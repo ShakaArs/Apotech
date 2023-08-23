@@ -20,16 +20,22 @@ class TransactionResponse {
 
 class TransactionData {
   final int userBalance;
+  final String oldest_data_month;
+  final String newest_data_month;
   final List<TransactionItem> transactionList;
 
   TransactionData({
     required this.userBalance,
+    required this.oldest_data_month,
+    required this.newest_data_month,
     required this.transactionList,
   });
 
   factory TransactionData.fromJson(Map<String, dynamic> json) {
     return TransactionData(
       userBalance: json['user_balance'],
+      oldest_data_month: json['oldest_data_month'],
+      newest_data_month: json['newest_data_month'],
       transactionList: (json['transaction_list'] as List)
           .map((item) => TransactionItem.fromJson(item))
           .toList(),
