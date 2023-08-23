@@ -51,6 +51,9 @@ class EditProfilController extends GetxController {
     if (value.length == 11) {
       return "Nomor HP tidak boleh lebih dari 12 angka";
     }
+    if (!RegExp(r'^\d+$').hasMatch(value)) {
+      return 'Nomor HP hanya boleh mengandung angka';
+    }
     {
       return null;
     }
@@ -112,7 +115,7 @@ class EditProfilController extends GetxController {
     if (editprofilFormKey.currentState!.validate()) {
       editprofilFormKey.currentState!.save();
       try {
-        UpdateProfile();
+        await UpdateProfile();
       } catch (e) {
         Fluttertoast.showToast(msg: e.toString());
       }

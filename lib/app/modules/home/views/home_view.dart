@@ -158,140 +158,138 @@ class HomeView extends GetView<HomeController> {
           ),
           preferredSize: Size.fromHeight(MediaQueryHeight * 0.18),
         ),
-        body: Container(
-          child: Column(
-            children: [
-              CarouselSlider(
-                options: CarouselOptions(
-                  clipBehavior: Clip.hardEdge,
-                    autoPlay: true, // Set this to true for auto-advancing
-                    // aspectRatio: 9/5,
-                    viewportFraction: 1,
-                    ),
-                items: imgList
-                    .map((item) => Container(
-                          child: Center(
-                            child: Image.asset(
-                              item,
-                              fit: BoxFit.fitWidth,
-                              width: MediaQueryWidth,
-                            ),
+        body: Column(
+          children: [
+            CarouselSlider(
+              options: CarouselOptions(
+                clipBehavior: Clip.hardEdge,
+                  autoPlay: true, // Set this to true for auto-advancing
+                  // aspectRatio: 9/5,
+                  viewportFraction: 1,
+                  ),
+              items: imgList
+                  .map((item) => Container(
+                        child: Center(
+                          child: Image.asset(
+                            item,
+                            fit: BoxFit.fitWidth,
+                            width: MediaQueryWidth,
                           ),
-                        ))
-                    .toList(),
-              ),
-              SizedBox(
-                height: MediaQueryHeight * 0.02,
-              ),
-              Container(
-                padding: EdgeInsets.only(left: 10),
-                height: MediaQueryHeight * 0.2,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Image.asset(
-                          'assets/image/pp_6-01 1.png',
-                          scale: 1.3,
                         ),
-                        SizedBox(
-                          height: MediaQueryHeight * 0.01,
+                      ))
+                  .toList(),
+            ),
+            SizedBox(
+              height: MediaQueryHeight * 0.02,
+            ),
+            Container(
+              padding: EdgeInsets.only(left: 10),
+              height: MediaQueryHeight * 0.2,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Image.asset(
+                        'assets/image/pp_6-01 1.png',
+                        scale: 1.3,
+                      ),
+                      SizedBox(
+                        height: MediaQueryHeight * 0.01,
+                      ),
+                      Text(
+                        'PPKO BEMFIK\nUDINUS',
+                        textAlign: TextAlign.center,
+                        style: GoogleFonts.inter(
+                          fontSize: 14,
+                          fontWeight: FontWeight.bold,
                         ),
-                        Text(
-                          'PPKO BEMFIK\nUDINUS',
-                          textAlign: TextAlign.center,
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    width: MediaQueryWidth * 0.04,
+                  ),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Container(
+                        width: MediaQueryWidth * 0.65,
+                        height: MediaQueryHeight * 0.13,
+                        padding: EdgeInsets.all(5),
+                        alignment: Alignment.center,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          color: bg_text,
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black.withOpacity(0.5),
+                              spreadRadius: 3,
+                              blurRadius: 5,
+                              offset: Offset.zero,
+                            ),
+                          ],
+                        ),
+                        child: Text(
+                          'Implementasi Ekonomi Sirkular melalui\nPengembangan Rumah Sampah Digital\n4.0 Resik Mandiri di Kelurahan Sambiroto\nberbasis  sustainable zero waste\nManajemen',
                           style: GoogleFonts.inter(
-                            fontSize: 14,
+                            fontSize: 11,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                      ],
-                    ),
-                    SizedBox(
-                      width: MediaQueryWidth * 0.04,
-                    ),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Container(
-                          width: MediaQueryWidth * 0.65,
-                          height: MediaQueryHeight * 0.13,
-                          padding: EdgeInsets.all(5),
-                          alignment: Alignment.center,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(20),
-                            color: bg_text,
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.black.withOpacity(0.5),
-                                spreadRadius: 3,
-                                blurRadius: 5,
-                                offset: Offset.zero,
-                              ),
-                            ],
-                          ),
-                          child: Text(
-                            'Implementasi Ekonomi Sirkular melalui\nPengembangan Rumah Sampah Digital\n4.0 Resik Mandiri di Kelurahan Sambiroto\nberbasis  sustainable zero waste\nManajemen',
-                            style: GoogleFonts.inter(
-                              fontSize: 11,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ),
-                        ElevatedButton(
-                          onPressed: () {},
-                          child: Text(
-                            'Cari Tahu',
-                            style: GoogleFonts.inter(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 16),
-                          ),
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: primary,
-                            fixedSize: Size(
-                              MediaQueryWidth * 0.3,
-                              36,
-                            ),
-                            elevation: 4,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(11),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-              Container(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Image.asset(
-                      'assets/image/MASKOT_SIRESMA.png',
-                      scale: 1.75,
-                    ),
-                    SizedBox(
-                      width: MediaQueryWidth * 0.13,
-                    ),
-                    Container(
-                      height: MediaQueryHeight * 0.13,
-                      width: MediaQueryWidth * 0.43,
-                      color: Colors.amber,
-                      child: Image.asset(
-                        'assets/image/image 19.png',
-                        fit: BoxFit.cover,
                       ),
-                    ),
-                  ],
-                ),
+                      ElevatedButton(
+                        onPressed: () {},
+                        child: Text(
+                          'Cari Tahu',
+                          style: GoogleFonts.inter(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 16),
+                        ),
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: primary,
+                          fixedSize: Size(
+                            MediaQueryWidth * 0.3,
+                            36,
+                          ),
+                          elevation: 4,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(11),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
               ),
-            ],
-          ),
+            ),
+            Container(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Image.asset(
+                    'assets/image/MASKOT_SIRESMA.png',
+                    scale: 1.75,
+                  ),
+                  SizedBox(
+                    width: MediaQueryWidth * 0.13,
+                  ),
+                  Container(
+                    height: MediaQueryHeight * 0.13,
+                    width: MediaQueryWidth * 0.43,
+                    color: Colors.amber,
+                    child: Image.asset(
+                      'assets/image/image 19.png',
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
         ),
       );
     });
