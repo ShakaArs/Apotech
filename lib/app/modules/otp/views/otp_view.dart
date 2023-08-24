@@ -82,15 +82,12 @@ class OtpView extends GetView<OtpController> {
                   height: MediaQueryHeight * 0.05,
                 ),
                 TextButton(
-                  onPressed: () {
-                    // jika timer nyala
-                    if (controller.isCounting.value) {
-                      null;
-                    } else {
-                      controller.toggleVisibility();
-                      controller.resendOTP();
-                    }
-                  },
+                  onPressed: controller.isCounting.value
+                      ? null // Disable button if timer is running
+                      : () {
+                          controller.toggleVisibility();
+                          controller.resendOTP();
+                        },
                   child: Obx(
                     () => Text(
                       'Kirim ulang kode OTP',
