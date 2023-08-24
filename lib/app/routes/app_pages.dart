@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 import 'package:siresma/app/modules/qradmin/bindings/qradmin_binding.dart';
 import 'package:siresma/app/modules/qradmin/views/qradmin_view.dart';
 import 'package:siresma/app/modules/transaksi/views/transaksi_view.dart';
+import 'package:siresma/app/modules/transaksiadmin/views/transaksiadmin_view.dart';
 
 import '../modules/datanasabah/bindings/datanasabah_binding.dart';
 import '../modules/datanasabah/views/datanasabah_view.dart';
@@ -55,7 +56,6 @@ import '../modules/tarik_saldo/bindings/tarik_saldo_binding.dart';
 import '../modules/tarik_saldo/views/tarik_saldo_view.dart';
 import '../modules/transaksi/bindings/transaksi_binding.dart';
 import '../modules/transaksiadmin/bindings/transaksiadmin_binding.dart';
-import '../modules/transaksiadmin/views/transaksiadmin_view.dart';
 import '../modules/transaksikeluar/bindings/transaksikeluar_binding.dart';
 import '../modules/transaksikeluar/views/transaksikeluar_view.dart';
 import '../modules/transaksimasuk/bindings/transaksimasuk_binding.dart';
@@ -165,7 +165,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.TRANSAKSIADMIN,
-      page: () => const TransaksiadminView(),
+      page: () => const TransaksiAdminView(),
       binding: TransaksiadminBinding(),
     ),
     GetPage(

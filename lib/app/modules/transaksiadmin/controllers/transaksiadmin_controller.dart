@@ -19,6 +19,8 @@ class TransaksiadminController extends GetxController {
   RxString admin_income = ''.obs;
   var isLoading = true.obs;
 
+  var tabIndex = 0.obs;
+
   Future<void> fetchData(userId) async {
     final prefs = await SharedPreferences.getInstance();
     var token = prefs.getString("token");
@@ -62,9 +64,25 @@ class TransaksiadminController extends GetxController {
     }
   }
 
+  List<TransactionAdminItem> filterTransactionsByMonth(
+      List<TransactionAdminItem> transactions, int selectedMonth) {
+    return transactions.where((transaction) {
+      final createdAtParts = transaction.createdAt.split('T')[0].split('-');
+      final month = int.parse(createdAtParts[1]);
+      return month == selectedMonth;
+    }).toList();
+  }
+
+  void getCurrentMonth() {
+    final now = DateTime.now();
+    tabIndex.value = now.month - 1;
+    // print("called, month : ${now.month}");
+  }
+
   @override
   void onInit() {
     super.onInit();
+    getCurrentMonth();
     var userId = Get.arguments;
     print(userId);
     fetchData(userId);
