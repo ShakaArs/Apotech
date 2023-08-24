@@ -50,18 +50,15 @@ class _TransaksiViewState extends State<TransaksiView>
                 Padding(
                   padding: const EdgeInsets.only(top: 16, left: 20, right: 20),
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Image.asset(
                         'assets/image/icon_tabungan.png',
                         scale: 1.6,
                       ),
-                      SizedBox(
-                        width: MediaQueryWidth * 0.05,
-                      ),
                       Column(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
                             'Transaksi',
@@ -83,6 +80,15 @@ class _TransaksiViewState extends State<TransaksiView>
                           ),
                         ],
                       ),
+                      GestureDetector(
+                        onTap: () {
+                          Get.toNamed('/tariksaldo');
+                        },
+                        child: Image.asset(
+                          'assets/image/image 56.png',
+                          scale: 1.5,
+                        ),
+                      )
                     ],
                   ),
                 ),

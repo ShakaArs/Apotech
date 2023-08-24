@@ -25,14 +25,12 @@ class TransaksiViewOld extends GetView<TransaksiController> {
             children: [
               Container(
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Image.asset(
                       'assets/image/icon_tabungan.png',
                       scale: 1.6,
-                    ),
-                    SizedBox(
-                      width: MediaQueryWidth * 0.05,
                     ),
                     Column(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -58,6 +56,15 @@ class TransaksiViewOld extends GetView<TransaksiController> {
                         ),
                       ],
                     ),
+                    GestureDetector(
+                      onTap: () {
+                        Get.toNamed('/tariksaldo');
+                      },
+                      child: Image.asset(
+                        'assets/image/image 56.png',
+                        scale: 1.5,
+                      ),
+                    )
                   ],
                 ),
               ),
