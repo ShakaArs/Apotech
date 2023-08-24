@@ -167,15 +167,15 @@ class ProfilView extends GetView<ProfilController> {
                   ),
                   ListTile(
                     onTap: () {
-                      Get.toNamed('/navbartabungan');
+                      Get.toNamed('/transaksi');
                     },
                     leading: Icon(
-                      FontAwesomeIcons.trashCan,
+                      FontAwesomeIcons.fileLines,
                       color: primary,
                       size: 32,
                     ),
                     title: reusableText(
-                        'Tabungan Sampah', Colors.black, 16, FontWeight.bold),
+                        'Transaksi', Colors.black, 16, FontWeight.bold),
                   ),
                   ListTile(
                     onTap: () {
