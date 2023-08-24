@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:siresma/app/common/colors.dart';
 
-class CustomTextFields extends StatelessWidget {
+class CustomTextFields extends StatefulWidget {
   const CustomTextFields({
     Key? key,
     required this.hint,
-    required this.obscureText,
     required this.enable,
+    required this.obscureText,
     this.controller,
     this.validator,
     this.onChanged,
@@ -23,6 +23,13 @@ class CustomTextFields extends StatelessWidget {
   final onChanged;
 
   @override
+  _CustomTextFieldsState createState() => _CustomTextFieldsState();
+}
+
+class _CustomTextFieldsState extends State<CustomTextFields> {
+  bool _showPassword = false;
+
+  @override
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
@@ -31,17 +38,17 @@ class CustomTextFields extends StatelessWidget {
       ),
       child: TextFormField(
         style: GoogleFonts.inter(),
-        enabled: enable,
-        initialValue: initialValue,
+        enabled: widget.enable,
+        initialValue: widget.initialValue,
         textAlign: TextAlign.start,
-        obscureText: obscureText,
+        obscureText: widget.obscureText && !_showPassword,
         obscuringCharacter: '*',
-        validator: validator,
-        onChanged: onChanged,
+        validator: widget.validator,
+        onChanged: widget.onChanged,
         textAlignVertical: TextAlignVertical.center,
         decoration: InputDecoration(
           contentPadding: const EdgeInsets.all(16),
-          hintText: hint,
+          hintText: widget.hint,
           hintStyle: GoogleFonts.inter(
               fontSize: 14,
               fontWeight: FontWeight.w700,
@@ -64,6 +71,18 @@ class CustomTextFields extends StatelessWidget {
               color: bg_Textformfield,
             ),
           ),
+          suffixIcon: widget.obscureText
+              ? IconButton(
+                  onPressed: () {
+                    setState(() {
+                      _showPassword = !_showPassword;
+                    });
+                  },
+                  icon: Icon(
+                    _showPassword ? Icons.visibility : Icons.visibility_off,
+                  ),
+                )
+              : null,
         ),
       ),
     );
