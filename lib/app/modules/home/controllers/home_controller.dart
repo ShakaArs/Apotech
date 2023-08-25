@@ -30,7 +30,7 @@ class HomeController extends GetxController {
           var trash_bank_id = jsonResponse['data']['id'];
           final SharedPreferences prefs = await _prefs;
           await prefs.setInt("trash_bank_id", trash_bank_id);
-          UserList.location = name.value;
+          // UserList.location = name.value;
           print(trash_bank_id);
           print(jsonResponse);
           print(name.value);

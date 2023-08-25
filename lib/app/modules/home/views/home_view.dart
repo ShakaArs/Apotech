@@ -64,7 +64,9 @@ class HomeView extends GetView<HomeController> {
                               child: CircleAvatar(
                                 backgroundColor: Colors.grey.shade400,
                                 backgroundImage: NetworkImage(
-                                    "${ProfilCtrl.profil_picture.value}"),
+                                  "${ProfilCtrl.profil_picture.value}",
+                                  scale: 1,
+                                ),
                               ),
                             ),
                       SizedBox(

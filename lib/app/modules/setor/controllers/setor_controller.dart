@@ -55,6 +55,12 @@ class SetorController extends GetxController {
     }
   }
 
+  void resetFields() {
+    selectedKategori = null;
+    selectedDate.value = null;
+    update();
+  }
+
   Future<void> postDataToApi() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     var trash_bank_id = prefs.getInt("trash_bank_id");
@@ -63,7 +69,7 @@ class SetorController extends GetxController {
     try {
       if (selectedKategori == null) {
         Get.snackbar(
-          "Error",
+          "Gagal Setor",
           "Pilih Kategori Sampah terlebih dahulu",
           snackPosition: SnackPosition.TOP,
         );
@@ -71,7 +77,7 @@ class SetorController extends GetxController {
       }
       if (selectedDate.value == null) {
         Get.snackbar(
-          "Error",
+          "Gagal Setor",
           "Pilih tanggal terlebih dahulu",
           snackPosition: SnackPosition.TOP,
         );
@@ -102,6 +108,7 @@ class SetorController extends GetxController {
         Timer(Duration(seconds: 2), () {
           Get.toNamed('/navbartabungan', arguments: TabunganCtrl.fetchData());
         });
+        resetFields();
       } else {
         customAllertDialog("Setor Sampah Gagal", "${error}", 'error');
       }

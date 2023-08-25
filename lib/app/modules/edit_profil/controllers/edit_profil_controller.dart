@@ -124,7 +124,6 @@ class EditProfilController extends GetxController {
 
   @override
   void onClose() {
-    checkUpdateprofile();
     super.onClose();
   }
 }
