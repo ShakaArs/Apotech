@@ -7,6 +7,7 @@ import 'package:siresma/app/common/colors.dart';
 import 'package:siresma/app/common/custom_textformfield.dart';
 import 'package:siresma/app/models/user.dart';
 
+import '../../profil/controllers/profil_controller.dart';
 import '../controllers/edit_profil_controller.dart';
 
 class EditProfilView extends GetView<EditProfilController> {
@@ -15,6 +16,9 @@ class EditProfilView extends GetView<EditProfilController> {
   Widget build(BuildContext context) {
     final MediaQueryWidth = MediaQuery.of(context).size.width;
     final MediaQueryHeight = MediaQuery.of(context).size.height;
+
+    final ProfilController ProfilCtrl = Get.put(ProfilController());
+
     return Scaffold(
       body: GetBuilder<EditProfilController>(
         builder: (controller) {
@@ -44,11 +48,11 @@ class EditProfilView extends GetView<EditProfilController> {
                               backgroundColor: Colors.grey.shade400,
                               backgroundImage: FileImage(controller.ImageFile!),
                             )
-                          : ("${UserList.profilePicture}" != null)
+                          : ("${ProfilCtrl.profil_picture.value}" != null)
                               ? CircleAvatar(
                                   backgroundColor: Colors.grey.shade400,
                                   backgroundImage: NetworkImage(
-                                      "${UserList.profilePicture}"),
+                                      "${ProfilCtrl.profil_picture.value}"),
                                 )
                               : CircleAvatar(
                                   backgroundColor: Colors.grey.shade400,

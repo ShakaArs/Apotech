@@ -50,7 +50,7 @@ class HomeView extends GetView<HomeController> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      "${UserList.profilePicture}" == ''
+                      "${ProfilCtrl.profil_picture.value}" == ''
                           ? Transform.scale(
                               scale: 1.55,
                               child: CircleAvatar(
