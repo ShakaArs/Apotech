@@ -5,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:otp_text_field/otp_text_field.dart';
 import 'package:otp_text_field/style.dart';
 import 'package:siresma/app/common/colors.dart';
+import 'package:siresma/app/common/custom_textformfield.dart';
 
 import '../../../common/button.dart';
 import '../controllers/otp_controller.dart';
@@ -82,33 +83,22 @@ class OtpView extends GetView<OtpController> {
                   height: MediaQueryHeight * 0.05,
                 ),
                 TextButton(
-                  onPressed: controller.isCounting.value
-                      ? null // Disable button if timer is running
-                      : () {
-                          controller.toggleVisibility();
+                  onPressed: controller.countdownDuration.value == 0
+                      ? () {
+                          controller.startCountdownTimer();
                           controller.resendOTP();
-                        },
+                        }
+                      : null,
                   child: Obx(
-                    () => Text(
-                      'Kirim ulang kode OTP',
-                      style: GoogleFonts.inter(
-                        color: controller.isVisible.value
-                            ? Colors.grey
-                            : Colors.lightBlue,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                ),
-                Obx(
-                  () => Visibility(
-                    visible: controller.isVisible.value,
-                    child: Text(
-                      "${controller.countdownMinutes.value.toString().padLeft(2, '0')}:${controller.countdownSeconds.value.toString().padLeft(2, '0')}",
-                      style: GoogleFonts.inter(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                      ),
+                    () => reusableText(
+                      controller.countdownDuration.value == 0
+                          ? "Kirim ulang kode OTP"
+                          : "Kirim ulang kode OTP (${controller.countdownDuration.value})",
+                      controller.countdownDuration.value == 0
+                          ? Colors.blueAccent
+                          : Colors.grey,
+                      14,
+                      FontWeight.bold,
                     ),
                   ),
                 ),

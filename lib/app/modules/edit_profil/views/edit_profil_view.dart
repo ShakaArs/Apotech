@@ -161,7 +161,6 @@ class EditProfilView extends GetView<EditProfilController> {
                                   controller.addressCtrl.text =
                                       UserList.address!;
                                 }
-
                                 controller.checkUpdateprofile();
                               },
                               child: Text(

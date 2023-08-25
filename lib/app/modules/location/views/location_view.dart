@@ -9,6 +9,7 @@ import '../../../common/colors.dart';
 import '../../../common/custom_textformfield.dart';
 import '../../../models/dropdown_location.dart';
 import '../../../models/user.dart';
+import '../../profil/controllers/profil_controller.dart';
 import '../controllers/location_controller.dart';
 
 class LocationView extends GetView<LocationController> {
@@ -17,6 +18,9 @@ class LocationView extends GetView<LocationController> {
   Widget build(BuildContext context) {
     final MediaQueryWidth = MediaQuery.of(context).size.width;
     final MediaQueryHeight = MediaQuery.of(context).size.height;
+
+    final ProfilController ProfilCtrl = Get.put(ProfilController());
+
     return Scaffold(
       appBar: PreferredSize(
         child: Container(
@@ -50,8 +54,8 @@ class LocationView extends GetView<LocationController> {
                             scale: 1.55,
                             child: CircleAvatar(
                               backgroundColor: Colors.grey.shade400,
-                              backgroundImage:
-                                  NetworkImage("${UserList.profilePicture}"),
+                              backgroundImage: NetworkImage(
+                                  "${ProfilCtrl.profil_picture.value}"),
                             ),
                           ),
                     SizedBox(

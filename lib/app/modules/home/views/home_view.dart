@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:siresma/app/modules/profil/controllers/profil_controller.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import 'package:get/get.dart';
@@ -8,6 +9,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:siresma/app/common/colors.dart';
 import 'package:siresma/app/common/custom_textformfield.dart';
 import '../../../models/user.dart';
+import '../../location/controllers/location_controller.dart';
 import '../controllers/home_controller.dart';
 
 class HomeView extends GetView<HomeController> {
@@ -24,14 +26,9 @@ class HomeView extends GetView<HomeController> {
       'assets/image/image 10.png',
     ];
 
-    // Future<void> _launchInstagramURL() async {
-    //   const instagramURL = 'https://www.instagram.com/nama_akun_instagram/';
-    //   if (await canLaunch(instagramURL)) {
-    //     await launch(instagramURL);
-    //   } else {
-    //     throw 'Could not launch $instagramURL';
-    //   }
-    // }
+    final ProfilController ProfilCtrl = Get.put(ProfilController());
+
+    final LocationController LocationCtrl = Get.put(LocationController());
 
     return GetBuilder<HomeController>(builder: (controller) {
       return Scaffold(
@@ -66,8 +63,8 @@ class HomeView extends GetView<HomeController> {
                               scale: 1.55,
                               child: CircleAvatar(
                                 backgroundColor: Colors.grey.shade400,
-                                backgroundImage:
-                                    NetworkImage("${UserList.profilePicture}"),
+                                backgroundImage: NetworkImage(
+                                    "${ProfilCtrl.profil_picture.value}"),
                               ),
                             ),
                       SizedBox(
@@ -101,10 +98,13 @@ class HomeView extends GetView<HomeController> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      "${UserList.location}" == ''
+                      "${controller.name.value}" == ''
                           ? GestureDetector(
                               onTap: () {
-                                Get.offAllNamed('/location');
+                                Get.toNamed(
+                                  '/location',
+                                  arguments: LocationCtrl.fetchData(),
+                                );
                               },
                               child: Container(
                                 child: Row(

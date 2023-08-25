@@ -48,7 +48,7 @@ class EditProfilController extends GetxController {
     if (value == ' ') {
       return 'Nomor Handpone tidak boleh kosong';
     }
-    if (value.length == 11) {
+    if (!GetUtils.isLengthGreaterThan(value, 11)) {
       return "Nomor HP tidak boleh lebih dari 12 angka";
     }
     if (!RegExp(r'^\d+$').hasMatch(value)) {
@@ -124,7 +124,7 @@ class EditProfilController extends GetxController {
 
   @override
   void onClose() {
-    // Clean up text editing controllers
+    checkUpdateprofile();
     super.onClose();
   }
 }

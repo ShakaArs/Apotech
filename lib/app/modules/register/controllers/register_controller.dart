@@ -29,8 +29,8 @@ class RegisterController extends GetxController {
     if (value.length >= 25) {
       return 'Teks tidak boleh lebih dari 25 karakter';
     }
-    if (!RegExp(r'^[a-zA-Z\s]+$').hasMatch(value)) {
-      return 'Teks hanya boleh mengandung huruf dan spasi';
+    if (!RegExp(r'^[a-zA-Z\s.]+$').hasMatch(value)) {
+      return 'Teks hanya boleh mengandung huruf, spasi, dan titik';
     }
     return null;
   }
@@ -50,6 +50,9 @@ class RegisterController extends GetxController {
     }
     if (!GetUtils.isLengthGreaterThan(value, 15)) {
       return "Nomor KK tidak boleh lebih dari 16 angka";
+    }
+    if (!RegExp(r'^\d+$').hasMatch(value)) {
+      return 'Nomor HP hanya boleh mengandung angka';
     }
     {
       return null;
@@ -71,6 +74,9 @@ class RegisterController extends GetxController {
     }
     if (!GetUtils.isLengthGreaterThan(value, 11)) {
       return "Nomor HP tidak boleh lebih dari 12 angka";
+    }
+    if (!RegExp(r'^\d+$').hasMatch(value)) {
+      return 'Nomor HP hanya boleh mengandung angka';
     }
     {
       return null;

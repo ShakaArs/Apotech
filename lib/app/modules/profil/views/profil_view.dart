@@ -70,7 +70,7 @@ class ProfilView extends GetView<ProfilController> {
                                   child: CircleAvatar(
                                     backgroundColor: Colors.grey.shade400,
                                     backgroundImage: NetworkImage(
-                                        "${UserList.profilePicture}"),
+                                        "${controller.profil_picture.value}"),
                                   ),
                                 ),
                           SizedBox(
