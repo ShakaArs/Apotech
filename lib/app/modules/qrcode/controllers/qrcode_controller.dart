@@ -14,12 +14,11 @@ import 'package:siresma/app/modules/tabunganbefore/controllers/tabunganefore_con
 class QrcodeController extends GetxController {
   Barcode? result;
   var data = "Scanning...".obs;
-  QRViewController? controller;
+  late QRViewController controller;
   final GlobalKey qrKey = GlobalKey(debugLabel: 'QR');
   bool hasSentPostRequest = false;
 
-  final TabunganbeforeController TabunganCtrl = Get.find();
-  final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
+  final TabunganbeforeController tabunganBeforeCtrl = Get.find();
   RxInt selectedId = RxInt(0);
 
   Widget buildQrView(BuildContext context) {
@@ -77,28 +76,27 @@ class QrcodeController extends GetxController {
         "garbage_savings_data_id": id.toString(),
         "code": code,
       };
-      print(code);
-      print(id);
       https.Response response =
           await https.post(url, body: body, headers: headers);
       var error = jsonDecode(response.body)['message'];
-      var succes = jsonDecode(response.body)['message'];
+      var success = jsonDecode(response.body)['message'];
 
       if (response.statusCode == 200) {
         final jsonData = json.decode(response.body);
         print(jsonData);
-        customAllertDialog('Sukses', '${succes}', 'success');
+        customAllertDialog('Sukses', '$success', 'success');
         hasSentPostRequest = false;
         Timer(Duration(seconds: 2), () {
-          Get.offAndToNamed('/navbartabungan',
-              arguments: TabunganCtrl.fetchData());
+          tabunganBeforeCtrl.fetchData();
+          Get.offAndToNamed('/navbartabungan');
         });
-        //Tambahkan print response.body untuk melihat response dari server
       } else {
-        customAllertDialog('Gagal', '${error}', 'error');
+        customAllertDialog('Gagal', '$error', 'error');
+        hasSentPostRequest = false;
       }
     } catch (e) {
       customAllertDialog('Kirim data gagal', e.toString(), 'error');
+      hasSentPostRequest = false;
     }
   }
 
@@ -109,12 +107,8 @@ class QrcodeController extends GetxController {
   }
 
   @override
-  void onReady() {
-    super.onReady();
-  }
-
-  @override
   void onClose() {
+    controller.dispose();
     super.onClose();
   }
 }
