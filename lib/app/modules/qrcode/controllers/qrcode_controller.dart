@@ -56,9 +56,8 @@ class QrcodeController extends GetxController {
       if (scanData.code != null && !hasSentPostRequest) {
         data.value = scanData.code!;
         hasSentPostRequest = true;
-        await postDataCode(scanData.code ?? "");
-        hasSentPostRequest = false;
         controller.stopCamera();
+        await postDataCode(scanData.code ?? "");
       } else {
         data.value = "Scanning...";
       }
