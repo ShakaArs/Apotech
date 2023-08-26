@@ -65,7 +65,6 @@ class QrcodeController extends GetxController {
   }
 
   Future<void> postDataCode(String code) async {
-    print("i got called");
     SharedPreferences prefs = await SharedPreferences.getInstance();
     var token = prefs.getString("token");
     final id = selectedId.value;
@@ -90,6 +89,7 @@ class QrcodeController extends GetxController {
         final jsonData = json.decode(response.body);
         print(jsonData);
         customAllertDialog('Sukses', '${succes}', 'success');
+        hasSentPostRequest = false;
         Timer(Duration(seconds: 2), () {
           Get.toNamed('/navbartabungan', arguments: TabunganCtrl.fetchData());
         });
