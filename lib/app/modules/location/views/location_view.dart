@@ -41,25 +41,24 @@ class LocationView extends GetView<LocationController> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    "${UserList.profilePicture}" == ''
-                        ? Transform.scale(
-                            scale: 1.55,
-                            child: CircleAvatar(
-                              backgroundColor: Colors.grey.shade400,
-                              child: Icon(FontAwesomeIcons.solidUser,
-                                  color: Colors.grey.shade300),
-                            ),
-                          )
-                        : Transform.scale(
-                            scale: 1.55,
-                            child: CircleAvatar(
-                              backgroundColor: Colors.grey.shade400,
-                              backgroundImage: NetworkImage(
-                                "${ProfilCtrl.profil_picture.value}",
-                                scale: 1,
+                    Obx(
+                      () => Transform.scale(
+                        scale: 1.55,
+                        child: "${ProfilCtrl.profil_picture.value}" != null
+                            ? CircleAvatar(
+                                backgroundColor: Colors.grey.shade400,
+                                backgroundImage: NetworkImage(
+                                  "${ProfilCtrl.profil_picture.value}",
+                                  scale: 1,
+                                ),
+                              )
+                            : CircleAvatar(
+                                backgroundColor: Colors.grey.shade400,
+                                child: Icon(FontAwesomeIcons.solidUser,
+                                    color: Colors.grey.shade300),
                               ),
-                            ),
-                          ),
+                      ),
+                    ),
                     SizedBox(
                       width: MediaQueryWidth * 0.06,
                     ),

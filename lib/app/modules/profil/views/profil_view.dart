@@ -56,25 +56,22 @@ class ProfilView extends GetView<ProfilController> {
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          "${controller.profil_picture.value}" == ''
-                              ? Transform.scale(
-                                  scale: 1.55,
-                                  child: CircleAvatar(
-                                    backgroundColor: Colors.grey.shade400,
-                                    child: Icon(FontAwesomeIcons.solidUser,
-                                        color: Colors.grey.shade300),
-                                  ),
-                                )
-                              : Transform.scale(
-                                  scale: 1.55,
-                                  child: CircleAvatar(
+                          Transform.scale(
+                            scale: 1.55,
+                            child: "${controller.profil_picture.value}" != null
+                                ? CircleAvatar(
                                     backgroundColor: Colors.grey.shade400,
                                     backgroundImage: NetworkImage(
                                       "${controller.profil_picture.value}",
                                       scale: 1,
                                     ),
+                                  )
+                                : CircleAvatar(
+                                    backgroundColor: Colors.grey.shade400,
+                                    child: Icon(FontAwesomeIcons.solidUser,
+                                        color: Colors.grey.shade300),
                                   ),
-                                ),
+                          ),
                           SizedBox(
                             width: MediaQueryWidth * 0.07,
                           ),

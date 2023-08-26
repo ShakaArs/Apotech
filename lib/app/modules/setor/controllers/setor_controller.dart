@@ -105,10 +105,10 @@ class SetorController extends GetxController {
         final json = jsonDecode(response.body);
         print(json);
         customAllertDialog('Sukses', '${succes}', 'succes');
+        resetFields();
         Timer(Duration(seconds: 2), () {
           Get.toNamed('/navbartabungan', arguments: TabunganCtrl.fetchData());
         });
-        resetFields();
       } else {
         customAllertDialog("Setor Sampah Gagal", "${error}", 'error');
       }

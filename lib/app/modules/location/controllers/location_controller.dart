@@ -9,9 +9,12 @@ import 'package:siresma/app/config/api.dart';
 
 import '../../../models/dropdown_location.dart';
 import '../../../models/user.dart';
+import '../../profil/controllers/profil_controller.dart';
 
 class LocationController extends GetxController {
   final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
+
+  final ProfilController ProfilCtrl = Get.put(ProfilController());
 
   var rt = <RTModel>[].obs;
   RTModel? selectedRT;
@@ -97,12 +100,14 @@ class LocationController extends GetxController {
   @override
   void onInit() {
     super.onInit();
+    ProfilCtrl.fetchData();
     fetchData();
     update();
   }
 
   @override
   void onReady() {
+    ProfilCtrl.fetchData();
     super.onReady();
   }
 

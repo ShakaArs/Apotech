@@ -36,7 +36,11 @@ class ProfilController extends GetxController {
           phone.value = jsonResponse['data']['phone'];
           no_kk.value = jsonResponse['data']['no_kk'];
 
-          // UserList.location = name.value;
+          UserList.profilePicture = profil_picture.value;
+          UserList.full_name = name.value;
+          UserList.phone = phone.value;
+          UserList.no_kk = no_kk.value;
+          
           print(profil_picture.value);
           print(name.value);
           print(phone.value);

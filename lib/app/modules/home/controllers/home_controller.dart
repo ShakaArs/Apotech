@@ -7,11 +7,14 @@ import 'package:siresma/app/models/user.dart';
 
 import '../../../config/api.dart';
 import '../../../models/location.dart';
+import '../../profil/controllers/profil_controller.dart';
 
 class HomeController extends GetxController {
   final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
   RxString name = ''.obs;
+
+  final ProfilController ProfilCtrl = Get.put(ProfilController());
 
   Future<void> fetchData() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -47,12 +50,15 @@ class HomeController extends GetxController {
   @override
   void onInit() {
     super.onInit();
+    ProfilCtrl.profil_picture.value;
     fetchData();
     update();
   }
 
   @override
   void onReady() {
+    ProfilCtrl.profil_picture.value;
+    update();
     super.onReady();
   }
 
