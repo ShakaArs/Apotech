@@ -51,10 +51,13 @@ class QrcodeController extends GetxController {
   void _onQRViewCreated(QRViewController controller) {
     this.controller = controller;
     controller.scannedDataStream.listen((scanData) async {
-      if (scanData.code != null && !hasSentPostRequest) {
+      if (scanData.code != null &&
+          data.value == "Scanning..." &&
+          !hasSentPostRequest) {
         data.value = scanData.code!;
         hasSentPostRequest = true;
         controller.stopCamera();
+        controller.dispose();
         await postDataCode(scanData.code ?? "");
       } else {
         data.value = "Scanning...";
@@ -108,7 +111,6 @@ class QrcodeController extends GetxController {
 
   @override
   void onClose() {
-    controller.dispose();
     super.onClose();
   }
 }
