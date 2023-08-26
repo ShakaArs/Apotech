@@ -56,6 +56,7 @@ class TabunganbeforeController extends GetxController {
   @override
   void onInit() {
     fetchData();
+    update();
     super.onInit();
   }
 }

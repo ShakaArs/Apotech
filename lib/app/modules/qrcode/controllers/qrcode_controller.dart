@@ -90,7 +90,7 @@ class QrcodeController extends GetxController {
         customAllertDialog('Sukses', '${succes}', 'success');
         hasSentPostRequest = false;
         Timer(Duration(seconds: 2), () {
-          Get.toNamed('/navbartabungan', arguments: TabunganCtrl.fetchData());
+          Get.back();
         });
         //Tambahkan print response.body untuk melihat response dari server
       } else {
@@ -103,12 +103,12 @@ class QrcodeController extends GetxController {
 
   @override
   void onInit() {
+    selectedId.value = Get.arguments as int;
     super.onInit();
   }
 
   @override
   void onReady() {
-    selectedId.value = Get.arguments as int;
     super.onReady();
   }
 
