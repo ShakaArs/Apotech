@@ -64,6 +64,7 @@ class QrcodeController extends GetxController {
 
   Future<void> postDataCode(String code) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
+    selectedId.value = Get.arguments as int;
     var token = prefs.getString("token");
     final id = selectedId.value;
     try {
@@ -102,7 +103,6 @@ class QrcodeController extends GetxController {
 
   @override
   void onInit() {
-    selectedId.value = Get.arguments as int;
     super.onInit();
   }
 
