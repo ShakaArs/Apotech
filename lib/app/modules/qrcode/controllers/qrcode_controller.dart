@@ -90,7 +90,8 @@ class QrcodeController extends GetxController {
         customAllertDialog('Sukses', '${succes}', 'success');
         hasSentPostRequest = false;
         Timer(Duration(seconds: 2), () {
-          Get.back();
+          Get.offAndToNamed('/navbartabungan',
+              arguments: TabunganCtrl.fetchData());
         });
         //Tambahkan print response.body untuk melihat response dari server
       } else {
