@@ -1,13 +1,15 @@
-import 'dart:convert';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import '../../../config/api.dart';
-import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class TransaksiKeluarController extends GetxController {
   RxList transaksi = [].obs;
+
+  Future<void> loadTransaksi() async {
+    await getTransaksiKeluar();
+  }
 
   Future<void> getTransaksiKeluar() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -49,7 +51,7 @@ class TransaksiKeluarController extends GetxController {
       if (response.statusCode == 200) {
         print("Penarikan disetujui");
         // Refresh transaksi data
-        await getTransaksiKeluar();
+        await loadTransaksi();
       } else {
         print(response.body);
       }
@@ -60,7 +62,7 @@ class TransaksiKeluarController extends GetxController {
 
   @override
   void onInit() {
-    getTransaksiKeluar();
+    loadTransaksi();
     super.onInit();
   }
 }

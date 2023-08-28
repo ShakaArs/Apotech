@@ -20,7 +20,10 @@ class LoginController extends GetxController {
   TextEditingController usernamCtrl = TextEditingController();
   TextEditingController passwordCtrl = TextEditingController();
 
-  late Timer _inactivityTimer;
+  late Timer _inactivityTimer = Timer(Duration(minutes: 60), () {
+    ProfilCtrl
+        .Logout(); // This is just an example of what you want to do when the timer completes
+  });
 
   String? validateUsername(String value) {
     if (value == null || value.isEmpty || value == ' ') {

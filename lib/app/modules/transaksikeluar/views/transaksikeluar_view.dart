@@ -14,75 +14,78 @@ class TransaksiKeluarView extends GetView<TransaksiKeluarController> {
     final mediaQueryHeight = MediaQuery.of(context).size.height;
 
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Container(
-          padding: EdgeInsets.symmetric(vertical: 45, horizontal: 20),
-          width: mediaQueryWidth,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(
-                children: [
-                  Image.asset(
-                    'assets/image/icon_nasabah.png',
-                    scale: 0.9,
-                  ),
-                  SizedBox(width: mediaQueryWidth * 0.04),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Data Transaksi',
-                        style: GoogleFonts.inter(
-                          fontSize: 22,
-                          fontWeight: FontWeight.bold,
+      body: RefreshIndicator(
+        onRefresh: () => controller.loadTransaksi(),
+        child: SingleChildScrollView(
+          child: Container(
+            padding: EdgeInsets.symmetric(vertical: 45, horizontal: 20),
+            width: mediaQueryWidth,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  children: [
+                    Image.asset(
+                      'assets/image/icon_nasabah.png',
+                      scale: 0.9,
+                    ),
+                    SizedBox(width: mediaQueryWidth * 0.04),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Data Transaksi',
+                          style: GoogleFonts.inter(
+                            fontSize: 22,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
-                      ),
-                      Text(
-                        'Keluar',
-                        style: GoogleFonts.inter(
-                          fontSize: 22,
-                          fontWeight: FontWeight.bold,
+                        Text(
+                          'Keluar',
+                          style: GoogleFonts.inter(
+                            fontSize: 22,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
-                      ),
-                      SizedBox(height: mediaQueryHeight * 0.01),
-                      Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(40),
-                          color: primary,
+                        SizedBox(height: mediaQueryHeight * 0.01),
+                        Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(40),
+                            color: primary,
+                          ),
+                          width: mediaQueryWidth * 0.2,
+                          height: 5,
                         ),
-                        width: mediaQueryWidth * 0.2,
-                        height: 5,
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-              Obx(
-                () {
-                  List<dynamic> unapprovedTransactions = [];
-                  List<dynamic> approvedTransactions = [];
+                      ],
+                    ),
+                  ],
+                ),
+                Obx(() {
+                  final sortedTransactions = controller.transaksi.toList()
+                    ..sort((a, b) {
+                      final aIsApproved = a['is_approved'] ?? 0;
+                      final bIsApproved = b['is_approved'] ?? 0;
+                      final aTimestamp = a['timestamp'];
+                      final bTimestamp = b['timestamp'];
 
-                  for (var trs in controller.transaksi) {
-                    int isApproved = trs['is_approved'] ?? 0;
-                    if (isApproved == 0) {
-                      unapprovedTransactions.add(trs);
-                    } else {
-                      approvedTransactions.add(trs);
-                    }
-                  }
+                      if (aIsApproved == bIsApproved) {
+                        if (aTimestamp == null || bTimestamp == null) {
+                          return 0; // Handle cases where timestamps are null
+                        }
+                        return bTimestamp.compareTo(aTimestamp);
+                      }
 
-                  List<dynamic> sortedTransactions = [];
-                  sortedTransactions.addAll(unapprovedTransactions);
-                  sortedTransactions.addAll(approvedTransactions);
+                      return bIsApproved.compareTo(aIsApproved);
+                    });
 
                   return ListView.builder(
+                    reverse: true,
                     shrinkWrap: true,
                     physics: NeverScrollableScrollPhysics(),
                     itemCount: sortedTransactions.length,
                     itemBuilder: (context, index) {
                       var trs = sortedTransactions[index];
-                      int isApproved = trs['is_approved'] ?? 0;
+                      var isApproved = Rx<int>(trs['is_approved'] ?? 0);
 
                       return Container(
                         margin: EdgeInsets.only(bottom: 20),
@@ -143,18 +146,20 @@ class TransaksiKeluarView extends GetView<TransaksiKeluarController> {
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text(
-                                  isApproved == 0
-                                      ? 'Mengajukan Penarikan'
-                                      : 'Penarikan Disetujui',
-                                  style: GoogleFonts.inter(
-                                    fontSize: 11,
-                                    fontWeight: FontWeight.bold,
-                                    color: isApproved == 0
-                                        ? Color.fromARGB(255, 249, 3, 3)
-                                        : Color.fromARGB(255, 3, 168, 18),
-                                  ),
-                                ),
+                                Obx(() {
+                                  return Text(
+                                    isApproved.value == 0
+                                        ? 'Mengajukan Penarikan'
+                                        : 'Penarikan Disetujui',
+                                    style: GoogleFonts.inter(
+                                      fontSize: 11,
+                                      fontWeight: FontWeight.bold,
+                                      color: isApproved.value == 0
+                                          ? Color.fromARGB(255, 249, 3, 3)
+                                          : Color.fromARGB(255, 3, 168, 18),
+                                    ),
+                                  );
+                                }),
                                 Text(
                                   trs['amount']?.toString() ?? '',
                                   style: TextStyle(
@@ -169,22 +174,24 @@ class TransaksiKeluarView extends GetView<TransaksiKeluarController> {
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(100),
                                     ),
-                                    backgroundColor:
-                                        isApproved == 0 ? primary : Colors.grey,
+                                    backgroundColor: isApproved.value == 0
+                                        ? primary
+                                        : Colors.grey,
                                     fixedSize: Size(
                                       mediaQueryWidth * 0.33,
                                       mediaQueryHeight * 0.05,
                                     ),
                                   ),
-                                  onPressed: isApproved == 0
+                                  onPressed: isApproved.value == 0
                                       ? () {
                                           controller.approvePenarikan(
                                             trs['id'] ?? 1,
                                           );
+                                          isApproved.value = 1;
                                         }
                                       : null,
                                   child: Text(
-                                    isApproved == 0
+                                    isApproved.value == 0
                                         ? 'Setujui Penarikan'
                                         : 'Pencairan telah disetujui',
                                     style: GoogleFonts.inter(
@@ -200,9 +207,9 @@ class TransaksiKeluarView extends GetView<TransaksiKeluarController> {
                       );
                     },
                   );
-                },
-              )
-            ],
+                })
+              ],
+            ),
           ),
         ),
       ),
