@@ -20,6 +20,10 @@ class TransaksiMasukView extends GetView<TransaksiMasukController> {
         child: SingleChildScrollView(
           child: Obx(
             () {
+              // Mengurutkan daftar transaksi dari yang terbaru ke yang terlama
+              controller.transaksi
+                  .sort((a, b) => b['store_date'].compareTo(a['store_date']));
+
               return Container(
                 padding: EdgeInsets.only(top: 45, left: 20, right: 20),
                 width: MediaQueryWidth,
@@ -76,112 +80,110 @@ class TransaksiMasukView extends GetView<TransaksiMasukController> {
                       itemBuilder: (context, index) {
                         var trs = controller.transaksi[index];
                         return Container(
+                          padding: EdgeInsets.only(
+                            bottom: 20,
+                          ),
+                          width: MediaQueryWidth,
+                          height: MediaQueryHeight * 0.22,
+                          child: Container(
                             padding: EdgeInsets.only(
-                              bottom: 20,
+                                right: 20, left: 20, top: 20, bottom: 20),
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(10),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.black12,
+                                  spreadRadius: 6,
+                                  blurRadius: 5,
+                                  offset: Offset.fromDirection(1, 6),
+                                ),
+                              ],
                             ),
-                            width: MediaQueryWidth,
-                            height: MediaQueryHeight * 0.22,
-                            child: Container(
-                              padding: EdgeInsets.only(
-                                  right: 20, left: 20, top: 20, bottom: 20),
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(10),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.black12,
-                                    spreadRadius: 6,
-                                    blurRadius: 5,
-                                    offset: Offset.fromDirection(1, 6),
-                                  ),
-                                ],
-                              ),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        'No Transaksi',
-                                        style: GoogleFonts.inter(
-                                          fontSize: 14,
-                                          fontWeight: FontWeight.bold,
-                                        ),
-                                        textAlign: TextAlign.center,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      'No Transaksi',
+                                      style: GoogleFonts.inter(
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.bold,
                                       ),
-                                      reusableText(
-                                          trs['code'],
-                                          Color.fromARGB(255, 39, 178, 83),
-                                          13,
-                                          FontWeight.bold),
-                                      SizedBox(
-                                        height: MediaQueryHeight * 0.04,
+                                      textAlign: TextAlign.center,
+                                    ),
+                                    reusableText(
+                                        trs['code'],
+                                        Color.fromARGB(255, 39, 178, 83),
+                                        13,
+                                        FontWeight.bold),
+                                    SizedBox(
+                                      height: MediaQueryHeight * 0.04,
+                                    ),
+                                    Text(
+                                      'Nama Penyetor',
+                                      style: GoogleFonts.inter(
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.bold,
                                       ),
-                                      Text(
-                                        'Nama Penyetor',
-                                        style: GoogleFonts.inter(
-                                          fontSize: 14,
-                                          fontWeight: FontWeight.bold,
-                                        ),
-                                        textAlign: TextAlign.center,
+                                      textAlign: TextAlign.center,
+                                    ),
+                                    Text(
+                                      trs['name'],
+                                      style: GoogleFonts.inter(
+                                        fontSize: 13,
+                                        fontWeight: FontWeight.bold,
                                       ),
-                                      Text(
-                                        trs['name'],
-                                        style: GoogleFonts.inter(
-                                          fontSize: 13,
-                                          fontWeight: FontWeight.bold,
-                                        ),
-                                        textAlign: TextAlign.center,
+                                      textAlign: TextAlign.center,
+                                    ),
+                                  ],
+                                ),
+                                Column(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      'Total Kredit',
+                                      style: GoogleFonts.inter(
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.bold,
                                       ),
-                                    ],
-                                  ),
-                                  Column(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        'Total Kredit',
-                                        style: GoogleFonts.inter(
-                                          fontSize: 14,
-                                          fontWeight: FontWeight.bold,
-                                        ),
-                                        textAlign: TextAlign.center,
+                                      textAlign: TextAlign.center,
+                                    ),
+                                    reusableText(
+                                        trs['amount'].toString(),
+                                        Color.fromARGB(255, 39, 178, 83),
+                                        13,
+                                        FontWeight.bold),
+                                    SizedBox(
+                                      height: MediaQueryHeight * 0.04,
+                                    ),
+                                    Text(
+                                      'Tanggal Setor',
+                                      style: GoogleFonts.inter(
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.bold,
                                       ),
-                                      reusableText(
-                                          trs['amount'].toString(),
-                                          Color.fromARGB(255, 39, 178, 83),
-                                          13,
-                                          FontWeight.bold),
-                                      SizedBox(
-                                        height: MediaQueryHeight * 0.04,
+                                      textAlign: TextAlign.center,
+                                    ),
+                                    Text(
+                                      trs['store_date'],
+                                      style: GoogleFonts.inter(
+                                        fontSize: 13,
+                                        fontWeight: FontWeight.bold,
                                       ),
-                                      Text(
-                                        'Tanggal Setor',
-                                        style: GoogleFonts.inter(
-                                          fontSize: 14,
-                                          fontWeight: FontWeight.bold,
-                                        ),
-                                        textAlign: TextAlign.center,
-                                      ),
-                                      Text(
-                                        trs['store_date'],
-                                        style: GoogleFonts.inter(
-                                          fontSize: 13,
-                                          fontWeight: FontWeight.bold,
-                                        ),
-                                        textAlign: TextAlign.center,
-                                      ),
-                                    ],
-                                  )
-                                ],
-                              ),
-                            ));
+                                      textAlign: TextAlign.center,
+                                    ),
+                                  ],
+                                )
+                              ],
+                            ),
+                          ),
+                        );
                       },
                     ),
                   ],
