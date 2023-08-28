@@ -1,14 +1,14 @@
 import 'dart:async';
 
 import 'package:get/get.dart';
+import 'package:siresma/app/modules/splash/views/splash_view.dart';
 
 class SplashController extends GetxController {
-  //TODO: Implement SplashController
 
   @override
   void onReady() {
     Future.delayed(Duration(milliseconds: 1800), () {
-      Get.toNamed("/login");
+      Get.offAllNamed("/login");
     });
     super.onReady();
   }
@@ -16,8 +16,9 @@ class SplashController extends GetxController {
   @override
   void onInit() {
     Future.delayed(Duration(milliseconds: 1800), () {
-      Get.toNamed("/login");
+      Get.offAllNamed("/login");
     });
     super.onInit();
   }
+
 }

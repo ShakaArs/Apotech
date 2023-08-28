@@ -11,6 +11,7 @@ import 'package:siresma/app/common/custom_snackbar.dart';
 import '../../../config/api.dart';
 import '../../../models/datanasabah.dart';
 import '../../../models/user.dart';
+import '../../profil/controllers/profil_controller.dart';
 
 class LoginController extends GetxController {
   final GlobalKey<FormState> loginFromKey = GlobalKey<FormState>();
@@ -18,6 +19,8 @@ class LoginController extends GetxController {
 
   TextEditingController usernamCtrl = TextEditingController();
   TextEditingController passwordCtrl = TextEditingController();
+
+  late Timer _inactivityTimer;
 
   String? validateUsername(String value) {
     if (value == null || value.isEmpty || value == ' ') {
@@ -133,6 +136,20 @@ class LoginController extends GetxController {
     }
   }
 
+  final ProfilController ProfilCtrl = Get.put(ProfilController());
+
+  void startInactivityTimer() {
+    _inactivityTimer.cancel();
+    _inactivityTimer = Timer(Duration(minutes: 60), () {
+      ProfilCtrl.Logout();
+    });
+  }
+
+  void resetInactivityTimer() {
+    _inactivityTimer.cancel();
+    startInactivityTimer();
+  }
+
   @override
   void onInit() {
     super.onInit();
@@ -142,6 +159,8 @@ class LoginController extends GetxController {
   Future<void> _initLogin() async {
     bool loggedIn = await _isLoggedIn();
     if (loggedIn) {
+      startInactivityTimer();
+
       if (UserList.role == "nasabah") {
         Get.offAllNamed('/navbar');
       } else if (UserList.role == "pengelola") {
