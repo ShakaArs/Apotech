@@ -7,6 +7,10 @@ import '../../../config/api.dart';
 class DataNasabahController extends GetxController {
   RxList<Map<String, dynamic>> users = RxList<Map<String, dynamic>>();
 
+  Future<void> loadTransaksi() async {
+    await getDataNasabah();
+  }
+
   Future<void> getDataNasabah() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     var token = prefs.getString("token");
@@ -32,13 +36,13 @@ class DataNasabahController extends GetxController {
 
   @override
   void onInit() {
-    getDataNasabah();
+    loadTransaksi();
     super.onInit();
   }
 
   @override
   void onReady() {
     super.onReady();
-    getDataNasabah();
+    loadTransaksi();
   }
 }

@@ -48,7 +48,6 @@ class TransaksiController extends GetxController {
     }
   }
 
-
   List<TransactionItem> filterTransactionsByMonth(
       List<TransactionItem> transactions, int selectedMonth) {
     return transactions.where((transaction) {

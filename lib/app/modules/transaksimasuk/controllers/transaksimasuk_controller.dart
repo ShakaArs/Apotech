@@ -9,6 +9,10 @@ import 'package:shared_preferences/shared_preferences.dart';
 class TransaksiMasukController extends GetxController {
   RxList transaksi = [].obs;
 
+  Future<void> loadTransaksi() async {
+    await getTransaksiMasuk();
+  }
+
   Future<void> getTransaksiMasuk() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     var token = prefs.getString("token");
@@ -35,14 +39,14 @@ class TransaksiMasukController extends GetxController {
 
   @override
   void onInit() {
-    getTransaksiMasuk();
+    loadTransaksi();
     update();
     super.onInit();
   }
 
   @override
   void onReady() {
-    getTransaksiMasuk();
+    loadTransaksi();
     update();
     super.onReady();
   }
