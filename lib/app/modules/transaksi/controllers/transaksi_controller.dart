@@ -37,6 +37,7 @@ class TransaksiController extends GetxController {
         transactionData.value = transactionModel.data.transactionList;
         user_balance.value = json.encode(responseJson['data']['user_balance']);
         print(user_balance.value);
+        update();
         isLoading.value = false;
       } else {
         isLoading.value = false;
@@ -67,6 +68,14 @@ class TransaksiController extends GetxController {
   void onInit() {
     getCurrentMonth();
     fetchData();
+    update();
     super.onInit();
+  }
+
+  @override
+  void onReady() {
+    // TODO: implement onReady
+    update();
+    super.onReady();
   }
 }

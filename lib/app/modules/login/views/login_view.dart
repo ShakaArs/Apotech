@@ -32,7 +32,7 @@ class LoginView extends GetView<LoginController> {
               ),
             ),
             child: Form(
-              key: controller.loginFromKey,
+              key: controller.loginFormKey,
               autovalidateMode: AutovalidateMode.onUserInteraction,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -71,12 +71,12 @@ class LoginView extends GetView<LoginController> {
                     hint: 'Username',
                     obscureText: false,
                     enable: true,
-                    controller: controller.usernamCtrl,
+                    controller: controller.usernameCtrl,
                     validator: (value) {
                       return controller.validateUsername(value!);
                     },
                     onChanged: (value) {
-                      return controller.usernamCtrl.text = value;
+                      return controller.usernameCtrl.text = value;
                     },
                   ),
                   SizedBox(

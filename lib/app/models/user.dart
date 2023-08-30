@@ -55,13 +55,4 @@ class UserData {
   }
 }
 
-class UserList {
-  static int? id;
-  static String? full_name;
-  static String? role;
-  static String? phone;
-  static String? address;
-  static String? location;
-  static String? no_kk;
-  static String? profilePicture;
-}
+

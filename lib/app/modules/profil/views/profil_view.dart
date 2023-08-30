@@ -20,8 +20,12 @@ class ProfilView extends GetView<ProfilController> {
     final MediaQueryWidth = MediaQuery.of(context).size.width;
     final MediaQueryHeight = MediaQuery.of(context).size.height;
 
-    return GetBuilder<ProfilController>(
-      builder: (controller) {
+    return Obx(() {
+      if (controller.isLoading.value) {
+        return Center(
+          child: CircularProgressIndicator(),
+        );
+      } else {
         return Scaffold(
           appBar: PreferredSize(
             child: GestureDetector(
@@ -63,7 +67,7 @@ class ProfilView extends GetView<ProfilController> {
                                     backgroundColor: Colors.grey.shade400,
                                     backgroundImage: NetworkImage(
                                       "${controller.profil_picture.value}",
-                                      scale: 1,
+                                      scale: 1.0,
                                     ),
                                   )
                                 : CircleAvatar(
@@ -271,7 +275,7 @@ class ProfilView extends GetView<ProfilController> {
             ),
           ),
         );
-      },
-    );
+      }
+    });
   }
 }

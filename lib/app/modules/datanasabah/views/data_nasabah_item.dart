@@ -37,25 +37,19 @@ class DataNasabahItem extends StatelessWidget {
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
                     ),
-                    textAlign: TextAlign.center,
+                    textAlign: TextAlign.start,
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 4),
-                    child: Text(
-                      userData['phone'],
-                      overflow: TextOverflow.fade,
-                      style: GoogleFonts.inter(
-                        fontSize: 14,
-                        fontWeight: FontWeight.bold,
-                        color: nasabahPhoneNumberTextColor,
-                      ),
+                  Text(
+                    userData['phone'],
+                    overflow: TextOverflow.fade,
+                    style: GoogleFonts.inter(
+                      fontSize: 14,
+                      fontWeight: FontWeight.bold,
+                      color: nasabahPhoneNumberTextColor,
                     ),
                   ),
                 ],
               ),
-            ),
-            const SizedBox(
-              width: 16,
             ),
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,

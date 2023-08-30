@@ -11,6 +11,7 @@ import '../../profil/controllers/profil_controller.dart';
 
 class HomeController extends GetxController {
   final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
+  var isLoading = true.obs;
 
   RxString name = ''.obs;
 
@@ -38,11 +39,14 @@ class HomeController extends GetxController {
           print(jsonResponse);
           print(name.value);
           update();
+          isLoading.value = false;
         }
       } else {
+        isLoading.value = false;
         print('Request failed with status: ${response.statusCode}.');
       }
     } catch (error) {
+      isLoading.value = false;
       print('Error during HTTP request: $error');
     }
   }

@@ -49,7 +49,7 @@ class LocationView extends GetView<LocationController> {
                                 backgroundColor: Colors.grey.shade400,
                                 backgroundImage: NetworkImage(
                                   "${ProfilCtrl.profil_picture.value}",
-                                  scale: 1,
+                                  scale: 1.0,
                                 ),
                               )
                             : CircleAvatar(

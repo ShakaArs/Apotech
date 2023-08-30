@@ -58,17 +58,21 @@ class DataNasabahView extends GetView<DataNasabahController> {
                       ],
                     ),
                   ),
-                  Obx(
-                    () => ListView.builder(
-                      shrinkWrap: true,
-                      physics: const NeverScrollableScrollPhysics(),
-                      itemCount: controller.users.length,
-                      itemBuilder: (context, index) {
-                        var user = controller.users[index];
-                        return DataNasabahItem(userData: user);
-                      },
-                    ),
-                  ),
+                  Obx(() {
+                    if (controller.isLoading.value) {
+                      return CircularProgressIndicator();
+                    } else {
+                      return ListView.builder(
+                        shrinkWrap: true,
+                        physics: const NeverScrollableScrollPhysics(),
+                        itemCount: controller.users.length,
+                        itemBuilder: (context, index) {
+                          var user = controller.users[index];
+                          return DataNasabahItem(userData: user);
+                        },
+                      );
+                    }
+                  }),
                   SizedBox(
                     height: MediaQueryHeight * 0.008,
                   ),

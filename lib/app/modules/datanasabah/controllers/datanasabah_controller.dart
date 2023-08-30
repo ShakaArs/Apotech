@@ -6,6 +6,7 @@ import '../../../config/api.dart';
 
 class DataNasabahController extends GetxController {
   RxList<Map<String, dynamic>> users = RxList<Map<String, dynamic>>();
+  var isLoading = true.obs;
 
   Future<void> loadTransaksi() async {
     await getDataNasabah();
@@ -26,10 +27,13 @@ class DataNasabahController extends GetxController {
         var data = jsonDecode(response.body)['data'];
         users.assignAll(List<Map<String, dynamic>>.from(data));
         print(data);
+        isLoading.value = false;
       } else {
+        isLoading.value = false;
         print(response.body);
       }
     } catch (e) {
+      isLoading.value = false;
       print(e);
     }
   }
