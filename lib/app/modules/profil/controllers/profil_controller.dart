@@ -49,7 +49,6 @@ class ProfilController extends GetxController {
           print(address.value);
           print(no_kk.value);
           print(profil_picture.value);
-          update();
           isLoading.value = false;
         }
       } else {
@@ -66,7 +65,6 @@ class ProfilController extends GetxController {
   Future<void> Logout() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     var token = prefs.getString("token");
-    print(token);
     try {
       var headers = {
         'Accept': 'application/json',
@@ -85,7 +83,8 @@ class ProfilController extends GetxController {
         });
         final SharedPreferences prefs = await _prefs;
         await prefs.remove("token");
-        // await prefs.remove("role");
+        await prefs.remove("role");
+        print(token);
       } else {
         customAllertDialog("Gagal", "${error}", "gagal");
       }

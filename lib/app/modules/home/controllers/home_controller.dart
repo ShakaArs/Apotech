@@ -15,8 +15,6 @@ class HomeController extends GetxController {
 
   RxString name = ''.obs;
 
-  final ProfilController ProfilCtrl = Get.put(ProfilController());
-
   Future<void> fetchData() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     var token = prefs.getString("token");
@@ -54,15 +52,12 @@ class HomeController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    ProfilCtrl.profil_picture.value;
     fetchData();
     update();
   }
 
   @override
   void onReady() {
-    ProfilCtrl.profil_picture.value;
-    update();
     super.onReady();
   }
 

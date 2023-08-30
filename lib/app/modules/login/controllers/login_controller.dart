@@ -114,7 +114,7 @@ class LoginController extends GetxController {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     var token = prefs.getString("token");
     var role = prefs.getString('role');
-    if (token != null) {
+    if (token != null && role != null) {
       print(token);
       print(role);
       if (role == 'nasabah') {
@@ -127,9 +127,15 @@ class LoginController extends GetxController {
         });
       } else {
         print("gagal cek user");
+        Timer(Duration(seconds: 2), () {
+          Get.offAllNamed('/login');
+        });
       }
     } else {
       print('server error');
+      Timer(Duration(seconds: 2), () {
+        Get.offAllNamed('/login');
+      });
     }
   }
 
