@@ -22,8 +22,6 @@ class LoginController extends GetxController {
   TextEditingController usernameCtrl = TextEditingController();
   TextEditingController passwordCtrl = TextEditingController();
 
-  var isLoading = true.obs;
-
   String? validateUsername(String value) {
     if (value == null || value.trim().isEmpty) {
       return 'Username tidak boleh kosong';
