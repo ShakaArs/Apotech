@@ -85,7 +85,7 @@ class ProfilController extends GetxController {
         });
         final SharedPreferences prefs = await _prefs;
         await prefs.remove("token");
-        await prefs.remove("loginTime");
+        await prefs.remove("role");
       } else {
         customAllertDialog("Gagal", "${error}", "gagal");
       }

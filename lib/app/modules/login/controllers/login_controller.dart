@@ -76,6 +76,7 @@ class LoginController extends GetxController {
               Get.offAllNamed('/navbaradmin');
             }
           });
+          _startAutoLogoutTimer();
         } else {
           customAllertDialog('Gagal', 'Gagal melakukan login', 'error');
         }
@@ -85,6 +86,19 @@ class LoginController extends GetxController {
     } catch (error) {
       customAllertDialog('Gagal', error.toString(), 'error');
     }
+  }
+
+  late Timer _autoLogoutTimer; // New line
+
+  void _startAutoLogoutTimer() {
+    _autoLogoutTimer = Timer(Duration(minutes: 60), () {
+      profilCtrl.Logout(); // Call the logout function after 60 minutes
+    });
+  }
+
+  void _resetAutoLogoutTimer() {
+    _autoLogoutTimer.cancel();
+    _startAutoLogoutTimer();
   }
 
   void checkLogin() {
@@ -124,6 +138,7 @@ class LoginController extends GetxController {
   @override
   void onInit() {
     _checkToken();
+    _startAutoLogoutTimer();
     super.onInit();
   }
 
@@ -134,6 +149,7 @@ class LoginController extends GetxController {
 
   @override
   void onClose() {
+    _autoLogoutTimer.cancel();
     super.onClose();
   }
 }
