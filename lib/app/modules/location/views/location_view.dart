@@ -21,66 +21,71 @@ class LocationView extends GetView<LocationController> {
 
     final ProfilController ProfilCtrl = Get.put(ProfilController());
 
-    return Scaffold(
-      appBar: PreferredSize(
-        child: Container(
-          decoration: BoxDecoration(
-            color: primary,
-            borderRadius: BorderRadius.only(
-              bottomLeft: Radius.circular(5),
-              bottomRight: Radius.circular(5),
-            ),
-          ),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Container(
-                padding: EdgeInsets.only(left: 30, top: 10, right: 30),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Obx(
-                      () => Transform.scale(
-                        scale: 1.55,
-                        child: "${ProfilCtrl.profil_picture.value}" != null
-                            ? CircleAvatar(
-                                backgroundColor: Colors.grey.shade400,
-                                backgroundImage: NetworkImage(
-                                  "${ProfilCtrl.profil_picture.value}",
-                                  scale: 1.0,
-                                ),
-                              )
-                            : CircleAvatar(
-                                backgroundColor: Colors.grey.shade400,
-                                child: Icon(FontAwesomeIcons.solidUser,
-                                    color: Colors.grey.shade300),
-                              ),
-                      ),
-                    ),
-                    SizedBox(
-                      width: MediaQueryWidth * 0.06,
-                    ),
-                    Text(
-                      'SIRESMA',
-                      style: GoogleFonts.inter(
-                        color: Colors.white,
-                        fontSize: 26,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ],
+    return Obx(() {
+      if (controller.isLoading.value) {
+        return Center(
+          child: CircularProgressIndicator(),
+        );
+      } else {
+        controller.update();
+        return Scaffold(
+          appBar: PreferredSize(
+            child: Container(
+              decoration: BoxDecoration(
+                color: primary,
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(5),
+                  bottomRight: Radius.circular(5),
                 ),
               ),
-            ],
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Container(
+                    padding: EdgeInsets.only(left: 30, top: 10, right: 30),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Obx(
+                          () => Transform.scale(
+                            scale: 1.55,
+                            child: "${ProfilCtrl.profil_picture.value}" != null
+                                ? CircleAvatar(
+                                    backgroundColor: Colors.grey.shade400,
+                                    backgroundImage: NetworkImage(
+                                      "${ProfilCtrl.profil_picture.value}",
+                                      scale: 1.0,
+                                    ),
+                                  )
+                                : CircleAvatar(
+                                    backgroundColor: Colors.grey.shade400,
+                                    child: Icon(FontAwesomeIcons.solidUser,
+                                        color: Colors.grey.shade300),
+                                  ),
+                          ),
+                        ),
+                        SizedBox(
+                          width: MediaQueryWidth * 0.06,
+                        ),
+                        Text(
+                          'SIRESMA',
+                          style: GoogleFonts.inter(
+                            color: Colors.white,
+                            fontSize: 26,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            preferredSize: Size.fromHeight(MediaQueryHeight * 0.13),
           ),
-        ),
-        preferredSize: Size.fromHeight(MediaQueryHeight * 0.13),
-      ),
-      body: GetBuilder<LocationController>(
-        builder: (controller) {
-          return Container(
+          body: Container(
             height: MediaQueryHeight,
             width: MediaQueryWidth,
             padding: EdgeInsets.only(left: 30, right: 30, top: 20, bottom: 20),
@@ -159,9 +164,9 @@ class LocationView extends GetView<LocationController> {
                 ),
               ],
             ),
-          );
-        },
-      ),
-    );
+          ),
+        );
+      }
+    });
   }
 }

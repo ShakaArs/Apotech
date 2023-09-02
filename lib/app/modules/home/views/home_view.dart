@@ -36,6 +36,7 @@ class HomeView extends GetView<HomeController> {
           child: CircularProgressIndicator(),
         );
       } else {
+        controller.update();
         return Scaffold(
           appBar: PreferredSize(
             child: Container(

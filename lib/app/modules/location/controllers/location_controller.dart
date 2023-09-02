@@ -15,7 +15,7 @@ class LocationController extends GetxController {
   final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
   final ProfilController ProfilCtrl = Get.put(ProfilController());
-
+  var isLoading = true.obs;
   var rt = <RTModel>[].obs;
   RTModel? selectedRT;
 
@@ -39,10 +39,15 @@ class LocationController extends GetxController {
         }
         rt.value = tempList;
         update();
+        isLoading.value = false;
       } else {
+        isLoading.value = false;
+
         print("Gagal");
       }
     } catch (e) {
+      isLoading.value = false;
+
       print(e);
     }
   }

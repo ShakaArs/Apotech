@@ -15,7 +15,7 @@ class DataNasabahView extends GetView<DataNasabahController> {
     final MediaQueryWidth = MediaQuery.of(context).size.width;
     final MediaQueryHeight = MediaQuery.of(context).size.height;
 
-    final LoginController LoginCtrl = Get.find<LoginController>();
+    final LoginController LoginCtrl = Get.put(LoginController());
 
     return Scaffold(
       body: RefreshIndicator(
@@ -28,17 +28,15 @@ class DataNasabahView extends GetView<DataNasabahController> {
               child: Column(
                 children: [
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Image.asset(
                         'assets/image/icon_nasabah.png',
                         scale: 0.9,
                       ),
-                      SizedBox(
-                        width: MediaQueryWidth * 0.04,
-                      ),
+                      
                       Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Text(
                             'Data Nasabah',
@@ -60,9 +58,6 @@ class DataNasabahView extends GetView<DataNasabahController> {
                           ),
                         ],
                       ),
-                      SizedBox(
-                        width: MediaQueryWidth * 0.25,
-                      ),
                       GestureDetector(
                         onTap: () {
                           LoginCtrl.Logout();
@@ -77,7 +72,9 @@ class DataNasabahView extends GetView<DataNasabahController> {
                   ),
                   Obx(() {
                     if (controller.isLoading.value) {
-                      return CircularProgressIndicator();
+                      return Center(
+                        child: CircularProgressIndicator(),
+                      );
                     } else {
                       return ListView.builder(
                         shrinkWrap: true,

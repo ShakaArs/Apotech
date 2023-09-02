@@ -49,6 +49,7 @@ class ProfilController extends GetxController {
           print(address.value);
           print(no_kk.value);
           print(profil_picture.value);
+          update();
           isLoading.value = false;
         }
       } else {
