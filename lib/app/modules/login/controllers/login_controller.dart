@@ -4,20 +4,19 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
+import 'package:get/get_connect/http/src/utils/utils.dart';
+import 'package:get_cli/common/utils/json_serialize/json_ast/utils/grapheme_splitter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:http/http.dart' as http;
+import 'package:http/http.dart' as https;
 import 'package:siresma/app/common/custom_snackbar.dart';
 
 import '../../../config/api.dart';
 import '../../../models/datanasabah.dart';
 import '../../../models/user.dart';
-import '../../profil/controllers/profil_controller.dart';
 
 class LoginController extends GetxController {
   final GlobalKey<FormState> loginFormKey = GlobalKey<FormState>();
   final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
-
-  final ProfilController profilCtrl = Get.put(ProfilController());
 
   TextEditingController usernameCtrl = TextEditingController();
   TextEditingController passwordCtrl = TextEditingController();
@@ -55,8 +54,8 @@ class LoginController extends GetxController {
         "username": usernameCtrl.text.trim(),
         "password": passwordCtrl.text,
       };
-      http.Response response =
-          await http.post(url, body: body, headers: headers);
+      https.Response response =
+          await https.post(url, body: body, headers: headers);
 
       if (response.statusCode == 200) {
         var json = jsonDecode(response.body);
@@ -68,13 +67,8 @@ class LoginController extends GetxController {
           await prefs.setString("role", role);
           customAllertDialog("Sukses", "Sukses melakukan login", 'success');
           Timer(Duration(seconds: 2), () {
-            if (role == "nasabah") {
-              Get.offAllNamed('/navbar');
-            } else if (role == "pengelola") {
-              Get.offAllNamed('/navbaradmin');
-            }
+            Get.offAllNamed(role == "nasabah" ? '/navbar' : '/navbaradmin');
           });
-          _startAutoLogoutTimer();
         } else {
           customAllertDialog('Gagal', 'Gagal melakukan login', 'error');
         }
@@ -86,17 +80,35 @@ class LoginController extends GetxController {
     }
   }
 
-  late Timer _autoLogoutTimer; // New line
-
-  void _startAutoLogoutTimer() {
-    _autoLogoutTimer = Timer(Duration(minutes: 60), () {
-      profilCtrl.Logout(); // Call the logout function after 60 minutes
-    });
-  }
-
-  void _resetAutoLogoutTimer() {
-    _autoLogoutTimer.cancel();
-    _startAutoLogoutTimer();
+  Future<void> Logout() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    var token = prefs.getString("token");
+    try {
+      var headers = {
+        'Accept': 'application/json',
+        'Authorization': 'Bearer $token',
+      };
+      var url = Uri.parse(API.logout);
+      var response = await https.get(url, headers: headers);
+      var succes = jsonDecode(response.body)['message'];
+      var error = jsonDecode(response.body)['message'];
+      if (response.statusCode == 200) {
+        final json = jsonDecode(response.body);
+        print(json);
+        customAllertDialog("Sukses", "${succes}", 'Sukses');
+        final SharedPreferences prefs = await _prefs;
+        await prefs.remove("token");
+        await prefs.remove("role");
+        print(token);
+        Timer(Duration(seconds: 2), () {
+          Get.offAllNamed('/login');
+        });
+      } else {
+        customAllertDialog("Gagal", "${error}", "gagal");
+      }
+    } catch (e) {
+      customAllertDialog("Gagal", "${e}", "gagal");
+    }
   }
 
   void checkLogin() {
@@ -110,39 +122,10 @@ class LoginController extends GetxController {
     }
   }
 
-  void _checkToken() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    var token = prefs.getString("token");
-    var role = prefs.getString('role');
-    if (token != null && role != null) {
-      print(token);
-      print(role);
-      if (role == 'nasabah') {
-        Timer(Duration(seconds: 2), () {
-          Get.offAllNamed('/navbar');
-        });
-      } else if (role == "pengelola") {
-        Timer(Duration(seconds: 2), () {
-          Get.offAllNamed('/navbaradmin');
-        });
-      } else {
-        print("gagal cek user");
-        Timer(Duration(seconds: 2), () {
-          Get.offAllNamed('/login');
-        });
-      }
-    } else {
-      print('server error');
-      Timer(Duration(seconds: 2), () {
-        Get.offAllNamed('/login');
-      });
-    }
-  }
+  
 
   @override
   void onInit() {
-    _checkToken();
-    _startAutoLogoutTimer();
     super.onInit();
   }
 
@@ -153,7 +136,6 @@ class LoginController extends GetxController {
 
   @override
   void onClose() {
-    _autoLogoutTimer.cancel();
     super.onClose();
   }
 }

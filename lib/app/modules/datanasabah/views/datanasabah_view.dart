@@ -5,7 +5,7 @@ import 'package:siresma/app/common/colors.dart';
 import 'package:siresma/app/modules/datanasabah/controllers/datanasabah_controller.dart';
 import 'package:siresma/app/modules/datanasabah/views/data_nasabah_item.dart';
 
-import '../../profil/controllers/profil_controller.dart';
+import '../../login/controllers/login_controller.dart';
 
 class DataNasabahView extends GetView<DataNasabahController> {
   const DataNasabahView({Key? key}) : super(key: key);
@@ -15,7 +15,7 @@ class DataNasabahView extends GetView<DataNasabahController> {
     final MediaQueryWidth = MediaQuery.of(context).size.width;
     final MediaQueryHeight = MediaQuery.of(context).size.height;
 
-    final ProfilController ProfilCtrl = Get.put(ProfilController());
+    final LoginController LoginCtrl = Get.find<LoginController>();
 
     return Scaffold(
       body: RefreshIndicator(
@@ -65,7 +65,7 @@ class DataNasabahView extends GetView<DataNasabahController> {
                       ),
                       GestureDetector(
                         onTap: () {
-                          ProfilCtrl.Logout();
+                          LoginCtrl.Logout();
                         },
                         child: Icon(
                           FontAwesomeIcons.rightFromBracket,

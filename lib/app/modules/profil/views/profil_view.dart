@@ -20,6 +20,8 @@ class ProfilView extends GetView<ProfilController> {
     final MediaQueryWidth = MediaQuery.of(context).size.width;
     final MediaQueryHeight = MediaQuery.of(context).size.height;
 
+    final LoginController LoginCtrl = Get.put(LoginController());
+
     return Obx(() {
       if (controller.isLoading.value) {
         return Center(
@@ -260,7 +262,7 @@ class ProfilView extends GetView<ProfilController> {
                   ),
                   ListTile(
                     onTap: () {
-                      controller.Logout();
+                      LoginCtrl.Logout();
                     },
                     leading: Icon(
                       FontAwesomeIcons.rightFromBracket,

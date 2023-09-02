@@ -1,9 +1,11 @@
+import 'dart:async';
 import 'dart:convert';
 
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as https;
 import 'package:siresma/app/models/user.dart';
+import 'package:siresma/app/modules/login/controllers/login_controller.dart';
 
 import '../../../config/api.dart';
 import '../../../models/location.dart';
@@ -14,6 +16,8 @@ class HomeController extends GetxController {
   var isLoading = true.obs;
 
   RxString name = ''.obs;
+
+  final LoginController LoginCtrl = Get.put(LoginController());
 
   Future<void> fetchData() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -49,9 +53,19 @@ class HomeController extends GetxController {
     }
   }
 
+  late Timer _autoLogoutTimer; // New line
+
+  void _startAutoLogoutTimer() {
+    _autoLogoutTimer = Timer(Duration(minutes: 60), () {
+      LoginCtrl.Logout(); // Call the logout function after 60 minutes
+      _autoLogoutTimer.cancel();
+    });
+  }
+
   @override
   void onInit() {
     super.onInit();
+    _startAutoLogoutTimer();
     fetchData();
     update();
   }
