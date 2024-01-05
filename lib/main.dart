@@ -9,7 +9,7 @@ void main() {
   runApp(
     GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      title: "SUITMEDIA",
+      title: "APOTECH",
       initialRoute: AppPages.INITIAL,
       getPages: AppPages.routes,
     ),

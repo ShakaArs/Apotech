@@ -13,7 +13,7 @@ import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class LoginController extends GetxController {
+class LoginAfterController extends GetxController {
   final GlobalKey<FormState> walkthrough1FormKey = GlobalKey<FormState>();
   TextEditingController usernameCtrl = TextEditingController();
   TextEditingController passwordCtrl = TextEditingController();

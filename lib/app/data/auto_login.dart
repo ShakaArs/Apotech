@@ -20,6 +20,6 @@ void checkToken() async {
       });
     }
   } else {
-    Get.offAllNamed('/login');
+    Get.offAllNamed('/walkthrough1');
   }
 }

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:siresma/app/common/colors.dart';
-import 'package:siresma/app/common/custom_textformfield.dart';
+
+import '../../register/views/register_view.dart';
 import '../controllers/login_controller.dart';
 
 class LoginView extends GetView<LoginController> {
@@ -10,110 +10,117 @@ class LoginView extends GetView<LoginController> {
 
   @override
   Widget build(BuildContext context) {
-    final mediaQueryWidth = MediaQuery.of(context).size.width;
-    final mediaQueryHeight = MediaQuery.of(context).size.height;
-    bool isAgree = true;
-
     return Scaffold(
+      resizeToAvoidBottomInset:
+          false, 
       body: SingleChildScrollView(
-        child: GetBuilder<LoginController>(builder: (controller) {
-          return Container(
-            width: mediaQueryWidth,
-            height: mediaQueryHeight,
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage(
-                    'assets/image/background.png'), // Ubah sesuai nama gambar latar belakang
-                fit: BoxFit.cover,
+        child: Column(
+          children: [
+            Container(
+              margin: EdgeInsets.only(top: 50, left: 16, right: 16),
+              child: Column(
+                children: [
+                  IconButton(
+                    onPressed: () {
+                      Get.back();
+                    },
+                    icon: Icon(Icons.arrow_back),
+                    color: Color.fromRGBO(9, 15, 71, 1),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ), 
+                  Text(
+                    'Welcome Back!',
+                    style: GoogleFonts.overpass(
+                      color: Color.fromRGBO(9, 15, 71, 1),
+                      fontSize: 24,
+                      fontWeight: FontWeight.w700,
+                    ),
+                    textAlign: TextAlign.left,
+                  ),
+                ],
               ),
             ),
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 60),
-              child: Form(
-                key: controller.loginFormKey,
-                autovalidateMode: AutovalidateMode.onUserInteraction,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Image.asset(
-                      'assets/image/ic_photo.png',
-                      scale: 0.8,
-                    ),
-                    SizedBox(
-                      height: mediaQueryHeight * 0.005,
-                    ),
-                    SizedBox(
-                      height: mediaQueryHeight * 0.03,
-                    ),
-                    CustomTextFields(
-                      hint: 'Name', // Ubah dari 'Username' menjadi 'Name'
-                      obscureText: false,
-                      enable: true,
-                      controller: controller.usernameCtrl,
-                      validator: (value) {
-                        return controller.validateName(value!);
-                      },
-                      onChanged: (value) {
-                        return controller.usernameCtrl.text = value;
-                      },
-                    ),
-                    SizedBox(
-                      height: mediaQueryHeight * 0.015,
-                    ),
-                    CustomTextFields(
-                      hint: 'Palindrome', // Ubah dari 'Password' menjadi 'Palindrome'
-                      obscureText: true,
-                      enable: true,
-                      controller: controller.passwordCtrl,
-                      validator: (value) {
-                        return controller.validatePalindrome(value!);
-                      },
-                      onChanged: (value) {
-                        return controller.passwordCtrl.text = value;
-                      },
-                    ),
-                    SizedBox(
-                      height: mediaQueryHeight * 0.03,
-                    ),
-                    SizedBox(
-                      height: mediaQueryHeight * 0.02,
-                    ),
-                    ElevatedButton(
-                      onPressed: () {
-                        controller.checkPalindrome();
-                      },
-                      child: Text('CHECK'), // Ubah dari 'LOG IN' menjadi 'CHECK'
-                      style: ElevatedButton.styleFrom(
-                        primary: Color.fromRGBO(43, 99, 123, 1),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10.0),
-                        ),
-                        minimumSize: Size(double.infinity, 50),
-                      ),
-                    ),
-                    SizedBox(
-                      height: mediaQueryHeight * 0.02,
-                    ),
-                    ElevatedButton(
-                      onPressed: () {
-                        Get.toNamed('/home');
-                      },
-                      child: Text('NEXT'),
-                      style: ElevatedButton.styleFrom(
-                        primary: Color.fromRGBO(43, 99, 123, 1),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10.0),
-                        ),
-                        minimumSize: Size(double.infinity, 50),
-                      ),
-                    ),
-                  ],
+            SizedBox(
+              height: 10,
+            ), 
+            Container(
+              margin: EdgeInsets.symmetric(horizontal: 40, vertical: 10),
+              child: TextField(
+                decoration: InputDecoration(
+                  labelText: 'Username',
+                  prefixIcon: Icon(Icons.person), 
                 ),
               ),
             ),
-          );
-        }),
+            Container(
+              margin: EdgeInsets.symmetric(horizontal: 40, vertical: 10),
+              child: TextField(
+                obscureText: true,
+                decoration: InputDecoration(
+                  labelText: 'Password',
+                  prefixIcon: Icon(Icons.lock), 
+                  suffix: Text(
+                    'Forgot?',
+                    style: TextStyle(
+                      fontFamily: 'Arial',
+                      color: Color.fromRGBO(9, 15, 71, 0.75),
+                      fontSize: 16,
+                      letterSpacing: -0.24,
+                      fontWeight: FontWeight.w400,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 20,
+            ), 
+            Container(
+              width: 311,
+              height: 50,
+              margin: EdgeInsets.only(bottom: 10),
+              child: ElevatedButton(
+                onPressed: () {},
+                child: Text(
+                  'SIGN IN',
+                  style: GoogleFonts.overpass(
+                    color: Colors.white,
+                    fontSize: 16,
+                    fontWeight: FontWeight.w700,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+                style: ElevatedButton.styleFrom(
+                  primary: Color.fromRGBO(65, 87, 255, 1),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(50.0),
+                  ),
+                  elevation: 8,
+                  shadowColor: Color.fromRGBO(65, 87, 255, 0.10),
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 10,
+            ), 
+            GestureDetector(
+              onTap: () {
+                Get.to(() => RegisterView());
+              },
+              child: Text(
+                "Don't have an account? Sign Up",
+                style: TextStyle(
+                  fontFamily: "Sofia Pro",
+                  color: Color.fromRGBO(9, 15, 71, 0.45),
+                  fontSize: 16,
+                  fontWeight: FontWeight.w400,
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
