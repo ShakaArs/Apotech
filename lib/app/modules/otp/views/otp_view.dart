@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:otp_text_field/otp_text_field.dart';
 import 'package:otp_text_field/style.dart';
-import 'package:siresma/app/modules/loginafter/views/loginafter_view.dart';
+import 'package:siresma/app/modules/otpsucces/views/otpsucces_view.dart';
 
 class OtpView extends StatelessWidget {
   const OtpView({Key? key}) : super(key: key);
@@ -74,7 +74,7 @@ class OtpView extends StatelessWidget {
                       Size(MediaQueryWidth * 0.8, MediaQueryHeight * 0.06),
                 ),
                 onPressed: () {
-                  Get.to(() => LoginAfterView());
+                  Get.to(() => OtpSuccesView());
                 },
                 child: Text(
                   "SUBMIT CODE",

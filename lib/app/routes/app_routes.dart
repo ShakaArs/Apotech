@@ -13,7 +13,7 @@ abstract class Routes {
   static const WALKTHROUGH1 = _Paths.WALKTHROUGH1;
   static const WALKTHROUGH2 = _Paths.WALKTHROUGH2;
   static const WALKTHROUGH3 = _Paths.WALKTHROUGH3;
-  static const LOGINAFTER = _Paths.LOGINAFTER;
+  static const OTPSUCCES = _Paths.OTPSUCCES;
 }
 
 abstract class _Paths {
@@ -28,5 +28,5 @@ abstract class _Paths {
   static const WALKTHROUGH3 = '/walkthrough3';
   static const LOGINBEGIN = '/loginbegin';
   static const OTP = '/otp';
-  static const LOGINAFTER = '/loginafter';
+  static const OTPSUCCES = '/otpsucces';
 }

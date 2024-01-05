@@ -11,8 +11,8 @@ import '../modules/splash/bindings/splash_binding.dart';
 import '../modules/splash/views/splash_view.dart';
 import '../modules/walkthrough3/bindings/walkthrough3_binding.dart';
 import '../modules/walkthrough3/views/walkthrough3_view.dart';
-import '../modules/loginafter/bindings/loginafter_binding.dart';
-import '../modules/loginafter/views/loginafter_view.dart';
+import '../modules/otpsucces/bindings/otpsucces_binding.dart';
+import '../modules/otpsucces/views/otpsucces_view.dart';
 
 part 'app_routes.dart';
 
@@ -55,9 +55,9 @@ class AppPages {
       binding: LoginBinding(),
     ),
     GetPage(
-      name: _Paths.LOGINAFTER,
-      page: () => const LoginAfterView(),
-      binding: LoginAfterBinding(),
+      name: _Paths.OTPSUCCES,
+      page: () => const OtpSuccesView(),
+      binding: OtpSuccesBinding(),
     ),
   ];
 }
