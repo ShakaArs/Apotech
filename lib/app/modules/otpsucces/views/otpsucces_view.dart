@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:siresma/app/common/colors.dart';
 import 'package:siresma/app/common/custom_textformfield.dart';
+import 'package:siresma/app/modules/home/views/home_view.dart';
 import 'package:siresma/app/modules/login/views/login_view.dart';
 import 'package:siresma/app/modules/register/views/register_view.dart';
 import '../controllers/otpsucces_controller.dart';
@@ -59,7 +60,7 @@ class OtpSuccesView extends GetView<OtpSuccesController> {
                     margin: EdgeInsets.only(bottom: 10),
                     child: ElevatedButton(
                       onPressed: () {
-                        Get.to(() => RegisterView());
+                        Get.to(() => HomeView());
                       },
                       child: Text(
                         'CONTINUE',

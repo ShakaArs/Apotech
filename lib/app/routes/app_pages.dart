@@ -1,4 +1,6 @@
 import 'package:get/get.dart';
+import 'package:siresma/app/modules/home/bindings/home_binding.dart';
+import 'package:siresma/app/modules/home/views/home_view.dart';
 import 'package:siresma/app/modules/login/bindings/login_binding.dart';
 import 'package:siresma/app/modules/login/views/login_view.dart';
 import 'package:siresma/app/modules/loginbegin/views/loginbegin_view.dart';
@@ -28,7 +30,11 @@ class AppPages {
       page: () => const SplashView(),
       binding: SplashBinding(),
     ),
-
+    GetPage(
+      name: _Paths.HOME,
+      page: () => const HomeView(),
+      binding: HomeBinding(),
+    ),
     GetPage(
       name: _Paths.WALKTHROUGH1,
       page: () => Walkthrough1View(),
